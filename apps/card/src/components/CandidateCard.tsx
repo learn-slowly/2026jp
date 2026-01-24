@@ -20,7 +20,7 @@ export function CandidateCard({ candidate }: CandidateCardProps) {
                     {/* 정의당 로고 */}
                     <div className="flex items-center gap-3 mb-8">
                         <img
-                            src="/logo-allcolor.gif"
+                            src="/logo-4.gif"
                             alt="정의당"
                             className="h-12 w-auto drop-shadow-lg filter brightness-0 invert"
                         />
