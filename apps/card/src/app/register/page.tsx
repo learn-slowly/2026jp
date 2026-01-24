@@ -122,7 +122,10 @@ export default function RegisterPage() {
                     <p className="text-gray-600 mt-2">웹명함 생성을 위한 정보를 입력해주세요</p>
                 </div>
 
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                <form onSubmit={form.handleSubmit(onSubmit, (errors) => {
+                    console.error(errors);
+                    alert('입력되지 않은 필수 항목이 있습니다. 붉은색 경고 문구를 확인해주세요.');
+                })} className="space-y-6">
                     {/* Step 1: Slug Check */}
                     <div className={`transition-all ${step === 'FORM' ? 'opacity-50 pointer-events-none' : ''}`}>
                         <label className="block text-sm font-medium text-gray-700 mb-1">아이디 (Slug)</label>
@@ -267,7 +270,14 @@ export default function RegisterPage() {
                             </div>
 
                             <button
-                                type="submit"
+                                type="button"
+                                onClick={(e) => {
+                                    console.log('Save button clicked');
+                                    form.handleSubmit(onSubmit, (errors) => {
+                                        console.error('Validation errors:', errors);
+                                        alert('입력되지 않은 필수 항목이 있습니다. 붉은색 경고 문구를 확인해주세요.');
+                                    })(e);
+                                }}
                                 disabled={submitting}
                                 className="w-full bg-justice-green hover:bg-justice-green-dark text-white font-bold py-4 rounded-xl text-lg transition shadow-lg disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                             >
