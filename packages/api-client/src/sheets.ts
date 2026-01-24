@@ -28,7 +28,7 @@ export class SheetsClient {
         try {
             const response = await this.sheets.spreadsheets.values.get({
                 spreadsheetId: this.sheetId,
-                range: 'candidates!A2:AA',
+                range: 'candidates!A2:AW',
             });
 
             const rows = response.data.values || [];
