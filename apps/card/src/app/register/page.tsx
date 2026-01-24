@@ -9,6 +9,7 @@ import { formSchema, FormData } from '@/lib/schema';
 import { DynamicList } from '@/components/DynamicList';
 import { ImageUpload } from '@/components/ImageUpload';
 import { PledgeList } from '@/components/PledgeList';
+import { ReportList } from '@/components/ReportList';
 
 export default function RegisterPage() {
     const router = useRouter();
@@ -205,6 +206,15 @@ export default function RegisterPage() {
                                     placeholder="예: 제21대 국회의원 (비례)"
                                     maxItems={10}
                                 />
+
+                                {form.watch('isIncumbent') && (
+                                    <div className="animate-in fade-in slide-in-from-top-4 duration-300">
+                                        <ReportList
+                                            items={form.watch('reports') || []}
+                                            onChange={(val) => form.setValue('reports', val)}
+                                        />
+                                    </div>
+                                )}
 
                                 <PledgeList
                                     title="🗳️ 핵심 공약 (우선순위순)"

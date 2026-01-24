@@ -1,5 +1,5 @@
 import { google } from 'googleapis';
-import { Candidate } from '@justice/types';
+import { Candidate, Report } from '@justice/types';
 
 export class SheetsClient {
     private sheets;
@@ -127,6 +127,62 @@ export class SheetsClient {
             return true;
         } catch (error) {
             console.error('Error saving candidate:', error);
+            return false;
+        }
+    }
+
+
+
+    async getReports(slug: string): Promise<Report[]> {
+        try {
+            const response = await this.sheets.spreadsheets.values.get({
+                spreadsheetId: this.sheetId,
+                range: 'reports!A2:H',
+            });
+
+            const rows = response.data.values || [];
+            return rows
+                .map((row) => ({
+                    candidateSlug: (row[0] || '').trim(),
+                    year: (row[1] || '').trim(),
+                    month: (row[2] || '').trim(),
+                    category: (row[3] || '').trim(),
+                    title: (row[4] || '').trim(),
+                    description: (row[5] || '').trim(),
+                    linkUrl: (row[6] || '').trim(),
+                    visible: (row[7] || '').trim().toUpperCase() === 'TRUE',
+                }))
+                .filter((r) => r.candidateSlug === slug && r.visible);
+        } catch (error) {
+            console.error('Error fetching reports:', error);
+            return [];
+        }
+    }
+
+    async saveReports(reports: Report[]): Promise<boolean> {
+        if (!reports.length) return true;
+
+        try {
+            const rows = reports.map((r) => [
+                r.candidateSlug,
+                r.year,
+                r.month,
+                r.category,
+                r.title,
+                r.description,
+                r.linkUrl || '',
+                r.visible ? 'TRUE' : 'FALSE'
+            ]);
+
+            await this.sheets.spreadsheets.values.append({
+                spreadsheetId: this.sheetId,
+                range: 'reports!A:H',
+                valueInputOption: 'USER_ENTERED',
+                requestBody: { values: rows },
+            });
+            return true;
+        } catch (error) {
+            console.error('Error saving reports:', error);
             return false;
         }
     }

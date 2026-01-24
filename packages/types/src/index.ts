@@ -40,4 +40,16 @@ export interface Candidate {
     isIncumbent: boolean;
     status: CandidateStatus;
     updatedAt?: Date;
+    reports?: Report[];
+}
+
+export interface Report {
+    candidateSlug: string;
+    year: string;
+    month: string;
+    category: string;
+    title: string;
+    description: string;
+    linkUrl?: string;
+    visible: boolean;
 }

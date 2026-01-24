@@ -48,6 +48,15 @@ export async function POST(request: NextRequest) {
 
         const success = await sheetsClient.saveCandidate(candidate);
 
+        if (success && body.reports && body.reports.length > 0) {
+            // Attach slug to reports
+            const reports = body.reports.map((r: any) => ({
+                ...r,
+                candidateSlug: candidate.slug
+            }));
+            await sheetsClient.saveReports(reports);
+        }
+
         if (success) {
             return NextResponse.json({ success: true, slug: candidate.slug });
         } else {

@@ -31,6 +31,16 @@ export const formSchema = z.object({
         instagram: z.string().optional(),
     }),
     isIncumbent: z.boolean().default(false),
+    reports: z.array(z.object({
+        candidateSlug: z.string().optional(),
+        year: z.string().min(4, "연도를 입력해주세요"),
+        month: z.string().min(1, "월을 입력해주세요"),
+        category: z.string().min(1, "분류를 선택해주세요"),
+        title: z.string().min(1, "제목을 입력해주세요"),
+        description: z.string().min(1, "내용을 입력해주세요"),
+        linkUrl: z.string().optional(),
+        visible: z.boolean().default(true),
+    })).default([]),
 });
 
 export type FormData = z.infer<typeof formSchema>;
