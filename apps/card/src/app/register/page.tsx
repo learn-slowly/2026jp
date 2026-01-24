@@ -131,7 +131,7 @@ export default function RegisterPage() {
                                 {...form.register('slug')}
                                 disabled={step === 'FORM'}
                                 placeholder="예: hkd (영문 소문자)"
-                                className="flex-1 block w-full rounded-lg border-gray-300 border p-3 focus:ring-justice-green focus:border-justice-green"
+                                className="flex-1 block w-full rounded-lg border-gray-300 border p-3 text-gray-900 focus:ring-justice-green focus:border-justice-green"
                             />
                             {step === 'SLUG' && (
                                 <button
@@ -169,7 +169,7 @@ export default function RegisterPage() {
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div>
                                     <label className="block text-sm font-medium text-gray-700 mb-1">출마 유형</label>
-                                    <select {...form.register('category')} className="block w-full rounded-lg border-gray-300 border p-3 focus:ring-2 focus:ring-justice-green focus:border-justice-green">
+                                    <select {...form.register('category')} className="block w-full rounded-lg border-gray-300 border p-3 text-gray-900 focus:ring-2 focus:ring-justice-green focus:border-justice-green">
                                         <option value="기초지역구">기초지역구</option>
                                         <option value="기초비례">기초비례</option>
                                         <option value="광역지역구">광역지역구</option>
@@ -192,7 +192,7 @@ export default function RegisterPage() {
                                 <label className="block text-sm font-medium text-gray-700 mb-1">소개글</label>
                                 <textarea
                                     {...form.register('intro')}
-                                    className="block w-full rounded-lg border-gray-300 border p-3 focus:ring-2 focus:ring-justice-green focus:border-justice-green h-32"
+                                    className="block w-full rounded-lg border-gray-300 border p-3 text-gray-900 focus:ring-2 focus:ring-justice-green focus:border-justice-green h-32"
                                     placeholder="인사말을 입력하세요..."
                                 />
                                 <FormError error={form.formState.errors.intro} />
@@ -294,7 +294,7 @@ function FormInput({ label, register, error, placeholder, type = "text" }: {
             <input
                 {...register}
                 type={type}
-                className="block w-full rounded-lg border-gray-300 border p-3 focus:ring-2 focus:ring-justice-green focus:border-justice-green"
+                className="block w-full rounded-lg border-gray-300 border p-3 text-gray-900 focus:ring-2 focus:ring-justice-green focus:border-justice-green"
                 placeholder={placeholder}
             />
             <FormError error={error} />

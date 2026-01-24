@@ -86,7 +86,7 @@ export function ReportList({
                                 <input
                                     value={item.year}
                                     onChange={(e) => updateItem(index, 'year', e.target.value)}
-                                    className="w-full rounded border-gray-300 text-sm p-2"
+                                    className="w-full rounded border-gray-300 text-sm text-gray-900 p-2"
                                     placeholder="2025"
                                 />
                             </div>
@@ -95,7 +95,7 @@ export function ReportList({
                                 <input
                                     value={item.month}
                                     onChange={(e) => updateItem(index, 'month', e.target.value)}
-                                    className="w-full rounded border-gray-300 text-sm p-2"
+                                    className="w-full rounded border-gray-300 text-sm text-gray-900 p-2"
                                     placeholder="11"
                                 />
                             </div>
@@ -104,7 +104,7 @@ export function ReportList({
                                 <select
                                     value={item.category}
                                     onChange={(e) => updateItem(index, 'category', e.target.value)}
-                                    className="w-full rounded border-gray-300 text-sm p-2 bg-white"
+                                    className="w-full rounded border-gray-300 text-sm p-2 bg-white text-gray-900"
                                 >
                                     <option>조례제정</option>
                                     <option>예산확보</option>
@@ -135,7 +135,7 @@ export function ReportList({
                                 <input
                                     value={item.title}
                                     onChange={(e) => updateItem(index, 'title', e.target.value)}
-                                    className="w-full rounded border-gray-300 font-bold p-2 focus:ring-2 focus:ring-justice-green focus:border-justice-green"
+                                    className="w-full rounded border-gray-300 font-bold p-2 text-gray-900 focus:ring-2 focus:ring-justice-green focus:border-justice-green"
                                     placeholder="성과 제목 (예: 무상급식 조례 통과)"
                                 />
                             </div>
@@ -143,7 +143,7 @@ export function ReportList({
                                 <textarea
                                     value={item.description}
                                     onChange={(e) => updateItem(index, 'description', e.target.value)}
-                                    className="w-full rounded border-gray-300 text-sm p-2 h-20 resize-none focus:ring-2 focus:ring-justice-green focus:border-justice-green"
+                                    className="w-full rounded border-gray-300 text-sm p-2 h-20 text-gray-900 resize-none focus:ring-2 focus:ring-justice-green focus:border-justice-green"
                                     placeholder="상세 내용을 입력하세요..."
                                 />
                             </div>
@@ -151,7 +151,7 @@ export function ReportList({
                                 <input
                                     value={item.linkUrl || ''}
                                     onChange={(e) => updateItem(index, 'linkUrl', e.target.value)}
-                                    className="w-full rounded border-gray-300 text-xs p-2 text-gray-500"
+                                    className="w-full rounded border-gray-300 text-xs p-2 text-gray-900"
                                     placeholder="관련 링크 (블로그, 기사 등)"
                                 />
                             </div>

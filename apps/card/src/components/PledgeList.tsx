@@ -50,14 +50,14 @@ export function PledgeList({ items = [], onChange, maxItems = 10, title }: Pledg
                                     value={item.title}
                                     onChange={(e) => handleChange(index, 'title', e.target.value)}
                                     placeholder={`공약 ${index + 1} 제목`}
-                                    className="block w-full rounded-lg border-gray-300 border p-2 text-sm focus:ring-2 focus:ring-justice-green focus:border-justice-green"
+                                    className="block w-full rounded-lg border-gray-300 border p-2 text-sm text-gray-900 focus:ring-2 focus:ring-justice-green focus:border-justice-green"
                                 />
                                 <textarea
                                     value={item.content}
                                     onChange={(e) => handleChange(index, 'content', e.target.value)}
                                     placeholder={`공약 ${index + 1} 상세 내용`}
                                     rows={2}
-                                    className="block w-full rounded-lg border-gray-300 border p-2 text-sm focus:ring-2 focus:ring-justice-green focus:border-justice-green resize-none"
+                                    className="block w-full rounded-lg border-gray-300 border p-2 text-sm text-gray-900 focus:ring-2 focus:ring-justice-green focus:border-justice-green resize-none"
                                 />
                             </div>
                             <button
