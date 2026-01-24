@@ -1,0 +1,18 @@
+{
+    "name": "@justice/api-client",
+    "version": "0.0.0",
+    "main": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "scripts": {
+        "build": "tsc",
+        "lint": "eslint"
+    },
+    "dependencies": {
+        "googleapis": "^140.0.0",
+        "@justice/types": "*"
+    },
+    "devDependencies": {
+        "typescript": "^5.0.0",
+        "@types/node": "^20.0.0"
+    }
+}
