@@ -1,6 +1,14 @@
 {
     "$schema": "https://turbo.build/schema.json",
     "ui": "tui",
+    "globalEnv": [
+        "GOOGLE_SERVICE_ACCOUNT_KEY",
+        "SHEET_ID",
+        "GOOGLE_DRIVE_FOLDER_ID",
+        "NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME",
+        "CLOUDINARY_API_KEY",
+        "CLOUDINARY_API_SECRET"
+    ],
     "tasks": {
         "build": {
             "dependsOn": [

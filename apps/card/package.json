@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
+    "@justice/api-client": "*",
+    "@justice/types": "*",
     "cloudinary": "^2.9.0",
     "googleapis": "^170.1.0",
     "lucide-react": "^0.563.0",
@@ -17,9 +19,7 @@
     "react": "19.2.3",
     "react-dom": "19.2.3",
     "react-hook-form": "^7.71.1",
-    "zod": "^4.3.6",
-    "@justice/types": "*",
-    "@justice/api-client": "*"
+    "zod": "^4.3.6"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
@@ -29,6 +29,7 @@
     "babel-plugin-react-compiler": "1.0.0",
     "eslint": "^9",
     "eslint-config-next": "16.1.4",
+    "lightningcss": "^1.31.1",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
