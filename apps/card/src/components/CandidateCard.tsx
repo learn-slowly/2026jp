@@ -17,11 +17,13 @@ export function CandidateCard({ candidate }: CandidateCardProps) {
             <section className="relative py-20 px-6">
                 <div className="max-w-md mx-auto">
                     {/* 정의당 로고 Placeholder */}
+                    {/* 정의당 로고 */}
                     <div className="flex items-center gap-3 mb-8">
-                        <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-justice-green font-bold">
-                            JP
-                        </div>
-                        <span className="text-white font-bold text-xl drop-shadow-md">정의당</span>
+                        <img
+                            src="/logo-allcolor.gif"
+                            alt="정의당"
+                            className="h-12 w-auto drop-shadow-lg filter brightness-0 invert"
+                        />
                     </div>
 
                     {/* 후보자 정보 Card */}
