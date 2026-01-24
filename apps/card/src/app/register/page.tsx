@@ -215,6 +215,7 @@ export default function RegisterPage() {
                                         <ReportList
                                             items={form.watch('reports') || []}
                                             onChange={(val) => form.setValue('reports', val)}
+                                            errors={form.formState.errors.reports}
                                         />
                                     </div>
                                 )}
@@ -270,14 +271,7 @@ export default function RegisterPage() {
                             </div>
 
                             <button
-                                type="button"
-                                onClick={(e) => {
-                                    console.log('Save button clicked');
-                                    form.handleSubmit(onSubmit, (errors) => {
-                                        console.error('Validation errors:', errors);
-                                        alert('입력되지 않은 필수 항목이 있습니다. 붉은색 경고 문구를 확인해주세요.');
-                                    })(e);
-                                }}
+                                type="submit"
                                 disabled={submitting}
                                 className="w-full bg-justice-green hover:bg-justice-green-dark text-white font-bold py-4 rounded-xl text-lg transition shadow-lg disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                             >

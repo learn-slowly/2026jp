@@ -17,6 +17,7 @@ interface ReportListProps {
     items: Report[];
     onChange: (items: Report[]) => void;
     maxItems?: number;
+    errors?: any;
 }
 
 export function ReportList({
@@ -135,17 +136,23 @@ export function ReportList({
                                 <input
                                     value={item.title}
                                     onChange={(e) => updateItem(index, 'title', e.target.value)}
-                                    className="w-full rounded border-gray-300 font-bold p-2 text-gray-900 focus:ring-2 focus:ring-justice-green focus:border-justice-green"
+                                    className={`w-full rounded border p-2 text-gray-900 focus:ring-2 focus:ring-justice-green focus:border-justice-green ${errors?.[index]?.title ? 'border-red-500' : 'border-gray-300'}`}
                                     placeholder="성과 제목 (예: 무상급식 조례 통과)"
                                 />
+                                {errors?.[index]?.title && (
+                                    <p className="text-red-500 text-xs mt-1">{errors[index]?.title?.message}</p>
+                                )}
                             </div>
                             <div>
                                 <textarea
                                     value={item.description}
                                     onChange={(e) => updateItem(index, 'description', e.target.value)}
-                                    className="w-full rounded border-gray-300 text-sm p-2 h-20 text-gray-900 resize-none focus:ring-2 focus:ring-justice-green focus:border-justice-green"
+                                    className={`w-full rounded border p-2 text-sm h-20 text-gray-900 resize-none focus:ring-2 focus:ring-justice-green focus:border-justice-green ${errors?.[index]?.description ? 'border-red-500' : 'border-gray-300'}`}
                                     placeholder="상세 내용을 입력하세요..."
                                 />
+                                {errors?.[index]?.description && (
+                                    <p className="text-red-500 text-xs mt-1">{errors[index]?.description?.message}</p>
+                                )}
                             </div>
                             <div>
                                 <input
