@@ -247,10 +247,10 @@ export default function RegisterPage() {
                             <div className="space-y-4">
                                 <h3 className="font-bold text-gray-900">🔗 소셜 미디어</h3>
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                    <FormInput register={form.register('social.x')} placeholder="X (트위터) 링크" />
-                                    <FormInput register={form.register('social.facebook')} placeholder="페이스북 링크" />
-                                    <FormInput register={form.register('social.youtube')} placeholder="유튜브 링크" />
-                                    <FormInput register={form.register('social.instagram')} placeholder="인스타그램 링크" />
+                                    <FormInput register={form.register('social.x')} placeholder="https://x.com/users/..." />
+                                    <FormInput register={form.register('social.facebook')} placeholder="https://facebook.com/..." />
+                                    <FormInput register={form.register('social.youtube')} placeholder="https://youtube.com/@..." />
+                                    <FormInput register={form.register('social.instagram')} placeholder="https://instagram.com/..." />
                                 </div>
                             </div>
 
