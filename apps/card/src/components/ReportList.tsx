@@ -23,7 +23,8 @@ interface ReportListProps {
 export function ReportList({
     items,
     onChange,
-    maxItems = 20
+    maxItems = 20,
+    errors
 }: ReportListProps) {
     const addItem = () => {
         if (items.length < maxItems) {
