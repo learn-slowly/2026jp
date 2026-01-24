@@ -71,15 +71,13 @@ export function CandidateCard({ candidate }: CandidateCardProps) {
                     </div>
                 </div>
                 {/* Scroll hint arrow */}
-                <div className="absolute bottom-8 left-0 right-0 text-center animate-bounce text-white/50">
-                    <span className="text-sm">아래로 스크롤하여 더 보기</span>
-                    <div className="mt-1">↓</div>
-                </div>
+                {/* Scroll hint arrow */}
+                <ScrollHint />
             </section>
 
             {/* Careers Section */}
             {candidate.careers && candidate.careers.length > 0 && (
-                <section className="min-h-screen py-20 px-6 snap-start flex items-center justify-center">
+                <section className="relative min-h-screen py-20 px-6 snap-start flex items-center justify-center">
                     <div className="max-w-md mx-auto w-full">
                         <div className="bg-white rounded-3xl shadow-xl p-8 transform transition-transform hover:scale-[1.01]">
                             <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
@@ -100,7 +98,7 @@ export function CandidateCard({ candidate }: CandidateCardProps) {
 
             {/* Reports Section (Incumbent Only) */}
             {candidate.reports && candidate.reports.length > 0 && (
-                <section className="min-h-screen py-20 px-6 snap-start flex items-center justify-center">
+                <section className="relative min-h-screen py-20 px-6 snap-start flex items-center justify-center">
                     <div className="max-w-md mx-auto w-full">
                         <div className="bg-white rounded-3xl shadow-xl p-8 transform transition-transform hover:scale-[1.01]">
                             <h3 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
@@ -141,7 +139,7 @@ export function CandidateCard({ candidate }: CandidateCardProps) {
 
             {/* Policies Section */}
             {candidate.policies && candidate.policies.length > 0 && (
-                <section className="min-h-screen py-20 px-6 snap-start flex items-center justify-center">
+                <section className="relative min-h-screen py-20 px-6 snap-start flex items-center justify-center">
                     <div className="max-w-md mx-auto w-full">
                         <div className="bg-white rounded-3xl shadow-xl p-8 transform transition-transform hover:scale-[1.01]">
                             <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
@@ -245,6 +243,15 @@ export function CandidateCard({ candidate }: CandidateCardProps) {
                     </footer>
                 </div>
             </section>
+        </div>
+    );
+}
+
+function ScrollHint() {
+    return (
+        <div className="absolute bottom-8 left-0 right-0 text-center animate-bounce text-white/50 pointer-events-none">
+            <span className="text-sm shadow-sm">아래로 스크롤하여 더 보기</span>
+            <div className="mt-1">↓</div>
         </div>
     );
 }
