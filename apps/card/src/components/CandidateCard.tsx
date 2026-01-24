@@ -12,13 +12,12 @@ export function CandidateCard({ candidate }: CandidateCardProps) {
     const gradientBg = "bg-gradient-to-br from-justice-green via-justice-purple to-justice-pink";
 
     return (
-        <div className={`min-h-screen ${gradientBg}`}>
+        <div className={`h-screen overflow-y-scroll snap-y snap-mandatory scroll-smooth ${gradientBg}`}>
             {/* Hero Section */}
-            <section className="relative py-20 px-6">
-                <div className="max-w-md mx-auto">
-                    {/* 정의당 로고 Placeholder */}
+            <section className="relative min-h-screen py-10 px-6 snap-start flex flex-col justify-center">
+                <div className="max-w-md mx-auto w-full">
                     {/* 정의당 로고 */}
-                    <div className="flex justify-end items-center gap-3 mb-8">
+                    <div className="flex justify-end items-center gap-3 mb-4">
                         <img
                             src="/logo-4.gif"
                             alt="정의당"
@@ -70,10 +69,19 @@ export function CandidateCard({ candidate }: CandidateCardProps) {
                             </p>
                         </div>
                     </div>
+                </div>
+                {/* Scroll hint arrow */}
+                <div className="absolute bottom-8 left-0 right-0 text-center animate-bounce text-white/50">
+                    <span className="text-sm">아래로 스크롤하여 더 보기</span>
+                    <div className="mt-1">↓</div>
+                </div>
+            </section>
 
-                    {/* Careers Section */}
-                    {candidate.careers && candidate.careers.length > 0 && (
-                        <div className="bg-white rounded-3xl shadow-xl p-8 mt-6 transform transition-transform hover:scale-[1.01]">
+            {/* Careers Section */}
+            {candidate.careers && candidate.careers.length > 0 && (
+                <section className="min-h-screen py-20 px-6 snap-start flex items-center justify-center">
+                    <div className="max-w-md mx-auto w-full">
+                        <div className="bg-white rounded-3xl shadow-xl p-8 transform transition-transform hover:scale-[1.01]">
                             <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
                                 🔥 걸어온 길
                             </h3>
@@ -86,15 +94,19 @@ export function CandidateCard({ candidate }: CandidateCardProps) {
                                 ))}
                             </ul>
                         </div>
-                    )}
+                    </div>
+                </section>
+            )}
 
-                    {/* Policies Section */}
-                    {candidate.policies && candidate.policies.length > 0 && (
-                        <div className="bg-white rounded-3xl shadow-xl p-8 mt-6 transform transition-transform hover:scale-[1.01]">
+            {/* Policies Section */}
+            {candidate.policies && candidate.policies.length > 0 && (
+                <section className="min-h-screen py-20 px-6 snap-start flex items-center justify-center">
+                    <div className="max-w-md mx-auto w-full">
+                        <div className="bg-white rounded-3xl shadow-xl p-8 transform transition-transform hover:scale-[1.01]">
                             <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
                                 📢 핵심 공약
                             </h3>
-                            <div className="space-y-4 text-left">
+                            <div className="space-y-4 text-left max-h-[60vh] overflow-y-auto pr-2 custom-scrollbar">
                                 {candidate.policies.map((p, i) => (
                                     <div key={i} className="bg-green-50 rounded-xl p-5 border border-green-100 flex gap-4 hover:bg-green-100 transition-colors">
                                         <span className="text-justice-green font-black text-xl flex-shrink-0 pt-0.5">{i + 1}.</span>
@@ -108,13 +120,13 @@ export function CandidateCard({ candidate }: CandidateCardProps) {
                                 ))}
                             </div>
                         </div>
-                    )}
-                </div>
-            </section>
+                    </div>
+                </section>
+            )}
 
-            {/* 후원 Section */}
-            <section className="py-10 px-6">
-                <div className="max-w-md mx-auto space-y-6">
+            {/* 후원 & Contact Section combined for last snap */}
+            <section className="min-h-screen py-20 px-6 snap-start flex flex-col justify-center">
+                <div className="max-w-md mx-auto w-full space-y-6">
                     {/* 소셜 미디어 링크 */}
                     <div className="flex justify-center gap-4">
                         {candidate.social.x && (
@@ -154,51 +166,44 @@ export function CandidateCard({ candidate }: CandidateCardProps) {
                             </p>
                         </div>
                     </div>
-                </div>
-            </section>
 
-            {/* Contact & Address Section */}
-            {
-                (candidate.contact?.phone || candidate.address) && (
-                    <section className="pb-10 px-6">
-                        <div className="max-w-md mx-auto">
-                            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-white shadow-lg">
-                                <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
-                                    📞 문의 / 위치
-                                </h3>
-                                <div className="space-y-4">
-                                    {candidate.contact?.phone && (
-                                        <div className="flex items-center gap-3">
-                                            <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
-                                                <Phone className="w-5 h-5 text-white" />
-                                            </div>
-                                            <div>
-                                                <p className="text-sm text-white/70">연락처</p>
-                                                <p className="font-bold text-lg">{candidate.contact.phone}</p>
-                                            </div>
+                    {(candidate.contact?.phone || candidate.address) && (
+                        <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-white shadow-lg">
+                            <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
+                                📞 문의 / 위치
+                            </h3>
+                            <div className="space-y-4">
+                                {candidate.contact?.phone && (
+                                    <div className="flex items-center gap-3">
+                                        <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
+                                            <Phone className="w-5 h-5 text-white" />
                                         </div>
-                                    )}
-                                    {candidate.address && (
-                                        <div className="flex items-center gap-3">
-                                            <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
-                                                <MapPin className="w-5 h-5 text-white" />
-                                            </div>
-                                            <div>
-                                                <p className="text-sm text-white/70">주소</p>
-                                                <p className="font-medium">{candidate.address}</p>
-                                            </div>
+                                        <div>
+                                            <p className="text-sm text-white/70">연락처</p>
+                                            <p className="font-bold text-lg">{candidate.contact.phone}</p>
                                         </div>
-                                    )}
-                                </div>
+                                    </div>
+                                )}
+                                {candidate.address && (
+                                    <div className="flex items-center gap-3">
+                                        <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
+                                            <MapPin className="w-5 h-5 text-white" />
+                                        </div>
+                                        <div>
+                                            <p className="text-sm text-white/70">주소</p>
+                                            <p className="font-medium">{candidate.address}</p>
+                                        </div>
+                                    </div>
+                                )}
                             </div>
                         </div>
-                    </section>
-                )
-            }
+                    )}
 
-            <footer className="py-8 text-center text-white/60 text-sm">
-                &copy; 2026 Justice Party. All rights reserved.
-            </footer>
+                    <footer className="py-8 text-center text-white/60 text-sm">
+                        &copy; 2026 Justice Party. All rights reserved.
+                    </footer>
+                </div>
+            </section>
         </div>
     );
 }
