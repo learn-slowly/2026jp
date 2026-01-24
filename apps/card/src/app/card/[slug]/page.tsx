@@ -25,5 +25,10 @@ export default async function Page({ params }: PageProps) {
         );
     }
 
+    if (candidate && candidate.isIncumbent) {
+        const reports = await sheetsClient.getReports(slug);
+        candidate.reports = reports;
+    }
+
     return <CandidateCard candidate={candidate} />;
 }
