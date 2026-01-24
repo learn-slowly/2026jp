@@ -1,5 +1,7 @@
 import type { NextConfig } from "next";
 
+// Vercel Build Trigger: 2026-01-24
+
 const nextConfig: NextConfig = {
   reactCompiler: true,
   images: {
