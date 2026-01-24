@@ -18,7 +18,7 @@ export function CandidateCard({ candidate }: CandidateCardProps) {
                 <div className="max-w-md mx-auto">
                     {/* 정의당 로고 Placeholder */}
                     {/* 정의당 로고 */}
-                    <div className="flex items-center gap-3 mb-8">
+                    <div className="flex justify-end items-center gap-3 mb-8">
                         <img
                             src="/logo-4.gif"
                             alt="정의당"
