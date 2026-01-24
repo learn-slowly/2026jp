@@ -24,6 +24,7 @@ const nextConfig: NextConfig = {
       }
     ],
   },
+  serverExternalPackages: ['@justice/api-client', 'googleapis', 'google-auth-library'],
 };
 
 export default nextConfig;
