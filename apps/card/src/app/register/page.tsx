@@ -144,6 +144,11 @@ export default function RegisterPage() {
                         careers: c.careers || [],
                         policies: c.policies || [],
                         address: c.address || '',
+                        reports: c.reports || [],
+                        mayorExtra: c.mayorExtra || { position: '', visionTitle: '', visionSubtitle: '', greetingTitle: '', greetingText: '', heroImageUrl: '' },
+                        mayorStories: c.mayorStories || [],
+                        mayorSchedules: c.mayorSchedules || [],
+                        mayorGallery: c.mayorGallery || [],
                     });
                     setStep('FORM');
                 } else {
