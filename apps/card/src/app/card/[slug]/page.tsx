@@ -1,6 +1,8 @@
-import { sheetsClient } from '@justice/api-client';
+import { SheetsClient } from '@justice/api-client';
 import { CandidateCard } from '@/components/CandidateCard';
 import { notFound } from 'next/navigation';
+
+const sheetsClient = new SheetsClient();
 
 // Disable caching for the demo to see updates immediately
 export const dynamic = 'force-dynamic';
@@ -11,7 +13,7 @@ interface PageProps {
 
 export default async function Page({ params }: PageProps) {
     const { slug } = await params;
-    const candidate = await sheetsClient.getCandidateBySlug(slug);
+    const candidate = await sheetsClient.getCandidate(slug);
 
     if (!candidate) {
         return (
