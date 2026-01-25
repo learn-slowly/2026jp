@@ -58,9 +58,9 @@ export function ReportSection({ candidate }: ReportSectionProps) {
                                             {report.description}
                                         </p>
 
-                                        {report.link && (
+                                        {report.linkUrl && (
                                             <a
-                                                href={report.link}
+                                                href={report.linkUrl}
                                                 target="_blank"
                                                 rel="noreferrer"
                                                 className="inline-flex items-center text-sm font-bold text-justice-green hover:underline"
