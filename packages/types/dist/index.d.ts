@@ -86,3 +86,13 @@ export interface Report {
     visible: boolean;
     updatedAt?: Date;
 }
+export interface CentralPolicy {
+    category: string;
+    order: number;
+    title: string;
+    summary: string;
+    content: string;
+    imageUrl?: string;
+    linkUrl?: string;
+    visible: boolean;
+}

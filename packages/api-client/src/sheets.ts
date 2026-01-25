@@ -1,5 +1,5 @@
 import { google } from 'googleapis';
-import { Candidate, Report, MayorExtra, MayorStory, MayorSchedule, MayorGallery } from '@justice/types';
+import { Candidate, Report, MayorExtra, MayorStory, MayorSchedule, MayorGallery, CentralPolicy } from '@justice/types';
 
 export class SheetsClient {
     private sheets;
@@ -404,6 +404,37 @@ export class SheetsClient {
         } catch (error) {
             console.error('Error saving mayor_gallery:', error);
             return false;
+        }
+    }
+
+
+    // --- Central Policies ---
+    async getCentralPolicies(): Promise<CentralPolicy[]> {
+        if (!this.sheets) return [];
+
+        try {
+            const response = await this.sheets.spreadsheets.values.get({
+                spreadsheetId: this.sheetId,
+                range: 'central_policies!A2:H',
+            });
+
+            const rows = response.data.values || [];
+            return rows
+                .filter((row: string[]) => row[7] === 'TRUE')
+                .map((row: string[]) => ({
+                    category: row[0] || '',
+                    order: parseInt(row[1]) || 999,
+                    title: row[2] || '',
+                    summary: row[3] || '',
+                    content: row[4] || '',
+                    imageUrl: row[5] || '',
+                    linkUrl: row[6] || '',
+                    visible: row[7] === 'TRUE'
+                }))
+                .sort((a, b) => a.order - b.order);
+        } catch (error) {
+            console.error('Error fetching central policies:', error);
+            return [];
         }
     }
 
