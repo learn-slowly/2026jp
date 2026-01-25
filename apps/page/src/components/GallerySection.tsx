@@ -21,11 +21,11 @@ export function GallerySection({ candidate }: GallerySectionProps) {
                     </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 auto-rows-[200px]">
+                <div className="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-4 gap-4 md:auto-rows-[200px] pb-8 md:pb-0 scrollbar-hide -mx-4 px-4 md:mx-0 md:px-0">
                     {candidate.mayorGallery.map((item, i) => (
                         <div
                             key={i}
-                            className={`relative rounded-xl overflow-hidden group ${i % 3 === 0 ? 'md:col-span-2 md:row-span-2' : ''
+                            className={`relative rounded-xl overflow-hidden group min-w-[85vw] h-[60vh] md:h-auto md:min-w-0 flex-shrink-0 snap-center ${i % 3 === 0 ? 'md:col-span-2 md:row-span-2' : ''
                                 }`}
                         >
                             <img
@@ -33,9 +33,9 @@ export function GallerySection({ candidate }: GallerySectionProps) {
                                 alt={item.caption}
                                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                             />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-100 md:opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
                                 <p className="text-sm font-bold text-justice-green mb-1">{item.date}</p>
-                                <p className="text-white font-medium">{item.caption}</p>
+                                <p className="text-white font-medium text-lg md:text-base">{item.caption}</p>
                             </div>
                         </div>
                     ))}
