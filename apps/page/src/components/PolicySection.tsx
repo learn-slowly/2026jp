@@ -29,10 +29,15 @@ export function PolicySection({ candidate }: PolicySectionProps) {
                             <div className="w-12 h-12 bg-justice-green/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-justice-green transition-colors">
                                 <span className="text-justice-green font-bold text-xl group-hover:text-white transition-colors">{i + 1}</span>
                             </div>
-                            <h4 className="text-xl font-bold text-gray-900 mb-4 leading-snug min-h-[3.5rem] flex items-center">
-                                {policy}
+                            <h4 className="text-xl font-bold text-gray-900 mb-2 leading-snug min-h-[2rem] flex items-center">
+                                {typeof policy === 'string' ? policy : policy.title}
                             </h4>
-                            <div className="flex items-center text-justice-green font-medium text-sm">
+                            {typeof policy !== 'string' && (
+                                <p className="text-gray-600 text-sm mb-4 line-clamp-3">
+                                    {policy.content}
+                                </p>
+                            )}
+                            <div className="flex items-center text-justice-green font-medium text-sm mt-auto">
                                 <CheckCircle2 className="w-4 h-4 mr-2" />
                                 확실한 이행 약속
                             </div>
