@@ -3,7 +3,7 @@
 
 import { useState, useRef } from 'react';
 import { QRCodeCanvas } from 'qrcode.react';
-import { Download, QrCode as QrIcon, Copy, Check } from 'lucide-react';
+import { Download, QrCode as QrIcon, Check } from 'lucide-react';
 
 export default function QRPage() {
     const [slug, setSlug] = useState('');
@@ -11,6 +11,7 @@ export default function QRPage() {
     const [downloaded, setDownloaded] = useState(false);
     const canvasRef = useRef<HTMLDivElement>(null);
 
+    // Dynamic base URL handling could be added mostly static for now
     const baseUrl = type === 'card' ? 'https://card.justice21.org' : 'https://page.justice21.org';
     const targetUrl = slug ? `${baseUrl}/${slug}` : baseUrl;
 
@@ -32,7 +33,7 @@ export default function QRPage() {
     return (
         <div className="min-h-screen bg-gray-50 flex items-center justify-center p-6">
             <div className="max-w-md w-full bg-white rounded-2xl shadow-xl overflow-hidden">
-                <div className="bg-justice-purple p-6 text-white text-center">
+                <div className="bg-justice-green p-6 text-white text-center">
                     <h1 className="text-2xl font-bold flex items-center justify-center gap-2">
                         <QrIcon className="w-6 h-6" />
                         QR코드 생성기
@@ -52,7 +53,7 @@ export default function QRPage() {
                                 <button
                                     onClick={() => setType('card')}
                                     className={`flex-1 py-2 rounded-md text-sm font-bold transition-all ${type === 'card'
-                                            ? 'bg-white text-justice-purple shadow-sm'
+                                            ? 'bg-white text-justice-green shadow-sm'
                                             : 'text-gray-500 hover:text-gray-700'
                                         }`}
                                 >
@@ -61,7 +62,7 @@ export default function QRPage() {
                                 <button
                                     onClick={() => setType('page')}
                                     className={`flex-1 py-2 rounded-md text-sm font-bold transition-all ${type === 'page'
-                                            ? 'bg-white text-justice-purple shadow-sm'
+                                            ? 'bg-white text-justice-green shadow-sm'
                                             : 'text-gray-500 hover:text-gray-700'
                                         }`}
                                 >
@@ -77,22 +78,22 @@ export default function QRPage() {
                                 placeholder="예: hkd"
                                 value={slug}
                                 onChange={(e) => setSlug(e.target.value)}
-                                className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-justice-purple focus:ring-2 focus:ring-justice-purple/20 outline-none transition-all"
+                                className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-justice-green focus:ring-2 focus:ring-justice-green/20 outline-none transition-all"
                             />
                             <p className="mt-2 text-xs text-gray-400">
-                                연결 주소: <span className="font-mono text-justice-purple">{targetUrl}</span>
+                                연결 주소: <span className="font-mono text-justice-green">{targetUrl}</span>
                             </p>
                         </div>
                     </div>
 
                     {/* Preview */}
                     <div className="flex justify-center">
-                        <div ref={canvasRef} className="p-4 bg-white border-2 border-justice-purple rounded-xl shadow-lg relative group">
+                        <div ref={canvasRef} className="p-4 bg-white border-2 border-justice-green rounded-xl shadow-lg relative group">
                             <QRCodeCanvas
                                 value={targetUrl}
                                 size={200}
                                 level={"H"}
-                                fgColor={"#2D0B59"} // Justice Purple Dark
+                                fgColor={"#00A170"} // Justice Green
                                 bgColor={"#FFFFFF"}
                                 imageSettings={{
                                     src: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Justice_Party_%28South_Korea%29_logo.svg/1200px-Justice_Party_%28South_Korea%29_logo.svg.png",
@@ -103,12 +104,6 @@ export default function QRPage() {
                                     excavate: true,
                                 }}
                             />
-                            {/* Overlay Label */}
-                            <div className="absolute top-full left-0 right-0 text-center mt-2">
-                                <span className="inline-block px-2 py-1 bg-gray-100 rounded text-xs font-bold text-gray-500">
-                                    {type === 'card' ? '웹명함' : '홈페이지'}
-                                </span>
-                            </div>
                         </div>
                     </div>
 
@@ -118,7 +113,7 @@ export default function QRPage() {
                         disabled={!slug}
                         className={`w-full py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2 transition-all ${!slug
                                 ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
-                                : 'bg-justice-purple hover:bg-justice-purple-dark text-white shadow-lg hover:shadow-xl'
+                                : 'bg-justice-green hover:bg-justice-green-dark text-white shadow-lg hover:shadow-xl'
                             }`}
                     >
                         {downloaded ? (
@@ -133,7 +128,6 @@ export default function QRPage() {
                             </>
                         )}
                     </button>
-
                     {!slug && (
                         <p className="text-center text-sm text-red-400">
                             * 후보자 ID를 입력해야 다운로드할 수 있습니다.

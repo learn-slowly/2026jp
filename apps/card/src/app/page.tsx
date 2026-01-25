@@ -28,6 +28,14 @@ export default function Home() {
             <ArrowRight className="w-5 h-5" />
           </Link>
 
+          <Link
+            href="/qr"
+            className="flex items-center justify-center gap-2 w-full py-4 bg-justice-purple hover:bg-justice-purple-dark text-white font-bold rounded-xl transition-colors text-lg"
+          >
+            QR코드 만들기
+            <ArrowRight className="w-5 h-5" />
+          </Link>
+
           <p className="text-xs text-gray-400">
             * 실제 Google Sheets 데이터와 연동됩니다.
           </p>
