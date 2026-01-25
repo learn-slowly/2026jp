@@ -1,4 +1,4 @@
-import { Candidate, Report } from '@justice/types';
+import { Candidate, Report, MayorExtra, MayorStory, MayorSchedule, MayorGallery } from '@justice/types';
 export declare class SheetsClient {
     private sheets;
     private sheetId;
@@ -9,6 +9,14 @@ export declare class SheetsClient {
     saveCandidate(candidate: Candidate): Promise<boolean>;
     getReports(slug: string): Promise<Report[]>;
     saveReports(reports: Report[]): Promise<boolean>;
+    getMayorExtra(slug: string): Promise<MayorExtra | undefined>;
+    saveMayorExtra(extra: MayorExtra): Promise<boolean>;
+    getMayorStories(slug: string): Promise<MayorStory[]>;
+    saveMayorStories(stories: MayorStory[]): Promise<boolean>;
+    getMayorSchedules(slug: string): Promise<MayorSchedule[]>;
+    saveMayorSchedules(schedules: MayorSchedule[]): Promise<boolean>;
+    getMayorGallery(slug: string): Promise<MayorGallery[]>;
+    saveMayorGallery(gallery: MayorGallery[]): Promise<boolean>;
     private mapRowToCandidate;
 }
 export declare const sheetsClient: SheetsClient;

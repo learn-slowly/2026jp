@@ -10,6 +10,7 @@ import { DynamicList } from '@/components/DynamicList';
 import { ImageUpload } from '@/components/ImageUpload';
 import { PledgeList } from '@/components/PledgeList';
 import { ReportList } from '@/components/ReportList';
+import { MayorSections } from '@/components/MayorSections';
 
 type Step = 'SLUG' | 'AUTH' | 'FORM';
 
@@ -28,13 +29,27 @@ export default function RegisterPage() {
     const [authError, setAuthError] = useState('');
     const [verifying, setVerifying] = useState(false);
 
-    const form = useForm({
+    const form = useForm<any>({
         resolver: zodResolver(formSchema),
         defaultValues: {
+            slug: '',
+            name: '',
+            district: '',
             category: '기초지역구',
+            slogan: '',
+            intro: '',
+            photoUrl: '',
             isIncumbent: false,
-            careers: [],
-            policies: [],
+            careers: [] as string[],
+            policies: [] as { title: string; content: string }[],
+            donation: { account: '', holder: '' },
+            contact: { phone: '', email: '', kakao: '', telegram: '' },
+            social: { x: '', facebook: '', youtube: '', instagram: '', blog: '' },
+            reports: [] as { year: string; month: string; category: string; title: string; description: string; visible: boolean; candidateSlug?: string; linkUrl?: string; }[],
+            mayorExtra: { position: '', visionTitle: '', visionSubtitle: '', greetingTitle: '', greetingText: '', heroImageUrl: '' },
+            mayorStories: [] as any[],
+            mayorSchedules: [] as any[],
+            mayorGallery: [] as any[],
         }
     });
 
@@ -416,6 +431,11 @@ export default function RegisterPage() {
                                     </div>
                                 </div>
 
+                                {/* Mayor Specific Sections */}
+                                {(form.watch('category') || '').includes('단체장') && (
+                                    <MayorSections form={form} />
+                                )}
+
                                 <button
                                     type="submit"
                                     disabled={submitting}
@@ -447,8 +467,8 @@ function FormInput({ label, register, error, placeholder, type = "text" }: {
                     {...register}
                     type={type}
                     className={`block w-full rounded-lg border p-3 focus:ring-2 transition-colors ${error
-                            ? 'border-red-500 bg-red-50 text-red-900 placeholder-red-300 focus:border-red-500 focus:ring-red-500'
-                            : 'border-gray-300 text-gray-900 focus:border-justice-green focus:ring-justice-green'
+                        ? 'border-red-500 bg-red-50 text-red-900 placeholder-red-300 focus:border-red-500 focus:ring-red-500'
+                        : 'border-gray-300 text-gray-900 focus:border-justice-green focus:ring-justice-green'
                         }`}
                     placeholder={placeholder}
                 />

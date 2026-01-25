@@ -205,6 +205,222 @@ class SheetsClient {
             }
         });
     }
+    // --- Mayor Extra (Vision, Greeting) ---
+    getMayorExtra(slug) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const response = yield this.sheets.spreadsheets.values.get({
+                    spreadsheetId: this.sheetId,
+                    range: 'mayor_extra!A2:G',
+                });
+                const rows = response.data.values || [];
+                // Find latest entry for slug
+                const row = rows
+                    .filter(r => (r[0] || '').trim() === slug)
+                    .pop(); // Use latest if duplicates
+                if (!row)
+                    return undefined;
+                return {
+                    candidateSlug: row[0],
+                    position: row[1] || '',
+                    visionTitle: row[2] || '',
+                    visionSubtitle: row[3] || '',
+                    greetingTitle: row[4] || '',
+                    greetingText: row[5] || '',
+                    heroImageUrl: row[6] || '',
+                };
+            }
+            catch (error) {
+                console.error('Error fetching mayor_extra:', error);
+                return undefined;
+            }
+        });
+    }
+    saveMayorExtra(extra) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const row = [
+                    extra.candidateSlug,
+                    extra.position,
+                    extra.visionTitle,
+                    extra.visionSubtitle,
+                    extra.greetingTitle,
+                    extra.greetingText,
+                    extra.heroImageUrl,
+                ];
+                yield this.sheets.spreadsheets.values.append({
+                    spreadsheetId: this.sheetId,
+                    range: 'mayor_extra!A:G',
+                    valueInputOption: 'USER_ENTERED',
+                    requestBody: { values: [row] },
+                });
+                return true;
+            }
+            catch (error) {
+                console.error('Error saving mayor_extra:', error);
+                return false;
+            }
+        });
+    }
+    // --- Mayor Stories ---
+    getMayorStories(slug) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const response = yield this.sheets.spreadsheets.values.get({
+                    spreadsheetId: this.sheetId,
+                    range: 'mayor_stories!A2:H',
+                });
+                return (response.data.values || [])
+                    .map(row => ({
+                    candidateSlug: row[0] || '',
+                    date: row[1] || '',
+                    category: row[2] || '',
+                    title: row[3] || '',
+                    content: row[4] || '',
+                    imageUrl: row[5] || '',
+                    visible: (row[6] || '').toUpperCase() === 'TRUE',
+                }))
+                    .filter(s => s.candidateSlug === slug && s.visible);
+            }
+            catch (error) {
+                console.error('Error fetching mayor_stories:', error);
+                return [];
+            }
+        });
+    }
+    saveMayorStories(stories) {
+        return __awaiter(this, void 0, void 0, function* () {
+            if (!stories.length)
+                return true;
+            try {
+                const rows = stories.map(s => [
+                    s.candidateSlug,
+                    s.date,
+                    s.category,
+                    s.title,
+                    s.content,
+                    s.imageUrl || '',
+                    s.visible ? 'TRUE' : 'FALSE',
+                    new Date().toISOString()
+                ]);
+                yield this.sheets.spreadsheets.values.append({
+                    spreadsheetId: this.sheetId,
+                    range: 'mayor_stories!A:H',
+                    valueInputOption: 'USER_ENTERED',
+                    requestBody: { values: rows },
+                });
+                return true;
+            }
+            catch (error) {
+                console.error('Error saving mayor_stories:', error);
+                return false;
+            }
+        });
+    }
+    // --- Mayor Schedules ---
+    getMayorSchedules(slug) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const response = yield this.sheets.spreadsheets.values.get({
+                    spreadsheetId: this.sheetId,
+                    range: 'mayor_schedules!A2:G',
+                });
+                return (response.data.values || [])
+                    .map(row => ({
+                    candidateSlug: row[0] || '',
+                    date: row[1] || '',
+                    time: row[2] || '',
+                    title: row[3] || '',
+                    location: row[4] || '',
+                    visible: (row[5] || '').toUpperCase() === 'TRUE',
+                }))
+                    .filter(s => s.candidateSlug === slug && s.visible);
+            }
+            catch (error) {
+                console.error('Error fetching mayor_schedules:', error);
+                return [];
+            }
+        });
+    }
+    saveMayorSchedules(schedules) {
+        return __awaiter(this, void 0, void 0, function* () {
+            if (!schedules.length)
+                return true;
+            try {
+                const rows = schedules.map(s => [
+                    s.candidateSlug,
+                    s.date,
+                    s.time,
+                    s.title,
+                    s.location,
+                    s.visible ? 'TRUE' : 'FALSE',
+                    new Date().toISOString()
+                ]);
+                yield this.sheets.spreadsheets.values.append({
+                    spreadsheetId: this.sheetId,
+                    range: 'mayor_schedules!A:G',
+                    valueInputOption: 'USER_ENTERED',
+                    requestBody: { values: rows },
+                });
+                return true;
+            }
+            catch (error) {
+                console.error('Error saving mayor_schedules:', error);
+                return false;
+            }
+        });
+    }
+    // --- Mayor Gallery ---
+    getMayorGallery(slug) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const response = yield this.sheets.spreadsheets.values.get({
+                    spreadsheetId: this.sheetId,
+                    range: 'mayor_gallery!A2:F',
+                });
+                return (response.data.values || [])
+                    .map(row => ({
+                    candidateSlug: row[0] || '',
+                    date: row[1] || '',
+                    caption: row[2] || '',
+                    imageUrl: row[3] || '',
+                    visible: (row[4] || '').toUpperCase() === 'TRUE',
+                }))
+                    .filter(s => s.candidateSlug === slug && s.visible);
+            }
+            catch (error) {
+                console.error('Error fetching mayor_gallery:', error);
+                return [];
+            }
+        });
+    }
+    saveMayorGallery(gallery) {
+        return __awaiter(this, void 0, void 0, function* () {
+            if (!gallery.length)
+                return true;
+            try {
+                const rows = gallery.map(g => [
+                    g.candidateSlug,
+                    g.date,
+                    g.caption,
+                    g.imageUrl,
+                    g.visible ? 'TRUE' : 'FALSE',
+                    new Date().toISOString()
+                ]);
+                yield this.sheets.spreadsheets.values.append({
+                    spreadsheetId: this.sheetId,
+                    range: 'mayor_gallery!A:F',
+                    valueInputOption: 'USER_ENTERED',
+                    requestBody: { values: rows },
+                });
+                return true;
+            }
+            catch (error) {
+                console.error('Error saving mayor_gallery:', error);
+                return false;
+            }
+        });
+    }
     mapRowToCandidate(row) {
         // Safe access helper
         const get = (idx) => (row[idx] || '').trim();

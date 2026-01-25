@@ -8,6 +8,44 @@ export type CandidateCategory =
 
 export type CandidateStatus = 'active' | 'draft' | 'review';
 
+// Mayor Specific Types
+export interface MayorExtra {
+    candidateSlug: string;
+    position: string;
+    visionTitle: string;
+    visionSubtitle: string;
+    greetingTitle: string;
+    greetingText: string;
+    heroImageUrl: string;
+}
+
+export interface MayorStory {
+    candidateSlug: string;
+    date: string;
+    category: string;
+    title: string;
+    content: string;
+    imageUrl?: string;
+    visible: boolean;
+}
+
+export interface MayorSchedule {
+    candidateSlug: string;
+    date: string;
+    time: string;
+    title: string;
+    location: string;
+    visible: boolean;
+}
+
+export interface MayorGallery {
+    candidateSlug: string;
+    date: string;
+    caption: string;
+    imageUrl: string;
+    visible: boolean;
+}
+
 export interface Candidate {
     slug: string;
     name: string;
@@ -44,6 +82,11 @@ export interface Candidate {
     password?: string; // 데이터 보호용 비밀번호
     status: CandidateStatus;
     updatedAt: Date;
+    // Optional Mayor Data (fetched separately or attached)
+    mayorExtra?: MayorExtra;
+    mayorStories?: MayorStory[];
+    mayorSchedules?: MayorSchedule[];
+    mayorGallery?: MayorGallery[];
     reports?: Report[];
 }
 

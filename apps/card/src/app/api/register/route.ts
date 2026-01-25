@@ -63,6 +63,40 @@ export async function POST(request: NextRequest) {
             await sheetsClient.saveReports(reports);
         }
 
+        // Save Mayor Specific Data if present
+        if (success) {
+            if (body.mayorExtra) {
+                await sheetsClient.saveMayorExtra({
+                    ...body.mayorExtra,
+                    candidateSlug: candidate.slug
+                });
+            }
+
+            if (body.mayorStories && body.mayorStories.length > 0) {
+                const stories = body.mayorStories.map((s: any) => ({
+                    ...s,
+                    candidateSlug: candidate.slug
+                }));
+                await sheetsClient.saveMayorStories(stories);
+            }
+
+            if (body.mayorSchedules && body.mayorSchedules.length > 0) {
+                const schedules = body.mayorSchedules.map((s: any) => ({
+                    ...s,
+                    candidateSlug: candidate.slug
+                }));
+                await sheetsClient.saveMayorSchedules(schedules);
+            }
+
+            if (body.mayorGallery && body.mayorGallery.length > 0) {
+                const gallery = body.mayorGallery.map((g: any) => ({
+                    ...g,
+                    candidateSlug: candidate.slug
+                }));
+                await sheetsClient.saveMayorGallery(gallery);
+            }
+        }
+
         if (success) {
             return NextResponse.json({ success: true, slug: candidate.slug });
         } else {

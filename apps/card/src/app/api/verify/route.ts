@@ -29,6 +29,23 @@ export async function POST(req: NextRequest) {
         // If password is NOT set in DB, allow access (First time setup for existing data)
         // If password IS set, verify match
         if (!candidate.password || candidate.password === password) {
+            // Fetch associated data
+            const reports = await sheetsClient.getReports(slug);
+            candidate.reports = reports;
+
+            if (candidate.category.includes('단체장')) {
+                const [extra, stories, schedules, gallery] = await Promise.all([
+                    sheetsClient.getMayorExtra(slug),
+                    sheetsClient.getMayorStories(slug),
+                    sheetsClient.getMayorSchedules(slug),
+                    sheetsClient.getMayorGallery(slug)
+                ]);
+                candidate.mayorExtra = extra;
+                candidate.mayorStories = stories;
+                candidate.mayorSchedules = schedules;
+                candidate.mayorGallery = gallery;
+            }
+
             return NextResponse.json({
                 valid: true,
                 isNew: false,

@@ -44,6 +44,39 @@ export const formSchema = z.object({
         linkUrl: z.string().optional(),
         visible: z.boolean().default(true),
     })).default([]),
+    mayorExtra: z.object({
+        candidateSlug: z.string().optional(),
+        position: z.string().optional(),
+        visionTitle: z.string().optional(),
+        visionSubtitle: z.string().optional(),
+        greetingTitle: z.string().optional(),
+        greetingText: z.string().optional(),
+        heroImageUrl: z.string().optional().or(z.literal('')),
+    }).optional(),
+    mayorStories: z.array(z.object({
+        candidateSlug: z.string().optional(),
+        date: z.string(),
+        category: z.string(),
+        title: z.string(),
+        content: z.string(),
+        imageUrl: z.string().optional(),
+        visible: z.boolean().default(true),
+    })).default([]),
+    mayorSchedules: z.array(z.object({
+        candidateSlug: z.string().optional(),
+        date: z.string(),
+        time: z.string(),
+        title: z.string(),
+        location: z.string(),
+        visible: z.boolean().default(true),
+    })).default([]),
+    mayorGallery: z.array(z.object({
+        candidateSlug: z.string().optional(),
+        date: z.string(),
+        caption: z.string(),
+        imageUrl: z.string(),
+        visible: z.boolean().default(true),
+    })).default([]),
 });
 
 export type FormData = z.infer<typeof formSchema>;

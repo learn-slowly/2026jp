@@ -4,6 +4,7 @@
   "/api/check-slug/route": "app/api/check-slug/route.js",
   "/api/register/route": "app/api/register/route.js",
   "/api/upload/route": "app/api/upload/route.js",
+  "/api/verify/route": "app/api/verify/route.js",
   "/card/[slug]/page": "app/card/[slug]/page.js",
   "/favicon.ico/route": "app/favicon.ico/route.js",
   "/page": "app/page.js",
