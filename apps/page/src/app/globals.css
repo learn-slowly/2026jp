@@ -39,3 +39,20 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@media (max-width: 768px) {
+  html {
+    scroll-snap-type: y mandatory;
+  }
+
+  /* Apply snap to top-level sections */
+  section {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    min-height: 100vh;
+  }
+  
+  footer {
+    scroll-snap-align: start;
+  }
+}

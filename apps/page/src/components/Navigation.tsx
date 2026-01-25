@@ -34,8 +34,12 @@ export function Navigation({ name, slug }: NavigationProps) {
             }`}>
             <div className="max-w-7xl mx-auto px-4 md:px-8 flex justify-between items-center">
                 <Link href={`/${slug}`} className="flex items-center gap-2 group">
-                    <div className="w-10 h-10 bg-justice-green rounded-full flex items-center justify-center text-white font-bold text-xl">
-                        JP
+                    <div className="relative w-24 h-8 md:w-28 md:h-10">
+                        <img
+                            src={isScrolled ? '/images/logo-y.gif' : '/images/logo-w.gif'}
+                            alt="Logo"
+                            className="w-full h-full object-contain object-left"
+                        />
                     </div>
                     <span className={`font-bold text-xl transition-colors ${isScrolled ? 'text-gray-900' : 'text-white'
                         }`}>
@@ -61,8 +65,8 @@ export function Navigation({ name, slug }: NavigationProps) {
                     <button
                         onClick={() => scrollToSection('donation')}
                         className={`px-6 py-2 rounded-full font-bold transition-all ${isScrolled
-                                ? 'bg-justice-green text-white hover:bg-justice-green-dark'
-                                : 'bg-white text-justice-green hover:bg-gray-100'
+                            ? 'bg-justice-green text-white hover:bg-justice-green-dark'
+                            : 'bg-white text-justice-green hover:bg-gray-100'
                             }`}
                     >
                         후원하기
