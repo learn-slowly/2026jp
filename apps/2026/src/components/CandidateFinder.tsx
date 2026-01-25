@@ -52,13 +52,13 @@ export function CandidateFinder({ candidates }: CandidateFinderProps) {
                 <div className="mb-12 space-y-6">
                     {/* Search Bar */}
                     <div className="max-w-md mx-auto relative">
-                        <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5" />
+                        <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-justice-green w-5 h-5" />
                         <input
                             type="text"
                             placeholder="이름이나 지역명으로 검색해보세요"
                             value={searchTerm}
                             onChange={(e) => setSearchTerm(e.target.value)}
-                            className="w-full pl-12 pr-4 py-4 rounded-full border border-gray-200 focus:border-justice-green focus:ring-2 focus:ring-justice-green/20 outline-none transition-all shadow-sm"
+                            className="w-full pl-12 pr-4 py-4 rounded-full border border-gray-200 focus:border-justice-green focus:ring-2 focus:ring-justice-green/20 outline-none transition-all shadow-sm text-gray-900 placeholder:text-gray-500 font-medium"
                         />
                     </div>
 
@@ -69,8 +69,8 @@ export function CandidateFinder({ candidates }: CandidateFinderProps) {
                                 key={region}
                                 onClick={() => setSelectedRegion(region)}
                                 className={`px-5 py-2 rounded-full font-bold transition-all ${selectedRegion === region
-                                        ? 'bg-justice-green text-white shadow-lg shadow-justice-green/20 scale-105'
-                                        : 'bg-white text-gray-500 hover:bg-gray-100 border border-gray-100'
+                                    ? 'bg-justice-green text-white shadow-lg shadow-justice-green/20 scale-105'
+                                    : 'bg-white text-gray-500 hover:bg-gray-100 border border-gray-100'
                                     }`}
                             >
                                 {region}
