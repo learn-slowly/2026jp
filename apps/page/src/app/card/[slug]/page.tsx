@@ -11,7 +11,7 @@ interface PageProps {
 
 export default async function Page({ params }: PageProps) {
     const { slug } = await params;
-    const candidate = await sheetsClient.getCandidateBySlug(slug);
+    const candidate = await sheetsClient.getCandidate(slug);
 
     if (!candidate) {
         return (
