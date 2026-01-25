@@ -384,8 +384,8 @@ export default function RegisterPage() {
                                 <div className="bg-yellow-50 p-4 rounded-xl space-y-4">
                                     <h3 className="font-bold text-gray-900 flex items-center gap-2">💰 후원 정보</h3>
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                        <FormInput label="계좌번호" register={form.register('donation.account')} error={form.formState.errors.donation?.account} placeholder="은행 000-000..." />
-                                        <FormInput label="예금주" register={form.register('donation.holder')} error={form.formState.errors.donation?.holder} placeholder="홍길동후원회" />
+                                        <FormInput label="계좌번호" register={form.register('donation.account')} error={(form.formState.errors.donation as any)?.account} placeholder="은행 000-000..." />
+                                        <FormInput label="예금주" register={form.register('donation.holder')} error={(form.formState.errors.donation as any)?.holder} placeholder="홍길동후원회" />
                                     </div>
                                 </div>
 
