@@ -32,7 +32,7 @@ class SheetsClient {
             try {
                 const response = yield this.sheets.spreadsheets.values.get({
                     spreadsheetId: this.sheetId,
-                    range: 'candidates!A2:BA',
+                    range: 'candidates!A2:BB',
                 });
                 const rows = response.data.values || [];
                 const allCandidates = rows.map((row) => this.mapRowToCandidate(row));
@@ -60,10 +60,23 @@ class SheetsClient {
             }
         });
     }
-    getCandidateBySlug(slug) {
+    getCandidate(slug) {
         return __awaiter(this, void 0, void 0, function* () {
             const candidates = yield this.getCandidates();
             return candidates.find((c) => c.slug === slug) || null;
+        });
+    }
+    verifyCandidate(slug, password) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const candidate = yield this.getCandidate(slug);
+            if (!candidate)
+                return null; // Candidate doesn't exist
+            // If candidate has no password (migration/legacy), allow access or require setup?
+            // Assuming we want to allow claiming if empty, but here we just check equality if set.
+            if (candidate.password && candidate.password !== password) {
+                return null; // Password mismatch
+            }
+            return candidate;
         });
     }
     saveCandidate(candidate) {
@@ -116,7 +129,9 @@ class SheetsClient {
                     // AZ (Address)
                     candidate.address || '',
                     // BA (UpdatedAt)
-                    new Date().toISOString()
+                    new Date().toISOString(),
+                    // BB (Password)
+                    candidate.password || ''
                 ];
                 yield this.sheets.spreadsheets.values.append({
                     spreadsheetId: this.sheetId,
@@ -246,6 +261,7 @@ class SheetsClient {
             isIncumbent: get(50).toUpperCase() === 'TRUE', // AY
             address: get(51) || undefined, // AZ
             updatedAt: row[52] ? new Date(row[52]) : new Date(0), // BA
+            password: get(53) || undefined, // BB
         };
     }
 }

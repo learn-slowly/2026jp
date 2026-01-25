@@ -114,32 +114,38 @@ export function CandidateCard({ candidate }: CandidateCardProps) {
                                 🏆 주요 의정 성과
                             </h3>
                             <div className="space-y-6 max-h-[60vh] overflow-y-auto pr-2 custom-scrollbar">
-                                {candidate.reports.map((r, i) => (
-                                    <div key={i} className="relative pl-6 border-l-2 border-justice-green/30 last:border-0 pb-6 last:pb-0">
-                                        <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-justice-green border-4 border-white shadow-sm" />
-                                        <div className="flex flex-col gap-1">
-                                            <span className="text-xs font-bold text-justice-green bg-green-50 px-2 py-0.5 rounded-full w-fit">
-                                                {r.year}.{r.month} · {r.category}
-                                            </span>
-                                            <h4 className="text-lg font-bold text-gray-900 leading-tight mt-1">
-                                                {r.title}
-                                            </h4>
-                                            <p className="text-gray-600 text-sm leading-relaxed whitespace-pre-wrap">
-                                                {r.description}
-                                            </p>
-                                            {r.linkUrl && (
-                                                <a
-                                                    href={r.linkUrl}
-                                                    target="_blank"
-                                                    rel="noreferrer"
-                                                    className="text-xs text-blue-500 hover:text-blue-700 hover:underline mt-1 block"
-                                                >
-                                                    자세히 보기 →
-                                                </a>
-                                            )}
+                                {[...candidate.reports]
+                                    .sort((a, b) => {
+                                        const yearDiff = Number(b.year) - Number(a.year);
+                                        if (yearDiff !== 0) return yearDiff;
+                                        return Number(b.month) - Number(a.month);
+                                    })
+                                    .map((r, i) => (
+                                        <div key={i} className="relative pl-6 border-l-2 border-justice-green/30 last:border-0 pb-6 last:pb-0">
+                                            <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-justice-green border-4 border-white shadow-sm" />
+                                            <div className="flex flex-col gap-1">
+                                                <span className="text-xs font-bold text-justice-green bg-green-50 px-2 py-0.5 rounded-full w-fit">
+                                                    {r.year}.{r.month} · {r.category}
+                                                </span>
+                                                <h4 className="text-lg font-bold text-gray-900 leading-tight mt-1">
+                                                    {r.title}
+                                                </h4>
+                                                <p className="text-gray-600 text-sm leading-relaxed whitespace-pre-wrap">
+                                                    {r.description}
+                                                </p>
+                                                {r.linkUrl && (
+                                                    <a
+                                                        href={r.linkUrl}
+                                                        target="_blank"
+                                                        rel="noreferrer"
+                                                        className="text-xs text-blue-500 hover:text-blue-700 hover:underline mt-1 block"
+                                                    >
+                                                        자세히 보기 →
+                                                    </a>
+                                                )}
+                                            </div>
                                         </div>
-                                    </div>
-                                ))}
+                                    ))}
                             </div>
                         </div>
                     </div>

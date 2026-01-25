@@ -39,10 +39,11 @@ export interface Candidate {
         kakao?: string;
         telegram?: string;
     };
-    address?: string;
     isIncumbent: boolean;
+    address?: string; // 사무실 주소 등
+    password?: string; // 데이터 보호용 비밀번호
     status: CandidateStatus;
-    updatedAt?: Date;
+    updatedAt: Date;
     reports?: Report[];
 }
 

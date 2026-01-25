@@ -1,5 +1,7 @@
-import { sheetsClient } from '@justice/api-client';
+import { SheetsClient } from '@justice/api-client';
 import { NextRequest, NextResponse } from 'next/server';
+
+const sheetsClient = new SheetsClient();
 
 export const dynamic = 'force-dynamic';
 
@@ -21,12 +23,12 @@ export async function GET(request: NextRequest) {
     }
 
     try {
-        const candidate = await sheetsClient.getCandidateBySlug(slug);
+        const candidate = await sheetsClient.getCandidate(slug);
 
         if (candidate) {
             return NextResponse.json({
                 available: false,
-                candidate
+                exists: true
             });
         }
 

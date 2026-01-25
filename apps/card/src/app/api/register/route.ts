@@ -48,6 +48,8 @@ export async function POST(request: NextRequest) {
             },
             isIncumbent: body.isIncumbent === true || body.isIncumbent === 'true',
             address: body.address || '',
+            password: body.password || '', // Save password
+            updatedAt: new Date(),
         };
 
         const success = await sheetsClient.saveCandidate(candidate);

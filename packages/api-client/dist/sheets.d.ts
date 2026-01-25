@@ -4,7 +4,8 @@ export declare class SheetsClient {
     private sheetId;
     constructor();
     getCandidates(): Promise<Candidate[]>;
-    getCandidateBySlug(slug: string): Promise<Candidate | null>;
+    getCandidate(slug: string): Promise<Candidate | null>;
+    verifyCandidate(slug: string, password?: string): Promise<Candidate | null>;
     saveCandidate(candidate: Candidate): Promise<boolean>;
     getReports(slug: string): Promise<Report[]>;
     saveReports(reports: Report[]): Promise<boolean>;

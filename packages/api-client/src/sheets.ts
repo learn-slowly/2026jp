@@ -28,7 +28,7 @@ export class SheetsClient {
         try {
             const response = await this.sheets.spreadsheets.values.get({
                 spreadsheetId: this.sheetId,
-                range: 'candidates!A2:BA',
+                range: 'candidates!A2:BB',
             });
 
             const rows = response.data.values || [];
@@ -57,9 +57,22 @@ export class SheetsClient {
         }
     }
 
-    async getCandidateBySlug(slug: string): Promise<Candidate | null> {
+    async getCandidate(slug: string): Promise<Candidate | null> {
         const candidates = await this.getCandidates();
         return candidates.find((c) => c.slug === slug) || null;
+    }
+
+    async verifyCandidate(slug: string, password?: string): Promise<Candidate | null> {
+        const candidate = await this.getCandidate(slug);
+        if (!candidate) return null; // Candidate doesn't exist
+
+        // If candidate has no password (migration/legacy), allow access or require setup?
+        // Assuming we want to allow claiming if empty, but here we just check equality if set.
+        if (candidate.password && candidate.password !== password) {
+            return null; // Password mismatch
+        }
+
+        return candidate;
     }
 
     async saveCandidate(candidate: Candidate): Promise<boolean> {
@@ -119,7 +132,10 @@ export class SheetsClient {
                 candidate.address || '',
 
                 // BA (UpdatedAt)
-                new Date().toISOString()
+                new Date().toISOString(),
+
+                // BB (Password)
+                candidate.password || ''
             ];
 
             await this.sheets.spreadsheets.values.append({
@@ -254,6 +270,7 @@ export class SheetsClient {
             isIncumbent: get(50).toUpperCase() === 'TRUE', // AY
             address: get(51) || undefined, // AZ
             updatedAt: row[52] ? new Date(row[52]) : new Date(0), // BA
+            password: get(53) || undefined, // BB
         };
     }
 }

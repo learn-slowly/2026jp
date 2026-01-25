@@ -31,10 +31,11 @@ export interface Candidate {
         kakao?: string;
         telegram?: string;
     };
-    address?: string;
     isIncumbent: boolean;
+    address?: string;
+    password?: string;
     status: CandidateStatus;
-    updatedAt?: Date;
+    updatedAt: Date;
     reports?: Report[];
 }
 export interface Report {
