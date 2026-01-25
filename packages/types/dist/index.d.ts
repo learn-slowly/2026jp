@@ -23,13 +23,28 @@ export interface Candidate {
         youtube?: string;
         instagram?: string;
         x?: string;
+        blog?: string;
     };
     contact: {
         phone?: string;
         email?: string;
+        kakao?: string;
+        telegram?: string;
     };
     address?: string;
     isIncumbent: boolean;
     status: CandidateStatus;
+    updatedAt?: Date;
+    reports?: Report[];
+}
+export interface Report {
+    candidateSlug: string;
+    year: string;
+    month: string;
+    category: string;
+    title: string;
+    description: string;
+    linkUrl?: string;
+    visible: boolean;
     updatedAt?: Date;
 }

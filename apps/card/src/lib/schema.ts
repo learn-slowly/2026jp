@@ -22,13 +22,16 @@ export const formSchema = z.object({
     contact: z.object({
         phone: z.string().optional(),
         email: z.string().email("이메일 형식이 올바르지 않습니다").optional().or(z.literal('')),
+        kakao: z.string().optional(),
+        telegram: z.string().optional(),
     }),
     address: z.string().optional(),
     social: z.object({
-        x: z.string().optional(),
-        facebook: z.string().optional(),
-        youtube: z.string().optional(),
-        instagram: z.string().optional(),
+        x: z.string().url("URL 형식이여야 합니다 (https://...)").optional().or(z.literal('')),
+        facebook: z.string().url("URL 형식이여야 합니다 (https://...)").optional().or(z.literal('')),
+        youtube: z.string().url("URL 형식이여야 합니다 (https://...)").optional().or(z.literal('')),
+        instagram: z.string().url("URL 형식이여야 합니다 (https://...)").optional().or(z.literal('')),
+        blog: z.string().url("URL 형식이여야 합니다 (https://...)").optional().or(z.literal('')),
     }),
     isIncumbent: z.boolean().default(false),
     reports: z.array(z.object({

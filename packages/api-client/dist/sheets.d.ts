@@ -1,4 +1,4 @@
-import { Candidate } from '@justice/types';
+import { Candidate, Report } from '@justice/types';
 export declare class SheetsClient {
     private sheets;
     private sheetId;
@@ -6,6 +6,8 @@ export declare class SheetsClient {
     getCandidates(): Promise<Candidate[]>;
     getCandidateBySlug(slug: string): Promise<Candidate | null>;
     saveCandidate(candidate: Candidate): Promise<boolean>;
+    getReports(slug: string): Promise<Report[]>;
+    saveReports(reports: Report[]): Promise<boolean>;
     private mapRowToCandidate;
 }
 export declare const sheetsClient: SheetsClient;

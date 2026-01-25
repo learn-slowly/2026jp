@@ -38,12 +38,16 @@ export async function POST(request: NextRequest) {
                 facebook: body.social?.facebook,
                 youtube: body.social?.youtube,
                 instagram: body.social?.instagram,
+                blog: body.social?.blog,
             },
             contact: {
                 phone: body.contact?.phone,
                 email: body.contact?.email,
+                kakao: body.contact?.kakao,
+                telegram: body.contact?.telegram,
             },
             isIncumbent: body.isIncumbent === true || body.isIncumbent === 'true',
+            address: body.address || '',
         };
 
         const success = await sheetsClient.saveCandidate(candidate);

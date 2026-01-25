@@ -31,10 +31,13 @@ export interface Candidate {
         youtube?: string;
         instagram?: string;
         x?: string; // social_x
+        blog?: string;
     };
     contact: {
         phone?: string;
         email?: string;
+        kakao?: string;
+        telegram?: string;
     };
     address?: string;
     isIncumbent: boolean;
@@ -52,4 +55,5 @@ export interface Report {
     description: string;
     linkUrl?: string;
     visible: boolean;
+    updatedAt?: Date;
 }

@@ -251,6 +251,7 @@ export default function RegisterPage() {
                                     <FormInput register={form.register('social.facebook')} placeholder="https://facebook.com/..." />
                                     <FormInput register={form.register('social.youtube')} placeholder="https://youtube.com/@..." />
                                     <FormInput register={form.register('social.instagram')} placeholder="https://instagram.com/..." />
+                                    <FormInput register={form.register('social.blog')} placeholder="https://blog.naver.com/..." label="네이버 블로그" />
                                 </div>
                             </div>
 
@@ -261,6 +262,21 @@ export default function RegisterPage() {
                                         label="공개 연락처 (선택)"
                                         register={form.register('contact.phone')}
                                         placeholder="010-0000-0000"
+                                    />
+                                    <FormInput
+                                        label="이메일 (선택)"
+                                        register={form.register('contact.email')}
+                                        placeholder="email@example.com"
+                                    />
+                                    <FormInput
+                                        label="카카오톡 ID (선택)"
+                                        register={form.register('contact.kakao')}
+                                        placeholder="kakao_id"
+                                    />
+                                    <FormInput
+                                        label="텔레그램 ID (선택)"
+                                        register={form.register('contact.telegram')}
+                                        placeholder="@telegram_id"
                                     />
                                     <FormInput
                                         label="주소/위치 (선택)"

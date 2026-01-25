@@ -309,6 +309,13 @@ self.__SERVER_FILES_MANIFEST={
     "bundlePagesRouterDependencies": false,
     "configFileName": "next.config.ts",
     "reactCompiler": true,
+    "transpilePackages": [
+      "@justice/api-client"
+    ],
+    "serverExternalPackages": [
+      "googleapis",
+      "google-auth-library"
+    ],
     "turbopack": {
       "root": "/Users/ahbaik/Documents/coding/2026jp/justice-election-2026"
     },

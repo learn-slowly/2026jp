@@ -32,7 +32,7 @@ class SheetsClient {
             try {
                 const response = yield this.sheets.spreadsheets.values.get({
                     spreadsheetId: this.sheetId,
-                    range: 'candidates!A2:AA',
+                    range: 'candidates!A2:BA',
                 });
                 const rows = response.data.values || [];
                 const allCandidates = rows.map((row) => this.mapRowToCandidate(row));
@@ -105,13 +105,17 @@ class SheetsClient {
                     candidate.social.youtube || '',
                     candidate.social.instagram || '',
                     candidate.social.x || '',
-                    // AT (Contact)
+                    candidate.social.blog || '', // AT (New: Blog)
+                    // AU-AV (Contact)
                     candidate.contact.phone || '',
-                    // AU (Incumbent)
+                    candidate.contact.email || '', // AV
+                    candidate.contact.kakao || '', // AW (New: Kakao)
+                    candidate.contact.telegram || '', // AX (New: Telegram)
+                    // AY (Incumbent)
                     candidate.isIncumbent ? 'TRUE' : 'FALSE',
-                    // AV (Address)
+                    // AZ (Address)
                     candidate.address || '',
-                    // AW (UpdatedAt)
+                    // BA (UpdatedAt)
                     new Date().toISOString()
                 ];
                 yield this.sheets.spreadsheets.values.append({
@@ -124,6 +128,64 @@ class SheetsClient {
             }
             catch (error) {
                 console.error('Error saving candidate:', error);
+                return false;
+            }
+        });
+    }
+    getReports(slug) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const response = yield this.sheets.spreadsheets.values.get({
+                    spreadsheetId: this.sheetId,
+                    range: 'reports!A2:I',
+                });
+                const rows = response.data.values || [];
+                return rows
+                    .map((row) => ({
+                    candidateSlug: (row[0] || '').trim(),
+                    year: (row[1] || '').trim(),
+                    month: (row[2] || '').trim(),
+                    category: (row[3] || '').trim(),
+                    title: (row[4] || '').trim(),
+                    description: (row[5] || '').trim(),
+                    linkUrl: (row[6] || '').trim(),
+                    visible: (row[7] || '').trim().toUpperCase() === 'TRUE',
+                    updatedAt: row[8] ? new Date(row[8]) : undefined,
+                }))
+                    .filter((r) => r.candidateSlug === slug && r.visible);
+            }
+            catch (error) {
+                console.error('Error fetching reports:', error);
+                return [];
+            }
+        });
+    }
+    saveReports(reports) {
+        return __awaiter(this, void 0, void 0, function* () {
+            if (!reports.length)
+                return true;
+            try {
+                const rows = reports.map((r) => [
+                    r.candidateSlug,
+                    r.year,
+                    r.month,
+                    r.category,
+                    r.title,
+                    r.description,
+                    r.linkUrl || '',
+                    r.visible ? 'TRUE' : 'FALSE',
+                    new Date().toISOString()
+                ]);
+                yield this.sheets.spreadsheets.values.append({
+                    spreadsheetId: this.sheetId,
+                    range: 'reports!A:I',
+                    valueInputOption: 'USER_ENTERED',
+                    requestBody: { values: rows },
+                });
+                return true;
+            }
+            catch (error) {
+                console.error('Error saving reports:', error);
                 return false;
             }
         });
@@ -173,13 +235,17 @@ class SheetsClient {
                 youtube: get(42) || undefined,
                 instagram: get(43) || undefined,
                 x: get(44) || undefined,
+                blog: get(45) || undefined, // AT
             },
             contact: {
-                phone: get(45) || undefined,
+                phone: get(46) || undefined, // AU
+                email: get(47) || undefined, // AV
+                kakao: get(48) || undefined, // AW
+                telegram: get(49) || undefined, // AX
             },
-            isIncumbent: get(46).toUpperCase() === 'TRUE',
-            address: get(47) || undefined,
-            updatedAt: row[48] ? new Date(row[48]) : new Date(0),
+            isIncumbent: get(50).toUpperCase() === 'TRUE', // AY
+            address: get(51) || undefined, // AZ
+            updatedAt: row[52] ? new Date(row[52]) : new Date(0), // BA
         };
     }
 }
