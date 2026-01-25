@@ -52,7 +52,7 @@ export function HeroSection() {
                         <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                     </Link>
                     <Link
-                        href="/map" // Placeholder for map/search
+                        href="#map"
                         className="w-full md:w-auto px-8 py-4 bg-white/10 hover:bg-white/20 text-white backdrop-blur-sm rounded-full font-bold text-lg transition-all flex items-center justify-center gap-2"
                     >
                         <MapPin className="w-5 h-5" />
