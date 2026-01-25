@@ -126,7 +126,7 @@ export default function QRPage() {
                                 fgColor={color}
                                 bgColor={"#FFFFFF"}
                                 imageSettings={{
-                                    src: "/logo-allcolor.gif", // Using local file from public/
+                                    src: "/logo-y.gif",
                                     x: undefined,
                                     y: undefined,
                                     height: 48,
