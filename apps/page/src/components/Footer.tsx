@@ -20,8 +20,8 @@ export function Footer({ candidate }: FooterProps) {
                     {/* Brand */}
                     <div className="space-y-6">
                         <div className="flex items-center gap-3">
-                            <div className="w-12 h-12 bg-justice-yellow rounded-full flex items-center justify-center text-gray-900 font-bold text-2xl">
-                                JP
+                            <div className="w-12 h-12 relative">
+                                <img src="/images/logo-w.gif" alt="Logo" className="w-full h-full object-contain" />
                             </div>
                             <div>
                                 <h3 className="text-xl font-bold">정의당 {candidate.name}</h3>
@@ -45,16 +45,16 @@ export function Footer({ candidate }: FooterProps) {
                                 </div>
                             )}
                             {candidate.contact?.phone && (
-                                <div className="flex items-center gap-4 text-white/80">
+                                <a href={`tel:${candidate.contact.phone}`} className="flex items-center gap-4 text-white/80 hover:text-white hover:underline transition-colors">
                                     <Phone className="w-5 h-5 shrink-0" />
                                     <span>{candidate.contact.phone}</span>
-                                </div>
+                                </a>
                             )}
                             {candidate.contact?.email && (
-                                <div className="flex items-center gap-4 text-white/80">
+                                <a href={`mailto:${candidate.contact.email}`} className="flex items-center gap-4 text-white/80 hover:text-white hover:underline transition-colors">
                                     <Mail className="w-5 h-5 shrink-0" />
                                     <span>{candidate.contact.email}</span>
-                                </div>
+                                </a>
                             )}
                         </div>
                     </div>
