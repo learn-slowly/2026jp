@@ -62,8 +62,8 @@ export default function QRPage() {
                                 <button
                                     onClick={() => setType('card')}
                                     className={`flex-1 py-2 rounded-md text-sm font-bold transition-all ${type === 'card'
-                                            ? 'bg-white text-black shadow-sm'
-                                            : 'text-gray-500 hover:text-gray-700'
+                                        ? 'bg-white text-black shadow-sm'
+                                        : 'text-gray-500 hover:text-gray-700'
                                         }`}
                                 >
                                     웹명함 (Card)
@@ -71,8 +71,8 @@ export default function QRPage() {
                                 <button
                                     onClick={() => setType('page')}
                                     className={`flex-1 py-2 rounded-md text-sm font-bold transition-all ${type === 'page'
-                                            ? 'bg-white text-black shadow-sm'
-                                            : 'text-gray-500 hover:text-gray-700'
+                                        ? 'bg-white text-black shadow-sm'
+                                        : 'text-gray-500 hover:text-gray-700'
                                         }`}
                                 >
                                     홈페이지 (Page)
@@ -88,7 +88,7 @@ export default function QRPage() {
                                 placeholder="예: hkd"
                                 value={slug}
                                 onChange={(e) => setSlug(e.target.value)}
-                                className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-black focus:ring-2 focus:ring-black/10 outline-none transition-all"
+                                className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-black focus:ring-2 focus:ring-black/10 outline-none transition-all text-gray-900 placeholder:text-gray-500 font-medium"
                             />
                         </div>
 
@@ -142,8 +142,8 @@ export default function QRPage() {
                         onClick={handleDownload}
                         disabled={!slug}
                         className={`w-full py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2 transition-all ${!slug
-                                ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
-                                : 'bg-gray-900 hover:bg-black text-white shadow-lg hover:shadow-xl'
+                            ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
+                            : 'bg-gray-900 hover:bg-black text-white shadow-lg hover:shadow-xl'
                             }`}
                     >
                         {downloaded ? (
