@@ -441,13 +441,23 @@ function FormInput({ label, register, error, placeholder, type = "text" }: {
 }) {
     return (
         <div>
-            {label && <label className="block text-sm font-medium text-gray-700 mb-1">{label}</label>}
-            <input
-                {...register}
-                type={type}
-                className="block w-full rounded-lg border-gray-300 border p-3 text-gray-900 focus:ring-2 focus:ring-justice-green focus:border-justice-green"
-                placeholder={placeholder}
-            />
+            {label && <label className={`block text-sm font-medium mb-1 ${error ? 'text-red-600' : 'text-gray-700'}`}>{label}</label>}
+            <div className="relative">
+                <input
+                    {...register}
+                    type={type}
+                    className={`block w-full rounded-lg border p-3 focus:ring-2 transition-colors ${error
+                            ? 'border-red-500 bg-red-50 text-red-900 placeholder-red-300 focus:border-red-500 focus:ring-red-500'
+                            : 'border-gray-300 text-gray-900 focus:border-justice-green focus:ring-justice-green'
+                        }`}
+                    placeholder={placeholder}
+                />
+                {error && (
+                    <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                        <AlertCircle className="h-5 w-5 text-red-500" />
+                    </div>
+                )}
+            </div>
             <FormError error={error} />
         </div>
     );
