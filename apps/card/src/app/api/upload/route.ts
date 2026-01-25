@@ -1,53 +1,28 @@
-import { NextRequest, NextResponse } from 'next/server';
-import { v2 as cloudinary } from 'cloudinary';
+import { put } from '@vercel/blob';
+import { NextResponse } from 'next/server';
 
-// Configure Cloudinary
-cloudinary.config({
-    cloud_name: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
-    api_key: process.env.CLOUDINARY_API_KEY,
-    api_secret: process.env.CLOUDINARY_API_SECRET,
-});
-
-export async function POST(request: NextRequest) {
+export async function POST(request: Request) {
     try {
+        const { searchParams } = new URL(request.url);
+        const filename = searchParams.get('filename') || 'image';
+
+        // 1. Get FormData from request
         const formData = await request.formData();
         const file = formData.get('file') as File;
 
         if (!file) {
-            return NextResponse.json(
-                { error: 'No file uploaded' },
-                { status: 400 }
-            );
+            return NextResponse.json({ error: 'No file provided' }, { status: 400 });
         }
 
-        // Validate file type
-        if (!file.type.startsWith('image/')) {
-            return NextResponse.json(
-                { error: 'Only image files are allowed' },
-                { status: 400 }
-            );
-        }
+        // 2. Upload to Vercel Blob
+        const blob = await put(file.name, file, {
+            access: 'public',
+        });
 
-        // Upload to Cloudinary using stream
-        const bytes = await file.arrayBuffer();
-        const buffer = Buffer.from(bytes);
-
-        const result = await new Promise((resolve, reject) => {
-            const uploadStream = cloudinary.uploader.upload_stream(
-                {
-                    folder: 'justice-election-2026', // Optional folder
-                },
-                (error, result) => {
-                    if (error) reject(error);
-                    else resolve(result);
-                }
-            );
-            uploadStream.end(buffer);
-        }) as any;
-
-        return NextResponse.json({ url: result.secure_url });
+        // 3. Return the URL
+        return NextResponse.json(blob);
     } catch (error) {
-        console.error('Upload API Error:', error);
+        console.error('Upload error:', error);
         return NextResponse.json(
             { error: 'Internal Server Error' },
             { status: 500 }

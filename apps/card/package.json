@@ -12,6 +12,7 @@
     "@hookform/resolvers": "^5.2.2",
     "@justice/api-client": "*",
     "@justice/types": "*",
+    "@vercel/blob": "^2.0.1",
     "cloudinary": "^2.9.0",
     "googleapis": "^170.1.0",
     "is-stream": "^4.0.1",
