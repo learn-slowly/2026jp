@@ -10,7 +10,7 @@ const COLORS = [
     { name: '녹색', value: '#00A170', class: 'bg-justice-green' },
     { name: '핑크', value: '#EC3C87', class: 'bg-justice-pink' },
     { name: '보라', value: '#6B4B9E', class: 'bg-justice-purple' },
-    { name: '노랑', value: '#E6CF00', class: 'bg-justice-yellow' }, // Darker yellow for contrast
+    { name: 'y100', value: '#FFF100', class: 'bg-[#FFF100]' }, // y100 yellow
 ];
 
 export default function QRPage() {
@@ -75,7 +75,7 @@ export default function QRPage() {
                                         : 'text-gray-500 hover:text-gray-700'
                                         }`}
                                 >
-                                    홈페이지 (Page)
+                                    단체장 홈페이지 (Page)
                                 </button>
                             </div>
                         </div>
@@ -108,8 +108,8 @@ export default function QRPage() {
                                     </button>
                                 ))}
                             </div>
-                            {color === '#E6CF00' && (
-                                <p className="text-xs text-amber-600 mt-1">
+                            {color === '#FFF100' && (
+                                <p className="text-sm font-bold text-red-500 mt-2">
                                     * 노란색은 배경이 어두울 때만 사용하세요. (흰 배경 인식 불가)
                                 </p>
                             )}
@@ -129,8 +129,8 @@ export default function QRPage() {
                                     src: "/logo-y.gif",
                                     x: undefined,
                                     y: undefined,
-                                    height: 48,
-                                    width: 48,
+                                    height: 47,
+                                    width: 60,
                                     excavate: true,
                                 }}
                             />
