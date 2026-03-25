@@ -177,7 +177,7 @@ export default function RegisterPage() {
             if (res.ok) {
                 const result = await res.json();
                 alert('성공적으로 저장되었습니다!');
-                router.push(`/card/${result.slug}`);
+                router.push(`/${result.slug}`);
             } else {
                 const err = await res.json();
                 alert(`저장 실패: ${err.error}`);

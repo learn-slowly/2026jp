@@ -21,7 +21,7 @@ export default function Home() {
 
         <div className="pt-4 space-y-3">
           <Link
-            href="/card/hkd"
+            href="/hkd"
             className="flex items-center justify-center gap-2 w-full py-4 bg-justice-green hover:bg-justice-green-dark text-white font-bold rounded-xl transition-colors text-lg"
           >
             홍길동 후보 보기
