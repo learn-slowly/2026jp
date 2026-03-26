@@ -1,6 +1,6 @@
 'use client';
 
-import { AlertCircle } from 'lucide-react';
+import { Trash2 } from 'lucide-react';
 import { UseFormReturn } from 'react-hook-form';
 
 interface Report {
@@ -79,7 +79,7 @@ export function ReportList({
                             className="absolute top-2 right-2 p-2 text-gray-400 hover:text-red-500 hover:bg-red-50 rounded-full transition opacity-0 group-hover:opacity-100"
                             aria-label="삭제"
                         >
-                            <AlertCircle className="w-5 h-5" />
+                            <Trash2 className="w-5 h-5" />
                         </button>
 
                         <div className="grid grid-cols-6 gap-2 mb-3">

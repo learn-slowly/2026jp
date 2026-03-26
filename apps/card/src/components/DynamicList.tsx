@@ -1,6 +1,6 @@
 'use client';
 
-import { AlertCircle } from 'lucide-react';
+import { Trash2 } from 'lucide-react';
 
 interface DynamicListProps {
     label: string;
@@ -61,7 +61,7 @@ export function DynamicList({
                         className="p-3 text-red-500 hover:bg-red-50 rounded-lg transition"
                         aria-label="삭제"
                     >
-                        <AlertCircle className="w-5 h-5" />
+                        <Trash2 className="w-5 h-5" />
                     </button>
                 </div>
             ))}
