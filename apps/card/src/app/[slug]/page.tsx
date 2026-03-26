@@ -11,6 +11,23 @@ interface PageProps {
     params: Promise<{ slug: string }>;
 }
 
+export async function generateMetadata({ params }: PageProps) {
+    const { slug } = await params;
+    const candidate = await sheetsClient.getCandidate(slug);
+
+    if (!candidate) return { title: '후보자를 찾을 수 없습니다' };
+
+    return {
+        title: `${candidate.name} - 2026 지방선거 ${candidate.category} 후보`,
+        description: candidate.slogan,
+        openGraph: {
+            title: `정의당 ${candidate.name}와 함께해주십시오`,
+            description: candidate.intro?.slice(0, 100) + '...',
+            images: candidate.photoUrl ? [candidate.photoUrl] : [],
+        },
+    };
+}
+
 export default async function Page({ params }: PageProps) {
     const { slug } = await params;
     const candidate = await sheetsClient.getCandidate(slug);
