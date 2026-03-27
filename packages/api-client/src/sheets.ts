@@ -161,7 +161,21 @@ export class SheetsClient {
             });
 
             const rows = response.data.values || [];
-            return rows
+            const candidateRows = rows.filter(row => (row[0] || '').trim() === slug);
+            if (!candidateRows.length) return [];
+
+            let maxTime = 0;
+            candidateRows.forEach(row => {
+                const timeStr = row[8];
+                if (timeStr) {
+                    const time = new Date(timeStr).getTime();
+                    if (time > maxTime) maxTime = time;
+                }
+            });
+
+            return candidateRows
+                .filter(row => row[8] && new Date(row[8]).getTime() === maxTime)
+                .filter(row => row[7] !== 'DELETED_BATCH')
                 .map((row) => ({
                     candidateSlug: (row[0] || '').trim(),
                     year: (row[1] || '').trim(),
@@ -171,21 +185,20 @@ export class SheetsClient {
                     description: (row[5] || '').trim(),
                     linkUrl: (row[6] || '').trim(),
                     visible: (row[7] || '').trim().toUpperCase() === 'TRUE',
-                    updatedAt: row[8] ? new Date(row[8]) : undefined,
+                    updatedAt: new Date(row[8]),
                 }))
-                .filter((r) => r.candidateSlug === slug && r.visible);
+                .filter((r) => r.visible);
         } catch (error) {
             console.error('Error fetching reports:', error);
             return [];
         }
     }
 
-    async saveReports(reports: Report[]): Promise<boolean> {
-        if (!reports.length) return true;
-
+    async saveReports(slug: string, reports: Report[]): Promise<boolean> {
         try {
-            const rows = reports.map((r) => [
-                r.candidateSlug,
+            const now = new Date().toISOString();
+            const rows = reports.length ? reports.map((r) => [
+                slug,
                 r.year,
                 r.month,
                 r.category,
@@ -193,8 +206,8 @@ export class SheetsClient {
                 r.description,
                 r.linkUrl || '',
                 r.visible ? 'TRUE' : 'FALSE',
-                new Date().toISOString()
-            ]);
+                now
+            ]) : [[slug, '', '', '', '', '', '', 'DELETED_BATCH', now]];
 
             await this.sheets.spreadsheets.values.append({
                 spreadsheetId: this.sheetId,
@@ -270,7 +283,22 @@ export class SheetsClient {
                 spreadsheetId: this.sheetId,
                 range: 'mayor_stories!A2:H',
             });
-            return (response.data.values || [])
+            const rows = response.data.values || [];
+            const candidateRows = rows.filter(row => (row[0] || '').trim() === slug);
+            if (!candidateRows.length) return [];
+
+            let maxTime = 0;
+            candidateRows.forEach(row => {
+                const timeStr = row[7];
+                if (timeStr) {
+                    const time = new Date(timeStr).getTime();
+                    if (time > maxTime) maxTime = time;
+                }
+            });
+
+            return candidateRows
+                .filter(row => row[7] && new Date(row[7]).getTime() === maxTime)
+                .filter(row => row[6] !== 'DELETED_BATCH')
                 .map(row => ({
                     candidateSlug: row[0] || '',
                     date: row[1] || '',
@@ -280,26 +308,27 @@ export class SheetsClient {
                     imageUrl: row[5] || '',
                     visible: (row[6] || '').toUpperCase() === 'TRUE',
                 }))
-                .filter(s => s.candidateSlug === slug && s.visible);
+                .filter(s => s.visible);
         } catch (error) {
             console.error('Error fetching mayor_stories:', error);
             return [];
         }
     }
 
-    async saveMayorStories(stories: MayorStory[]): Promise<boolean> {
-        if (!stories.length) return true;
+    async saveMayorStories(slug: string, stories: MayorStory[]): Promise<boolean> {
         try {
-            const rows = stories.map(s => [
-                s.candidateSlug,
+            const now = new Date().toISOString();
+            const rows = stories.length ? stories.map(s => [
+                slug,
                 s.date,
                 s.category,
                 s.title,
                 s.content,
                 s.imageUrl || '',
                 s.visible ? 'TRUE' : 'FALSE',
-                new Date().toISOString()
-            ]);
+                now
+            ]) : [[slug, '', '', '', '', '', 'DELETED_BATCH', now]];
+
             await this.sheets.spreadsheets.values.append({
                 spreadsheetId: this.sheetId,
                 range: 'mayor_stories!A:H',
@@ -320,7 +349,22 @@ export class SheetsClient {
                 spreadsheetId: this.sheetId,
                 range: 'mayor_schedules!A2:G',
             });
-            return (response.data.values || [])
+            const rows = response.data.values || [];
+            const candidateRows = rows.filter(row => (row[0] || '').trim() === slug);
+            if (!candidateRows.length) return [];
+
+            let maxTime = 0;
+            candidateRows.forEach(row => {
+                const timeStr = row[6];
+                if (timeStr) {
+                    const time = new Date(timeStr).getTime();
+                    if (time > maxTime) maxTime = time;
+                }
+            });
+
+            return candidateRows
+                .filter(row => row[6] && new Date(row[6]).getTime() === maxTime)
+                .filter(row => row[5] !== 'DELETED_BATCH')
                 .map(row => ({
                     candidateSlug: row[0] || '',
                     date: row[1] || '',
@@ -329,25 +373,26 @@ export class SheetsClient {
                     location: row[4] || '',
                     visible: (row[5] || '').toUpperCase() === 'TRUE',
                 }))
-                .filter(s => s.candidateSlug === slug && s.visible);
+                .filter(s => s.visible);
         } catch (error) {
             console.error('Error fetching mayor_schedules:', error);
             return [];
         }
     }
 
-    async saveMayorSchedules(schedules: MayorSchedule[]): Promise<boolean> {
-        if (!schedules.length) return true;
+    async saveMayorSchedules(slug: string, schedules: MayorSchedule[]): Promise<boolean> {
         try {
-            const rows = schedules.map(s => [
-                s.candidateSlug,
+            const now = new Date().toISOString();
+            const rows = schedules.length ? schedules.map(s => [
+                slug,
                 s.date,
                 s.time,
                 s.title,
                 s.location,
                 s.visible ? 'TRUE' : 'FALSE',
-                new Date().toISOString()
-            ]);
+                now
+            ]) : [[slug, '', '', '', '', 'DELETED_BATCH', now]];
+
             await this.sheets.spreadsheets.values.append({
                 spreadsheetId: this.sheetId,
                 range: 'mayor_schedules!A:G',
@@ -368,7 +413,22 @@ export class SheetsClient {
                 spreadsheetId: this.sheetId,
                 range: 'mayor_gallery!A2:F',
             });
-            return (response.data.values || [])
+            const rows = response.data.values || [];
+            const candidateRows = rows.filter(row => (row[0] || '').trim() === slug);
+            if (!candidateRows.length) return [];
+
+            let maxTime = 0;
+            candidateRows.forEach(row => {
+                const timeStr = row[5];
+                if (timeStr) {
+                    const time = new Date(timeStr).getTime();
+                    if (time > maxTime) maxTime = time;
+                }
+            });
+
+            return candidateRows
+                .filter(row => row[5] && new Date(row[5]).getTime() === maxTime)
+                .filter(row => row[4] !== 'DELETED_BATCH')
                 .map(row => ({
                     candidateSlug: row[0] || '',
                     date: row[1] || '',
@@ -376,24 +436,25 @@ export class SheetsClient {
                     imageUrl: row[3] || '',
                     visible: (row[4] || '').toUpperCase() === 'TRUE',
                 }))
-                .filter(s => s.candidateSlug === slug && s.visible);
+                .filter(s => s.visible);
         } catch (error) {
             console.error('Error fetching mayor_gallery:', error);
             return [];
         }
     }
 
-    async saveMayorGallery(gallery: MayorGallery[]): Promise<boolean> {
-        if (!gallery.length) return true;
+    async saveMayorGallery(slug: string, gallery: MayorGallery[]): Promise<boolean> {
         try {
-            const rows = gallery.map(g => [
-                g.candidateSlug,
+            const now = new Date().toISOString();
+            const rows = gallery.length ? gallery.map(g => [
+                slug,
                 g.date,
                 g.caption,
                 g.imageUrl,
                 g.visible ? 'TRUE' : 'FALSE',
-                new Date().toISOString()
-            ]);
+                now
+            ]) : [[slug, '', '', '', 'DELETED_BATCH', now]];
+
             await this.sheets.spreadsheets.values.append({
                 spreadsheetId: this.sheetId,
                 range: 'mayor_gallery!A:F',

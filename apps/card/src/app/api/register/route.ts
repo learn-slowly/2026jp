@@ -54,13 +54,13 @@ export async function POST(request: NextRequest) {
 
         const success = await sheetsClient.saveCandidate(candidate);
 
-        if (success && body.reports && body.reports.length > 0) {
+        if (success && body.reports !== undefined) {
             // Attach slug to reports
             const reports = body.reports.map((r: any) => ({
                 ...r,
                 candidateSlug: candidate.slug
             }));
-            await sheetsClient.saveReports(reports);
+            await sheetsClient.saveReports(candidate.slug, reports);
         }
 
         // Save Mayor Specific Data if present
@@ -72,28 +72,28 @@ export async function POST(request: NextRequest) {
                 });
             }
 
-            if (body.mayorStories && body.mayorStories.length > 0) {
+            if (body.mayorStories !== undefined) {
                 const stories = body.mayorStories.map((s: any) => ({
                     ...s,
                     candidateSlug: candidate.slug
                 }));
-                await sheetsClient.saveMayorStories(stories);
+                await sheetsClient.saveMayorStories(candidate.slug, stories);
             }
 
-            if (body.mayorSchedules && body.mayorSchedules.length > 0) {
+            if (body.mayorSchedules !== undefined) {
                 const schedules = body.mayorSchedules.map((s: any) => ({
                     ...s,
                     candidateSlug: candidate.slug
                 }));
-                await sheetsClient.saveMayorSchedules(schedules);
+                await sheetsClient.saveMayorSchedules(candidate.slug, schedules);
             }
 
-            if (body.mayorGallery && body.mayorGallery.length > 0) {
+            if (body.mayorGallery !== undefined) {
                 const gallery = body.mayorGallery.map((g: any) => ({
                     ...g,
                     candidateSlug: candidate.slug
                 }));
-                await sheetsClient.saveMayorGallery(gallery);
+                await sheetsClient.saveMayorGallery(candidate.slug, gallery);
             }
         }
 
