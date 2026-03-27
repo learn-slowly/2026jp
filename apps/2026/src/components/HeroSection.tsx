@@ -39,7 +39,7 @@ export function HeroSection() {
                 </h1>
 
                 <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-2xl mx-auto leading-relaxed animate-fade-in-up delay-300">
-                    기후위기, 불평등, 차별에 맞서는<br className="md:hidden" />
+                    기후위기, 불평등, 차별에 맞서는 <br className="md:hidden" />
                     당신의 든든한 이웃이 되겠습니다.
                 </p>
 
