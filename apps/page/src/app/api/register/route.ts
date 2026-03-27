@@ -44,6 +44,7 @@ export async function POST(request: NextRequest) {
                 email: body.contact?.email,
             },
             isIncumbent: body.isIncumbent === true || body.isIncumbent === 'true',
+            updatedAt: new Date(),
         };
 
         const success = await sheetsClient.saveCandidate(candidate);
