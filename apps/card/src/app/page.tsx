@@ -79,8 +79,13 @@ export default async function Home() {
 
                                 {/* Content Body */}
                                 <div className="pt-14 pb-6 px-6 flex-1 flex flex-col items-center text-center">
-                                    <h3 className="text-2xl font-bold text-gray-900 group-hover:text-justice-purple transition-colors mb-1">
+                                    <h3 className="text-2xl font-bold text-gray-900 group-hover:text-justice-purple transition-colors mb-1 flex items-center justify-center gap-2">
                                         {candidate.name}
+                                        {candidate.isIncumbent && (
+                                            <span className="text-[11px] font-bold bg-justice-green text-white px-2 py-0.5 rounded-md shadow-sm tracking-wide">
+                                                현역
+                                            </span>
+                                        )}
                                     </h3>
                                     <p className="text-sm text-gray-500 font-semibold mb-3">
                                         {candidate.district} {candidate.number ? <span className="text-gray-300 font-normal mx-1">|</span> : ''} {candidate.number ? <span className="text-justice-green">기호 {candidate.number}번</span> : ''}
