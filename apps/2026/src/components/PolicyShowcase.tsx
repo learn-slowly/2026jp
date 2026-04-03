@@ -29,7 +29,7 @@ export function PolicyShowcase({ policies }: PolicyShowcaseProps) {
                 <div className="mb-16 text-center">
                     <h2 className="text-justice-green font-bold text-lg tracking-wider uppercase mb-3">Promises</h2>
                     <h3 className="text-4xl md:text-5xl font-black text-gray-900">
-                        정의당의 <span className="text-justice-purple">약속</span>
+                        정의당의 약속
                     </h3>
                     <p className="mt-4 text-xl text-gray-500 max-w-2xl mx-auto">
                         당신의 삶을 바꾸는 가장 확실한 방법, 정의당의 10대 핵심 공약을 소개합니다.
