@@ -39,7 +39,7 @@ export function CandidateFinder({ candidates }: CandidateFinderProps) {
         <section id="map" className="py-24 bg-gray-50">
             <div className="max-w-7xl mx-auto px-4 md:px-8">
                 <div className="mb-16 text-center">
-                    <!--h2 className="text-justice-green font-bold text-lg tracking-wider uppercase mb-3">Candidates</h2-->
+                    <h2 className="text-justice-green font-bold text-lg tracking-wider uppercase mb-3">Candidates</h2>
                     <h3 className="text-4xl md:text-5xl font-black text-gray-900">
                         우리 동네 <span className="text-justice-green">일꾼</span> 찾기
                     </h3>
