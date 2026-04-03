@@ -39,9 +39,9 @@ export function CandidateFinder({ candidates }: CandidateFinderProps) {
         <section id="map" className="py-24 bg-gray-50">
             <div className="max-w-7xl mx-auto px-4 md:px-8">
                 <div className="mb-16 text-center">
-                    <h2 className="text-justice-green font-bold text-lg tracking-wider uppercase mb-3">Candidates</h2>
+                    <h2 className="text-justice-yellow font-bold text-lg tracking-wider uppercase mb-3">Candidates</h2>
                     <h3 className="text-4xl md:text-5xl font-black text-gray-900">
-                        우리 동네 <span className="text-justice-green">일꾼</span> 찾기
+                        우리 동네 <span className="text-justice-yellow">일꾼</span> 찾기
                     </h3>
                     <p className="mt-4 text-xl text-gray-500 max-w-2xl mx-auto">
                         전국 방방곡곡, 당신의 곁에 정의당이 있습니다.
@@ -52,13 +52,13 @@ export function CandidateFinder({ candidates }: CandidateFinderProps) {
                 <div className="mb-12 space-y-6">
                     {/* Search Bar */}
                     <div className="max-w-md mx-auto relative">
-                        <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-justice-green w-5 h-5" />
+                        <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-justice-yellow w-5 h-5" />
                         <input
                             type="text"
                             placeholder="이름이나 지역명으로 검색해보세요"
                             value={searchTerm}
                             onChange={(e) => setSearchTerm(e.target.value)}
-                            className="w-full pl-12 pr-4 py-4 rounded-full border border-gray-200 focus:border-justice-green focus:ring-2 focus:ring-justice-green/20 outline-none transition-all shadow-sm text-gray-900 placeholder:text-gray-500 font-medium"
+                            className="w-full pl-12 pr-4 py-4 rounded-full border border-gray-200 focus:border-justice-yellow focus:ring-2 focus:ring-justice-yellow/20 outline-none transition-all shadow-sm text-gray-900 placeholder:text-gray-500 font-medium"
                         />
                     </div>
 
@@ -69,7 +69,7 @@ export function CandidateFinder({ candidates }: CandidateFinderProps) {
                                 key={region}
                                 onClick={() => setSelectedRegion(region)}
                                 className={`px-5 py-2 rounded-full font-bold transition-all ${selectedRegion === region
-                                    ? 'bg-justice-green text-white shadow-lg shadow-justice-green/20 scale-105'
+                                    ? 'bg-justice-yellow text-white shadow-lg shadow-justice-yellow/20 scale-105'
                                     : 'bg-white text-gray-500 hover:bg-gray-100 border border-gray-100'
                                     }`}
                             >
@@ -103,18 +103,18 @@ export function CandidateFinder({ candidates }: CandidateFinderProps) {
                                             <User className="w-16 h-16" />
                                         </div>
                                     )}
-                                    <div className="absolute top-3 right-3 w-8 h-8 bg-justice-yellow rounded-full flex items-center justify-center text-gray-900 font-bold opacity-0 group-hover:opacity-100 transition-all shadow-lg scale-0 group-hover:scale-100">
+                                    <div className="absolute top-3 right-3 w-8 h-8 bg-white rounded-full flex items-center justify-center text-gray-900 font-bold opacity-0 group-hover:opacity-100 transition-all shadow-lg scale-0 group-hover:scale-100">
                                         <ArrowUpRight className="w-5 h-5" />
                                     </div>
                                 </div>
 
                                 <div className="p-6 flex-1 flex flex-col">
                                     <div className="flex items-center gap-2 text-sm text-gray-500 mb-2">
-                                        <MapPin className="w-4 h-4 shrink-0 text-justice-green" />
+                                        <MapPin className="w-4 h-4 shrink-0 text-justice-yellow" />
                                         <span className="truncate">{candidate.district}</span>
                                     </div>
                                     <div className="mb-4">
-                                        <h3 className="text-xl font-black text-gray-900 group-hover:text-justice-green transition-colors">
+                                        <h3 className="text-xl font-black text-gray-900 group-hover:text-justice-yellow transition-colors">
                                             {candidate.name} <span className="text-base font-normal text-gray-400">후보</span>
                                         </h3>
                                     </div>
@@ -130,7 +130,7 @@ export function CandidateFinder({ candidates }: CandidateFinderProps) {
                         <p className="text-gray-400 text-lg">해당하는 후보자가 없습니다.</p>
                         <button
                             onClick={() => { setSelectedRegion('전체'); setSearchTerm(''); }}
-                            className="mt-4 text-justice-green font-bold hover:underline"
+                            className="mt-4 text-justice-yellow font-bold hover:underline"
                         >
                             전체 보기
                         </button>
