@@ -46,6 +46,6 @@ body {
   letter-spacing : -0.03em;
 }
 
-#map h2, #policies h2, #map div.flex-wrap {
+#map h2, #policies h2, #map div.flex-wrap, div.absolute {
   display: none;
 }
