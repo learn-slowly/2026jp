@@ -114,7 +114,7 @@ export function CandidateFinder({ candidates }: CandidateFinderProps) {
                                         <span className="truncate">{candidate.district}</span>
                                     </div>
                                     <div className="mb-4">
-                                        <h3 className="text-xl font-black text-gray-900 transition-colors"><!--group-hover:text-justice-yellow-->
+                                        <h3 className="text-xl font-black text-gray-900 transition-colors"> <!--group-hover:text-justice-yellow-->
                                             {candidate.name} <span className="text-base font-normal text-gray-400">후보</span>
                                         </h3>
                                     </div>
