@@ -41,7 +41,7 @@ export function CandidateFinder({ candidates }: CandidateFinderProps) {
                 <div className="mb-16 text-center">
                     <h2 className="text-justice-yellow font-bold text-lg tracking-wider uppercase mb-3">Candidates</h2>
                     <h3 className="text-4xl md:text-5xl font-black text-gray-900">
-                        우리 동네 <span className="text-justice-yellow">일꾼</span> 찾기
+                        우리 동네 일꾼찾기
                     </h3>
                     <p className="mt-4 text-xl text-gray-500 max-w-2xl mx-auto">
                         전국 방방곡곡, 당신의 곁에 정의당이 있습니다.
