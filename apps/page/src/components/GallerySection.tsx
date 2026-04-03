@@ -21,11 +21,11 @@ export function GallerySection({ candidate }: GallerySectionProps) {
                     </div>
                 </div>
 
-                <div className="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-4 gap-4 md:auto-rows-[200px] pb-8 md:pb-0 scrollbar-hide -mx-4 px-4 md:mx-0 md:px-0">
+                <div className="flex overflow-x-auto md:grid md:grid-cols-2 lg:grid-cols-4 gap-4 md:auto-rows-[200px] pb-8 md:pb-0 scrollbar-hide -mx-4 px-4 md:mx-0 md:px-0">
                     {candidate.mayorGallery.map((item, i) => (
                         <div
                             key={i}
-                            className={`relative rounded-xl overflow-hidden group min-w-[85vw] h-[60vh] md:h-auto md:min-w-0 flex-shrink-0 snap-center ${i % 3 === 0 ? 'md:col-span-2 md:row-span-2' : ''
+                            className={`relative rounded-xl overflow-hidden group min-w-[85vw] h-[60vh] md:h-auto md:min-w-0 flex-shrink-0 ${i % 3 === 0 ? 'md:col-span-2 md:row-span-2' : ''
                                 }`}
                         >
                             <img

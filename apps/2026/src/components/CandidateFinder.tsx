@@ -103,9 +103,6 @@ export function CandidateFinder({ candidates }: CandidateFinderProps) {
                                             <User className="w-16 h-16" />
                                         </div>
                                     )}
-                                    <div className="absolute top-3 left-3 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-lg text-xs font-bold text-gray-700 shadow-sm">
-                                        {candidate.category}
-                                    </div>
                                     <div className="absolute top-3 right-3 w-8 h-8 bg-justice-yellow rounded-full flex items-center justify-center text-gray-900 font-bold opacity-0 group-hover:opacity-100 transition-all shadow-lg scale-0 group-hover:scale-100">
                                         <ArrowUpRight className="w-5 h-5" />
                                     </div>
