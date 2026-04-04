@@ -8,15 +8,15 @@ export declare class SheetsClient {
     verifyCandidate(slug: string, password?: string): Promise<Candidate | null>;
     saveCandidate(candidate: Candidate): Promise<boolean>;
     getReports(slug: string): Promise<Report[]>;
-    saveReports(reports: Report[]): Promise<boolean>;
+    saveReports(slug: string, reports: Report[]): Promise<boolean>;
     getMayorExtra(slug: string): Promise<MayorExtra | undefined>;
     saveMayorExtra(extra: MayorExtra): Promise<boolean>;
     getMayorStories(slug: string): Promise<MayorStory[]>;
-    saveMayorStories(stories: MayorStory[]): Promise<boolean>;
+    saveMayorStories(slug: string, stories: MayorStory[]): Promise<boolean>;
     getMayorSchedules(slug: string): Promise<MayorSchedule[]>;
-    saveMayorSchedules(schedules: MayorSchedule[]): Promise<boolean>;
+    saveMayorSchedules(slug: string, schedules: MayorSchedule[]): Promise<boolean>;
     getMayorGallery(slug: string): Promise<MayorGallery[]>;
-    saveMayorGallery(gallery: MayorGallery[]): Promise<boolean>;
+    saveMayorGallery(slug: string, gallery: MayorGallery[]): Promise<boolean>;
     getCentralPolicies(): Promise<CentralPolicy[]>;
     private mapRowToCandidate;
 }
