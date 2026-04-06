@@ -33,7 +33,7 @@ export function HeroSection() {
 
                 <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-8 leading-tight animate-fade-in-up delay-200">
                     이제 같이 삽시다<br />
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-justice-yellow">
+                    <span className="text-justice-yellow bg-clip-text bg-gradient-to-r">
                         같이 잘 삽시다
                     </span>
                 </h1>
@@ -45,7 +45,7 @@ export function HeroSection() {
                 <div className="hero_button flex flex-col md:flex-row items-center justify-center gap-4 animate-fade-in-up delay-500">
                     <Link
                         href="#policies"
-                        className="w-full md:w-auto px-8 py-4 bg-justice-yellow hover:bg-justice-yellow-dark text-white rounded-full font-bold text-lg transition-all flex items-center justify-center gap-2 group"
+                        className="w-full md:w-auto px-8 py-4 bg-justice-yellow hover:bg-justice-yellow-dark text-d-black rounded-full font-bold text-lg transition-all flex items-center justify-center gap-2 group"
                     >
                         핵심 공약 보기
                         <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
