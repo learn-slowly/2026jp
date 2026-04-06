@@ -44,7 +44,7 @@ export function CandidateFinder({ candidates }: CandidateFinderProps) {
                         우리 동네 일꾼찾기
                     </h3>
                     <p className="mt-4 text-xl text-gray-500 max-w-2xl mx-auto">
-                        전국 방방곡곡, 당신의 곁에 정의당이 있습니다.
+                        전국 방방곡곡, 당신의 곁에 정의당이 있습니다
                     </p>
                 </div>
 
