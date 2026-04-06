@@ -220,7 +220,7 @@ export function CandidateCard({ candidate }: CandidateCardProps) {
                         <h2 className="text-2xl font-bold mb-4 text-gray-900">
                             🚀 후원으로 함께하기
                         </h2>
-                        <div className="bg-white/90 p-6 rounded-xl shadow-sm">
+                        <div className="bg-justice-yellow p-6 rounded-xl shadow-sm">
                             <p className="text-sm text-gray-500 mb-2">후원계좌 (클릭하여 복사)</p>
                             <div
                                 onClick={() => handleCopy(candidate.donation.account, '계좌번호')}
@@ -238,7 +238,7 @@ export function CandidateCard({ candidate }: CandidateCardProps) {
                     </div>
 
                     {(candidate.contact?.phone || candidate.contact?.email || candidate.address) && (
-                        <div className="bg-white backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-white shadow-lg">
+                        <div className="bg-white backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-black shadow-lg">
                             <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
                                 📞 문의 / 위치
                             </h3>
