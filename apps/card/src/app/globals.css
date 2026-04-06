@@ -39,3 +39,10 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+
+/*추가*/
+
+c_card {
+  text-align:left;
+}
