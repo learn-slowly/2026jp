@@ -122,9 +122,9 @@ export function CandidateCard({ candidate }: CandidateCardProps) {
                                     })
                                     .map((r, i) => (
                                         <div key={i} className="relative pl-6 border-l-2 border-justice-green/30 last:border-0 pb-6 last:pb-0">
-                                            <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-justice-green border-4 border-white shadow-sm" />
+                                            <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-justice-yellow border-4 border-white shadow-sm" />
                                             <div className="flex flex-col gap-1">
-                                                <span className="text-xs font-bold text-justice-green bg-green-50 px-2 py-0.5 rounded-full w-fit">
+                                                <span className="text-xs font-bold text-justice-yellow bg-yellow-50 px-2 py-0.5 rounded-full w-fit">
                                                     {r.year}.{r.month} · {r.category}
                                                 </span>
                                                 <h4 className="text-lg font-bold text-gray-900 leading-tight mt-1">
@@ -162,7 +162,7 @@ export function CandidateCard({ candidate }: CandidateCardProps) {
                             </h3>
                             <div className="space-y-4 text-left max-h-[60vh] overflow-y-auto pr-2 custom-scrollbar">
                                 {candidate.policies.map((p, i) => (
-                                    <div key={i} className="bg-green-50 rounded-xl p-5 border border-green-100 flex gap-4 hover:bg-green-100 transition-colors">
+                                    <div key={i} className="bg-yellow-50 rounded-xl p-5 border border-yellow-100 flex gap-4 hover:bg-yellow-100 transition-colors">
                                         <span className="text-justice-green font-black text-xl flex-shrink-0 pt-0.5">{i + 1}.</span>
                                         <div className="space-y-1">
                                             <h4 className="text-gray-900 font-bold text-lg leading-snug">{p.title}</h4>
