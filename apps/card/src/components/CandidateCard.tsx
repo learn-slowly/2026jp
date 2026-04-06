@@ -256,7 +256,7 @@ export function CandidateCard({ candidate }: CandidateCardProps) {
                                 )}
                                 {candidate.address && (
                                     <div className="flex items-center gap-3">
-                                        <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center p-2 shadow-sm flex-shrink-0">
+                                        <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center p-2 shadow-sm flex-shrink-0 self-center">
                                             <img src="/icons/address.png" alt="Address" className="w-full h-full object-contain" />
                                         </div>
                                         <div>
@@ -267,7 +267,7 @@ export function CandidateCard({ candidate }: CandidateCardProps) {
                                 )}
                                 {candidate.contact?.email && (
                                     <a href={`mailto:${candidate.contact.email}`} className="flex items-center gap-3 hover:opacity-80 transition cursor-pointer">
-                                        <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center p-2 shadow-sm flex-shrink-0">
+                                        <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center p-2 shadow-sm flex-shrink-0 self-center">
                                             <img src="/icons/email.png" alt="Email" className="w-full h-full object-contain" />
                                         </div>
                                         <div>
@@ -281,7 +281,7 @@ export function CandidateCard({ candidate }: CandidateCardProps) {
                                         onClick={() => handleCopy(candidate.contact.kakao || '', '카카오톡 ID')}
                                         className="flex items-center gap-3 hover:bg-white/5 p-2 -m-2 rounded-lg transition-colors cursor-pointer"
                                     >
-                                        <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center flex-shrink-0 p-2 shadow-sm flex-shrink-0">
+                                        <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center flex-shrink-0 p-2 shadow-sm flex-shrink-0 self-center">
                                             <img src="/icons/kakao.png" alt="Kakao" className="w-full h-full object-contain" />
                                         </div>
                                         <div className="flex-1 min-w-0">
@@ -295,7 +295,7 @@ export function CandidateCard({ candidate }: CandidateCardProps) {
                                 )}
                                 {candidate.contact?.telegram && (
                                     <a href={`https://t.me/${candidate.contact.telegram.replace('@', '')}`} target="_blank" rel="noreferrer" className="flex items-center gap-3 hover:opacity-80 transition cursor-pointer">
-                                        <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center flex-shrink-0 p-2 shadow-sm">
+                                        <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center flex-shrink-0 p-2 shadow-sm self-center">
                                             <img src="/icons/telegram.png" alt="Telegram" className="w-full h-full object-contain" />
                                         </div>
                                         <div>
