@@ -12,7 +12,7 @@ export function AboutSection({ candidate }: AboutSectionProps) {
             <div className="max-w-7xl mx-auto px-4 md:px-8">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
                     <div className="space-y-8">
-                        <h2 className="text-gray-900 font-bold text-lg tracking-wider uppercase">당신의 삶을 바꾸는 가장 확실한 방법</h2>
+                        <h2 className="text-gray-900 font-bold text-lg tracking-wider uppercase">당신의 곁에 정의당이 있습니다</h2>
                         <h3 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
                             {candidate.mayorExtra?.greetingTitle || <><span className="block">걸어온 길,</span><span className="block">변화의 시작</span></>}
                         </h3>
