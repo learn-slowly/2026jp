@@ -47,13 +47,13 @@ export function CandidateCard({ candidate }: CandidateCardProps) {
                                         {candidate.number}
                                     </span>
                                 )}
-                                <h1 className="text-4xl font-d-black text-gray-900 tracking-tight">
+                                <h1 className="text-4xl font-black text-gray-900 tracking-tight">
                                     {candidate.name}
                                 </h1>
                             </div>
 
                             {/* 슬로건 */}
-                            <p className="text-xl font-bold text-d-black mb-4 break-keep italic">
+                            <p className="text-xl font-bold text-black mb-4 break-keep italic">
                                 "{candidate.slogan}"
                             </p>
 
