@@ -224,7 +224,7 @@ export function CandidateCard({ candidate }: CandidateCardProps) {
                             <p className="text-sm text-gray-500 mb-2">후원계좌 (클릭하여 복사)</p>
                             <div
                                 onClick={() => handleCopy(candidate.donation.account, '계좌번호')}
-                                className="cursor-pointer hover:bg-gray-50 p-2 -m-2 rounded-lg transition-colors group"
+                                className="cursor-pointer hover:bg-justice-yellow-dark p-2 -m-2 rounded-lg transition-colors group"
                             >
                                 <p className="text-xl font-bold text-gray-900 mb-2 tracking-wider flex items-center justify-center gap-2">
                                     {candidate.donation.account}
