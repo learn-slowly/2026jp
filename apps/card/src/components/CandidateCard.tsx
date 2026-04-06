@@ -245,7 +245,7 @@ export function CandidateCard({ candidate }: CandidateCardProps) {
                             <div className="space-y-4">
                                 {candidate.contact?.phone && (
                                     <a href={`tel:${candidate.contact.phone}`} className="flex items-center gap-3 hover:opacity-80 transition cursor-pointer">
-                                        <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center p-2 shadow-sm flex-shrink-0">
+                                        <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center p-2 shadow-sm flex-shrink-0 self-center">
                                             <img src="/icons/phone.png" alt="Phone" className="w-full h-full object-contain" />
                                         </div>
                                         <div>
