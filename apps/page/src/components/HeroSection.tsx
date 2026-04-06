@@ -8,14 +8,14 @@ interface HeroSectionProps {
 
 export function HeroSection({ candidate }: HeroSectionProps) {
     return (
-        <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-justice-yellow via-[#008f63] to-[#006e4b]">
+        <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-justice-yellow">
             {/* Background Pattern */}
             <div className="absolute inset-0 opacity-10"
                 style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '40px 40px' }}>
             </div>
 
             <div className="max-w-7xl w-full mx-auto px-4 md:px-8 grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative z-10 pt-20">
-                <div className="text-white space-y-6 animate-in slide-in-from-bottom-10 duration-700 fade-in">
+                <div className="text-black space-y-6 animate-in slide-in-from-bottom-10 duration-700 fade-in">
                     <div className="inline-block bg-white/20 backdrop-blur-sm px-4 py-1.5 rounded-full text-sm font-semibold border border-white/30 text-white/90 mb-4">
                         2026 지방선거 {candidate.category} 후보
                     </div>
