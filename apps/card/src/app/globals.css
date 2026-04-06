@@ -60,3 +60,7 @@ c_card {
 .contact-row p {
     margin: 0;
 }
+
+.contact_info {
+  padding-bottom: 13px;
+}
