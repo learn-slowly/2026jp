@@ -38,7 +38,7 @@ export function CandidateCard({ candidate }: CandidateCardProps) {
                     <div className="bg-white rounded-3xl shadow-2xl p-8 transform transition-transform hover:scale-[1.01]">
                         <div className="flex flex-col items-center text-center">
                             {/* 프로필 사진 */}
-                            <div className="relative w-40 h-40 rounded-full overflow-hidden border-4 border-justice-green shadow-lg mb-6 bg-gray-100 flex items-center justify-center">
+                            <div className="relative w-40 h-40 rounded-full overflow-hidden shadow-lg mb-6 bg-gray-100 flex items-center justify-center">
                                 {candidate.photoUrl && candidate.photoUrl.startsWith('http') ? (
                                     <img
                                         src={candidate.photoUrl}
@@ -63,7 +63,7 @@ export function CandidateCard({ candidate }: CandidateCardProps) {
                             </div>
 
                             {/* 슬로건 */}
-                            <p className="text-xl font-bold text-justice-purple mb-4 break-keep italic">
+                            <p className="text-xl font-bold mb-4 break-keep italic">
                                 "{candidate.slogan}"
                             </p>
 
