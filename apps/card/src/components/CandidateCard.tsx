@@ -138,7 +138,7 @@ export function CandidateCard({ candidate }: CandidateCardProps) {
                                                         href={r.linkUrl}
                                                         target="_blank"
                                                         rel="noreferrer"
-                                                        className="text-xs text-blue-500 hover:text-blue-700 hover:underline mt-1 block"
+                                                        className="text-xs text-justice-pink hover:text-justice-pink-dark hover:underline mt-1 block"
                                                     >
                                                         자세히 보기 →
                                                     </a>
