@@ -224,7 +224,7 @@ export function CandidateCard({ candidate }: CandidateCardProps) {
                             <p className="text-sm text-gray-500 mb-2">후원계좌 (클릭하여 복사)</p>
                             <div
                                 onClick={() => handleCopy(candidate.donation.account, '계좌번호')}
-                                className="cursor-pointer hover:bg-justice-yellow-dark p-2 -m-2 rounded-lg transition-colors group"
+                                className="cursor-pointer p-2 -m-2 rounded-lg transition-colors group"
                             >
                                 <p className="text-xl font-bold text-gray-900 mb-2 tracking-wider flex items-center justify-center gap-2">
                                     {candidate.donation.account}
@@ -245,7 +245,7 @@ export function CandidateCard({ candidate }: CandidateCardProps) {
                             <div className="space-y-4">
                                 {candidate.contact?.phone && (
                                     <a href={`tel:${candidate.contact.phone}`} className="flex items-center gap-3 hover:opacity-80 transition cursor-pointer">
-                                        <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center p-2 shadow-sm">
+                                        <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center p-2 shadow-sm flex-shrink-0">
                                             <img src="/icons/phone.png" alt="Phone" className="w-full h-full object-contain" />
                                         </div>
                                         <div>
@@ -256,7 +256,7 @@ export function CandidateCard({ candidate }: CandidateCardProps) {
                                 )}
                                 {candidate.address && (
                                     <div className="flex items-center gap-3">
-                                        <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center p-2 shadow-sm">
+                                        <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center p-2 shadow-sm flex-shrink-0">
                                             <img src="/icons/address.png" alt="Address" className="w-full h-full object-contain" />
                                         </div>
                                         <div>
@@ -267,7 +267,7 @@ export function CandidateCard({ candidate }: CandidateCardProps) {
                                 )}
                                 {candidate.contact?.email && (
                                     <a href={`mailto:${candidate.contact.email}`} className="flex items-center gap-3 hover:opacity-80 transition cursor-pointer">
-                                        <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center p-2 shadow-sm">
+                                        <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center p-2 shadow-sm flex-shrink-0">
                                             <img src="/icons/email.png" alt="Email" className="w-full h-full object-contain" />
                                         </div>
                                         <div>
@@ -281,7 +281,7 @@ export function CandidateCard({ candidate }: CandidateCardProps) {
                                         onClick={() => handleCopy(candidate.contact.kakao || '', '카카오톡 ID')}
                                         className="flex items-center gap-3 hover:bg-white/5 p-2 -m-2 rounded-lg transition-colors cursor-pointer"
                                     >
-                                        <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center flex-shrink-0 p-2 shadow-sm">
+                                        <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center flex-shrink-0 p-2 shadow-sm flex-shrink-0">
                                             <img src="/icons/kakao.png" alt="Kakao" className="w-full h-full object-contain" />
                                         </div>
                                         <div className="flex-1 min-w-0">
