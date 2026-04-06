@@ -238,7 +238,7 @@ export function CandidateCard({ candidate }: CandidateCardProps) {
                     </div>
 
                     {(candidate.contact?.phone || candidate.contact?.email || candidate.address) && (
-                        <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-white shadow-lg">
+                        <div className="bg-white backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-white shadow-lg">
                             <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
                                 📞 문의 / 위치
                             </h3>
