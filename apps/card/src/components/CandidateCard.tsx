@@ -124,7 +124,7 @@ export function CandidateCard({ candidate }: CandidateCardProps) {
                                         <div key={i} className="relative pl-6 border-l-2 border-justice-yellow last:border-0 pb-6 last:pb-0">
                                             <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-justice-yellow shadow-sm" />
                                             <div className="flex flex-col gap-1">
-                                                <span className="text-xs font-bold text-black bg-yellow px-2 py-0.5 rounded-full w-fit">
+                                                <span className="text-xs font-bold text-black bg-justice-yellow px-2 py-0.5 rounded-full w-fit">
                                                     {r.year}.{r.month} · {r.category}
                                                 </span>
                                                 <h4 className="text-lg font-bold text-gray-900 leading-tight mt-1">
