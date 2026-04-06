@@ -45,7 +45,7 @@ export function HeroSection() {
                 <div className="hero_button flex flex-col md:flex-row items-center justify-center gap-4 animate-fade-in-up delay-500">
                     <Link
                         href="#policies"
-                        className="w-full md:w-auto px-8 py-4 bg-justice-yellow hover:bg-justice-yellow-dark text-d-d-black rounded-full font-bold text-lg transition-all flex items-center justify-center gap-2 group"
+                        className="w-full md:w-auto px-8 py-4 bg-justice-yellow hover:bg-justice-yellow-dark text-d-black rounded-full font-bold text-lg transition-all flex items-center justify-center gap-2 group"
                     >
                         핵심 공약 보기
                         <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
