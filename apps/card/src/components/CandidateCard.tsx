@@ -250,7 +250,7 @@ export function CandidateCard({ candidate }: CandidateCardProps) {
                                         </div>
                                         <div className="flex flex-col justify-center">
                                             <p className="text-sm text-white/70">연락처</p>
-                                            <p className="font-bold text-lg">{candidate.contact.phone}</p>
+                                            <p className="contact_info font-bold text-lg">{candidate.contact.phone}</p>
                                         </div>
                                     </a>
                                 )}
@@ -261,7 +261,7 @@ export function CandidateCard({ candidate }: CandidateCardProps) {
                                         </div>
                                         <div className="flex flex-col justify-center">
                                             <p className="text-sm text-white/70">주소</p>
-                                            <p className="font-medium">{candidate.address}</p>
+                                            <p className="contact_info font-medium">{candidate.address}</p>
                                         </div>
                                     </div>
                                 )}
@@ -272,7 +272,7 @@ export function CandidateCard({ candidate }: CandidateCardProps) {
                                         </div>
                                         <div className="flex flex-col justify-center">
                                             <p className="text-sm text-white/70">이메일</p>
-                                            <p className="font-medium text-lg">{candidate.contact.email}</p>
+                                            <p className="contact_info font-medium text-lg">{candidate.contact.email}</p>
                                         </div>
                                     </a>
                                 )}
@@ -289,7 +289,7 @@ export function CandidateCard({ candidate }: CandidateCardProps) {
                                                 <p className="text-sm text-white/70">카카오톡 ID</p>
                                                 <span className="text-[10px] bg-white/20 px-1.5 py-0.5 rounded text-white/80">복사</span>
                                             </div>
-                                            <p className="font-medium text-lg truncate">{candidate.contact.kakao}</p>
+                                            <p className="contact_info font-medium text-lg truncate">{candidate.contact.kakao}</p>
                                         </div>
                                     </div>
                                 )}
@@ -300,7 +300,7 @@ export function CandidateCard({ candidate }: CandidateCardProps) {
                                         </div>
                                         <div>
                                             <p className="text-sm text-white/70">텔레그램 ID</p>
-                                            <p className="font-medium text-lg">{candidate.contact.telegram}</p>
+                                            <p className="contact_info font-medium text-lg">{candidate.contact.telegram}</p>
                                         </div>
                                     </a>
                                 )}
