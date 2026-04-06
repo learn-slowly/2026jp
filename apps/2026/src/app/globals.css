@@ -11,10 +11,13 @@
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 
-  --color-justice-green: #00A170;
-  --color-justice-pink: #EC3C87;
-  --color-justice-purple: #6B4B9E;
-  --color-justice-yellow: #FFE600;
+  --color-justice-green: #00a366;
+  --color-justice-pink: #e8306d;
+  --color-justice-purple: #623e91;
+  --color-justice-yellow: #ffed00;
+  --color-d-black: #121212;
+  --color-d-lightgrey: #fafafa;
+  --color-d-darkgrey: #999999;
 
   --color-justice-green-dark: #008759;
   --color-justice-pink-dark: #D02070;
