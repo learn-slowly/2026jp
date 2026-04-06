@@ -95,7 +95,7 @@ export function CandidateCard({ candidate }: CandidateCardProps) {
                             <ul className="space-y-2 text-left">
                                 {candidate.careers.map((c, i) => (
                                     <li key={i} className="flex items-start gap-2 text-gray-700">
-                                        <span className="mt-2 w-1.5 h-1.5 bg-justice-green rounded-full flex-shrink-0" />
+                                        <span className="mt-2 w-1.5 h-1.5 bg-justice-yellow rounded-full flex-shrink-0" />
                                         <span className="leading-relaxed">{c}</span>
                                     </li>
                                 ))}
