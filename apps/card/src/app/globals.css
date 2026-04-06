@@ -43,6 +43,10 @@ body {
 
 /*추가*/
 
+body{
+  letter-spacing: -0.02em;
+}
+
 c_card {
   text-align:left;
 }
