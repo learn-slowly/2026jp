@@ -32,7 +32,7 @@ export function HeroSection({ candidate }: HeroSectionProps) {
                         </span>
                     </h1>
 
-                    <p className="text-xl md:text-2xl text-black font-light leading-relaxed max-w-lg">
+                    <p className="hero_txt text-xl md:text-2xl text-black font-light leading-relaxed max-w-lg">
                         {candidate.intro.split('\n')[0]}
                     </p>
 
