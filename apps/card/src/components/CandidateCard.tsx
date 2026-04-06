@@ -73,7 +73,7 @@ export function CandidateCard({ candidate }: CandidateCardProps) {
                             </div>
 
                             {/* 소개 */}
-                            <p className="c_card leading-relaxed break-keep">
+                            <p className="c_card text-left leading-relaxed break-keep">
                                 {candidate.intro}
                             </p>
                         </div>
