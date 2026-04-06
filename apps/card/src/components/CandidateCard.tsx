@@ -248,7 +248,7 @@ export function CandidateCard({ candidate }: CandidateCardProps) {
                                         <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center p-2 shadow-sm flex-shrink-0 self-center">
                                             <img src="/icons/phone.png" alt="Phone" className="w-full h-full object-contain" />
                                         </div>
-                                        <div>
+                                        <div className="flex flex-col justify-center">
                                             <p className="text-sm text-white/70">연락처</p>
                                             <p className="font-bold text-lg">{candidate.contact.phone}</p>
                                         </div>
@@ -259,7 +259,7 @@ export function CandidateCard({ candidate }: CandidateCardProps) {
                                         <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center p-2 shadow-sm flex-shrink-0 self-center">
                                             <img src="/icons/address.png" alt="Address" className="w-full h-full object-contain" />
                                         </div>
-                                        <div>
+                                        <div className="flex flex-col justify-center">
                                             <p className="text-sm text-white/70">주소</p>
                                             <p className="font-medium">{candidate.address}</p>
                                         </div>
@@ -270,7 +270,7 @@ export function CandidateCard({ candidate }: CandidateCardProps) {
                                         <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center p-2 shadow-sm flex-shrink-0 self-center">
                                             <img src="/icons/email.png" alt="Email" className="w-full h-full object-contain" />
                                         </div>
-                                        <div>
+                                        <div className="flex flex-col justify-center">
                                             <p className="text-sm text-white/70">이메일</p>
                                             <p className="font-medium text-lg">{candidate.contact.email}</p>
                                         </div>
@@ -285,7 +285,7 @@ export function CandidateCard({ candidate }: CandidateCardProps) {
                                             <img src="/icons/kakao.png" alt="Kakao" className="w-full h-full object-contain" />
                                         </div>
                                         <div className="flex-1 min-w-0">
-                                            <div className="flex items-center gap-2">
+                                            <div className="flex items-center gap-2 flex-col justify-center">
                                                 <p className="text-sm text-white/70">카카오톡 ID</p>
                                                 <span className="text-[10px] bg-white/20 px-1.5 py-0.5 rounded text-white/80">복사</span>
                                             </div>
