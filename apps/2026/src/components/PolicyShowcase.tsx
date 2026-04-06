@@ -32,7 +32,7 @@ export function PolicyShowcase({ policies }: PolicyShowcaseProps) {
                         정의당의 약속
                     </h3>
                     <p className="mt-4 text-xl text-gray-500 max-w-2xl mx-auto">
-                        당신의 삶을 바꾸는 가장 확실한 방법, 정의당의 핵심 공약을 소개합니다
+                        당신의 삶을 바꾸는 가장 확실한 방법
                     </p>
                 </div>
 
