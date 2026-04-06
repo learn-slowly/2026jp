@@ -28,7 +28,7 @@ export function AboutSection({ candidate }: AboutSectionProps) {
                         <ul className="space-y-6">
                             {candidate.careers.map((career, i) => (
                                 <li key={i} className="flex gap-4">
-                                    <div className="w-2 h-2 mt-2.5 rounded-full bg-justice-green flex-shrink-0" />
+                                    <div className="w-2 h-2 mt-2.5 rounded-full bg-justice-yellow flex-shrink-0" />
                                     <span className="text-lg text-gray-700 font-medium leading-relaxed">{career}</span>
                                 </li>
                             ))}
