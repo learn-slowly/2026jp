@@ -21,7 +21,7 @@ export function HeroSection({ candidate }: HeroSectionProps) {
                     </div>
 
                     <h1 className="text-5xl md:text-7xl font-extrabold leading-tight tracking-tight">
-                        <span className="block text-justice-yellow drop-shadow-md">
+                        <span className="block text-black drop-shadow-md">
                             {candidate.mayorExtra?.visionTitle || candidate.slogan}
                         </span>
                         <span className="block mt-2">
