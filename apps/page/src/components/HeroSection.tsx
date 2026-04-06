@@ -16,7 +16,7 @@ export function HeroSection({ candidate }: HeroSectionProps) {
 
             <div className="max-w-7xl w-full mx-auto px-4 md:px-8 grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative z-10 pt-20">
                 <div className="text-black space-y-6 animate-in slide-in-from-bottom-10 duration-700 fade-in">
-                    <div className="inline-block bg-white/20 backdrop-blur-sm px-4 py-1.5 rounded-full text-sm font-semibold border border-white/30 text-white/90 mb-4">
+                    <div className="inline-block text-black bg-white backdrop-blur-sm px-4 py-1.5 rounded-full text-sm font-semibold border border-white/30 text-white/90 mb-4">
                         2026 지방선거 {candidate.category} 후보
                     </div>
 
@@ -39,13 +39,13 @@ export function HeroSection({ candidate }: HeroSectionProps) {
                     <div className="flex gap-4 pt-4">
                         <button
                             onClick={() => document.getElementById('policies')?.scrollIntoView({ behavior: 'smooth' })}
-                            className="bg-white text-justice-yellow px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-100 transition shadow-lg"
+                            className="bg-white text-black px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-100 transition shadow-lg"
                         >
                             약속 보기
                         </button>
                         <button
                             onClick={() => document.getElementById('donation')?.scrollIntoView({ behavior: 'smooth' })}
-                            className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white/10 transition"
+                            className="bg-transparent border-2 border-black text-black px-8 py-4 rounded-full font-bold text-lg hover:justice-yellow-dark/10 transition"
                         >
                             후원하기
                         </button>
