@@ -53,7 +53,7 @@ export function HeroSection({ candidate }: HeroSectionProps) {
                 </div>
 
                 <div className="relative h-[40vh] md:h-[80vh] flex items-end justify-center md:justify-end animate-in fade-in duration-1000 delay-300">
-                    <div className="md:hidden absolute inset-0 bg-gradient-to-t from-justice-yellow/50 to-transparent bottom-0 h-1/3 z-10 pointer-events-none md:hidden"></div>
+                    <div className="hidden md:block absolute inset-0 bg-gradient-to-t from-justice-yellow/50 to-transparent bottom-0 h-1/3 z-10 pointer-events-none md:hidden"></div>
                     <img
                         src={candidate.mayorExtra?.heroImageUrl || candidate.photoUrl || '/placeholder-candidate.png'}
                         alt={candidate.name}
