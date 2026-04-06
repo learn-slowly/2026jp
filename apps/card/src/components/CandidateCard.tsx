@@ -244,7 +244,7 @@ export function CandidateCard({ candidate }: CandidateCardProps) {
                             </h3>
                             <div className="space-y-4">
                                 {candidate.contact?.phone && (
-                                    <a href={`tel:${candidate.contact.phone}`} className="flex items-center gap-3 hover:opacity-80 transition cursor-pointer">
+                                    <a href={`tel:${candidate.contact.phone}`} className="flex items-center gap-3 hover:opacity-80 transition cursor-pointer contact-row">
                                         <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center p-2 shadow-sm flex-shrink-0 self-center">
                                             <img src="/icons/phone.png" alt="Phone" className="w-full h-full object-contain" />
                                         </div>
@@ -255,7 +255,7 @@ export function CandidateCard({ candidate }: CandidateCardProps) {
                                     </a>
                                 )}
                                 {candidate.address && (
-                                    <div className="flex items-center gap-3">
+                                    <div className="flex items-center gap-3 contact-row">
                                         <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center p-2 shadow-sm flex-shrink-0 self-center">
                                             <img src="/icons/address.png" alt="Address" className="w-full h-full object-contain" />
                                         </div>
@@ -266,7 +266,7 @@ export function CandidateCard({ candidate }: CandidateCardProps) {
                                     </div>
                                 )}
                                 {candidate.contact?.email && (
-                                    <a href={`mailto:${candidate.contact.email}`} className="flex items-center gap-3 hover:opacity-80 transition cursor-pointer">
+                                    <a href={`mailto:${candidate.contact.email}`} className="flex items-center gap-3 hover:opacity-80 transition cursor-pointer contact-row">
                                         <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center p-2 shadow-sm flex-shrink-0 self-center">
                                             <img src="/icons/email.png" alt="Email" className="w-full h-full object-contain" />
                                         </div>
@@ -281,7 +281,7 @@ export function CandidateCard({ candidate }: CandidateCardProps) {
                                         onClick={() => handleCopy(candidate.contact.kakao || '', '카카오톡 ID')}
                                         className="flex items-center gap-3 hover:bg-white/5 p-2 -m-2 rounded-lg transition-colors cursor-pointer"
                                     >
-                                        <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center flex-shrink-0 p-2 shadow-sm flex-shrink-0 self-center">
+                                        <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center flex-shrink-0 p-2 shadow-sm flex-shrink-0 self-center contact-row">
                                             <img src="/icons/kakao.png" alt="Kakao" className="w-full h-full object-contain" />
                                         </div>
                                         <div className="flex-1 min-w-0">
@@ -295,7 +295,7 @@ export function CandidateCard({ candidate }: CandidateCardProps) {
                                 )}
                                 {candidate.contact?.telegram && (
                                     <a href={`https://t.me/${candidate.contact.telegram.replace('@', '')}`} target="_blank" rel="noreferrer" className="flex items-center gap-3 hover:opacity-80 transition cursor-pointer">
-                                        <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center flex-shrink-0 p-2 shadow-sm self-center">
+                                        <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center flex-shrink-0 p-2 shadow-sm self-center contact-row">
                                             <img src="/icons/telegram.png" alt="Telegram" className="w-full h-full object-contain" />
                                         </div>
                                         <div>
