@@ -16,7 +16,7 @@ export function HeroSection({ candidate }: HeroSectionProps) {
 
             <div className="max-w-7xl w-full mx-auto px-4 md:px-8 grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative z-10 pt-20">
                 <div className="text-black space-y-6 animate-in slide-in-from-bottom-10 duration-700 fade-in">
-                    <div className="inline-block text-black bg-white backdrop-blur-sm px-4 py-1.5 rounded-full text-sm font-semibold border border-white/30 text-white/90 mb-4">
+                    <div className="inline-block text-black bg-white backdrop-blur-sm px-4 py-1.5 rounded-full text-sm font-semibold border border-white/30 mb-4">
                         2026 지방선거 {candidate.category} 후보
                     </div>
 
