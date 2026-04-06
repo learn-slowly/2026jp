@@ -14,7 +14,7 @@ export function CandidateCard({ candidate }: CandidateCardProps) {
     return (
         <div className={`${gradientBg}`}>
             {/* Hero Section */}
-            <section className="c_card relative py-20 px-6">
+            <section className="relative py-20 px-6">
                 <div className="max-w-md mx-auto">
                     {/* 정의당 로고 Placeholder */}
                     <div className="flex items-center gap-3 mb-8">
@@ -63,7 +63,7 @@ export function CandidateCard({ candidate }: CandidateCardProps) {
                             </div>
 
                             {/* 소개 */}
-                            <p className="text-md text-gray-700 leading-relaxed break-keep">
+                            <p className="c_card text-md text-gray-700 leading-relaxed break-keep">
                                 {candidate.intro}
                             </p>
                         </div>
