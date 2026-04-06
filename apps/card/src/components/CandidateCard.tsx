@@ -215,7 +215,7 @@ export function CandidateCard({ candidate }: CandidateCardProps) {
                         )}
                     </div>
 
-                    <div className="bg-justice-yellow rounded-2xl p-8 shadow-xl text-center relative overflow-hidden">
+                    <div className="bg-white rounded-2xl p-8 shadow-xl text-center relative overflow-hidden">
                         <div className="absolute top-0 left-0 w-full h-2 bg-white opacity-30"></div>
                         <h2 className="text-2xl font-bold mb-4 text-gray-900">
                             🚀 후원으로 함께하기
