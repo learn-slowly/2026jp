@@ -12,9 +12,9 @@ export function CandidateCard({ candidate }: CandidateCardProps) {
     const gradientBg = "bg-gradient-to-br from-justice-green via-justice-purple to-justice-pink";
 
     return (
-        <div className={`min-h-screen ${gradientBg}`}>
+        <div className={`${gradientBg}`}>
             {/* Hero Section */}
-            <section className="relative py-20 px-6">
+            <section className="c_card relative py-20 px-6">
                 <div className="max-w-md mx-auto">
                     {/* 정의당 로고 Placeholder */}
                     <div className="flex items-center gap-3 mb-8">
@@ -28,7 +28,7 @@ export function CandidateCard({ candidate }: CandidateCardProps) {
                     <div className="bg-white rounded-3xl shadow-2xl p-8 transform transition-transform hover:scale-[1.01]">
                         <div className="flex flex-col items-center text-center">
                             {/* 프로필 사진 */}
-                            <div className="relative w-40 h-40 rounded-full overflow-hidden border-4 border-justice-green shadow-lg mb-6 bg-gray-100 flex items-center justify-center">
+                            <div className="relative w-40 h-40 rounded-full overflow-hidden shadow-lg mb-6 bg-gray-100 flex items-center justify-center">
                                 {candidate.photoUrl && candidate.photoUrl.startsWith('http') ? (
                                     <img
                                         src={candidate.photoUrl}
@@ -47,13 +47,13 @@ export function CandidateCard({ candidate }: CandidateCardProps) {
                                         {candidate.number}
                                     </span>
                                 )}
-                                <h1 className="text-4xl font-black text-gray-900 tracking-tight">
+                                <h1 className="text-4xl font-d-black text-gray-900 tracking-tight">
                                     {candidate.name}
                                 </h1>
                             </div>
 
                             {/* 슬로건 */}
-                            <p className="text-xl font-bold text-justice-purple mb-4 break-keep italic">
+                            <p className="text-xl font-bold text-d-black mb-4 break-keep italic">
                                 "{candidate.slogan}"
                             </p>
 
