@@ -8,7 +8,7 @@ interface HeroSectionProps {
 
 export function HeroSection({ candidate }: HeroSectionProps) {
     return (
-        <section className="relative min-h-fit flex items-center justify-center overflow-hidden bg-justice-yellow">
+        <section className="pt-16 relative min-h-fit flex items-center justify-center overflow-hidden bg-justice-yellow">
             {/* Background Pattern */}
             <div className="absolute inset-0 opacity-10"
                 style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '40px 40px' }}>
