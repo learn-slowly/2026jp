@@ -65,8 +65,8 @@ export function Navigation({ name, slug }: NavigationProps) {
                     <button
                         onClick={() => scrollToSection('donation')}
                         className={`px-6 py-2 rounded-full font-bold transition-all ${isScrolled
-                            ? 'bg-justice-yellow text-black hover:bg-justice-green-dark'
-                            : 'bg-white text-justice-green hover:bg-gray-100'
+                            ? 'bg-justice-yellow text-black hover:bg-justice-yellow-dark'
+                            : 'bg-white text-black hover:bg-gray-100'
                             }`}
                     >
                         후원하기
