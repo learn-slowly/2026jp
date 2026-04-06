@@ -55,7 +55,7 @@ export function Navigation({ name, slug }: NavigationProps) {
                             <button
                                 key={item}
                                 onClick={() => scrollToSection(ids[idx])}
-                                className={`font-medium text-lg transition-colors hover:text-justice-yellow ${isScrolled ? 'text-gray-600' : 'text-black'
+                                className={`font-medium text-lg transition-colors hover:text-white ${isScrolled ? 'text-gray-600' : 'text-black'
                                     }`}
                             >
                                 {item}
