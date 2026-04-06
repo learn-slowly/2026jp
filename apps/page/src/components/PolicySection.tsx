@@ -14,7 +14,7 @@ export function PolicySection({ candidate }: PolicySectionProps) {
         <section id="policies" className="py-24 bg-gray-50">
             <div className="max-w-7xl mx-auto px-4 md:px-8">
                 <div className="text-center max-w-3xl mx-auto mb-16">
-                    <h2 className="text-black font-bold text-lg tracking-wider uppercase mb-4">당신의 삶을 바꾸는 가장 확실한 방법</h2>
+                    <h2 className="text-gray-900 font-bold text-lg tracking-wider uppercase mb-4">당신의 삶을 바꾸는 가장 확실한 방법</h2>
                     <h3 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
                         {candidate.name}의 약속
                     </h3>
