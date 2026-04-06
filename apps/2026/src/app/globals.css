@@ -49,3 +49,7 @@ body {
 #map h2, #policies h2, #map div.flex-wrap {
   display: none;
 }
+
+c_card {
+  text-align:left;
+}
