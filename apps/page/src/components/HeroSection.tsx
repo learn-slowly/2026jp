@@ -8,7 +8,7 @@ interface HeroSectionProps {
 
 export function HeroSection({ candidate }: HeroSectionProps) {
     return (
-        <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-justice-green via-[#008f63] to-[#006e4b]">
+        <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-justice-yellow via-[#008f63] to-[#006e4b]">
             {/* Background Pattern */}
             <div className="absolute inset-0 opacity-10"
                 style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '40px 40px' }}>
@@ -39,7 +39,7 @@ export function HeroSection({ candidate }: HeroSectionProps) {
                     <div className="flex gap-4 pt-4">
                         <button
                             onClick={() => document.getElementById('policies')?.scrollIntoView({ behavior: 'smooth' })}
-                            className="bg-white text-justice-green px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-100 transition shadow-lg"
+                            className="bg-white text-justice-yellow px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-100 transition shadow-lg"
                         >
                             약속 보기
                         </button>
@@ -53,7 +53,7 @@ export function HeroSection({ candidate }: HeroSectionProps) {
                 </div>
 
                 <div className="relative h-[60vh] md:h-[80vh] flex items-end justify-center md:justify-end animate-in fade-in duration-1000 delay-300">
-                    <div className="absolute inset-0 bg-gradient-to-t from-justice-green/50 to-transparent bottom-0 h-1/3 z-10 pointer-events-none md:hidden"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-justice-yellow/50 to-transparent bottom-0 h-1/3 z-10 pointer-events-none md:hidden"></div>
                     <img
                         src={candidate.mayorExtra?.heroImageUrl || candidate.photoUrl || '/placeholder-candidate.png'}
                         alt={candidate.name}
