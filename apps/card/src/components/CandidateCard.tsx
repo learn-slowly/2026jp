@@ -316,12 +316,13 @@ export function CandidateCard({ candidate }: CandidateCardProps) {
         </div>
     );
 }
-
+{/*<!--
 function ScrollHint() {
     return (
-        <div className="absolute bottom-8 left-0 right-0 text-center animate-bounce text-white/50 pointer-events-none">
+        <!div className="absolute bottom-8 left-0 right-0 text-center animate-bounce text-white/50 pointer-events-none">
             <span className="text-sm shadow-sm">아래로 스크롤하여 더 보기</span>
             <div className="mt-1">↓</div>
         </div>
     );
 }
+-->/*}
