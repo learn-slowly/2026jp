@@ -81,7 +81,7 @@ export function CandidateCard({ candidate }: CandidateCardProps) {
                 </div>
                 {/* Scroll hint arrow */}
                 {/* Scroll hint arrow */}
-                <ScrollHint />
+                {/* <ScrollHint /> */}
             </section>
 
             {/* Careers Section */}
