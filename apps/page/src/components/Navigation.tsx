@@ -41,7 +41,7 @@ export function Navigation({ name, slug }: NavigationProps) {
                             className="w-full h-full object-contain object-left"
                         />
                     </div>
-                    <span className={`font-bold text-xl transition-colors ${isScrolled ? 'text-gray-900' : 'text-white'
+                    <span className={`font-bold text-xl transition-colors ${isScrolled ? 'text-gray-900' : 'text-black'
                         }`}>
                         {name}
                     </span>
@@ -55,7 +55,7 @@ export function Navigation({ name, slug }: NavigationProps) {
                             <button
                                 key={item}
                                 onClick={() => scrollToSection(ids[idx])}
-                                className={`font-medium text-lg transition-colors hover:text-justice-yellow ${isScrolled ? 'text-gray-600' : 'text-white/90'
+                                className={`font-medium text-lg transition-colors hover:text-justice-yellow ${isScrolled ? 'text-gray-600' : 'text-black'
                                     }`}
                             >
                                 {item}
@@ -65,7 +65,7 @@ export function Navigation({ name, slug }: NavigationProps) {
                     <button
                         onClick={() => scrollToSection('donation')}
                         className={`px-6 py-2 rounded-full font-bold transition-all ${isScrolled
-                            ? 'bg-justice-green text-white hover:bg-justice-green-dark'
+                            ? 'bg-justice-yellow text-black hover:bg-justice-green-dark'
                             : 'bg-white text-justice-green hover:bg-gray-100'
                             }`}
                     >
