@@ -26,7 +26,7 @@ export function PolicySection({ candidate }: PolicySectionProps) {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {candidate.policies.map((policy, i) => (
                         <div key={i} className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-shadow border border-gray-100 group">
-                            <div className="w-12 h-12 bg-justice-yellow/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-justice-green transition-colors">
+                            <div className="w-12 h-12 bg-justice-yellow rounded-full flex items-center justify-center mb-6 group-hover:bg-justice-yellow-dark transition-colors">
                                 <span className="text-black font-bold text-xl group-hover:text-white transition-colors">{i + 1}</span>
                             </div>
                             <h4 className="text-xl font-bold text-gray-900 mb-2 leading-snug min-h-[2rem] flex items-center">
