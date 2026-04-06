@@ -33,7 +33,7 @@ export function HeroSection() {
 
                 <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-8 leading-tight animate-fade-in-up delay-200">
                     이제 같이 삽시다<br />
-                    <span className="text-justice-yellow bg-clip-text bg-gradient-to-r">
+                    <span className="text-justice-yellow">
                         같이 잘 삽시다
                     </span>
                 </h1>
