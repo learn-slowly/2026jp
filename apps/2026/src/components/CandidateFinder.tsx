@@ -40,7 +40,7 @@ export function CandidateFinder({ candidates }: CandidateFinderProps) {
             <div className="max-w-7xl mx-auto px-4 md:px-8">
                 <div className="mb-16 text-center">
                     <h2 className="text-justice-yellow font-bold text-lg tracking-wider uppercase mb-3">Candidates</h2>
-                    <h3 className="text-4xl md:text-5xl font-black text-gray-900">
+                    <h3 className="text-4xl md:text-5xl font-d-black text-gray-900">
                         우리 동네 일꾼찾기
                     </h3>
                     <p className="mt-4 text-xl text-gray-500 max-w-2xl mx-auto">
@@ -114,7 +114,7 @@ export function CandidateFinder({ candidates }: CandidateFinderProps) {
                                         <span className="truncate">{candidate.district}</span>
                                     </div>
                                     <div className="mb-4">
-                                        <h3 className="text-xl font-black text-gray-900 transition-colors">
+                                        <h3 className="text-xl font-d-black text-gray-900 transition-colors">
                                             {candidate.name} <span className="text-base font-normal text-gray-400">후보</span>
                                         </h3>
                                     </div>
