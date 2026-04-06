@@ -9,7 +9,7 @@ interface CandidateCardProps {
 
 export function CandidateCard({ candidate }: CandidateCardProps) {
     // Safe color access using Tailwind classes we defined
-    const gradientBg = "bg-gradient-to-br from-justice-yellow via-justice-green to-justice-pink";
+    const gradientBg = "bg-gradient-to-br from-justice-green via-justice-yellow to-justice-pink";
 
     // Copy to clipboard helper
     const handleCopy = (text: string, label: string) => {
