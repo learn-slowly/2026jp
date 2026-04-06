@@ -26,7 +26,7 @@ export function HeroSection({ candidate }: HeroSectionProps) {
                         </span>
                         <span className="block mt-2">
                             {candidate.mayorExtra?.visionSubtitle ? (
-                                <span className="text-3xl md:text-4xl block font-medium mb-2">{candidate.mayorExtra.visionSubtitle}</span>
+                                <span className="text-3xl md:text-4xl block font-semibold mb-2">{candidate.mayorExtra.visionSubtitle}</span>
                             ) : null}
                             {candidate.mayorExtra?.position || `정의당 ${candidate.name}`}
                         </span>
