@@ -28,7 +28,7 @@ export function PolicyShowcase({ policies }: PolicyShowcaseProps) {
             <div className="max-w-7xl mx-auto px-4 md:px-8">
                 <div className="mb-16 text-center">
                     <h2 className="text-justice-green font-bold text-lg tracking-wider uppercase mb-3">Promises</h2>
-                    <h3 className="text-4xl md:text-5xl font-d-black text-gray-900">
+                    <h3 className="text-4xl md:text-5xl font-black text-gray-900">
                         정의당의 약속
                     </h3>
                     <p className="mt-4 text-xl text-gray-500 max-w-2xl mx-auto">
@@ -50,7 +50,7 @@ export function PolicyShowcase({ policies }: PolicyShowcaseProps) {
                                     <div className={`inline-block px-3 py-1 rounded-full text-xs font-bold mb-4 bg-white/20 backdrop-blur-sm ${getTextColor(policy.category)}`}>
                                         #{policy.category}
                                     </div>
-                                    <h4 className={`text-2xl font-d-black mb-4 ${getTextColor(policy.category)}`}>
+                                    <h4 className={`text-2xl font-black mb-4 ${getTextColor(policy.category)}`}>
                                         {policy.title}
                                     </h4>
                                     <p className={`text-lg font-medium opacity-90 mb-6 ${getTextColor(policy.category)}`}>
