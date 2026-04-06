@@ -46,3 +46,9 @@ body {
 c_card {
   text-align:left;
 }
+
+.contact-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
