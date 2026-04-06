@@ -23,7 +23,7 @@ export function CandidateCard({ candidate }: CandidateCardProps) {
     return (
         <div className={`h-screen overflow-y-scroll scroll-smooth ${gradientBg}`}>
             {/* Hero Section */}
-            <section className="relative py-10 px-6 flex flex-col justify-center">
+            <section className="relative py-5 px-6 flex flex-col justify-center">
                 <div className="max-w-lg mx-auto w-full">
                     {/* 정의당 로고 */}
                     <div className="flex justify-end items-center gap-3 mb-4">
@@ -86,7 +86,7 @@ export function CandidateCard({ candidate }: CandidateCardProps) {
 
             {/* Careers Section */}
             {candidate.careers && candidate.careers.length > 0 && (
-                <section className="relative py-10 px-6 flex items-center justify-center">
+                <section className="relative py-5 px-6 flex items-center justify-center">
                     <div className="max-w-lg mx-auto w-full">
                         <div className="bg-white rounded-3xl shadow-xl p-8 transform transition-transform hover:scale-[1.01]">
                             <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
@@ -107,7 +107,7 @@ export function CandidateCard({ candidate }: CandidateCardProps) {
 
             {/* Reports Section (Incumbent Only) */}
             {candidate.reports && candidate.reports.length > 0 && (
-                <section className="relative py-10 px-6 flex items-center justify-center">
+                <section className="relative py-5 px-6 flex items-center justify-center">
                     <div className="max-w-lg mx-auto w-full">
                         <div className="bg-white rounded-3xl shadow-xl p-8 transform transition-transform hover:scale-[1.01]">
                             <h3 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
@@ -154,7 +154,7 @@ export function CandidateCard({ candidate }: CandidateCardProps) {
 
             {/* Policies Section */}
             {candidate.policies && candidate.policies.length > 0 && (
-                <section className="relative py-10 px-6 flex items-center justify-center">
+                <section className="relative py-5 px-6 flex items-center justify-center">
                     <div className="max-w-lg mx-auto w-full">
                         <div className="bg-white rounded-3xl shadow-xl p-8 transform transition-transform hover:scale-[1.01]">
                             <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
@@ -179,7 +179,7 @@ export function CandidateCard({ candidate }: CandidateCardProps) {
             )}
 
             {/* 후원 & Contact Section combined for last snap */}
-            <section className="py-10 px-6 flex flex-col justify-center">
+            <section className="py-5 px-6 flex flex-col justify-center">
                 <div className="max-w-lg mx-auto w-full space-y-6">
                     {/* 소셜 미디어 링크 */}
                     <div className="flex justify-center gap-4">
