@@ -63,17 +63,17 @@ export function CandidateCard({ candidate }: CandidateCardProps) {
                             </div>
 
                             {/* 슬로건 */}
-                            <p className="text-xl font-bold mb-4 break-keep italic">
+                            <p className="text-xl font-bold mb-4 break-keep italic font-black">
                                 "{candidate.slogan}"
                             </p>
 
                             {/* 지역구 */}
-                            <div className="inline-block px-4 py-1 bg-gray-100 rounded-full text-gray-600 font-medium mb-6">
+                            <div className="inline-block px-4 py-1 bg-gray-100 rounded-full text-gray-600 font-medium mb-6 font-black">
                                 {candidate.district}
                             </div>
 
                             {/* 소개 */}
-                            <p className="c_card text-left leading-relaxed break-keep">
+                            <p className="c_card text-left leading-relaxed break-keep font-black">
                                 {candidate.intro}
                             </p>
                         </div>
