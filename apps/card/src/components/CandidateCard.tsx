@@ -163,7 +163,7 @@ export function CandidateCard({ candidate }: CandidateCardProps) {
                             <div className="space-y-4 text-left max-h-[60vh] overflow-y-auto pr-2 custom-scrollbar">
                                 {candidate.policies.map((p, i) => (
                                     <div key={i} className="bg-yellow-50 rounded-xl p-5 border border-yellow-100 flex gap-4 hover:bg-yellow-100 transition-colors">
-                                        <span className="text-justice-green font-black text-xl flex-shrink-0 pt-0.5">{i + 1}.</span>
+                                        <span className="text-justice-yellow font-black text-xl flex-shrink-0 pt-0.5">{i + 1}.</span>
                                         <div className="space-y-1">
                                             <h4 className="text-gray-900 font-bold text-lg leading-snug">{p.title}</h4>
                                             {p.content && (
