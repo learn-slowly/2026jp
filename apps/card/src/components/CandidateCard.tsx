@@ -316,7 +316,7 @@ export function CandidateCard({ candidate }: CandidateCardProps) {
         </div>
     );
 }
-{/*<!--
+/*
 function ScrollHint() {
     return (
         <!div className="absolute bottom-8 left-0 right-0 text-center animate-bounce text-white/50 pointer-events-none">
@@ -325,4 +325,4 @@ function ScrollHint() {
         </div>
     );
 }
--->/*}
+*/
