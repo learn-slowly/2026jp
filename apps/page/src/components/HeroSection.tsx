@@ -21,12 +21,12 @@ export function HeroSection({ candidate }: HeroSectionProps) {
                     </div>
 
                     <h1 className="text-5xl md:text-7xl font-extrabold leading-tight tracking-tight">
-                        <span className="block text-black drop-shadow-md">
+                        <span className="block text-black drop-shadow-md whitespace-pre-wrap">
                             {candidate.mayorExtra?.visionTitle || candidate.slogan}
                         </span>
                         <span className="block mt-2">
                             {candidate.mayorExtra?.visionSubtitle ? (
-                                <span className="text-3xl md:text-4xl block font-medium mb-2">{candidate.mayorExtra.visionSubtitle}</span>
+                                <span className="text-3xl md:text-4xl block font-medium mb-2 whitespace-pre-wrap">{candidate.mayorExtra.visionSubtitle}</span>
                             ) : null}
                             {candidate.mayorExtra?.position || `정의당 ${candidate.name}`}
                         </span>

@@ -31,7 +31,14 @@ export function MayorSections({ form }: MayorSectionProps) {
                             </div>
                         </div>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <FormInput label="비전 타이틀 (예: 내 삶을 바꾸는 서울)" register={form.register('mayorExtra.visionTitle')} />
+                            <div>
+                                <label className="block text-xs font-medium text-gray-500 mb-1">비전 타이틀 (예: 내 삶을 바꾸는 서울)</label>
+                                <textarea
+                                    {...form.register('mayorExtra.visionTitle')}
+                                    className="block w-full rounded-lg border-gray-300 border p-3 text-black bg-white focus:ring-2 focus:ring-justice-purple focus:border-justice-purple h-24"
+                                    placeholder="비전 타이틀 (엔터로 줄바꿈 가능)"
+                                />
+                            </div>
                             <FormInput label="비전 서브타이틀 (예: 돌봄 책임 국가 책임)" register={form.register('mayorExtra.visionSubtitle')} />
                         </div>
                         <div>
