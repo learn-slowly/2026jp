@@ -18,7 +18,7 @@ export function MayorSections({ form }: MayorSectionProps) {
                 <div className="space-y-6">
                     {/* Extra Info */}
                     <div className="bg-white p-6 rounded-xl shadow-sm border border-purple-100 space-y-4">
-                        <h4 className="font-bold text-gray-800 border-b pb-2">기본 설정 (비전 & 인사말)</h4>
+                        <h4 className="font-bold text-gray-800 border-b pb-2">기본 설정 (비전 &amp; 인사말)</h4>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <FormInput label="직함 (예: 서울시장 예비후보)" register={form.register('mayorExtra.position')} />
                             <div className="md:col-span-2">

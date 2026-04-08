@@ -1,5 +1,7 @@
-import { sheetsClient } from '@justice/api-client';
+import { SheetsClient } from '@justice/api-client';
 import { NextRequest, NextResponse } from 'next/server';
+
+const sheetsClient = new SheetsClient();
 
 export const dynamic = 'force-dynamic';
 
@@ -24,16 +26,9 @@ export async function GET(request: NextRequest) {
         const candidate = await sheetsClient.getCandidate(slug);
 
         if (candidate) {
-            if (candidate.category.includes('단체장')) {
-                const extra = await sheetsClient.getMayorExtra(slug);
-                if (extra) {
-                    candidate.mayorExtra = extra;
-                }
-            }
-
             return NextResponse.json({
                 available: false,
-                candidate
+                exists: true
             });
         }
 
