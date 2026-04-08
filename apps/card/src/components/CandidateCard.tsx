@@ -308,8 +308,16 @@ export function CandidateCard({ candidate }: CandidateCardProps) {
                         </div>
                     )}
 
-                    <footer className="py-8 text-center text-white/60 text-sm">
-                        &copy; 2026 Justice Party. All rights reserved.
+                    <footer className="py-8 pb-12 text-center text-white/80 text-sm flex flex-col items-center">
+                        <div className="flex flex-wrap justify-center gap-3 mb-6 px-2">
+                            <a href="https://www.justice21.org/" target="_blank" rel="noreferrer" className="hover:scale-105 transition-transform flex items-center justify-center px-2 py-1.5 h-12">
+                                <img src="/logo-03.png" alt="정의당" className="h-full w-auto object-contain" />
+                            </a>
+                            <a href="https://2026.justice21.org/" target="_blank" rel="noreferrer" className="inline-flex items-center justify-center h-12 px-4 rounded-2xl bg-black/20 hover:bg-black/30 border border-white/20 text-white transition-all font-bold text-sm shadow-lg backdrop-blur-md cursor-pointer z-10 w-auto relative pointer-events-auto">
+                                2026 지선 특별 페이지
+                            </a>
+                        </div>
+                        <p className="opacity-60">&copy; 2026 Justice Party. All rights reserved.</p>
                     </footer>
                 </div>
             </section>

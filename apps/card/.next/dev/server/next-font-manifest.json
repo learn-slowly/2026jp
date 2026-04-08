@@ -1,6 +1,6 @@
 {
   "app": {
-    "[project]/coding/2026jp/justice-election-2026/apps/card/src/app/page": [
+    "[project]/coding/2026jp/justice-election-2026/apps/card/src/app/[slug]/page": [
       "static/media/caa3a2e1cccd8315-s.p.853070df.woff2",
       "static/media/797e433ab948586e-s.p.dbea232f.woff2"
     ]

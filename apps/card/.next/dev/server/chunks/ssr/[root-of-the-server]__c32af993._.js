@@ -204,7 +204,17 @@ class SheetsClient {
                     range: 'reports!A2:I'
                 });
                 const rows = response.data.values || [];
-                return rows.map((row)=>({
+                const candidateRows = rows.filter((row)=>(row[0] || '').trim() === slug);
+                if (!candidateRows.length) return [];
+                let maxTime = 0;
+                candidateRows.forEach((row)=>{
+                    const timeStr = row[8];
+                    if (timeStr) {
+                        const time = new Date(timeStr).getTime();
+                        if (time > maxTime) maxTime = time;
+                    }
+                });
+                return candidateRows.filter((row)=>row[8] && new Date(row[8]).getTime() === maxTime).filter((row)=>row[7] !== 'DELETED_BATCH').map((row)=>({
                         candidateSlug: (row[0] || '').trim(),
                         year: (row[1] || '').trim(),
                         month: (row[2] || '').trim(),
@@ -213,20 +223,20 @@ class SheetsClient {
                         description: (row[5] || '').trim(),
                         linkUrl: (row[6] || '').trim(),
                         visible: (row[7] || '').trim().toUpperCase() === 'TRUE',
-                        updatedAt: row[8] ? new Date(row[8]) : undefined
-                    })).filter((r)=>r.candidateSlug === slug && r.visible);
+                        updatedAt: new Date(row[8])
+                    })).filter((r)=>r.visible);
             } catch (error) {
                 console.error('Error fetching reports:', error);
                 return [];
             }
         });
     }
-    saveReports(reports) {
+    saveReports(slug, reports) {
         return __awaiter(this, void 0, void 0, function*() {
-            if (!reports.length) return true;
             try {
-                const rows = reports.map((r)=>[
-                        r.candidateSlug,
+                const now = new Date().toISOString();
+                const rows = reports.length ? reports.map((r)=>[
+                        slug,
                         r.year,
                         r.month,
                         r.category,
@@ -234,8 +244,20 @@ class SheetsClient {
                         r.description,
                         r.linkUrl || '',
                         r.visible ? 'TRUE' : 'FALSE',
-                        new Date().toISOString()
-                    ]);
+                        now
+                    ]) : [
+                    [
+                        slug,
+                        '',
+                        '',
+                        '',
+                        '',
+                        '',
+                        '',
+                        'DELETED_BATCH',
+                        now
+                    ]
+                ];
                 yield this.sheets.spreadsheets.values.append({
                     spreadsheetId: this.sheetId,
                     range: 'reports!A:I',
@@ -315,7 +337,18 @@ class SheetsClient {
                     spreadsheetId: this.sheetId,
                     range: 'mayor_stories!A2:H'
                 });
-                return (response.data.values || []).map((row)=>({
+                const rows = response.data.values || [];
+                const candidateRows = rows.filter((row)=>(row[0] || '').trim() === slug);
+                if (!candidateRows.length) return [];
+                let maxTime = 0;
+                candidateRows.forEach((row)=>{
+                    const timeStr = row[7];
+                    if (timeStr) {
+                        const time = new Date(timeStr).getTime();
+                        if (time > maxTime) maxTime = time;
+                    }
+                });
+                return candidateRows.filter((row)=>row[7] && new Date(row[7]).getTime() === maxTime).filter((row)=>row[6] !== 'DELETED_BATCH').map((row)=>({
                         candidateSlug: row[0] || '',
                         date: row[1] || '',
                         category: row[2] || '',
@@ -323,27 +356,38 @@ class SheetsClient {
                         content: row[4] || '',
                         imageUrl: row[5] || '',
                         visible: (row[6] || '').toUpperCase() === 'TRUE'
-                    })).filter((s)=>s.candidateSlug === slug && s.visible);
+                    })).filter((s)=>s.visible);
             } catch (error) {
                 console.error('Error fetching mayor_stories:', error);
                 return [];
             }
         });
     }
-    saveMayorStories(stories) {
+    saveMayorStories(slug, stories) {
         return __awaiter(this, void 0, void 0, function*() {
-            if (!stories.length) return true;
             try {
-                const rows = stories.map((s)=>[
-                        s.candidateSlug,
+                const now = new Date().toISOString();
+                const rows = stories.length ? stories.map((s)=>[
+                        slug,
                         s.date,
                         s.category,
                         s.title,
                         s.content,
                         s.imageUrl || '',
                         s.visible ? 'TRUE' : 'FALSE',
-                        new Date().toISOString()
-                    ]);
+                        now
+                    ]) : [
+                    [
+                        slug,
+                        '',
+                        '',
+                        '',
+                        '',
+                        '',
+                        'DELETED_BATCH',
+                        now
+                    ]
+                ];
                 yield this.sheets.spreadsheets.values.append({
                     spreadsheetId: this.sheetId,
                     range: 'mayor_stories!A:H',
@@ -367,33 +411,54 @@ class SheetsClient {
                     spreadsheetId: this.sheetId,
                     range: 'mayor_schedules!A2:G'
                 });
-                return (response.data.values || []).map((row)=>({
+                const rows = response.data.values || [];
+                const candidateRows = rows.filter((row)=>(row[0] || '').trim() === slug);
+                if (!candidateRows.length) return [];
+                let maxTime = 0;
+                candidateRows.forEach((row)=>{
+                    const timeStr = row[6];
+                    if (timeStr) {
+                        const time = new Date(timeStr).getTime();
+                        if (time > maxTime) maxTime = time;
+                    }
+                });
+                return candidateRows.filter((row)=>row[6] && new Date(row[6]).getTime() === maxTime).filter((row)=>row[5] !== 'DELETED_BATCH').map((row)=>({
                         candidateSlug: row[0] || '',
                         date: row[1] || '',
                         time: row[2] || '',
                         title: row[3] || '',
                         location: row[4] || '',
                         visible: (row[5] || '').toUpperCase() === 'TRUE'
-                    })).filter((s)=>s.candidateSlug === slug && s.visible);
+                    })).filter((s)=>s.visible);
             } catch (error) {
                 console.error('Error fetching mayor_schedules:', error);
                 return [];
             }
         });
     }
-    saveMayorSchedules(schedules) {
+    saveMayorSchedules(slug, schedules) {
         return __awaiter(this, void 0, void 0, function*() {
-            if (!schedules.length) return true;
             try {
-                const rows = schedules.map((s)=>[
-                        s.candidateSlug,
+                const now = new Date().toISOString();
+                const rows = schedules.length ? schedules.map((s)=>[
+                        slug,
                         s.date,
                         s.time,
                         s.title,
                         s.location,
                         s.visible ? 'TRUE' : 'FALSE',
-                        new Date().toISOString()
-                    ]);
+                        now
+                    ]) : [
+                    [
+                        slug,
+                        '',
+                        '',
+                        '',
+                        '',
+                        'DELETED_BATCH',
+                        now
+                    ]
+                ];
                 yield this.sheets.spreadsheets.values.append({
                     spreadsheetId: this.sheetId,
                     range: 'mayor_schedules!A:G',
@@ -417,31 +482,51 @@ class SheetsClient {
                     spreadsheetId: this.sheetId,
                     range: 'mayor_gallery!A2:F'
                 });
-                return (response.data.values || []).map((row)=>({
+                const rows = response.data.values || [];
+                const candidateRows = rows.filter((row)=>(row[0] || '').trim() === slug);
+                if (!candidateRows.length) return [];
+                let maxTime = 0;
+                candidateRows.forEach((row)=>{
+                    const timeStr = row[5];
+                    if (timeStr) {
+                        const time = new Date(timeStr).getTime();
+                        if (time > maxTime) maxTime = time;
+                    }
+                });
+                return candidateRows.filter((row)=>row[5] && new Date(row[5]).getTime() === maxTime).filter((row)=>row[4] !== 'DELETED_BATCH').map((row)=>({
                         candidateSlug: row[0] || '',
                         date: row[1] || '',
                         caption: row[2] || '',
                         imageUrl: row[3] || '',
                         visible: (row[4] || '').toUpperCase() === 'TRUE'
-                    })).filter((s)=>s.candidateSlug === slug && s.visible);
+                    })).filter((s)=>s.visible);
             } catch (error) {
                 console.error('Error fetching mayor_gallery:', error);
                 return [];
             }
         });
     }
-    saveMayorGallery(gallery) {
+    saveMayorGallery(slug, gallery) {
         return __awaiter(this, void 0, void 0, function*() {
-            if (!gallery.length) return true;
             try {
-                const rows = gallery.map((g)=>[
-                        g.candidateSlug,
+                const now = new Date().toISOString();
+                const rows = gallery.length ? gallery.map((g)=>[
+                        slug,
                         g.date,
                         g.caption,
                         g.imageUrl,
                         g.visible ? 'TRUE' : 'FALSE',
-                        new Date().toISOString()
-                    ]);
+                        now
+                    ]) : [
+                    [
+                        slug,
+                        '',
+                        '',
+                        '',
+                        'DELETED_BATCH',
+                        now
+                    ]
+                ];
                 yield this.sheets.spreadsheets.values.append({
                     spreadsheetId: this.sheetId,
                     range: 'mayor_gallery!A:F',
@@ -796,9 +881,19 @@ async function Home() {
                                         className: "pt-14 pb-6 px-6 flex-1 flex flex-col items-center text-center",
                                         children: [
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$coding$2f$2026jp$2f$justice$2d$election$2d$2026$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
-                                                className: "text-2xl font-bold text-gray-900 group-hover:text-justice-purple transition-colors mb-1",
-                                                children: candidate.name
-                                            }, void 0, false, {
+                                                className: "text-2xl font-bold text-gray-900 group-hover:text-justice-purple transition-colors mb-1 flex items-center justify-center gap-2",
+                                                children: [
+                                                    candidate.name,
+                                                    candidate.isIncumbent && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$coding$2f$2026jp$2f$justice$2d$election$2d$2026$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                        className: "text-[11px] font-bold bg-justice-green text-white px-2 py-0.5 rounded-md shadow-sm tracking-wide",
+                                                        children: "현역"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/coding/2026jp/justice-election-2026/apps/card/src/app/page.tsx",
+                                                        lineNumber: 85,
+                                                        columnNumber: 45
+                                                    }, this)
+                                                ]
+                                            }, void 0, true, {
                                                 fileName: "[project]/coding/2026jp/justice-election-2026/apps/card/src/app/page.tsx",
                                                 lineNumber: 82,
                                                 columnNumber: 37
@@ -813,7 +908,7 @@ async function Home() {
                                                         children: "|"
                                                     }, void 0, false, {
                                                         fileName: "[project]/coding/2026jp/justice-election-2026/apps/card/src/app/page.tsx",
-                                                        lineNumber: 86,
+                                                        lineNumber: 91,
                                                         columnNumber: 82
                                                     }, this) : '',
                                                     " ",
@@ -826,20 +921,20 @@ async function Home() {
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/coding/2026jp/justice-election-2026/apps/card/src/app/page.tsx",
-                                                        lineNumber: 86,
+                                                        lineNumber: 91,
                                                         columnNumber: 166
                                                     }, this) : ''
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/coding/2026jp/justice-election-2026/apps/card/src/app/page.tsx",
-                                                lineNumber: 85,
+                                                lineNumber: 90,
                                                 columnNumber: 37
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$coding$2f$2026jp$2f$justice$2d$election$2d$2026$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                 className: "w-12 h-1 bg-gray-100 rounded-full mb-4 transition-colors group-hover:bg-justice-purple/20"
                                             }, void 0, false, {
                                                 fileName: "[project]/coding/2026jp/justice-election-2026/apps/card/src/app/page.tsx",
-                                                lineNumber: 89,
+                                                lineNumber: 94,
                                                 columnNumber: 37
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$coding$2f$2026jp$2f$justice$2d$election$2d$2026$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -847,7 +942,7 @@ async function Home() {
                                                 children: candidate.slogan || candidate.intro || '우리지역을 바꿀 정의당 후보입니다.'
                                             }, void 0, false, {
                                                 fileName: "[project]/coding/2026jp/justice-election-2026/apps/card/src/app/page.tsx",
-                                                lineNumber: 91,
+                                                lineNumber: 96,
                                                 columnNumber: 37
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$coding$2f$2026jp$2f$justice$2d$election$2d$2026$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -858,13 +953,13 @@ async function Home() {
                                                         className: "w-4 h-4 transform group-hover:translate-x-1 transition-transform"
                                                     }, void 0, false, {
                                                         fileName: "[project]/coding/2026jp/justice-election-2026/apps/card/src/app/page.tsx",
-                                                        lineNumber: 97,
+                                                        lineNumber: 102,
                                                         columnNumber: 41
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/coding/2026jp/justice-election-2026/apps/card/src/app/page.tsx",
-                                                lineNumber: 95,
+                                                lineNumber: 100,
                                                 columnNumber: 37
                                             }, this)
                                         ]

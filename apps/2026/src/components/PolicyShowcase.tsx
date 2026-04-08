@@ -36,44 +36,12 @@ export function PolicyShowcase({ policies }: PolicyShowcaseProps) {
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {policies.map((policy, i) => (
-                        <div
-                            key={i}
-                            className={`group relative overflow-hidden rounded-2xl shadow-xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl bg-gradient-to-br ${getColors(policy.category)}`}
-                        >
-                            {/* Background decoration */}
-                            <div className="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 rounded-full bg-white/10 blur-3xl opacity-50 pointer-events-none"></div>
-
-                            <div className="p-8 h-full flex flex-col justify-between relative z-10">
-                                <div>
-                                    <div className={`inline-block px-3 py-1 rounded-full text-xs font-bold mb-4 bg-white/20 backdrop-blur-sm ${getTextColor(policy.category)}`}>
-                                        #{policy.category}
-                                    </div>
-                                    <h4 className={`text-2xl font-black mb-4 ${getTextColor(policy.category)}`}>
-                                        {policy.title}
-                                    </h4>
-                                    <p className={`text-lg font-medium opacity-90 mb-6 ${getTextColor(policy.category)}`}>
-                                        {policy.summary}
-                                    </p>
-                                    <p className={`text-sm opacity-80 line-clamp-4 leading-relaxed ${getTextColor(policy.category)}`}>
-                                        {policy.content}
-                                    </p>
-                                </div>
-
-                                {policy.linkUrl && (
-                                    <div className="mt-8 pt-6 border-t border-white/20">
-                                        <Link
-                                            href={policy.linkUrl}
-                                            className={`inline-flex items-center gap-2 font-bold hover:underline ${getTextColor(policy.category)}`}
-                                        >
-                                            자세히 보기 →
-                                        </Link>
-                                    </div>
-                                )}
-                            </div>
-                        </div>
-                    ))}
+                <div className="flex flex-col items-center justify-center py-24 bg-gray-50 rounded-3xl border border-gray-100/50 shadow-inner">
+                    <span className="text-5xl mb-6 drop-shadow-sm">🚧</span>
+                    <h4 className="text-2xl md:text-3xl font-black text-gray-800 mb-3 tracking-tight">공약 준비 중입니다</h4>
+                    <p className="text-lg text-gray-500 text-center break-keep">
+                        정의당의 2026 지방선거 핵심 공약을 세밀하게 다듬고 있습니다. 곧 공개됩니다!
+                    </p>
                 </div>
             </div>
         </section>

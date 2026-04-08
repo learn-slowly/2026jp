@@ -123,8 +123,16 @@ export function Footer({ candidate }: FooterProps) {
                     )}
                 </div>
 
-                <div className="border-t border-white/10 pt-8 text-center text-white/40 text-sm">
-                    © 2026 Justice Party Election Camp. All rights reserved.
+                <div className="border-t border-white/10 pt-10 pb-4 flex flex-col items-center text-center text-white/40 text-sm">
+                    <div className="flex flex-wrap justify-center gap-4 mb-8">
+                        <a href="https://www.justice21.org/" target="_blank" rel="noreferrer" className="hover:opacity-80 transition flex items-center justify-center px-2 py-2 h-12">
+                            <img src="/logo-03.png" alt="정의당" className="h-full w-auto object-contain" />
+                        </a>
+                        <a href="https://2026.justice21.org/" target="_blank" rel="noreferrer" className="inline-flex items-center justify-center h-12 px-6 rounded-xl bg-white/10 hover:bg-white/20 border border-white/10 text-white transition font-bold text-sm shadow-sm backdrop-blur-sm">
+                            2026 지선 특별 페이지
+                        </a>
+                    </div>
+                    © 2026 Justice Party. All rights reserved.
                 </div>
             </div>
         </footer>
