@@ -48,6 +48,11 @@ body {
 
 /*추가*/
 
+input, textarea, select {
+  color: black !important;
+  background-color: white !important;
+}
+
 body {
   letter-spacing : -0.02em;
 }

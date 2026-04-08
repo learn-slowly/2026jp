@@ -22,12 +22,12 @@
   },
   "dynamicRoutes": [
     {
-      "page": "/card/[slug]",
-      "regex": "^/card/([^/]+?)(?:/)?$",
+      "page": "/[slug]",
+      "regex": "^/([^/]+?)(?:/)?$",
       "routeKeys": {
         "nxtPslug": "nxtPslug"
       },
-      "namedRegex": "^/card/(?<nxtPslug>[^/]+?)(?:/)?$"
+      "namedRegex": "^/(?<nxtPslug>[^/]+?)(?:/)?$"
     }
   ],
   "staticRoutes": [
@@ -74,10 +74,28 @@
       "namedRegex": "^/api/verify(?:/)?$"
     },
     {
+      "page": "/apple-icon.png",
+      "regex": "^/apple\\-icon\\.png(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/apple\\-icon\\.png(?:/)?$"
+    },
+    {
       "page": "/favicon.ico",
       "regex": "^/favicon\\.ico(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/favicon\\.ico(?:/)?$"
+    },
+    {
+      "page": "/icon.png",
+      "regex": "^/icon\\.png(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/icon\\.png(?:/)?$"
+    },
+    {
+      "page": "/qr",
+      "regex": "^/qr(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/qr(?:/)?$"
     },
     {
       "page": "/register",

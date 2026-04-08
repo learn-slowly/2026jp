@@ -48,7 +48,7 @@ export function StorySection({ candidate }: StorySectionProps) {
                                 <h4 className="text-xl font-bold text-gray-900 mb-3 leading-snug group-hover:text-justice-green transition-colors">
                                     {story.title}
                                 </h4>
-                                <p className="text-gray-600 line-clamp-3 mb-6 flex-1 text-sm leading-relaxed">
+                                <p className="text-gray-600 line-clamp-3 mb-6 flex-1 text-sm leading-relaxed whitespace-pre-wrap">
                                     {story.content}
                                 </p>
                                 <div className="mt-auto pt-4 border-t border-gray-100 flex items-center text-sm font-bold text-gray-900 group-hover:text-justice-green transition-colors">

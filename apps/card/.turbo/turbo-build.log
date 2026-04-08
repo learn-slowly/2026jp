@@ -1,39 +1,42 @@
 
-
-> @justice/card@0.1.0 build
+> @justice/card@0.1.1 build
 > next build
 
-[1G[0K[33m[1m⚠[22m[39m Found lockfile missing swc dependencies, patching...
-[1m[38;2;173;127;168m▲ Next.js 16.1.4[39m[22m (Turbopack)
+⚠ Warning: Next.js inferred your workspace root, but it may not be correct.
+ We detected multiple lockfiles and selected the directory of /Users/ahbaik/package-lock.json as the root directory.
+ To silence this warning, set `turbopack.root` in your Next.js config, or consider removing one of the lockfiles if it's not needed.
+   See https://nextjs.org/docs/app/api-reference/config/next-config-js/turbopack#root-directory for more information.
+ Detected additional lockfiles: 
+   * /Users/ahbaik/coding/2026jp/justice-election-2026/package-lock.json
+
+▲ Next.js 16.1.4 (Turbopack)
 - Environments: .env.local
 
-[37m[1m [22m[39m Creating an optimized production build ...
-[33m[1m⚠[22m[39m Found lockfile missing swc dependencies, patching...
-[33m[1m⚠[22m[39m Lockfile was successfully patched, please run "npm install" to ensure @next/swc dependencies are downloaded
-[33m[1m⚠[22m[39m Lockfile was successfully patched, please run "npm install" to ensure @next/swc dependencies are downloaded
-[32m[1m✓[22m[39m Compiled successfully in 5.2s
-[?25l[37m[1m [22m[39m Running TypeScript  [36m.[39m[2K[1G[37m[1m [22m[39m Running TypeScript  [36m..[39m[2K[1G[37m[1m [22m[39m Running TypeScript  [36m...[39m[2K[1G[37m[1m [22m[39m Running TypeScript  [36m.[39m[2K[1G[37m[1m [22m[39m Running TypeScript  [36m..[39m[2K[1G[37m[1m [22m[39m Running TypeScript  [36m...[39m[2K[1G[37m[1m [22m[39m Running TypeScript  [36m.[39m[2K[1G[37m[1m [22m[39m Running TypeScript  [36m..[39m[2K[1G[37m[1m [22m[39m Running TypeScript  [36m...[39m[2K[1G[37m[1m [22m[39m Running TypeScript  [36m.[39m[2K[1G[37m[1m [22m[39m Running TypeScript  [36m..[39m[2K[1G[37m[1m [22m[39m Running TypeScript  [36m...[39m[2K[1G[37m[1m [22m[39m Running TypeScript  [36m.[39m[2K[1G[37m[1m [22m[39m Running TypeScript  [36m..[39m[2K[1G[37m[1m [22m[39m Running TypeScript  [36m...[39m[2K[1G[37m[1m [22m[39m Running TypeScript  [36m.[39m[2K[1G[37m[1m [22m[39m Running TypeScript  [36m..[39m[2K[1G[37m[1m [22m[39m Running TypeScript  [36m...[39m[2K[1G[37m[1m [22m[39m Running TypeScript  [36m.[39m[2K[1G[37m[1m [22m[39m Running TypeScript  [36m..[39m[2K[1G[37m[1m [22m[39m Running TypeScript  [36m...[39m[2K[1G[37m[1m [22m[39m Running TypeScript  [36m.[39m[2K[1G[37m[1m [22m[39m Running TypeScript  [36m..[39m[2K[1G[37m[1m [22m[39m Running TypeScript  [36m...[39m[2K[1G[37m[1m [22m[39m Running TypeScript  [36m.[39m[2K[1G[37m[1m [22m[39m Running TypeScript  [36m..[39m[2K[1G[37m[1m [22m[39m Running TypeScript  [36m...[39m[2K[1G[37m[1m [22m[39m Running TypeScript  [36m.[39m[2K[1G[37m[1m [22m[39m Running TypeScript  [36m..[39m[2K[1G[37m[1m [22m[39m Running TypeScript  [36m...[39m[2K[1G[37m[1m [22m[39m Running TypeScript  [36m.[39m[2K[1G[37m[1m [22m[39m Running TypeScript  [36m..[39m[2K[1G[37m[1m [22m[39m Running TypeScript  [36m...[39m[31mFailed to compile.
-[39m
-[36m./src/app/register/page.tsx[39m:[33m21[39m:[33m9[39m
-[31m[1mType error[22m[39m: Type 'Resolver<{ slug: string; name: string; district: string; category: string; slogan: string; intro: string; donation: { account: string; holder: string; }; contact: { phone?: string | undefined; email?: string | undefined; }; ... 6 more ...; isIncumbent?: boolean | undefined; }, any, { ...; }>' is not assignable to type 'Resolver<{ slug: string; name: string; district: string; category: string; slogan: string; intro: string; careers: string[]; pledges: { title: string; content: string; }[]; donation: { account: string; holder: string; }; ... 5 more ...; address?: string | undefined; }, any, { ...; }>'.
-  Types of parameters 'options' and 'options' are incompatible.
-    Type 'ResolverOptions<{ slug: string; name: string; district: string; category: string; slogan: string; intro: string; careers: string[]; pledges: { title: string; content: string; }[]; donation: { account: string; holder: string; }; ... 5 more ...; address?: string | undefined; }>' is not assignable to type 'ResolverOptions<{ slug: string; name: string; district: string; category: string; slogan: string; intro: string; donation: { account: string; holder: string; }; contact: { phone?: string | undefined; email?: string | undefined; }; ... 6 more ...; isIncumbent?: boolean | undefined; }>'.
-      Type 'string[] | undefined' is not assignable to type 'string[]'.
-        Type 'undefined' is not assignable to type 'string[]'.
+  Creating an optimized production build ...
+✓ Compiled successfully in 5.8s
+  Running TypeScript ...
+  Collecting page data using 11 workers ...
+  Generating static pages using 11 workers (0/11) ...
+  Generating static pages using 11 workers (2/11) 
+  Generating static pages using 11 workers (5/11) 
+  Generating static pages using 11 workers (8/11) 
+✓ Generating static pages using 11 workers (11/11) in 1708.8ms
+  Finalizing page optimization ...
 
-[0m [90m 19 |[39m
- [90m 20 |[39m     [36mconst[39m form [33m=[39m useForm[33m<[39m[33mFormData[39m[33m>[39m({
-[31m[1m>[22m[39m[90m 21 |[39m         resolver[33m:[39m zodResolver(formSchema)[33m,[39m
- [90m    |[39m         [31m[1m^[22m[39m
- [90m 22 |[39m         defaultValues[33m:[39m {
- [90m 23 |[39m             category[33m:[39m [32m'기초지역구'[39m[33m,[39m
- [90m 24 |[39m             isIncumbent[33m:[39m [36mfalse[39m[33m,[39m[0m
-[2K[1G[37m[1m [22m[39m Running TypeScript  [36m.[39m[2K[1G[?25hNext.js build worker exited with code: 1 and signal: null
-[?25l [36m.[39m [?25h[1G[0K⠙[1G[0K[1mnpm[22m [31merror[39m Lifecycle script `build` failed with error:
-[1G[0K⠙[1G[0K[1mnpm[22m [31merror[39m [94mcode[39m [33m1[39m
-[1G[0K⠙[1G[0K[1mnpm[22m [31merror[39m [94mpath[39m /Users/ahbaik/Documents/coding/2026jp/justice-election-2026/apps/card
-[1G[0K⠙[1G[0K[1mnpm[22m [31merror[39m [94mworkspace[39m @justice/card@0.1.0
-[1G[0K⠙[1G[0K[1mnpm[22m [31merror[39m [94mlocation[39m /Users/ahbaik/Documents/coding/2026jp/justice-election-2026/apps/card
-[1G[0K⠙[1G[0K[1mnpm[22m [31merror[39m command failed
-[1G[0K⠙[1G[0K[1mnpm[22m [31merror[39m [94mcommand[39m sh -c next build
-[1G[0K⠙[1G[0K
+Route (app)          Revalidate  Expire
+┌ ○ /                        1m      1y
+├ ○ /_not-found
+├ ƒ /[slug]
+├ ƒ /api/check-slug
+├ ƒ /api/register
+├ ƒ /api/upload
+├ ƒ /api/verify
+├ ○ /apple-icon.png
+├ ○ /icon.png
+├ ○ /qr
+└ ○ /register
+
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+

@@ -1,7 +1,7 @@
 'use client';
 
 import { Candidate } from '@justice/types';
-import { Camera, Phone, MapPin } from 'lucide-react';
+import { Camera, Phone, MapPin, Copy } from 'lucide-react';
 
 interface CandidateCardProps {
     candidate: Candidate;
@@ -73,7 +73,7 @@ export function CandidateCard({ candidate }: CandidateCardProps) {
                             </div>
 
                             {/* 소개 */}
-                            <p className="c_card text-left leading-relaxed break-keep text-black">
+                            <p className="c_card text-left leading-relaxed break-keep text-black whitespace-pre-wrap">
                                 {candidate.intro}
                             </p>
                         </div>
@@ -215,30 +215,29 @@ export function CandidateCard({ candidate }: CandidateCardProps) {
                         )}
                     </div>
 
-                    <div className="text-center relative overflow-hidden">
-                        {/* 💛 타이틀 */}
-                        <h2 className="text-2xl font-bold mb-5 text-white drop-shadow-sm flex items-center justify-center gap-1">
-                            💛 후원으로 함께하기
-                        </h2>
+                    <div className="text-center relative">
+                        {/* 흰색 카드 (타이틀 포함) */}
+                        <div className="bg-white rounded-3xl p-6 shadow-xl">
+                            <h2 className="text-2xl font-bold mb-5 text-gray-900 flex items-center justify-center gap-1">
+                                💛 후원으로 함께하기
+                            </h2>
 
-                        {/* 흰색 카드 */}
-                        <div className="bg-white rounded-3xl p-6 pt-5 pb-7 shadow-xl">
-                            {/* 복사 안내 문구 */}
                             <div
                                 onClick={() => handleCopy(candidate.donation.account, '계좌번호')}
                                 className="cursor-pointer group"
                             >
-                                <p className="text-sm text-gray-500 mb-4 flex items-center justify-center gap-1.5">
-                                    <span className="text-base">📋</span>
-                                    클릭하면 후원계좌가 복사됩니다!
-                                </p>
-
                                 {/* 노란색 계좌 박스 */}
-                                <div className="bg-justice-yellow rounded-2xl px-6 py-5 transition-all group-hover:shadow-md group-active:scale-[0.98]">
-                                    <p className="text-2xl md:text-3xl font-black text-gray-900 tracking-wide leading-tight">
+                                <div className="bg-[#FFF000] rounded-xl px-2 py-7 transition-all active:scale-[0.98] flex flex-col items-center justify-center gap-1 shadow-sm">
+                                    {/* 복사 안내 문구 */}
+                                    <div className="text-[#00A651] font-bold text-sm md:text-base flex items-center justify-center gap-1.5 mb-1.5">
+                                        <Copy size={16} strokeWidth={2.5} />
+                                        클릭하면 후원계좌가 복사됩니다!
+                                    </div>
+                                    
+                                    <p className="text-2xl md:text-[28px] lg:text-3xl font-black text-gray-900 tracking-tight leading-tight">
                                         {candidate.donation.account}
                                     </p>
-                                    <p className="text-sm text-gray-700 font-medium mt-2">
+                                    <p className="text-sm md:text-base text-gray-800 font-bold mt-1 tracking-tight">
                                         예금주: {candidate.donation.holder}
                                     </p>
                                 </div>

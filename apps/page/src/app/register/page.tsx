@@ -177,7 +177,11 @@ export default function RegisterPage() {
             if (res.ok) {
                 const result = await res.json();
                 alert('성공적으로 저장되었습니다!');
-                router.push(`/card/${result.slug}`);
+                if (data.category && data.category.includes('단체장')) {
+                    router.push(`/${result.slug}`);
+                } else {
+                    router.push(`/card/${result.slug}`);
+                }
             } else {
                 const err = await res.json();
                 alert(`저장 실패: ${err.error}`);

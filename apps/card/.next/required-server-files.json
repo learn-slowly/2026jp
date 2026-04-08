@@ -116,7 +116,7 @@
         "transform": "lodash/{{member}}"
       }
     },
-    "outputFileTracingRoot": "/Users/ahbaik/Documents/coding/2026jp/justice-election-2026",
+    "outputFileTracingRoot": "/Users/ahbaik",
     "cacheComponents": false,
     "cacheLife": {
       "default": {
@@ -317,12 +317,12 @@
       "google-auth-library"
     ],
     "turbopack": {
-      "root": "/Users/ahbaik/Documents/coding/2026jp/justice-election-2026"
+      "root": "/Users/ahbaik"
     },
     "distDirRoot": ".next"
   },
-  "appDir": "/Users/ahbaik/Documents/coding/2026jp/justice-election-2026/apps/card",
-  "relativeAppDir": "apps/card",
+  "appDir": "/Users/ahbaik/coding/2026jp/justice-election-2026/apps/card",
+  "relativeAppDir": "coding/2026jp/justice-election-2026/apps/card",
   "files": [
     ".next/routes-manifest.json",
     ".next/server/pages-manifest.json",

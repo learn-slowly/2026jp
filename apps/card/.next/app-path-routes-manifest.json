@@ -1,12 +1,15 @@
 {
+  "/[slug]/page": "/[slug]",
   "/_global-error/page": "/_global-error",
   "/_not-found/page": "/_not-found",
   "/api/check-slug/route": "/api/check-slug",
   "/api/register/route": "/api/register",
   "/api/upload/route": "/api/upload",
   "/api/verify/route": "/api/verify",
-  "/card/[slug]/page": "/card/[slug]",
+  "/apple-icon.png/route": "/apple-icon.png",
   "/favicon.ico/route": "/favicon.ico",
+  "/icon.png/route": "/icon.png",
   "/page": "/",
+  "/qr/page": "/qr",
   "/register/page": "/register"
 }

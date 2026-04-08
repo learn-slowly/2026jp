@@ -141,7 +141,7 @@ export class SheetsClient {
             await this.sheets.spreadsheets.values.append({
                 spreadsheetId: this.sheetId,
                 range: 'candidates!A:A',
-                valueInputOption: 'USER_ENTERED',
+                valueInputOption: 'RAW',
                 requestBody: { values: [row] },
             });
             return true;
@@ -212,7 +212,7 @@ export class SheetsClient {
             await this.sheets.spreadsheets.values.append({
                 spreadsheetId: this.sheetId,
                 range: 'reports!A:I',
-                valueInputOption: 'USER_ENTERED',
+                valueInputOption: 'RAW',
                 requestBody: { values: rows },
             });
             return true;
@@ -272,7 +272,7 @@ export class SheetsClient {
             await this.sheets.spreadsheets.values.append({
                 spreadsheetId: this.sheetId,
                 range: 'mayor_extra!A:J',
-                valueInputOption: 'USER_ENTERED',
+                valueInputOption: 'RAW',
                 requestBody: { values: [row] },
             });
             return true;
@@ -338,7 +338,7 @@ export class SheetsClient {
             await this.sheets.spreadsheets.values.append({
                 spreadsheetId: this.sheetId,
                 range: 'mayor_stories!A:H',
-                valueInputOption: 'USER_ENTERED',
+                valueInputOption: 'RAW',
                 requestBody: { values: rows },
             });
             return true;
@@ -402,7 +402,7 @@ export class SheetsClient {
             await this.sheets.spreadsheets.values.append({
                 spreadsheetId: this.sheetId,
                 range: 'mayor_schedules!A:G',
-                valueInputOption: 'USER_ENTERED',
+                valueInputOption: 'RAW',
                 requestBody: { values: rows },
             });
             return true;
@@ -464,7 +464,7 @@ export class SheetsClient {
             await this.sheets.spreadsheets.values.append({
                 spreadsheetId: this.sheetId,
                 range: 'mayor_gallery!A:F',
-                valueInputOption: 'USER_ENTERED',
+                valueInputOption: 'RAW',
                 requestBody: { values: rows },
             });
             return true;
