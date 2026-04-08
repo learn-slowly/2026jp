@@ -40,9 +40,9 @@ export function ImageUpload({ value, onChange, error }: ImageUploadProps) {
 
         setUploading(true);
         try {
-            // 이미지 압축 (최대 1MB, 1920x1920 해상도로 제한)
+            // 이미지 압축 (최대 4MB, 1920x1920 해상도로 제한)
             const options = {
-                maxSizeMB: 1,
+                maxSizeMB: 4,
                 maxWidthOrHeight: 1920,
                 useWebWorker: true,
             };
