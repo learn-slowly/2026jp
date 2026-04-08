@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react';
 import { Upload, X, Loader2, Image as ImageIcon } from 'lucide-react';
+import imageCompression from 'browser-image-compression';
 
 interface ImageUploadProps {
     value?: string;
@@ -37,16 +38,23 @@ export function ImageUpload({ value, onChange, error }: ImageUploadProps) {
         const file = e.target.files?.[0];
         if (!file) return;
 
-        // Preview immediately
-        const reader = new FileReader();
-        reader.onloadend = () => {
-            setPreview(reader.result as string);
-        };
-        reader.readAsDataURL(file);
-
-        // Upload directly to Cloudinary via Direct Signed Upload (Bypasses Vercel 4.5MB limit)
         setUploading(true);
         try {
+            // 이미지 압축 (최대 1MB, 1920x1920 해상도로 제한)
+            const options = {
+                maxSizeMB: 1,
+                maxWidthOrHeight: 1920,
+                useWebWorker: true,
+            };
+            const compressedFile = await imageCompression(file, options);
+
+            // Preview immediately
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                setPreview(reader.result as string);
+            };
+            reader.readAsDataURL(compressedFile);
+
             // 1. Get Signature
             const sigRes = await fetch('/api/upload-sig');
             if (!sigRes.ok) throw new Error('Failed to get signature');
@@ -54,7 +62,7 @@ export function ImageUpload({ value, onChange, error }: ImageUploadProps) {
 
             // 2. Upload to Cloudinary
             const formData = new FormData();
-            formData.append('file', file);
+            formData.append('file', compressedFile);
             formData.append('api_key', sigData.apiKey);
             formData.append('timestamp', sigData.timestamp);
             formData.append('signature', sigData.signature);
