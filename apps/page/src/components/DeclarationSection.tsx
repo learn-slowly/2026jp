@@ -42,8 +42,8 @@ export function DeclarationSection({ candidate }: DeclarationSectionProps) {
     const videoId = declarationVideoUrl ? getYouTubeId(declarationVideoUrl) : null;
 
     return (
-        <section className="bg-gray-50 py-16 px-4 md:px-8 border-b border-gray-200">
-            <div className="max-w-4xl mx-auto space-y-12">
+        <section className="bg-gray-50 py-8 md:py-12 px-4 md:px-8 border-b border-gray-200">
+            <div className="max-w-4xl mx-auto space-y-8 md:space-y-12">
                 
                 {videoId && (
                     <div className="space-y-6">

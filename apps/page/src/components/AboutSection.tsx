@@ -8,7 +8,7 @@ interface AboutSectionProps {
 
 export function AboutSection({ candidate }: AboutSectionProps) {
     return (
-        <section id="about" className="py-24 bg-white">
+        <section id="about" className="py-16 md:py-20 bg-white">
             <div className="max-w-7xl mx-auto px-4 md:px-8">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
                     <div className="space-y-8">
