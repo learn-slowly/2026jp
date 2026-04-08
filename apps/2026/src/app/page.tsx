@@ -4,7 +4,7 @@ import { HeroSection } from '@/components/HeroSection';
 import { PolicyShowcase } from '@/components/PolicyShowcase';
 import { CandidateFinder } from '@/components/CandidateFinder';
 
-export const revalidate = 300;
+export const revalidate = 0;
 
 export default async function Home() {
   const [policies, candidates] = await Promise.all([
