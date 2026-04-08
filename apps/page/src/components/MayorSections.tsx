@@ -40,7 +40,7 @@ export function MayorSections({ form }: MayorSectionProps) {
                                 <label className="block text-sm font-medium text-gray-700 mb-1">인사말 본문</label>
                                 <textarea
                                     {...form.register('mayorExtra.greetingText')}
-                                    className="block w-full rounded-lg border-gray-300 border p-3 text-gray-900 focus:ring-2 focus:ring-justice-purple focus:border-justice-purple h-40"
+                                    className="block w-full rounded-lg border-gray-300 border p-3 text-black bg-white focus:ring-2 focus:ring-justice-purple focus:border-justice-purple h-40"
                                     placeholder="인사말 내용을 입력하세요..."
                                 />
                             </div>
@@ -65,7 +65,7 @@ export function MayorSections({ form }: MayorSectionProps) {
                                 <label className="block text-xs font-medium text-gray-500 mb-1">출마선언문 전문</label>
                                 <textarea
                                     {...form.register('mayorExtra.declarationText')}
-                                    className="block w-full rounded-lg border-gray-300 border p-3 text-gray-900 focus:ring-2 focus:ring-justice-purple focus:border-justice-purple h-40"
+                                    className="block w-full rounded-lg border-gray-300 border p-3 text-black bg-white focus:ring-2 focus:ring-justice-purple focus:border-justice-purple h-40"
                                     placeholder="선언문 텍스트를 붙여넣으세요..."
                                 />
                             </div>
@@ -125,7 +125,7 @@ function StoryList({ form }: MayorSectionProps) {
                             <div className="md:col-span-2">
                                 <textarea
                                     {...form.register(`mayorStories.${index}.content`)}
-                                    className="block w-full rounded-lg border-gray-300 border p-2 text-sm text-gray-900 focus:ring-2 focus:ring-justice-purple focus:border-justice-purple h-20"
+                                    className="block w-full rounded-lg border-gray-300 border p-2 text-sm text-black bg-white focus:ring-2 focus:ring-justice-purple focus:border-justice-purple h-20"
                                     placeholder="내용 요약"
                                 />
                             </div>
@@ -242,7 +242,7 @@ function FormInput({ label, register, placeholder, type = "text" }: {
             <input
                 {...register}
                 type={type}
-                className="block w-full rounded-lg border-gray-300 border p-2 text-sm text-gray-900 focus:ring-2 focus:ring-justice-purple focus:border-justice-purple"
+                className="block w-full rounded-lg border-gray-300 border p-2 text-sm text-black bg-white focus:ring-2 focus:ring-justice-purple focus:border-justice-purple"
                 placeholder={placeholder}
             />
         </div>

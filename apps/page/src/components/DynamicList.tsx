@@ -52,7 +52,7 @@ export function DynamicList({
                     <input
                         value={item}
                         onChange={(e) => updateItem(index, e.target.value)}
-                        className="flex-1 block w-full rounded-lg border-gray-300 border p-3 focus:ring-2 focus:ring-justice-green focus:border-justice-green transition-all"
+                        className="flex-1 block w-full rounded-lg border-gray-300 border p-3 text-black bg-white focus:ring-2 focus:ring-justice-green focus:border-justice-green transition-all"
                         placeholder={`${placeholder} #${index + 1}`}
                     />
                     <button

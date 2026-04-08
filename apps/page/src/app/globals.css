@@ -51,6 +51,13 @@ body {
 input, textarea, select {
   color: black !important;
   background-color: white !important;
+  -webkit-text-fill-color: black !important;
+  opacity: 1 !important;
+}
+
+input::placeholder, textarea::placeholder {
+  color: #9ca3af !important;
+  -webkit-text-fill-color: #9ca3af !important;
 }
 
 body {
