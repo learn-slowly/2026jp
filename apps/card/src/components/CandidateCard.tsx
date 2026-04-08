@@ -184,32 +184,32 @@ export function CandidateCard({ candidate }: CandidateCardProps) {
                     {/* 소셜 미디어 링크 */}
                     <div className="flex justify-center gap-4">
                         {candidate.social.x && (
-                            <a href={candidate.social.x} target="_blank" rel="noreferrer" className="w-12 h-12 bg-white rounded-full flex items-center justify-center hover:opacity-80 transition shadow-sm p-2">
+                            <a href={candidate.social.x} target="_blank" rel="noreferrer" className="w-12 h-12 flex items-center justify-center hover:opacity-80 transition">
                                 <img src="/icons/x.png" alt="X" className="w-full h-full object-contain" />
                             </a>
                         )}
                         {candidate.social.facebook && (
-                            <a href={candidate.social.facebook} target="_blank" rel="noreferrer" className="w-12 h-12 bg-white rounded-full flex items-center justify-center hover:opacity-80 transition shadow-sm p-1">
+                            <a href={candidate.social.facebook} target="_blank" rel="noreferrer" className="w-12 h-12 flex items-center justify-center hover:opacity-80 transition">
                                 <img src="/icons/facebook.png" alt="Facebook" className="w-full h-full object-contain" />
                             </a>
                         )}
                         {candidate.social.youtube && (
-                            <a href={candidate.social.youtube} target="_blank" rel="noreferrer" className="w-12 h-12 bg-white rounded-full flex items-center justify-center hover:opacity-80 transition shadow-sm p-1">
+                            <a href={candidate.social.youtube} target="_blank" rel="noreferrer" className="w-12 h-12 flex items-center justify-center hover:opacity-80 transition">
                                 <img src="/icons/youtube.png" alt="Youtube" className="w-full h-full object-contain" />
                             </a>
                         )}
                         {candidate.social.instagram && (
-                            <a href={candidate.social.instagram} target="_blank" rel="noreferrer" className="w-12 h-12 bg-white rounded-full flex items-center justify-center hover:opacity-80 transition shadow-sm p-1">
+                            <a href={candidate.social.instagram} target="_blank" rel="noreferrer" className="w-12 h-12 flex items-center justify-center hover:opacity-80 transition">
                                 <img src="/icons/instagram.png" alt="Instagram" className="w-full h-full object-contain" />
                             </a>
                         )}
                         {candidate.social.blog && (
-                            <a href={candidate.social.blog} target="_blank" rel="noreferrer" className="w-12 h-12 bg-white rounded-full flex items-center justify-center hover:opacity-80 transition shadow-sm p-1">
+                            <a href={candidate.social.blog} target="_blank" rel="noreferrer" className="w-12 h-12 flex items-center justify-center hover:opacity-80 transition">
                                 <img src="/icons/blog.png" alt="Blog" className="w-full h-full object-contain" />
                             </a>
                         )}
                         {candidate.category.includes('단체장') && (
-                            <a href={`https://page.justice21.org/${candidate.slug}`} target="_blank" rel="noreferrer" className="w-12 h-12 bg-white rounded-full flex items-center justify-center hover:opacity-80 transition shadow-sm p-1">
+                            <a href={`https://page.justice21.org/${candidate.slug}`} target="_blank" rel="noreferrer" className="w-12 h-12 flex items-center justify-center hover:opacity-80 transition">
                                 <img src="/icons/homepage.png" alt="Homepage" className="w-full h-full object-contain" />
                             </a>
                         )}
