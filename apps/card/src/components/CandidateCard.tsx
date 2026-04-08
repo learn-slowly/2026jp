@@ -215,25 +215,34 @@ export function CandidateCard({ candidate }: CandidateCardProps) {
                         )}
                     </div>
 
-                    <div className="bg-white rounded-2xl p-8 shadow-xl text-center relative overflow-hidden">
-                        <div className="absolute top-0 left-0 w-full h-2 bg-white opacity-30"></div>
-                        <h2 className="text-2xl font-bold mb-4 text-gray-900">
-                            🚀 후원으로 함께하기
+                    <div className="text-center relative overflow-hidden">
+                        {/* 💛 타이틀 */}
+                        <h2 className="text-2xl font-bold mb-5 text-white drop-shadow-sm flex items-center justify-center gap-1">
+                            💛 후원으로 함께하기
                         </h2>
-                        <div className="bg-justice-yellow p-6 rounded-xl shadow-sm">
-                            <p className="text-sm text-gray-500 mb-2">후원계좌 (클릭하여 복사)</p>
+
+                        {/* 흰색 카드 */}
+                        <div className="bg-white rounded-3xl p-6 pt-5 pb-7 shadow-xl">
+                            {/* 복사 안내 문구 */}
                             <div
                                 onClick={() => handleCopy(candidate.donation.account, '계좌번호')}
-                                className="cursor-pointer p-2 -m-2 rounded-lg transition-colors group"
+                                className="cursor-pointer group"
                             >
-                                <p className="text-xl font-bold text-gray-900 mb-2 tracking-wider flex items-center justify-center gap-2">
-                                    {candidate.donation.account}
-                                    <span className="text-gray-300 text-sm group-hover:text-justice-green">📋</span>
+                                <p className="text-sm text-gray-500 mb-4 flex items-center justify-center gap-1.5">
+                                    <span className="text-base">📋</span>
+                                    클릭하면 후원계좌가 복사됩니다!
                                 </p>
+
+                                {/* 노란색 계좌 박스 */}
+                                <div className="bg-justice-yellow rounded-2xl px-6 py-5 transition-all group-hover:shadow-md group-active:scale-[0.98]">
+                                    <p className="text-2xl md:text-3xl font-black text-gray-900 tracking-wide leading-tight">
+                                        {candidate.donation.account}
+                                    </p>
+                                    <p className="text-sm text-gray-700 font-medium mt-2">
+                                        예금주: {candidate.donation.holder}
+                                    </p>
+                                </div>
                             </div>
-                            <p className="text-md text-gray-700 font-medium">
-                                예금주: {candidate.donation.holder}
-                            </p>
                         </div>
                     </div>
 
