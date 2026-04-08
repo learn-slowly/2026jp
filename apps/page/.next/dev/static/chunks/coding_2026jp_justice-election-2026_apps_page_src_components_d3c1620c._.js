@@ -1478,12 +1478,12 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$coding$2f$2026jp$2f$justice$
 ;
 ;
 function Footer(t0) {
-    const $ = (0, __TURBOPACK__imported__module__$5b$project$5d2f$coding$2f$2026jp$2f$justice$2d$election$2d$2026$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$compiler$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["c"])(60);
-    if ($[0] !== "7f001c8ff679d502a50d11695130da01f9284b7e9092c2deed6a311751c35720") {
-        for(let $i = 0; $i < 60; $i += 1){
+    const $ = (0, __TURBOPACK__imported__module__$5b$project$5d2f$coding$2f$2026jp$2f$justice$2d$election$2d$2026$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$compiler$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["c"])(62);
+    if ($[0] !== "e9144893f84c36815dbd7adc2ef9d99081200e8edc912526d37c9bd2ebc21333") {
+        for(let $i = 0; $i < 62; $i += 1){
             $[$i] = Symbol.for("react.memo_cache_sentinel");
         }
-        $[0] = "7f001c8ff679d502a50d11695130da01f9284b7e9092c2deed6a311751c35720";
+        $[0] = "e9144893f84c36815dbd7adc2ef9d99081200e8edc912526d37c9bd2ebc21333";
     }
     const { candidate } = t0;
     const handleCopy = _FooterHandleCopy;
@@ -2100,87 +2100,115 @@ function Footer(t0) {
         t23 = $[56];
     }
     let t24;
+    let t25;
     if ($[57] === Symbol.for("react.memo_cache_sentinel")) {
-        t24 = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$coding$2f$2026jp$2f$justice$2d$election$2d$2026$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+        t24 = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$coding$2f$2026jp$2f$justice$2d$election$2d$2026$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
+            href: "https://www.justice21.org/",
+            target: "_blank",
+            rel: "noreferrer",
+            className: "hover:opacity-80 transition flex items-center justify-center h-8",
+            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$coding$2f$2026jp$2f$justice$2d$election$2d$2026$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
+                src: "/logo-03.png",
+                alt: "\uC815\uC758\uB2F9",
+                className: "h-full w-auto object-contain"
+            }, void 0, false, {
+                fileName: "[project]/coding/2026jp/justice-election-2026/apps/page/src/components/Footer.tsx",
+                lineNumber: 220,
+                columnNumber: 158
+            }, this)
+        }, void 0, false, {
+            fileName: "[project]/coding/2026jp/justice-election-2026/apps/page/src/components/Footer.tsx",
+            lineNumber: 220,
+            columnNumber: 11
+        }, this);
+        t25 = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$coding$2f$2026jp$2f$justice$2d$election$2d$2026$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+            className: "w-[1px] h-4 bg-white/20"
+        }, void 0, false, {
+            fileName: "[project]/coding/2026jp/justice-election-2026/apps/page/src/components/Footer.tsx",
+            lineNumber: 221,
+            columnNumber: 11
+        }, this);
+        $[57] = t24;
+        $[58] = t25;
+    } else {
+        t24 = $[57];
+        t25 = $[58];
+    }
+    let t26;
+    if ($[59] === Symbol.for("react.memo_cache_sentinel")) {
+        t26 = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$coding$2f$2026jp$2f$justice$2d$election$2d$2026$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
             className: "border-t border-white/10 pt-10 pb-4 flex flex-col items-center text-center text-white/40 text-sm",
             children: [
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$coding$2f$2026jp$2f$justice$2d$election$2d$2026$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                    className: "flex flex-wrap justify-center gap-4 mb-8",
+                    className: "flex flex-wrap items-center justify-center gap-5 mb-8",
                     children: [
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$coding$2f$2026jp$2f$justice$2d$election$2d$2026$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
-                            href: "https://www.justice21.org/",
-                            target: "_blank",
-                            rel: "noreferrer",
-                            className: "hover:opacity-80 transition flex items-center justify-center px-2 py-2 h-12",
-                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$coding$2f$2026jp$2f$justice$2d$election$2d$2026$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
-                                src: "/logo-03.png",
-                                alt: "\uC815\uC758\uB2F9",
-                                className: "h-full w-auto object-contain"
-                            }, void 0, false, {
-                                fileName: "[project]/coding/2026jp/justice-election-2026/apps/page/src/components/Footer.tsx",
-                                lineNumber: 219,
-                                columnNumber: 341
-                            }, this)
-                        }, void 0, false, {
-                            fileName: "[project]/coding/2026jp/justice-election-2026/apps/page/src/components/Footer.tsx",
-                            lineNumber: 219,
-                            columnNumber: 183
-                        }, this),
+                        t24,
+                        t25,
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$coding$2f$2026jp$2f$justice$2d$election$2d$2026$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
                             href: "https://2026.justice21.org/",
                             target: "_blank",
                             rel: "noreferrer",
-                            className: "inline-flex items-center justify-center h-12 px-6 rounded-xl bg-white/10 hover:bg-white/20 border border-white/10 text-white transition font-bold text-sm shadow-sm backdrop-blur-sm",
-                            children: "2026 지선 특별 페이지"
-                        }, void 0, false, {
+                            className: "hover:text-justice-yellow transition text-white/90 font-bold text-sm tracking-wide flex items-center gap-1",
+                            children: [
+                                "2026 지선 특별 페이지 ",
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$coding$2f$2026jp$2f$justice$2d$election$2d$2026$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                    className: "text-white/40 text-xs",
+                                    children: "↗"
+                                }, void 0, false, {
+                                    fileName: "[project]/coding/2026jp/justice-election-2026/apps/page/src/components/Footer.tsx",
+                                    lineNumber: 230,
+                                    columnNumber: 411
+                                }, this)
+                            ]
+                        }, void 0, true, {
                             fileName: "[project]/coding/2026jp/justice-election-2026/apps/page/src/components/Footer.tsx",
-                            lineNumber: 219,
-                            columnNumber: 439
+                            lineNumber: 230,
+                            columnNumber: 206
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/coding/2026jp/justice-election-2026/apps/page/src/components/Footer.tsx",
-                    lineNumber: 219,
+                    lineNumber: 230,
                     columnNumber: 125
                 }, this),
                 "© 2026 Justice Party. All rights reserved."
             ]
         }, void 0, true, {
             fileName: "[project]/coding/2026jp/justice-election-2026/apps/page/src/components/Footer.tsx",
-            lineNumber: 219,
+            lineNumber: 230,
             columnNumber: 11
         }, this);
-        $[57] = t24;
+        $[59] = t26;
     } else {
-        t24 = $[57];
+        t26 = $[59];
     }
-    let t25;
-    if ($[58] !== t23) {
-        t25 = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$coding$2f$2026jp$2f$justice$2d$election$2d$2026$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("footer", {
+    let t27;
+    if ($[60] !== t23) {
+        t27 = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$coding$2f$2026jp$2f$justice$2d$election$2d$2026$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("footer", {
             id: "donation",
             className: "bg-gray-900 text-white py-20",
             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$coding$2f$2026jp$2f$justice$2d$election$2d$2026$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "max-w-7xl mx-auto px-4 md:px-8",
                 children: [
                     t23,
-                    t24
+                    t26
                 ]
             }, void 0, true, {
                 fileName: "[project]/coding/2026jp/justice-election-2026/apps/page/src/components/Footer.tsx",
-                lineNumber: 226,
+                lineNumber: 237,
                 columnNumber: 74
             }, this)
         }, void 0, false, {
             fileName: "[project]/coding/2026jp/justice-election-2026/apps/page/src/components/Footer.tsx",
-            lineNumber: 226,
+            lineNumber: 237,
             columnNumber: 11
         }, this);
-        $[58] = t23;
-        $[59] = t25;
+        $[60] = t23;
+        $[61] = t27;
     } else {
-        t25 = $[59];
+        t27 = $[61];
     }
-    return t25;
+    return t27;
 }
 _c = Footer;
 function _FooterHandleCopy(text, label) {

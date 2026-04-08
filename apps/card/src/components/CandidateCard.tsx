@@ -309,12 +309,13 @@ export function CandidateCard({ candidate }: CandidateCardProps) {
                     )}
 
                     <footer className="py-8 pb-12 text-center text-white/80 text-sm flex flex-col items-center">
-                        <div className="flex flex-wrap justify-center gap-3 mb-6 px-2">
-                            <a href="https://www.justice21.org/" target="_blank" rel="noreferrer" className="hover:scale-105 transition-transform flex items-center justify-center px-2 py-1.5 h-12">
+                        <div className="flex flex-wrap items-center justify-center gap-5 mb-6 px-2">
+                            <a href="https://www.justice21.org/" target="_blank" rel="noreferrer" className="hover:scale-105 transition-transform flex items-center justify-center h-8">
                                 <img src="/logo-03.png" alt="정의당" className="h-full w-auto object-contain" />
                             </a>
-                            <a href="https://2026.justice21.org/" target="_blank" rel="noreferrer" className="inline-flex items-center justify-center h-12 px-4 rounded-2xl bg-black/20 hover:bg-black/30 border border-white/20 text-white transition-all font-bold text-sm shadow-lg backdrop-blur-md cursor-pointer z-10 w-auto relative pointer-events-auto">
-                                2026 지선 특별 페이지
+                            <div className="w-[1px] h-4 bg-white/30"></div>
+                            <a href="https://2026.justice21.org/" target="_blank" rel="noreferrer" className="hover:text-justice-yellow transition-all text-white/90 font-bold text-sm tracking-wide cursor-pointer z-10 relative pointer-events-auto flex items-center gap-1">
+                                2026 지선 특별 페이지 <span className="text-white/50 text-xs">↗</span>
                             </a>
                         </div>
                         <p className="opacity-60">&copy; 2026 Justice Party. All rights reserved.</p>

@@ -1285,13 +1285,13 @@ function Footer({ candidate }) {
                     className: "border-t border-white/10 pt-10 pb-4 flex flex-col items-center text-center text-white/40 text-sm",
                     children: [
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$coding$2f$2026jp$2f$justice$2d$election$2d$2026$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "flex flex-wrap justify-center gap-4 mb-8",
+                            className: "flex flex-wrap items-center justify-center gap-5 mb-8",
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$coding$2f$2026jp$2f$justice$2d$election$2d$2026$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
                                     href: "https://www.justice21.org/",
                                     target: "_blank",
                                     rel: "noreferrer",
-                                    className: "hover:opacity-80 transition flex items-center justify-center px-2 py-2 h-12",
+                                    className: "hover:opacity-80 transition flex items-center justify-center h-8",
                                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$coding$2f$2026jp$2f$justice$2d$election$2d$2026$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
                                         src: "/logo-03.png",
                                         alt: "정의당",
@@ -1306,15 +1306,32 @@ function Footer({ candidate }) {
                                     lineNumber: 128,
                                     columnNumber: 25
                                 }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$coding$2f$2026jp$2f$justice$2d$election$2d$2026$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "w-[1px] h-4 bg-white/20"
+                                }, void 0, false, {
+                                    fileName: "[project]/coding/2026jp/justice-election-2026/apps/page/src/components/Footer.tsx",
+                                    lineNumber: 131,
+                                    columnNumber: 25
+                                }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$coding$2f$2026jp$2f$justice$2d$election$2d$2026$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
                                     href: "https://2026.justice21.org/",
                                     target: "_blank",
                                     rel: "noreferrer",
-                                    className: "inline-flex items-center justify-center h-12 px-6 rounded-xl bg-white/10 hover:bg-white/20 border border-white/10 text-white transition font-bold text-sm shadow-sm backdrop-blur-sm",
-                                    children: "2026 지선 특별 페이지"
-                                }, void 0, false, {
+                                    className: "hover:text-justice-yellow transition text-white/90 font-bold text-sm tracking-wide flex items-center gap-1",
+                                    children: [
+                                        "2026 지선 특별 페이지 ",
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$coding$2f$2026jp$2f$justice$2d$election$2d$2026$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                            className: "text-white/40 text-xs",
+                                            children: "↗"
+                                        }, void 0, false, {
+                                            fileName: "[project]/coding/2026jp/justice-election-2026/apps/page/src/components/Footer.tsx",
+                                            lineNumber: 133,
+                                            columnNumber: 44
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
                                     fileName: "[project]/coding/2026jp/justice-election-2026/apps/page/src/components/Footer.tsx",
-                                    lineNumber: 131,
+                                    lineNumber: 132,
                                     columnNumber: 25
                                 }, this)
                             ]

@@ -223,6 +223,7 @@
     --font-weight-extrabold: 800;
     --font-weight-black: 900;
     --tracking-tight: -.025em;
+    --tracking-wide: .025em;
     --tracking-wider: .05em;
     --leading-tight: 1.25;
     --leading-snug: 1.375;
@@ -845,6 +846,10 @@
     width: calc(var(--spacing) * 40);
   }
 
+  .w-\[1px\] {
+    width: 1px;
+  }
+
   .w-auto {
     width: auto;
   }
@@ -977,6 +982,10 @@
 
   .gap-4 {
     gap: calc(var(--spacing) * 4);
+  }
+
+  .gap-5 {
+    gap: calc(var(--spacing) * 5);
   }
 
   .gap-6 {
@@ -1619,6 +1628,11 @@
     letter-spacing: var(--tracking-tight);
   }
 
+  .tracking-wide {
+    --tw-tracking: var(--tracking-wide);
+    letter-spacing: var(--tracking-wide);
+  }
+
   .tracking-wider {
     --tw-tracking: var(--tracking-wider);
     letter-spacing: var(--tracking-wider);
@@ -1733,6 +1747,16 @@
   @supports (color: color-mix(in lab, red, red)) {
     .text-white\/80 {
       color: color-mix(in oklab, var(--color-white) 80%, transparent);
+    }
+  }
+
+  .text-white\/90 {
+    color: #ffffffe6;
+  }
+
+  @supports (color: color-mix(in lab, red, red)) {
+    .text-white\/90 {
+      color: color-mix(in oklab, var(--color-white) 90%, transparent);
     }
   }
 
@@ -2049,6 +2073,12 @@
   @media (hover: hover) {
     .hover\:text-justice-green:hover {
       color: #00a366;
+    }
+  }
+
+  @media (hover: hover) {
+    .hover\:text-justice-yellow:hover {
+      color: #ffed00;
     }
   }
 

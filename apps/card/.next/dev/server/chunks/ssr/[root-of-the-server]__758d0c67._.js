@@ -917,13 +917,13 @@ function CandidateCard({ candidate }) {
                             className: "py-8 pb-12 text-center text-white/80 text-sm flex flex-col items-center",
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$coding$2f$2026jp$2f$justice$2d$election$2d$2026$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "flex flex-wrap justify-center gap-3 mb-6 px-2",
+                                    className: "flex flex-wrap items-center justify-center gap-5 mb-6 px-2",
                                     children: [
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$coding$2f$2026jp$2f$justice$2d$election$2d$2026$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
                                             href: "https://www.justice21.org/",
                                             target: "_blank",
                                             rel: "noreferrer",
-                                            className: "hover:scale-105 transition-transform flex items-center justify-center px-2 py-1.5 h-12",
+                                            className: "hover:scale-105 transition-transform flex items-center justify-center h-8",
                                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$coding$2f$2026jp$2f$justice$2d$election$2d$2026$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
                                                 src: "/logo-03.png",
                                                 alt: "정의당",
@@ -938,15 +938,32 @@ function CandidateCard({ candidate }) {
                                             lineNumber: 313,
                                             columnNumber: 29
                                         }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$coding$2f$2026jp$2f$justice$2d$election$2d$2026$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            className: "w-[1px] h-4 bg-white/30"
+                                        }, void 0, false, {
+                                            fileName: "[project]/coding/2026jp/justice-election-2026/apps/card/src/components/CandidateCard.tsx",
+                                            lineNumber: 316,
+                                            columnNumber: 29
+                                        }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$coding$2f$2026jp$2f$justice$2d$election$2d$2026$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
                                             href: "https://2026.justice21.org/",
                                             target: "_blank",
                                             rel: "noreferrer",
-                                            className: "inline-flex items-center justify-center h-12 px-4 rounded-2xl bg-black/20 hover:bg-black/30 border border-white/20 text-white transition-all font-bold text-sm shadow-lg backdrop-blur-md cursor-pointer z-10 w-auto relative pointer-events-auto",
-                                            children: "2026 지선 특별 페이지"
-                                        }, void 0, false, {
+                                            className: "hover:text-justice-yellow transition-all text-white/90 font-bold text-sm tracking-wide cursor-pointer z-10 relative pointer-events-auto flex items-center gap-1",
+                                            children: [
+                                                "2026 지선 특별 페이지 ",
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$coding$2f$2026jp$2f$justice$2d$election$2d$2026$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                    className: "text-white/50 text-xs",
+                                                    children: "↗"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/coding/2026jp/justice-election-2026/apps/card/src/components/CandidateCard.tsx",
+                                                    lineNumber: 318,
+                                                    columnNumber: 48
+                                                }, this)
+                                            ]
+                                        }, void 0, true, {
                                             fileName: "[project]/coding/2026jp/justice-election-2026/apps/card/src/components/CandidateCard.tsx",
-                                            lineNumber: 316,
+                                            lineNumber: 317,
                                             columnNumber: 29
                                         }, this)
                                     ]
@@ -960,7 +977,7 @@ function CandidateCard({ candidate }) {
                                     children: "© 2026 Justice Party. All rights reserved."
                                 }, void 0, false, {
                                     fileName: "[project]/coding/2026jp/justice-election-2026/apps/card/src/components/CandidateCard.tsx",
-                                    lineNumber: 320,
+                                    lineNumber: 321,
                                     columnNumber: 25
                                 }, this)
                             ]
