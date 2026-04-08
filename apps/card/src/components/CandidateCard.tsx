@@ -63,7 +63,7 @@ export function CandidateCard({ candidate }: CandidateCardProps) {
                             </div>
 
                             {/* 슬로건 */}
-                            <p className="text-xl font-bold mb-4 break-keep italic font-black">
+                            <p className="text-xl text-black mb-4 break-keep italic font-black">
                                 "{candidate.slogan}"
                             </p>
 

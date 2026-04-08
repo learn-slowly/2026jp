@@ -36,16 +36,17 @@ export function CandidateFinder({ candidates }: CandidateFinderProps) {
     };
 
     const parseDistrict = (district: string) => {
+        if (!district) return { mainTitle: '', pills: [] };
         const parentMatch = district.match(/^([^(]+)\s*\(([^)]+)\)/);
         if (parentMatch) {
             return {
                 mainTitle: parentMatch[1].trim(),
-                pills: parentMatch[2].split(',').map(s => s.trim())
+                pills: parentMatch[2].split(',').map(s => s.trim()).filter(Boolean)
             };
         }
         return {
             mainTitle: district,
-            pills: [district]
+            pills: [district].filter(Boolean)
         };
     };
 
