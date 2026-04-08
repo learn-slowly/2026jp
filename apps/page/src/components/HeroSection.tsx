@@ -28,7 +28,9 @@ export function HeroSection({ candidate }: HeroSectionProps) {
                             {candidate.mayorExtra?.visionSubtitle ? (
                                 <span className="text-3xl md:text-4xl block font-medium mb-2 whitespace-pre-wrap">{candidate.mayorExtra.visionSubtitle}</span>
                             ) : null}
-                            {candidate.mayorExtra?.position || `정의당 ${candidate.name}`}
+                            <span className="block text-2xl sm:text-3xl md:text-5xl font-bold whitespace-nowrap tracking-tighter mt-1 text-black drop-shadow-sm">
+                                {candidate.mayorExtra?.position || `정의당 ${candidate.name}`}
+                            </span>
                         </span>
                     </h1>
 
