@@ -20,6 +20,21 @@ export function CandidateCard({ candidate }: CandidateCardProps) {
         });
     };
 
+    const parseDistrict = (district: string) => {
+        if (!district) return { mainTitle: '', pills: [] };
+        const parentMatch = district.match(/^([^(]+)\s*\(([^)]+)\)/);
+        if (parentMatch) {
+            return {
+                mainTitle: parentMatch[1].trim(),
+                pills: parentMatch[2].split(',').map((s) => s.trim()).filter(Boolean),
+            };
+        }
+        return {
+            mainTitle: district,
+            pills: [district].filter(Boolean),
+        };
+    };
+
     return (
         <div className={`h-screen overflow-y-scroll scroll-smooth ${gradientBg}`}>
             {/* Hero Section */}
@@ -68,8 +83,31 @@ export function CandidateCard({ candidate }: CandidateCardProps) {
                             </p>
 
                             {/* 지역구 */}
-                            <div className="inline-block px-4 py-1 bg-gray-100 rounded-full text-gray-600 font-medium mb-6 font-black">
-                                {candidate.district}
+                            <div className="flex flex-col items-center gap-2 mb-6">
+                                <div className="text-lg font-bold text-gray-800">
+                                    {(() => {
+                                        const { mainTitle } = parseDistrict(candidate.district);
+                                        let catLabel: string = candidate.category;
+                                        if (catLabel.includes('광역단체장')) catLabel = '시장후보';
+                                        else if (catLabel.includes('기초단체장')) catLabel = '구청장후보';
+                                        else if (catLabel.includes('기초의원')) catLabel = '시의원후보';
+                                        else if (catLabel.includes('광역의원')) catLabel = '시의원후보';
+                                        else if (!catLabel.includes('후보')) catLabel += '후보';
+                                        
+                                        if (mainTitle.endsWith('시') && catLabel === '시장후보') {
+                                            return `${mainTitle.slice(0, -1)} ${catLabel}`;
+                                        }
+                                        return `${mainTitle} ${catLabel}`;
+                                    })()}
+                                </div>
+                                <div className="flex flex-wrap justify-center gap-2">
+                                    {parseDistrict(candidate.district).pills.map((pill, idx) => (
+                                        <div key={idx} className="flex items-center gap-1 bg-white border border-gray-200 px-3 py-1.5 rounded-full text-sm font-bold text-gray-700 shadow-sm">
+                                            <MapPin className="w-4 h-4 text-justice-yellow fill-justice-yellow" />
+                                            <span>{pill}</span>
+                                        </div>
+                                    ))}
+                                </div>
                             </div>
 
                             {/* 소개 */}
