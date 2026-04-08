@@ -44,23 +44,33 @@ export function ImageUpload({ value, onChange, error }: ImageUploadProps) {
         };
         reader.readAsDataURL(file);
 
-        // Upload to Server (which proxies to Cloudinary)
+        // Upload directly to Cloudinary via Direct Signed Upload (Bypasses Vercel 4.5MB limit)
         setUploading(true);
         try {
+            // 1. Get Signature
+            const sigRes = await fetch('/api/upload-sig');
+            if (!sigRes.ok) throw new Error('Failed to get signature');
+            const sigData = await sigRes.json();
+
+            // 2. Upload to Cloudinary
             const formData = new FormData();
             formData.append('file', file);
+            formData.append('api_key', sigData.apiKey);
+            formData.append('timestamp', sigData.timestamp);
+            formData.append('signature', sigData.signature);
+            formData.append('folder', 'justice-election-2026');
 
-            const res = await fetch('/api/upload', {
+            const res = await fetch(`https://api.cloudinary.com/v1_1/${sigData.cloudName}/image/upload`, {
                 method: 'POST',
                 body: formData,
             });
 
             if (!res.ok) {
-                throw new Error('Upload failed');
+                throw new Error('Upload to Cloudinary failed');
             }
 
             const data = await res.json();
-            onChange(data.url);
+            onChange(data.secure_url);
         } catch (err) {
             console.error(err);
             alert('이미지 업로드에 실패했습니다.');
