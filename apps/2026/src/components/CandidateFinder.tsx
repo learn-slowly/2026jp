@@ -56,10 +56,10 @@ export function CandidateFinder({ candidates }: CandidateFinderProps) {
                 <div className="mb-16 text-center">
                     <h2 className="text-justice-yellow font-bold text-lg tracking-wider uppercase mb-3">Candidates</h2>
                     <h3 className="text-4xl md:text-5xl font-black text-gray-900">
-                        우리 동네 일꾼찾기
+                        우리 동네 정의당 찾기
                     </h3>
                     <p className="mt-4 text-xl text-gray-500 max-w-2xl mx-auto">
-                        당신의 곁에 정의당이 있습니다
+                        당신 곁에 정의당이 있습니다
                     </p>
                 </div>
 
@@ -127,7 +127,7 @@ export function CandidateFinder({ candidates }: CandidateFinderProps) {
                                     <h3 className="text-2xl font-black text-gray-900 mb-1">
                                         {candidate.name}
                                     </h3>
-                                    
+
                                     <div className="text-sm font-bold text-gray-800 mb-3">
                                         {(() => {
                                             const { mainTitle } = parseDistrict(candidate.district);
@@ -137,7 +137,7 @@ export function CandidateFinder({ candidates }: CandidateFinderProps) {
                                             else if (catLabel.includes('기초의원')) catLabel = '시의원후보';
                                             else if (catLabel.includes('광역의원')) catLabel = '시의원후보';
                                             else if (!catLabel.includes('후보')) catLabel += '후보';
-                                            
+
                                             // 서울시 -> 서울 시장후보 (특수 포맷 보정)
                                             if (mainTitle.endsWith('시') && catLabel === '시장후보') {
                                                 return `${mainTitle.slice(0, -1)} ${catLabel}`;
@@ -146,15 +146,15 @@ export function CandidateFinder({ candidates }: CandidateFinderProps) {
                                         })()}
                                     </div>
 
-                                    <div className="flex flex-wrap gap-2 mb-4">
-                                        {parseDistrict(candidate.district).pills.map((pill, idx) => (
-                                            <div key={idx} className="flex items-center gap-1 bg-white border border-gray-200 px-2.5 py-1 rounded-full text-[13px] font-bold text-gray-700 shadow-sm">
-                                                <MapPin className="w-3.5 h-3.5 text-justice-yellow fill-justice-yellow" />
+                                    <div className="mb-4" style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+                                        {parseDistrict(candidate.district).pills.map((pill, i) => (
+                                            <div key={i} style={{ display: 'inline-flex', alignItems: 'center', gap: '0.125rem' }} className="bg-white border border-gray-200 px-2 py-0.5 rounded-full text-[10px] font-bold text-gray-700 shadow-sm">
+                                                <MapPin className="w-3 h-3 text-justice-yellow fill-justice-yellow" />
                                                 <span>{pill}</span>
                                             </div>
                                         ))}
                                     </div>
-                                    
+
                                     <p className="mt-auto text-[15px] font-medium text-gray-500 line-clamp-2 leading-relaxed">
                                         "{candidate.slogan}"
                                     </p>
