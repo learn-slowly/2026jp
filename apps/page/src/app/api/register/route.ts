@@ -50,6 +50,29 @@ export async function POST(request: NextRequest) {
         const success = await sheetsClient.saveCandidate(candidate);
 
         if (success) {
+            if (candidate.category.includes('단체장')) {
+                const existingExtra = await sheetsClient.getMayorExtra(candidate.slug);
+                await sheetsClient.saveMayorExtra({
+                    candidateSlug: candidate.slug,
+                    position: existingExtra?.position || '',
+                    visionTitle: existingExtra?.visionTitle || '',
+                    visionSubtitle: existingExtra?.visionSubtitle || '',
+                    greetingTitle: existingExtra?.greetingTitle || '',
+                    greetingText: existingExtra?.greetingText || '',
+                    heroImageUrl: body.heroImageUrl !== undefined ? body.heroImageUrl : existingExtra?.heroImageUrl || '',
+                    declarationTitle: body.declarationTitle !== undefined ? body.declarationTitle : existingExtra?.declarationTitle || '',
+                    declarationVideoUrl: body.declarationVideoUrl !== undefined ? body.declarationVideoUrl : existingExtra?.declarationVideoUrl || '',
+                    declarationText: body.declarationText !== undefined ? body.declarationText : existingExtra?.declarationText || '',
+                });
+
+                if (body.mayorStories !== undefined) {
+                    await sheetsClient.saveMayorStories(candidate.slug, body.mayorStories);
+                }
+                if (body.mayorSchedules !== undefined) {
+                    await sheetsClient.saveMayorSchedules(candidate.slug, body.mayorSchedules);
+                }
+            }
+
             return NextResponse.json({ success: true, slug: candidate.slug });
         } else {
             return NextResponse.json(

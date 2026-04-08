@@ -15,6 +15,25 @@ export const formSchema = z.object({
         content: z.string()
     })).max(10, "공약은 최대 10개까지만 입력 가능합니다").default([]),
     photoUrl: z.string().url("올바른 URL을 입력해주세요").optional().or(z.literal('')),
+    heroImageUrl: z.string().url("올바른 URL을 입력해주세요").optional().or(z.literal('')),
+    declarationTitle: z.string().optional(),
+    declarationVideoUrl: z.string().url("올바른 URL을 입력해주세요").optional().or(z.literal('')),
+    declarationText: z.string().optional(),
+    mayorStories: z.array(z.object({
+        date: z.string().min(1, "날짜를 입력해주세요"),
+        category: z.string().min(1, "카테고리를 입력해주세요"),
+        title: z.string().min(1, "제목을 입력해주세요"),
+        content: z.string().min(1, "내용을 입력해주세요"),
+        imageUrl: z.string().optional().or(z.literal('')),
+        visible: z.boolean().default(true),
+    })).optional().default([]),
+    mayorSchedules: z.array(z.object({
+        date: z.string().min(1, "날짜를 입력해주세요"),
+        time: z.string().min(1, "시간을 입력해주세요"),
+        title: z.string().min(1, "일정명을 입력해주세요"),
+        location: z.string().min(1, "장소를 입력해주세요"),
+        visible: z.boolean().default(true),
+    })).optional().default([]),
     donation: z.object({
         account: z.string().min(1, "후원계좌를 입력해주세요"),
         holder: z.string().min(1, "예금주를 입력해주세요"),

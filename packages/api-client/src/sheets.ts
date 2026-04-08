@@ -227,7 +227,7 @@ export class SheetsClient {
         try {
             const response = await this.sheets.spreadsheets.values.get({
                 spreadsheetId: this.sheetId,
-                range: 'mayor_extra!A2:G',
+                range: 'mayor_extra!A2:J',
             });
             const rows = response.data.values || [];
             // Find latest entry for slug
@@ -245,6 +245,9 @@ export class SheetsClient {
                 greetingTitle: row[4] || '',
                 greetingText: row[5] || '',
                 heroImageUrl: row[6] || '',
+                declarationTitle: row[7] || '',
+                declarationVideoUrl: row[8] || '',
+                declarationText: row[9] || '',
             };
         } catch (error) {
             console.error('Error fetching mayor_extra:', error);
@@ -262,10 +265,13 @@ export class SheetsClient {
                 extra.greetingTitle,
                 extra.greetingText,
                 extra.heroImageUrl,
+                extra.declarationTitle || '',
+                extra.declarationVideoUrl || '',
+                extra.declarationText || '',
             ];
             await this.sheets.spreadsheets.values.append({
                 spreadsheetId: this.sheetId,
-                range: 'mayor_extra!A:G',
+                range: 'mayor_extra!A:J',
                 valueInputOption: 'USER_ENTERED',
                 requestBody: { values: [row] },
             });

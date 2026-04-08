@@ -9,6 +9,8 @@ import { formSchema, FormData } from '@/lib/schema';
 import { DynamicList } from '@/components/DynamicList';
 import { ImageUpload } from '@/components/ImageUpload';
 import { PledgeList } from '@/components/PledgeList';
+import { StoryList } from '@/components/StoryList';
+import { ScheduleList } from '@/components/ScheduleList';
 
 export default function RegisterPage() {
     const router = useRouter();
@@ -50,7 +52,13 @@ export default function RegisterPage() {
                         donation: {},
                         contact: {},
                         careers: [],
-                        policies: []
+                        policies: [],
+                        heroImageUrl: '',
+                        declarationTitle: '',
+                        declarationVideoUrl: '',
+                        declarationText: '',
+                        mayorStories: [],
+                        mayorSchedules: [],
                     });
                 } else {
                     setSlugStatus({ available: false, message: '이미 존재하는 아이디입니다. 기존 정보를 불러와 수정합니다.' });
@@ -67,6 +75,12 @@ export default function RegisterPage() {
                             slogan: c.slogan,
                             intro: c.intro,
                             photoUrl: c.photoUrl,
+                            heroImageUrl: c.mayorExtra?.heroImageUrl || '',
+                            declarationTitle: c.mayorExtra?.declarationTitle || '',
+                            declarationVideoUrl: c.mayorExtra?.declarationVideoUrl || '',
+                            declarationText: c.mayorExtra?.declarationText || '',
+                            mayorStories: c.mayorStories || [],
+                            mayorSchedules: c.mayorSchedules || [],
                             donation: c.donation,
                             contact: c.contact,
                             social: c.social,
@@ -214,12 +228,75 @@ export default function RegisterPage() {
                                 />
                             </div>
 
-                            <div>
-                                <ImageUpload
-                                    value={form.watch('photoUrl')}
-                                    onChange={(url) => form.setValue('photoUrl', url)}
-                                    error={form.formState.errors.photoUrl}
-                                />
+                            <div className="space-y-6">
+                                <div>
+                                    <h3 className="font-bold text-gray-900 mb-2">기본 프로필 사진</h3>
+                                    <ImageUpload
+                                        value={form.watch('photoUrl')}
+                                        onChange={(url) => form.setValue('photoUrl', url)}
+                                        error={form.formState.errors.photoUrl}
+                                    />
+                                    <p className="text-xs text-gray-500 mt-2 text-center text-balance">웹명함 중앙에 들어갈 얼굴 위주의 사진 (정방형 권장)</p>
+                                </div>
+
+                                {form.watch('category')?.includes('단체장') && (
+                                    <div className="border border-justice-green/50 rounded-xl p-6 bg-justice-green/5 relative space-y-8">
+                                        <div className="absolute top-0 right-0 bg-justice-green text-white text-xs px-3 py-1 font-bold rounded-bl-lg z-10">단체장 전용</div>
+                                        
+                                        <div>
+                                            <h3 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
+                                                🖼️ 상세페이지 상단(배너) 이미지
+                                            </h3>
+                                            <ImageUpload
+                                                value={form.watch('heroImageUrl')}
+                                                onChange={(url) => form.setValue('heroImageUrl', url)}
+                                                error={form.formState.errors.heroImageUrl}
+                                            />
+                                            <p className="text-xs text-gray-500 mt-2 text-center text-balance">상세 페이지 맨 위에 들어가는 넓은 가로형 배너 이미지입니다. 미등록 시 기본 이미지로 대체됩니다.</p>
+                                        </div>
+
+                                        <div className="border-t border-justice-green/20 pt-6 space-y-4">
+                                            <h3 className="font-bold text-gray-900 flex items-center gap-2">
+                                                🎬 출마선언 영상 및 선언문 전문 (선택)
+                                            </h3>
+                                            <FormInput
+                                                label="출마선언 영상 제목 (예: 출마를 선언하며)"
+                                                register={form.register('declarationTitle')}
+                                                placeholder="출마를 선언하며"
+                                            />
+                                            <FormInput
+                                                label="유튜브 영상 링크"
+                                                register={form.register('declarationVideoUrl')}
+                                                placeholder="https://youtube.com/watch?v=..."
+                                            />
+                                            <div>
+                                                <label className="block text-sm font-medium text-gray-700 mb-1">출마선언문 전문</label>
+                                                <textarea
+                                                    {...form.register('declarationText')}
+                                                    className="block w-full rounded-lg border-gray-300 border p-3 focus:ring-2 focus:ring-justice-green focus:border-justice-green h-40"
+                                                    placeholder="선언문 텍스트를 붙여넣으세요..."
+                                                />
+                                            </div>
+                                        </div>
+                                        <div className="border-t border-justice-green/20 pt-6 space-y-6">
+                                            <ScheduleList
+                                                title="후보자 동정 (일정 관리)"
+                                                items={form.watch('mayorSchedules') || []}
+                                                onChange={(items: any) => form.setValue('mayorSchedules', items)}
+                                                maxItems={10}
+                                            />
+                                        </div>
+
+                                        <div className="border-t border-justice-green/20 pt-6 space-y-6">
+                                            <StoryList
+                                                title="현장 소식 (뉴스 및 포토)"
+                                                items={form.watch('mayorStories') || []}
+                                                onChange={(items: any) => form.setValue('mayorStories', items)}
+                                                maxItems={10}
+                                            />
+                                        </div>
+                                    </div>
+                                )}
                             </div>
 
                             <div className="bg-yellow-50 p-4 rounded-xl space-y-4">

@@ -9,6 +9,7 @@ import { Footer } from '@/components/Footer';
 import { ScheduleSection } from '@/components/ScheduleSection';
 import { StorySection } from '@/components/StorySection';
 import { GallerySection } from '@/components/GallerySection';
+import { DeclarationSection } from '@/components/DeclarationSection';
 
 const sheetsClient = new SheetsClient();
 
@@ -66,6 +67,7 @@ export default async function Page({ params }: PageProps) {
         <main className="min-h-screen bg-white">
             <Navigation name={candidate.name} slug={slug} />
             <HeroSection candidate={candidate} />
+            <DeclarationSection candidate={candidate} />
             <AboutSection candidate={candidate} />
             {/* Mayor Specific Sections */}
             {candidate.mayorSchedules && candidate.mayorSchedules.length > 0 && (

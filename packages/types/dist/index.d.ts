@@ -8,6 +8,9 @@ export interface MayorExtra {
     greetingTitle: string;
     greetingText: string;
     heroImageUrl: string;
+    declarationTitle?: string;
+    declarationVideoUrl?: string;
+    declarationText?: string;
 }
 export interface MayorStory {
     candidateSlug: string;
