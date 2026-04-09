@@ -1,7 +1,5 @@
-import { SheetsClient } from '@justice/api-client';
+import { sheetsClient } from '@justice/api-client';
 import { NextRequest, NextResponse } from 'next/server';
-
-const sheetsClient = new SheetsClient();
 
 export const dynamic = 'force-dynamic';
 

@@ -1,7 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { SheetsClient } from '@justice/api-client';
-
-const sheetsClient = new SheetsClient();
+import { sheetsClient } from '@justice/api-client';
 
 export async function POST(req: NextRequest) {
     try {
@@ -46,10 +44,11 @@ export async function POST(req: NextRequest) {
                 candidate.mayorGallery = gallery;
             }
 
+            const { password: _, ...safeCandidate } = candidate;
             return NextResponse.json({
                 valid: true,
                 isNew: false,
-                candidate
+                candidate: safeCandidate
             });
         }
 

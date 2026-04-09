@@ -14,6 +14,17 @@ export async function POST(request: NextRequest) {
             );
         }
 
+        // 기존 후보자인 경우 비밀번호 검증
+        const existing = await sheetsClient.getCandidate(body.slug);
+        if (existing && existing.password) {
+            if (!body.password || existing.password !== body.password) {
+                return NextResponse.json(
+                    { error: 'Unauthorized: invalid password' },
+                    { status: 401 }
+                );
+            }
+        }
+
         // Construct Candidate object from request body
         const candidate: Candidate = {
             slug: body.slug,
