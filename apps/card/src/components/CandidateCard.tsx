@@ -5,9 +5,10 @@ import { Camera, Phone, MapPin, Copy } from 'lucide-react';
 
 interface CandidateCardProps {
     candidate: Candidate;
+    settings: Record<string, string>;
 }
 
-export function CandidateCard({ candidate }: CandidateCardProps) {
+export function CandidateCard({ candidate, settings }: CandidateCardProps) {
     // Safe color access using Tailwind classes we defined
     const gradientBg = "bg-gradient-to-br from-justice-green via-justice-yellow to-justice-pink";
 
@@ -128,7 +129,7 @@ export function CandidateCard({ candidate }: CandidateCardProps) {
                     <div className="max-w-xl mx-auto w-full">
                         <div className="bg-white rounded-3xl shadow-xl p-8 transform transition-transform hover:scale-[1.01]">
                             <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                                🔥 걸어온 길
+                                {settings.section_careers || '🔥 걸어온 길'}
                             </h3>
                             <ul className="space-y-2 text-left">
                                 {candidate.careers.map((c, i) => (
@@ -149,7 +150,7 @@ export function CandidateCard({ candidate }: CandidateCardProps) {
                     <div className="max-w-xl mx-auto w-full">
                         <div className="bg-white rounded-3xl shadow-xl p-8 transform transition-transform hover:scale-[1.01]">
                             <h3 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
-                                🏆 주요 의정 성과
+                                {settings.section_reports || '🏆 주요 의정 성과'}
                             </h3>
                             <div className="space-y-6 max-h-[60vh] overflow-y-auto pr-2 custom-scrollbar">
                                 {[...candidate.reports]
@@ -196,7 +197,7 @@ export function CandidateCard({ candidate }: CandidateCardProps) {
                     <div className="max-w-xl mx-auto w-full">
                         <div className="bg-white rounded-3xl shadow-xl p-8 transform transition-transform hover:scale-[1.01]">
                             <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                                📢 핵심 공약
+                                {settings.section_policies || '📢 핵심 공약'}
                             </h3>
                             <div className="space-y-4 text-left max-h-[60vh] overflow-y-auto pr-2 custom-scrollbar">
                                 {candidate.policies.map((p, i) => (
@@ -257,7 +258,7 @@ export function CandidateCard({ candidate }: CandidateCardProps) {
                         {/* 흰색 카드 (타이틀 포함) */}
                         <div className="bg-white rounded-3xl p-6 shadow-xl">
                             <h2 className="text-2xl font-bold mb-5 text-gray-900 flex items-center justify-center gap-1">
-                                💛 후원으로 함께하기
+                                {settings.section_donation || '💛 후원으로 함께하기'}
                             </h2>
 
                             <div
@@ -269,7 +270,7 @@ export function CandidateCard({ candidate }: CandidateCardProps) {
                                     {/* 복사 안내 문구 */}
                                     <div className="text-[#00A651] font-bold text-sm md:text-base flex items-center justify-center gap-1.5 mb-1.5">
                                         <Copy size={16} strokeWidth={2.5} />
-                                        클릭하면 후원계좌가 복사됩니다!
+                                        {settings.donation_copy_guide || '클릭하면 후원계좌가 복사됩니다!'}
                                     </div>
                                     
                                     <p className="text-2xl md:text-[28px] lg:text-3xl font-black text-gray-900 tracking-tight leading-tight">
@@ -286,7 +287,7 @@ export function CandidateCard({ candidate }: CandidateCardProps) {
                     {(candidate.contact?.phone || candidate.contact?.email || candidate.address) && (
                         <div className="bg-white backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-black shadow-lg">
                             <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
-                                📞 문의 / 위치
+                                {settings.section_contact || '📞 문의 / 위치'}
                             </h3>
                             <div className="space-y-4">
                                 {candidate.contact?.phone && (

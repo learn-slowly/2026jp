@@ -5,7 +5,11 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { ArrowRight, MapPin } from 'lucide-react';
 
-export function HeroSection() {
+interface HeroSectionProps {
+    settings: Record<string, string>;
+}
+
+export function HeroSection({ settings }: HeroSectionProps) {
     const [dDay, setDDay] = useState('');
 
     useEffect(() => {
@@ -32,14 +36,14 @@ export function HeroSection() {
                 </div>
 
                 <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-8 leading-tight animate-fade-in-up delay-200">
-                    이제 같이 삽시다<br />
+                    {settings.hero_heading || '이제 같이 삽시다'}<br />
                     <span className="text-justice-yellow">
-                        같이 잘 삽시다
+                        {settings.hero_heading_highlight || '같이 잘 삽시다'}
                     </span>
                 </h1>
 
                 <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-2xl mx-auto leading-relaxed animate-fade-in-up delay-300">
-                    정치가 놓친 삶의 의제
+                    {settings.hero_description || '정치가 놓친 삶의 의제'}
                 </p>
 
                 <div className="hero_button flex flex-col md:flex-row items-center justify-center gap-4 animate-fade-in-up delay-500">
@@ -47,7 +51,7 @@ export function HeroSection() {
                         href="#policies"
                         className="w-full md:w-auto px-8 py-4 bg-justice-yellow hover:bg-justice-yellow-dark text-black rounded-full font-bold text-lg transition-all flex items-center justify-center gap-2 group"
                     >
-                        핵심 공약 보기
+                        {settings.cta_button_1 || '핵심 공약 보기'}
                         <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                     </Link>
                     <Link
@@ -55,7 +59,7 @@ export function HeroSection() {
                         className="w-full md:w-auto px-8 py-4 bg-white/10 hover:bg-white/20 text-white backdrop-blur-sm rounded-full font-bold text-lg transition-all flex items-center justify-center gap-2"
                     >
                         <MapPin className="w-5 h-5" />
-                        우리 동네 후보 찾기
+                        {settings.cta_button_2 || '우리 동네 후보 찾기'}
                     </Link>
                 </div>
             </div>

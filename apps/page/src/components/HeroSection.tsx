@@ -4,9 +4,10 @@ import { Candidate } from '@justice/types';
 
 interface HeroSectionProps {
     candidate: Candidate;
+    settings: Record<string, string>;
 }
 
-export function HeroSection({ candidate }: HeroSectionProps) {
+export function HeroSection({ candidate, settings }: HeroSectionProps) {
     return (
         <section className="relative min-h-fit flex items-center justify-center overflow-hidden bg-justice-yellow pt-20">
             {/* Background Pattern */}
@@ -43,13 +44,13 @@ export function HeroSection({ candidate }: HeroSectionProps) {
                             onClick={() => document.getElementById('policies')?.scrollIntoView({ behavior: 'smooth' })}
                             className="bg-white text-black px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-100 transition shadow-lg"
                         >
-                            약속 보기
+                            {settings.hero_button_1 || '약속 보기'}
                         </button>
                         <button
                             onClick={() => document.getElementById('donation')?.scrollIntoView({ behavior: 'smooth' })}
                             className="bg-transparent border-2 border-black text-black px-8 py-4 rounded-full font-bold text-lg hover:justice-yellow-dark/10 transition"
                         >
-                            후원하기
+                            {settings.hero_button_2 || '후원하기'}
                         </button>
                     </div>
                 </div>

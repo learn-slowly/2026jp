@@ -5,9 +5,10 @@ import { Calendar } from 'lucide-react';
 
 interface ReportSectionProps {
     candidate: Candidate;
+    settings: Record<string, string>;
 }
 
-export function ReportSection({ candidate }: ReportSectionProps) {
+export function ReportSection({ candidate, settings }: ReportSectionProps) {
     if (!candidate.isIncumbent || !candidate.reports || candidate.reports.length === 0) return null;
 
     // Sort reports desc
@@ -23,7 +24,7 @@ export function ReportSection({ candidate }: ReportSectionProps) {
                 <div className="text-center mb-16">
                     <h2 className="text-justice-green font-bold text-lg tracking-wider uppercase mb-4">Activities</h2>
                     <h3 className="text-4xl md:text-5xl font-bold text-gray-900">
-                        의정 활동 <span className="text-justice-green">보고</span>
+                        {settings.section_reports || '의정 활동 보고'}
                     </h3>
                 </div>
 

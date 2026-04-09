@@ -17,6 +17,7 @@ export declare class SheetsClient {
     saveMayorSchedules(slug: string, schedules: MayorSchedule[]): Promise<boolean>;
     getMayorGallery(slug: string): Promise<MayorGallery[]>;
     saveMayorGallery(slug: string, gallery: MayorGallery[]): Promise<boolean>;
+    getSettings(tabName: string): Promise<Record<string, string>>;
     getCentralPolicies(): Promise<CentralPolicy[]>;
     private mapRowToCandidate;
 }

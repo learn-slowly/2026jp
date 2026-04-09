@@ -8,9 +8,10 @@ import Image from 'next/image';
 
 interface CandidateFinderProps {
     candidates: Candidate[];
+    settings: Record<string, string>;
 }
 
-export function CandidateFinder({ candidates }: CandidateFinderProps) {
+export function CandidateFinder({ candidates, settings }: CandidateFinderProps) {
     const [selectedRegion, setSelectedRegion] = useState('전체');
     const [searchTerm, setSearchTerm] = useState('');
 
@@ -56,10 +57,10 @@ export function CandidateFinder({ candidates }: CandidateFinderProps) {
                 <div className="mb-16 text-center">
                     <h2 className="text-justice-yellow font-bold text-lg tracking-wider uppercase mb-3">Candidates</h2>
                     <h3 className="text-4xl md:text-5xl font-black text-gray-900">
-                        우리 동네 정의당 찾기
+                        {settings.finder_heading || '우리 동네 정의당 찾기'}
                     </h3>
                     <p className="mt-4 text-xl text-gray-500 max-w-2xl mx-auto">
-                        당신 곁에 정의당이 있습니다
+                        {settings.finder_description || '당신 곁에 정의당이 있습니다'}
                     </p>
                 </div>
 
@@ -70,7 +71,7 @@ export function CandidateFinder({ candidates }: CandidateFinderProps) {
                         <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-justice-yellow w-5 h-5" />
                         <input
                             type="text"
-                            placeholder="이름이나 지역명으로 검색해보세요"
+                            placeholder={settings.finder_search_placeholder || '이름이나 지역명으로 검색해보세요'}
                             value={searchTerm}
                             onChange={(e) => setSearchTerm(e.target.value)}
                             className="w-full pl-12 pr-4 py-4 rounded-full border border-gray-200 focus:border-justice-yellow focus:ring-2 focus:ring-justice-yellow/20 outline-none transition-all shadow-sm text-gray-900 placeholder:text-gray-500 font-medium"
@@ -164,7 +165,7 @@ export function CandidateFinder({ candidates }: CandidateFinderProps) {
                     </div>
                 ) : (
                     <div className="text-center py-20 bg-white rounded-2xl border border-dashed border-gray-200">
-                        <p className="text-gray-400 text-lg">해당하는 후보자가 없습니다.</p>
+                        <p className="text-gray-400 text-lg">{settings.finder_empty || '해당하는 후보자가 없습니다.'}</p>
                         <button
                             onClick={() => { setSelectedRegion('전체'); setSearchTerm(''); }}
                             className="mt-4 text-justice-yellow font-bold hover:underline"

@@ -475,6 +475,28 @@ export class SheetsClient {
     }
 
 
+    // --- Settings (key-value) ---
+    async getSettings(tabName: string): Promise<Record<string, string>> {
+        try {
+            const response = await this.sheets.spreadsheets.values.get({
+                spreadsheetId: this.sheetId,
+                range: `${tabName}!A2:B`,
+            });
+
+            const rows = response.data.values || [];
+            const settings: Record<string, string> = {};
+            rows.forEach(row => {
+                const key = (row[0] || '').trim();
+                const value = (row[1] || '').trim();
+                if (key) settings[key] = value;
+            });
+            return settings;
+        } catch (error) {
+            console.error(`Error fetching settings from ${tabName}:`, error);
+            return {};
+        }
+    }
+
     // --- Central Policies ---
     async getCentralPolicies(): Promise<CentralPolicy[]> {
         if (!this.sheets) return [];

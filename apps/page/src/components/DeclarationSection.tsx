@@ -6,9 +6,10 @@ import { ChevronDown, ChevronUp } from 'lucide-react';
 
 interface DeclarationSectionProps {
     candidate: Candidate;
+    settings: Record<string, string>;
 }
 
-export function DeclarationSection({ candidate }: DeclarationSectionProps) {
+export function DeclarationSection({ candidate, settings }: DeclarationSectionProps) {
     const [isOpen, setIsOpen] = useState(false);
     
     // Only render if we have at least a video or text
@@ -48,8 +49,8 @@ export function DeclarationSection({ candidate }: DeclarationSectionProps) {
                 {videoId && (
                     <div className="space-y-6">
                         <div className="text-center">
-                            <h2 className="text-3xl font-extrabold text-gray-900">{declarationTitle || "출마를 선언하며"}</h2>
-                            <p className="text-gray-600 mt-2">{candidate.name} 후보의 약속을 영상으로 만나보세요</p>
+                            <h2 className="text-3xl font-extrabold text-gray-900">{declarationTitle || settings.section_declaration || "출마를 선언하며"}</h2>
+                            <p className="text-gray-600 mt-2">{candidate.name} {settings.section_declaration_sub || '후보의 약속을 영상으로 만나보세요'}</p>
                         </div>
                         <div className="relative w-full bg-black overflow-hidden rounded-2xl shadow-2xl ring-1 ring-black/5" style={{ paddingTop: '56.25%' }}>
                             <iframe 
@@ -71,7 +72,7 @@ export function DeclarationSection({ candidate }: DeclarationSectionProps) {
                             className="w-full flex items-center justify-between text-left focus:outline-none group"
                         >
                             <span className="text-xl font-extrabold text-gray-900 group-hover:text-justice-green transition flex items-center gap-3">
-                                📖 출마선언문 전문 보기
+                                {settings.section_declaration_toggle || '📖 출마선언문 전문 보기'}
                             </span>
                             <div className="p-3 bg-gray-50 rounded-full group-hover:bg-justice-green/10 transition">
                                 {isOpen ? (

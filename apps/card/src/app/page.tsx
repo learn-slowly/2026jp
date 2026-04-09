@@ -6,7 +6,10 @@ import { Candidate } from '@justice/types';
 export const revalidate = 60; // Refresh every 60 seconds
 
 export default async function Home() {
-    const candidates: Candidate[] = await sheetsClient.getCandidates();
+    const [candidates, settings] = await Promise.all([
+        sheetsClient.getCandidates(),
+        sheetsClient.getSettings('card_settings')
+    ]) as [Candidate[], Record<string, string>];
 
     // Sort active candidates first, then alphabetical (or leave as Google Sheets order)
     const activeCandidates = candidates.filter((c: Candidate) => c.status === 'active' || !c.status);
@@ -20,10 +23,10 @@ export default async function Home() {
                         JP
                     </div>
                     <h1 className="text-3xl md:text-4xl font-bold text-white mb-3 tracking-tight">
-                        2026 지방선거 디지털 웹플랫폼
+                        {settings.home_heading || '2026 지방선거 디지털 웹플랫폼'}
                     </h1>
                     <p className="text-green-100 text-lg md:text-xl font-medium">
-                        우리 지역을 바꿀 든든한 일꾼들을 소개합니다.
+                        {settings.home_description || '우리 지역을 바꿀 든든한 일꾼들을 소개합니다.'}
                     </p>
                 </div>
                 {/* Decorative background elements */}
@@ -61,8 +64,8 @@ export default async function Home() {
                         <div className="w-24 h-24 bg-gray-50 rounded-full flex items-center justify-center mx-auto mb-6">
                             <User className="w-12 h-12 text-gray-300" />
                         </div>
-                        <h3 className="text-xl font-bold text-gray-600">현재 등록된 후보자가 없습니다.</h3>
-                        <p className="text-gray-400 mt-2">새로운 명함을 등록해 보세요!</p>
+                        <h3 className="text-xl font-bold text-gray-600">{settings.home_empty || '현재 등록된 후보자가 없습니다.'}</h3>
+                        <p className="text-gray-400 mt-2">{settings.home_empty_sub || '새로운 명함을 등록해 보세요!'}</p>
                     </div>
                 ) : (
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
@@ -103,7 +106,7 @@ export default async function Home() {
                                     <div className="w-12 h-1 bg-gray-100 rounded-full mb-4 transition-colors group-hover:bg-justice-purple/20"></div>
 
                                     <p className="text-gray-700 text-sm md:text-base line-clamp-2 leading-relaxed flex-1 font-medium px-2">
-                                        {candidate.slogan || candidate.intro || '우리지역을 바꿀 정의당 후보입니다.'}
+                                        {candidate.slogan || candidate.intro || settings.home_default_slogan || '우리지역을 바꿀 정의당 후보입니다.'}
                                     </p>
 
                                     <div className="mt-6 w-full py-3.5 bg-gray-50 group-hover:bg-justice-green text-gray-600 group-hover:text-white font-bold rounded-xl transition-all flex items-center justify-center gap-2 text-sm md:text-base border border-gray-100 group-hover:border-justice-green shadow-sm">

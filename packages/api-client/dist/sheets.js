@@ -136,7 +136,7 @@ class SheetsClient {
                 yield this.sheets.spreadsheets.values.append({
                     spreadsheetId: this.sheetId,
                     range: 'candidates!A:A',
-                    valueInputOption: 'USER_ENTERED',
+                    valueInputOption: 'RAW',
                     requestBody: { values: [row] },
                 });
                 return true;
@@ -207,7 +207,7 @@ class SheetsClient {
                 yield this.sheets.spreadsheets.values.append({
                     spreadsheetId: this.sheetId,
                     range: 'reports!A:I',
-                    valueInputOption: 'USER_ENTERED',
+                    valueInputOption: 'RAW',
                     requestBody: { values: rows },
                 });
                 return true;
@@ -270,7 +270,7 @@ class SheetsClient {
                 yield this.sheets.spreadsheets.values.append({
                     spreadsheetId: this.sheetId,
                     range: 'mayor_extra!A:J',
-                    valueInputOption: 'USER_ENTERED',
+                    valueInputOption: 'RAW',
                     requestBody: { values: [row] },
                 });
                 return true;
@@ -339,7 +339,7 @@ class SheetsClient {
                 yield this.sheets.spreadsheets.values.append({
                     spreadsheetId: this.sheetId,
                     range: 'mayor_stories!A:H',
-                    valueInputOption: 'USER_ENTERED',
+                    valueInputOption: 'RAW',
                     requestBody: { values: rows },
                 });
                 return true;
@@ -406,7 +406,7 @@ class SheetsClient {
                 yield this.sheets.spreadsheets.values.append({
                     spreadsheetId: this.sheetId,
                     range: 'mayor_schedules!A:G',
-                    valueInputOption: 'USER_ENTERED',
+                    valueInputOption: 'RAW',
                     requestBody: { values: rows },
                 });
                 return true;
@@ -471,7 +471,7 @@ class SheetsClient {
                 yield this.sheets.spreadsheets.values.append({
                     spreadsheetId: this.sheetId,
                     range: 'mayor_gallery!A:F',
-                    valueInputOption: 'USER_ENTERED',
+                    valueInputOption: 'RAW',
                     requestBody: { values: rows },
                 });
                 return true;
@@ -479,6 +479,30 @@ class SheetsClient {
             catch (error) {
                 console.error('Error saving mayor_gallery:', error);
                 return false;
+            }
+        });
+    }
+    // --- Settings (key-value) ---
+    getSettings(tabName) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const response = yield this.sheets.spreadsheets.values.get({
+                    spreadsheetId: this.sheetId,
+                    range: `${tabName}!A2:B`,
+                });
+                const rows = response.data.values || [];
+                const settings = {};
+                rows.forEach(row => {
+                    const key = (row[0] || '').trim();
+                    const value = (row[1] || '').trim();
+                    if (key)
+                        settings[key] = value;
+                });
+                return settings;
+            }
+            catch (error) {
+                console.error(`Error fetching settings from ${tabName}:`, error);
+                return {};
             }
         });
     }

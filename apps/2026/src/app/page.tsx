@@ -7,16 +7,17 @@ import { CandidateFinder } from '@/components/CandidateFinder';
 export const revalidate = 0;
 
 export default async function Home() {
-  const [policies, candidates] = await Promise.all([
+  const [policies, candidates, settings] = await Promise.all([
     sheetsClient.getCentralPolicies(),
-    sheetsClient.getCandidates()
+    sheetsClient.getCandidates(),
+    sheetsClient.getSettings('2026_settings')
   ]);
 
   return (
     <main className="min-h-screen bg-white">
-      <HeroSection />
-      <CandidateFinder candidates={candidates} />
-      <PolicyShowcase policies={policies} />
+      <HeroSection settings={settings} />
+      <CandidateFinder candidates={candidates} settings={settings} />
+      <PolicyShowcase policies={policies} settings={settings} />
 
       <footer className="bg-gray-900 text-white/50 py-16 text-center">
         <div className="flex flex-wrap items-center justify-center gap-5 mb-8 px-4">

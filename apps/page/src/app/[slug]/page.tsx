@@ -1,4 +1,4 @@
-import { SheetsClient } from '@justice/api-client';
+import { sheetsClient } from '@justice/api-client';
 import { notFound } from 'next/navigation';
 import { Navigation } from '@/components/Navigation';
 import { HeroSection } from '@/components/HeroSection';
@@ -10,8 +10,6 @@ import { ScheduleSection } from '@/components/ScheduleSection';
 import { StorySection } from '@/components/StorySection';
 import { GallerySection } from '@/components/GallerySection';
 import { DeclarationSection } from '@/components/DeclarationSection';
-
-const sheetsClient = new SheetsClient();
 
 export const dynamic = 'force-dynamic';
 
@@ -50,6 +48,8 @@ export default async function Page({ params }: PageProps) {
         candidate.reports = reports;
     }
 
+    const settings = await sheetsClient.getSettings('page_settings');
+
     if (candidate.category.includes('단체장')) {
         const [extra, stories, schedules, gallery] = await Promise.all([
             sheetsClient.getMayorExtra(slug),
@@ -66,9 +66,9 @@ export default async function Page({ params }: PageProps) {
     return (
         <main className="min-h-screen bg-white">
             <Navigation name={candidate.name} slug={slug} />
-            <HeroSection candidate={candidate} />
-            <DeclarationSection candidate={candidate} />
-            <AboutSection candidate={candidate} />
+            <HeroSection candidate={candidate} settings={settings} />
+            <DeclarationSection candidate={candidate} settings={settings} />
+            <AboutSection candidate={candidate} settings={settings} />
             {/* Mayor Specific Sections */}
             {candidate.mayorSchedules && candidate.mayorSchedules.length > 0 && (
                 <ScheduleSection candidate={candidate} />
@@ -76,12 +76,12 @@ export default async function Page({ params }: PageProps) {
             {candidate.mayorStories && candidate.mayorStories.length > 0 && (
                 <StorySection candidate={candidate} />
             )}
-            <PolicySection candidate={candidate} />
-            <ReportSection candidate={candidate} />
+            <PolicySection candidate={candidate} settings={settings} />
+            <ReportSection candidate={candidate} settings={settings} />
             {candidate.mayorGallery && candidate.mayorGallery.length > 0 && (
                 <GallerySection candidate={candidate} />
             )}
-            <Footer candidate={candidate} />
+            <Footer candidate={candidate} settings={settings} />
         </main>
     );
 }

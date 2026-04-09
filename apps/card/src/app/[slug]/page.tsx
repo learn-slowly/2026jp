@@ -1,8 +1,6 @@
-import { SheetsClient } from '@justice/api-client';
+import { sheetsClient } from '@justice/api-client';
 import { CandidateCard } from '@/components/CandidateCard';
 import { notFound } from 'next/navigation';
-
-const sheetsClient = new SheetsClient();
 
 // Disable caching for the demo to see updates immediately
 export const dynamic = 'force-dynamic';
@@ -49,5 +47,7 @@ export default async function Page({ params }: PageProps) {
         candidate.reports = reports;
     }
 
-    return <CandidateCard candidate={candidate} />;
+    const settings = await sheetsClient.getSettings('card_settings');
+
+    return <CandidateCard candidate={candidate} settings={settings} />;
 }
