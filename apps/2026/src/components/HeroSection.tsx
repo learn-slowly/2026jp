@@ -9,7 +9,7 @@ export function HeroSection() {
     const [dDay, setDDay] = useState('');
 
     useEffect(() => {
-        const electionDate = new Date('2026-06-03');
+        const electionDate = new Date('2026-06-03T00:00:00+09:00');
         const today = new Date();
         const diff = electionDate.getTime() - today.getTime();
         const days = Math.ceil(diff / (1000 * 60 * 60 * 24));
