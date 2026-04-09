@@ -39,12 +39,21 @@ export default async function Home() {
                     <h2 className="text-xl md:text-2xl font-bold text-gray-800 flex items-center gap-2">
                         등록된 후보자 <span className="bg-justice-purple text-white px-3 py-0.5 rounded-full text-lg shadow-sm">{activeCandidates.length}</span>명
                     </h2>
-                    <Link
-                        href="/qr"
-                        className="px-5 py-2.5 bg-gray-100 hover:bg-gray-200 text-gray-700 font-bold rounded-xl transition-all text-sm md:text-base border border-gray-200 shadow-sm hover:shadow-md"
-                    >
-                        QR코드 생성기
-                    </Link>
+                    <div className="flex gap-2">
+                        <a
+                            href="https://page.justice21.org/register"
+                            className="px-5 py-2.5 bg-justice-green hover:bg-justice-green-dark text-white font-bold rounded-xl transition-all text-sm md:text-base shadow-sm hover:shadow-md flex items-center gap-1.5"
+                        >
+                            후보자 등록
+                            <ArrowRight className="w-4 h-4" />
+                        </a>
+                        <Link
+                            href="/qr"
+                            className="px-5 py-2.5 bg-gray-100 hover:bg-gray-200 text-gray-700 font-bold rounded-xl transition-all text-sm md:text-base border border-gray-200 shadow-sm hover:shadow-md"
+                        >
+                            QR코드 생성기
+                        </Link>
+                    </div>
                 </div>
 
                 {activeCandidates.length === 0 ? (
