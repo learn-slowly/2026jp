@@ -34,7 +34,7 @@ export function ScheduleSection({ candidate }: ScheduleSectionProps) {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                     {schedules.map((schedule, i) => (
                         <div key={i} className="flex gap-6 items-start p-6 rounded-2xl border border-gray-100 bg-white hover:border-justice-yellow/30 hover:shadow-lg transition-all group">
-                            <div className="flex-shrink-0 bg-justice-yellow/10 text-black rounded-xl p-4 text-center min-w-[5rem]">
+                            <div className="flex-shrink-0 bg-justice-yellow text-black rounded-xl p-4 text-center min-w-[5rem]">
                                 <div className="text-sm font-bold uppercase">{new Date(schedule.date).toLocaleDateString('en-US', { month: 'short' })}</div>
                                 <div className="text-2xl font-bold">{new Date(schedule.date).getDate()}</div>
                             </div>
