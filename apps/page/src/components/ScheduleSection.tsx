@@ -25,22 +25,21 @@ export function ScheduleSection({ candidate }: ScheduleSectionProps) {
             <div className="max-w-7xl mx-auto px-4 md:px-8 relative z-10">
                 <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
                     <div>
-                        <h2 className="text-justice-green font-bold text-lg tracking-wider uppercase mb-2">Schedule</h2>
                         <h3 className="text-4xl md:text-5xl font-bold text-gray-900">
-                            후보자 <span className="text-justice-green">동정</span>
+                            후보자 주요 일정
                         </h3>
                     </div>
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                     {schedules.map((schedule, i) => (
-                        <div key={i} className="flex gap-6 items-start p-6 rounded-2xl border border-gray-100 bg-white hover:border-justice-green/30 hover:shadow-lg transition-all group">
-                            <div className="flex-shrink-0 bg-justice-green/10 text-justice-green rounded-xl p-4 text-center min-w-[5rem]">
+                        <div key={i} className="flex gap-6 items-start p-6 rounded-2xl border border-gray-100 bg-white hover:border-justice-yellow/30 hover:shadow-lg transition-all group">
+                            <div className="flex-shrink-0 bg-justice-yellow/10 text-black rounded-xl p-4 text-center min-w-[5rem]">
                                 <div className="text-sm font-bold uppercase">{new Date(schedule.date).toLocaleDateString('en-US', { month: 'short' })}</div>
                                 <div className="text-2xl font-bold">{new Date(schedule.date).getDate()}</div>
                             </div>
                             <div className="space-y-2">
-                                <h4 className="text-xl font-bold text-gray-900 group-hover:text-justice-green transition-colors">
+                                <h4 className="text-xl font-bold text-gray-900 group-hover:text-justice-yellow transition-colors">
                                     {schedule.title}
                                 </h4>
                                 <div className="flex flex-wrap gap-4 text-sm text-gray-600">
