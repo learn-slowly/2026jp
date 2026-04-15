@@ -71,14 +71,14 @@ export function DeclarationSection({ candidate, settings }: DeclarationSectionPr
                             onClick={() => setIsOpen(!isOpen)}
                             className="w-full flex items-center justify-between text-left focus:outline-none group"
                         >
-                            <span className="text-xl font-extrabold text-gray-900 group-hover:text-justice-green transition flex items-center gap-3">
+                            <span className="text-xl font-extrabold text-gray-900 transition flex items-center gap-3">
                                 {settings.section_declaration_toggle || '📖 출마선언문 전문 보기'}
                             </span>
-                            <div className="p-3 bg-gray-50 rounded-full group-hover:bg-justice-green/10 transition">
+                            <div className="p-3 bg-gray-50 rounded-full group-hover:bg-justice-yellow transition">
                                 {isOpen ? (
-                                    <ChevronUp className="w-6 h-6 text-gray-600 group-hover:text-justice-green transition-transform" />
+                                    <ChevronUp className="w-6 h-6 text-gray-600 transition-transform" />
                                 ) : (
-                                    <ChevronDown className="w-6 h-6 text-gray-600 group-hover:text-justice-green transition-transform" />
+                                    <ChevronDown className="w-6 h-6 text-gray-600 transition-transform" />
                                 )}
                             </div>
                         </button>
