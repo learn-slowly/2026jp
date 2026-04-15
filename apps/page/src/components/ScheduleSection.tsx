@@ -18,9 +18,9 @@ export function ScheduleSection({ candidate }: ScheduleSectionProps) {
     );
 
     return (
-        <section className="py-24 bg-justice-yellow/15 relative overflow-hidden">
+        <section className="py-24 bg-justice-yellow/10 relative overflow-hidden">
             {/* Background Blob */}
-            <div className="absolute top-0 right-0 w-1/3 h-full bg-justice-yellow/20 skew-x-12 pointer-events-none"></div>
+            <div className="absolute top-0 right-0 w-1/3 h-full bg-justice-yellow/15 skew-x-12 pointer-events-none"></div>
 
             <div className="max-w-7xl mx-auto px-4 md:px-8 relative z-10">
                 <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
