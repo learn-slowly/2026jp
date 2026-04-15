@@ -39,7 +39,7 @@ export function ScheduleSection({ candidate }: ScheduleSectionProps) {
                                 <div className="text-2xl font-bold">{new Date(schedule.date).getDate()}</div>
                             </div>
                             <div className="space-y-2">
-                                <h4 className="text-xl font-bold text-gray-900 group-hover:text-justice-yellow transition-colors">
+                                <h4 className="text-xl font-bold text-gray-900 transition-colors">
                                     {schedule.title}
                                 </h4>
                                 <div className="flex flex-wrap gap-4 text-sm text-gray-600">
