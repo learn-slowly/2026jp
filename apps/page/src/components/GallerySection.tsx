@@ -14,9 +14,8 @@ export function GallerySection({ candidate }: GallerySectionProps) {
             <div className="max-w-7xl mx-auto px-4 md:px-8">
                 <div className="flex items-end justify-between mb-12">
                     <div>
-                        <h2 className="text-justice-green font-bold text-lg tracking-wider uppercase mb-2">Gallery</h2>
                         <h3 className="text-4xl md:text-5xl font-bold">
-                            현장의 <span className="text-justice-green">열기</span>
+                            GALLERY
                         </h3>
                     </div>
                 </div>
