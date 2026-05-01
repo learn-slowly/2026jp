@@ -10,6 +10,7 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-paperlogy: "Paperlogy", "Pretendard Variable", Pretendard, sans-serif;
 
   --color-justice-green: #00a366;
   --color-justice-pink: #e8306d;
@@ -25,6 +26,19 @@
   --color-justice-pink-light: #FDE7F0;
   --color-justice-purple-light: #F0EDF7;
   --color-justice-yellow-light: #FFFACC;
+
+  --color-d-black: #121212;
+  --color-d-darkgrey: #999999;
+  --color-d-lightgrey: #fafafa;
+
+  --color-justice-yellow-bright: #FFF000;
+  --color-justice-yellow-cream: #FFFCE5;
+  --color-justice-purple-deep: #5E3A88;
+  --color-d-blueblack: #121827;
+  --color-d-deepgrey: #2A303D;
+  --color-d-softblack: #181818;
+  --color-d-grey: #7A7A7A;
+  --color-d-mutedgrey: #9E9F9F;
 }
 
 @media (prefers-color-scheme: dark) {
