@@ -102,32 +102,32 @@ export function FooterV3({ candidate }: FooterV3Props) {
           {/* Center: donation info box */}
           <div className="space-y-3">
             <p
-              className="text-white text-xs font-bold"
+              className="text-white text-sm font-bold"
               style={{ fontFamily: 'var(--font-paperlogy)' }}
             >
               후원정보
             </p>
-            <div className="relative rounded-2xl border border-white/15 bg-black/20 px-6 py-5 md:px-7 md:py-6">
-              <p className="text-base md:text-lg font-bold text-white mb-2">농협</p>
+            <div className="relative rounded-2xl border border-white/15 bg-black/20 px-7 py-6 md:px-8 md:py-7">
+              <p className="text-lg md:text-xl font-bold text-white mb-2">농협</p>
               <div className="flex items-baseline gap-x-3 whitespace-nowrap" style={{ display: 'flex' }}>
                 <span
-                  className="text-2xl md:text-[28px] tracking-tight text-white leading-none"
+                  className="text-[28px] md:text-[36px] tracking-tight text-white leading-none"
                   style={{ fontFamily: 'var(--font-inter)', fontWeight: 800 }}
                 >
                   {ACCOUNT_NUMBER}
                 </span>
-                <span className="text-xs text-white/70 shrink-0">정의당중앙당후원회</span>
+                <span className="text-sm text-white/70 shrink-0">정의당중앙당후원회</span>
               </div>
               <button
                 type="button"
                 onClick={handleCopy}
                 aria-label={copied ? '계좌번호가 복사되었습니다' : '계좌번호 복사'}
-                className="absolute top-4 right-4 w-7 h-7 rounded-md hover:bg-white/10 flex items-center justify-center transition"
+                className="absolute top-5 right-5 w-9 h-9 rounded-md hover:bg-white/10 flex items-center justify-center transition"
               >
                 {copied ? (
-                  <Check className="w-4 h-4 text-justice-yellow-bright" />
+                  <Check className="w-5 h-5 text-justice-yellow-bright" />
                 ) : (
-                  <Copy className="w-4 h-4 text-white/70" />
+                  <Copy className="w-5 h-5 text-white/70" />
                 )}
               </button>
               {copied && (

@@ -29,7 +29,7 @@ export function ScheduleV3({ items }: ScheduleV3Props) {
         className="pointer-events-none absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: 'url(/bg.png)' }}
       />
-      <div className="relative mx-auto max-w-[45rem] px-6">
+      <div className="relative mx-auto max-w-[1100px] px-6">
         <h2
           className="text-2xl md:text-[32px] text-center mb-10 md:mb-14 tracking-tight text-d-softblack"
           style={{ fontFamily: 'var(--font-paperlogy)', fontWeight: 700 }}
@@ -37,7 +37,7 @@ export function ScheduleV3({ items }: ScheduleV3Props) {
           후보 주요 일정
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-[60px] gap-y-5">
           {items.map((item, i) => {
             const status: 'today' | 'past' | 'future' =
               item.isoDate === todayKst
@@ -70,15 +70,15 @@ function ScheduleCard({
 
   return (
     <article
-      className="flex items-center gap-5 bg-white rounded-2xl px-5 py-5 transition"
+      className="flex items-center gap-6 bg-white rounded-2xl px-7 py-6 transition"
       style={{
         display: 'flex',
-        boxShadow: '0 8px 24px 6px #FFFAC3',
+        boxShadow: '6px 6px 4px 4px #FFFAC3',
       }}
     >
       {/* Date Badge - asymmetric shape (top-right corner squared) using SVG background */}
       <div
-        className={`flex-shrink-0 w-16 h-16 md:w-[68px] md:h-[68px] flex flex-col items-center justify-center ${badgeText}`}
+        className={`flex-shrink-0 w-20 h-20 md:w-[92px] md:h-[92px] flex flex-col items-center justify-center ${badgeText}`}
         style={{
           backgroundImage: `url(${badgeSvg})`,
           backgroundSize: 'contain',
@@ -86,30 +86,30 @@ function ScheduleCard({
         }}
       >
         <span
-          className="text-xl font-bold leading-none"
+          className="text-2xl md:text-[26px] font-bold leading-none"
           style={{ fontFamily: 'var(--font-paperlogy)' }}
         >
           {item.date}
         </span>
-        <span className="text-xs font-medium mt-1">{item.day}</span>
+        <span className="text-sm font-medium mt-1.5">{item.day}</span>
       </div>
 
       {/* Content */}
       <div className="flex-1 min-w-0">
-        <h3 className="text-base md:text-lg font-bold mb-2 break-keep text-d-softblack">{item.title}</h3>
+        <h3 className="text-xl md:text-2xl font-bold mb-2 break-keep text-d-softblack">{item.title}</h3>
         <div
-          className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-d-grey"
+          className="flex flex-wrap items-center gap-x-4 gap-y-1 text-base md:text-lg text-d-grey"
           style={{ display: 'flex' }}
         >
           {item.time && (
-            <span className="inline-flex items-center gap-1">
-              <Clock className="w-4 h-4" />
+            <span className="inline-flex items-center gap-1.5">
+              <Clock className="w-[18px] h-[18px] md:w-5 md:h-5" />
               {item.time}
             </span>
           )}
           {item.location && (
-            <span className="inline-flex items-center gap-1">
-              <MapPin className="w-4 h-4" />
+            <span className="inline-flex items-center gap-1.5">
+              <MapPin className="w-[18px] h-[18px] md:w-5 md:h-5" />
               {item.location}
             </span>
           )}
