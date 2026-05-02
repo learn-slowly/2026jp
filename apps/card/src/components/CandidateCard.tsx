@@ -224,7 +224,7 @@ export function CandidateCard({ candidate, settings }: CandidateCardProps) {
                     <div className="flex justify-center gap-4">
                         {candidate.social.x && (
                             <a href={candidate.social.x} target="_blank" rel="noreferrer" className="w-12 h-12 flex items-center justify-center hover:opacity-80 transition">
-                                <img src="/icons/x.png" alt="X" className="w-full h-full object-contain" />
+                                <img src="/icons/twitter.png" alt="X" className="w-full h-full object-contain" />
                             </a>
                         )}
                         {candidate.social.facebook && (
