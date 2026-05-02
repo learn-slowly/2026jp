@@ -24,6 +24,10 @@ export interface MayorExtra {
     election?: string;       // 예: '제9회 전국동시지방선거'
     slogans?: string;        // 줄바꿈 또는 |로 구분된 슬로건 묶음
     ctaLines?: string;       // CTA 박스 문구. **굵게** 마크다운 지원
+    // Hero 이미지 위치/크기 조정값 (모두 문자열로 저장됨, 빈 값 → 기본값)
+    heroImageScale?: string;     // 1.5 (기본), 0.5 ~ 2.5
+    heroImageOffsetX?: string;   // % 단위, 음수=왼쪽
+    heroImageOffsetY?: string;   // % 단위, 음수=위
 }
 
 export interface MayorStory {

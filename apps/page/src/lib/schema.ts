@@ -58,6 +58,9 @@ export const formSchema = z.object({
         election: z.string().optional(),
         slogans: z.string().optional(),
         ctaLines: z.string().optional(),
+        heroImageScale: z.string().optional(),
+        heroImageOffsetX: z.string().optional(),
+        heroImageOffsetY: z.string().optional(),
     }).optional(),
     mayorStories: z.array(z.object({
         candidateSlug: z.string().optional(),

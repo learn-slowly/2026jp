@@ -78,12 +78,15 @@ export async function POST(request: NextRequest) {
         }
 
         // Save Mayor Specific Data if present
+        // 부분 실패(quota exceeded 등)를 묵음 처리하지 않고 client에 알린다.
+        const partialFailures: string[] = [];
         if (success) {
             if (body.mayorExtra) {
-                await sheetsClient.saveMayorExtra({
+                const ok = await sheetsClient.saveMayorExtra({
                     ...body.mayorExtra,
                     candidateSlug: candidate.slug
                 });
+                if (!ok) partialFailures.push('mayorExtra');
             }
 
             if (body.mayorStories !== undefined) {
@@ -91,7 +94,8 @@ export async function POST(request: NextRequest) {
                     ...s,
                     candidateSlug: candidate.slug
                 }));
-                await sheetsClient.saveMayorStories(candidate.slug, stories);
+                const ok = await sheetsClient.saveMayorStories(candidate.slug, stories);
+                if (!ok) partialFailures.push('mayorStories');
             }
 
             if (body.mayorSchedules !== undefined) {
@@ -99,7 +103,8 @@ export async function POST(request: NextRequest) {
                     ...s,
                     candidateSlug: candidate.slug
                 }));
-                await sheetsClient.saveMayorSchedules(candidate.slug, schedules);
+                const ok = await sheetsClient.saveMayorSchedules(candidate.slug, schedules);
+                if (!ok) partialFailures.push('mayorSchedules');
             }
 
             if (body.mayorGallery !== undefined) {
@@ -107,8 +112,19 @@ export async function POST(request: NextRequest) {
                     ...g,
                     candidateSlug: candidate.slug
                 }));
-                await sheetsClient.saveMayorGallery(candidate.slug, gallery);
+                const ok = await sheetsClient.saveMayorGallery(candidate.slug, gallery);
+                if (!ok) partialFailures.push('mayorGallery');
             }
+        }
+
+        if (partialFailures.length > 0) {
+            return NextResponse.json(
+                {
+                    error: `일부 데이터 저장에 실패했습니다 (${partialFailures.join(', ')}). 잠시 후 다시 시도해주세요. (Google Sheets API quota 초과 가능성)`,
+                    partialFailures,
+                },
+                { status: 502 }
+            );
         }
 
         if (success) {

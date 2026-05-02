@@ -55,6 +55,9 @@ export const formSchema = z.object({
         declarationTitle: z.string().optional(),
         declarationVideoUrl: z.string().url("올바른 URL을 입력해주세요").optional().or(z.literal('')),
         declarationText: z.string().optional(),
+        heroImageScale: z.string().optional(),
+        heroImageOffsetX: z.string().optional(),
+        heroImageOffsetY: z.string().optional(),
     }).optional(),
     mayorStories: z.array(z.object({
         candidateSlug: z.string().optional(),

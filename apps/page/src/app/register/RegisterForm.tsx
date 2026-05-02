@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Check, AlertCircle, Loader2, Lock, ArrowRight } from 'lucide-react';
+import { Check, AlertCircle, Loader2, Lock, ArrowRight, Eye, X } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { formSchema, FormData } from '@/lib/schema';
 import { DynamicList } from '@/components/DynamicList';
@@ -11,16 +11,20 @@ import { ImageUpload } from '@/components/ImageUpload';
 import { PledgeList } from '@/components/PledgeList';
 import { ReportList } from '@/components/ReportList';
 import { MayorSections } from '@/components/MayorSections';
+import { CandidatePreview } from '@/components/CandidatePreview';
 
 type Step = 'SLUG' | 'AUTH' | 'FORM';
 
 interface RegisterFormProps {
     settings: Record<string, string>;
+    pageSettings?: Record<string, string>;
+    cardSettings?: Record<string, string>;
 }
 
-export function RegisterForm({ settings }: RegisterFormProps) {
+export function RegisterForm({ settings, pageSettings = {}, cardSettings = {} }: RegisterFormProps) {
     const router = useRouter();
     const [step, setStep] = useState<Step>('SLUG');
+    const [mobilePreviewOpen, setMobilePreviewOpen] = useState(false);
     const [slugStatus, setSlugStatus] = useState<{ available: boolean; message: string } | null>(null);
     const [checking, setChecking] = useState(false);
     const [submitting, setSubmitting] = useState(false);
@@ -50,7 +54,7 @@ export function RegisterForm({ settings }: RegisterFormProps) {
             contact: { phone: '', email: '', kakao: '', telegram: '' },
             social: { x: '', facebook: '', youtube: '', instagram: '', blog: '' },
             reports: [] as { year: string; month: string; category: string; title: string; description: string; visible: boolean; candidateSlug?: string; linkUrl?: string; }[],
-            mayorExtra: { position: '', visionTitle: '', visionSubtitle: '', greetingTitle: '', greetingText: '', heroImageUrl: '', declarationTitle: '', declarationVideoUrl: '', declarationText: '', election: '', slogans: '', ctaLines: '' },
+            mayorExtra: { position: '', visionTitle: '', visionSubtitle: '', greetingTitle: '', greetingText: '', heroImageUrl: '', declarationTitle: '', declarationVideoUrl: '', declarationText: '', election: '', slogans: '', ctaLines: '', heroImageScale: '', heroImageOffsetX: '', heroImageOffsetY: '' },
             mayorStories: [] as any[],
             mayorSchedules: [] as any[],
             mayorGallery: [] as any[],
@@ -145,7 +149,7 @@ export function RegisterForm({ settings }: RegisterFormProps) {
                         policies: c.policies || [],
                         address: c.address || '',
                         reports: c.reports || [],
-                        mayorExtra: c.mayorExtra || { position: '', visionTitle: '', visionSubtitle: '', greetingTitle: '', greetingText: '', heroImageUrl: '', declarationTitle: '', declarationVideoUrl: '', declarationText: '' },
+                        mayorExtra: c.mayorExtra || { position: '', visionTitle: '', visionSubtitle: '', greetingTitle: '', greetingText: '', heroImageUrl: '', declarationTitle: '', declarationVideoUrl: '', declarationText: '', heroImageScale: '', heroImageOffsetX: '', heroImageOffsetY: '' },
                         mayorStories: c.mayorStories || [],
                         mayorSchedules: c.mayorSchedules || [],
                         mayorGallery: c.mayorGallery || [],
@@ -192,15 +196,33 @@ export function RegisterForm({ settings }: RegisterFormProps) {
         }
     };
 
-    return (
-        <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-            <div className="max-w-2xl mx-auto bg-white rounded-2xl shadow-xl p-8">
-                <div className="text-center mb-10">
-                    <h1 className="text-3xl font-bold text-gray-900">{settings.register_heading || '후보자 등록/수정'}</h1>
-                    <p className="text-gray-600 mt-2">{settings.register_description || '웹명함 생성을 위한 정보를 입력해주세요'}</p>
-                </div>
+    const watched = form.watch();
+    const isFormStep = step === 'FORM';
 
-                <div className="space-y-8">
+    return (
+        <div className="min-h-screen bg-gray-50">
+            <div className={isFormStep ? 'lg:flex lg:h-screen lg:overflow-hidden' : 'py-12 px-4 sm:px-6 lg:px-8'}>
+                {/* ====== 폼 패널 ====== */}
+                <div
+                    className={
+                        isFormStep
+                            ? 'lg:w-1/2 lg:h-screen lg:overflow-y-auto p-4 sm:p-6 lg:p-8'
+                            : ''
+                    }
+                >
+                    <div
+                        className={
+                            isFormStep
+                                ? 'max-w-2xl mx-auto bg-white rounded-2xl shadow-xl p-6 sm:p-8'
+                                : 'max-w-2xl mx-auto bg-white rounded-2xl shadow-xl p-8'
+                        }
+                    >
+                        <div className="text-center mb-10">
+                            <h1 className="text-3xl font-bold text-gray-900">{settings.register_heading || '후보자 등록/수정'}</h1>
+                            <p className="text-gray-600 mt-2">{settings.register_description || '웹명함 생성을 위한 정보를 입력해주세요'}</p>
+                        </div>
+
+                        <div className="space-y-8">
                     {/* Step 1: Slug Input */}
                     {step === 'SLUG' && (
                         <div className="space-y-4 animate-in fade-in slide-in-from-bottom-4 duration-500">
@@ -453,8 +475,60 @@ export function RegisterForm({ settings }: RegisterFormProps) {
                             </div>
                         </form>
                     )}
+                        </div>
+                    </div>
                 </div>
+
+                {/* ====== 데스크탑 미리보기 패널 (FORM 단계) ====== */}
+                {isFormStep && (
+                    <div className="hidden lg:block lg:w-1/2 lg:h-screen lg:overflow-y-auto bg-gray-100 border-l border-gray-200">
+                        <div className="sticky top-0 z-10 bg-white/90 backdrop-blur-sm border-b border-gray-200 px-6 py-3 flex items-center justify-between">
+                            <span className="text-sm font-bold text-gray-700">실시간 미리보기</span>
+                            <span className="text-xs text-gray-500">
+                                {(watched?.category || '').includes('단체장') ? '단체장 페이지' : '후보자 카드'}
+                            </span>
+                        </div>
+                        <div className="preview-scope">
+                            <CandidatePreview data={watched} pageSettings={pageSettings} cardSettings={cardSettings} />
+                        </div>
+                    </div>
+                )}
             </div>
+
+            {/* ====== 모바일 미리보기 토글 버튼 ====== */}
+            {isFormStep && !mobilePreviewOpen && (
+                <button
+                    type="button"
+                    onClick={() => setMobilePreviewOpen(true)}
+                    className="lg:hidden fixed bottom-6 right-6 z-40 bg-justice-green hover:bg-justice-green-dark text-white rounded-full shadow-2xl px-5 py-3 flex items-center gap-2 font-bold transition active:scale-[0.96]"
+                    aria-label="미리보기 열기"
+                >
+                    <Eye className="w-5 h-5" />
+                    미리보기
+                </button>
+            )}
+
+            {/* ====== 모바일 미리보기 풀스크린 ====== */}
+            {isFormStep && mobilePreviewOpen && (
+                <div className="lg:hidden fixed inset-0 z-50 bg-white overflow-y-auto">
+                    <div className="sticky top-0 z-10 bg-white/95 backdrop-blur-sm border-b border-gray-200 px-4 py-3 flex items-center justify-between">
+                        <span className="text-sm font-bold text-gray-700">
+                            실시간 미리보기 · {(watched?.category || '').includes('단체장') ? '단체장 페이지' : '후보자 카드'}
+                        </span>
+                        <button
+                            type="button"
+                            onClick={() => setMobilePreviewOpen(false)}
+                            className="w-9 h-9 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition"
+                            aria-label="미리보기 닫기"
+                        >
+                            <X className="w-5 h-5 text-gray-700" />
+                        </button>
+                    </div>
+                    <div className="preview-scope">
+                        <CandidatePreview data={watched} pageSettings={pageSettings} cardSettings={cardSettings} />
+                    </div>
+                </div>
+            )}
         </div>
     );
 }

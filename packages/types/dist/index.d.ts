@@ -14,6 +14,9 @@ export interface MayorExtra {
     election?: string;
     slogans?: string;
     ctaLines?: string;
+    heroImageScale?: string;
+    heroImageOffsetX?: string;
+    heroImageOffsetY?: string;
 }
 export interface MayorStory {
     candidateSlug: string;

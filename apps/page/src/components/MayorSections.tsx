@@ -1,4 +1,4 @@
-import { UseFormReturn, useFieldArray } from 'react-hook-form';
+import { UseFormReturn, useFieldArray, useWatch } from 'react-hook-form';
 import { FormData } from '@/lib/schema';
 import { Plus, Trash2, Calendar, Image as ImageIcon, Newspaper } from 'lucide-react';
 import { ImageUpload } from './ImageUpload';
@@ -28,6 +28,9 @@ export function MayorSections({ form }: MayorSectionProps) {
                                     onChange={(url) => form.setValue('mayorExtra.heroImageUrl', url)}
                                 />
                                 <p className="text-xs text-gray-500 mt-1">1920x1080 이상의 고해상도 가로 이미지를 권장합니다.</p>
+                            </div>
+                            <div className="md:col-span-2">
+                                <HeroImageAdjustments form={form} />
                             </div>
                         </div>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -263,6 +266,108 @@ function GalleryList({ form }: MayorSectionProps) {
                 ))}
                 {fields.length === 0 && <p className="col-span-2 text-gray-400 text-center py-4 text-sm">등록된 사진이 없습니다.</p>}
             </div>
+        </div>
+    );
+}
+
+// hero 이미지 위치/크기를 조정하는 슬라이더 그룹
+// 값은 schema에 string으로 저장된다 (빈 문자열 허용 → 기본값 사용)
+const HERO_DEFAULTS = { scale: 1.5, offsetX: 0, offsetY: 0 } as const;
+
+function parseNum(value: string | undefined, fallback: number): number {
+    if (value === undefined || value === '') return fallback;
+    const n = Number(value);
+    return Number.isFinite(n) ? n : fallback;
+}
+
+function HeroImageAdjustments({ form }: MayorSectionProps) {
+    // useWatch로 컴포넌트별 구독 — form.watch는 React Compiler 환경에서
+    // 자기 컴포넌트 리렌더를 못 트리거하는 케이스가 있다.
+    const scaleStr = useWatch({ control: form.control, name: 'mayorExtra.heroImageScale' });
+    const offsetXStr = useWatch({ control: form.control, name: 'mayorExtra.heroImageOffsetX' });
+    const offsetYStr = useWatch({ control: form.control, name: 'mayorExtra.heroImageOffsetY' });
+
+    const scale = parseNum(scaleStr, HERO_DEFAULTS.scale);
+    const offsetX = parseNum(offsetXStr, HERO_DEFAULTS.offsetX);
+    const offsetY = parseNum(offsetYStr, HERO_DEFAULTS.offsetY);
+
+    const reset = () => {
+        form.setValue('mayorExtra.heroImageScale', '');
+        form.setValue('mayorExtra.heroImageOffsetX', '');
+        form.setValue('mayorExtra.heroImageOffsetY', '');
+    };
+
+    return (
+        <div className="bg-purple-50/60 rounded-xl p-4 space-y-3 border border-purple-100">
+            <div className="flex items-center justify-between">
+                <h5 className="text-sm font-bold text-gray-800">🎚️ Hero 이미지 위치/크기 조정</h5>
+                <button
+                    type="button"
+                    onClick={reset}
+                    className="text-xs text-justice-purple hover:text-justice-purple-dark hover:underline font-bold"
+                >
+                    기본값으로
+                </button>
+            </div>
+            <p className="text-xs text-gray-500">미리보기를 보면서 조정하세요. 빈 값으로 두면 기본값({HERO_DEFAULTS.scale}x, 0%, 0%)이 적용됩니다.</p>
+
+            <SliderRow
+                label="확대/축소"
+                value={scale}
+                display={`${scale.toFixed(2)}x`}
+                min={0.5}
+                max={2.5}
+                step={0.05}
+                onChange={(v) => form.setValue('mayorExtra.heroImageScale', String(v))}
+            />
+            <SliderRow
+                label="가로 위치"
+                value={offsetX}
+                display={`${offsetX > 0 ? '+' : ''}${offsetX}%`}
+                min={-50}
+                max={50}
+                step={1}
+                onChange={(v) => form.setValue('mayorExtra.heroImageOffsetX', String(v))}
+            />
+            <SliderRow
+                label="세로 위치"
+                value={offsetY}
+                display={`${offsetY > 0 ? '+' : ''}${offsetY}%`}
+                min={-50}
+                max={50}
+                step={1}
+                onChange={(v) => form.setValue('mayorExtra.heroImageOffsetY', String(v))}
+            />
+        </div>
+    );
+}
+
+function SliderRow({
+    label, value, display, min, max, step, onChange,
+}: {
+    label: string;
+    value: number;
+    display: string;
+    min: number;
+    max: number;
+    step: number;
+    onChange: (v: number) => void;
+}) {
+    return (
+        <div>
+            <div className="flex items-center justify-between mb-1">
+                <label className="text-xs font-medium text-gray-700">{label}</label>
+                <span className="text-xs font-mono font-bold text-justice-purple">{display}</span>
+            </div>
+            <input
+                type="range"
+                min={min}
+                max={max}
+                step={step}
+                value={value}
+                onChange={(e) => onChange(Number(e.target.value))}
+                className="w-full accent-justice-purple cursor-pointer"
+            />
         </div>
     );
 }

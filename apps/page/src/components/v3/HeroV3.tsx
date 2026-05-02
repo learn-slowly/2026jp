@@ -12,6 +12,10 @@ interface HeroV3Props {
     introLines: string[];
     careers: { type: string; text: string }[];
     heroImage: string;
+    // 옵션: 후보별 hero 이미지 위치/크기 조정. 미입력 시 기본값(1.5, 0, 0) 적용.
+    heroImageScale?: number;
+    heroImageOffsetX?: number;
+    heroImageOffsetY?: number;
   };
 }
 
@@ -25,6 +29,22 @@ const NAV_ITEMS = [
 
 export function HeroV3({ candidate }: HeroV3Props) {
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
+
+  // 후보별 커스텀 위치/크기 — 값이 명시적으로 들어왔을 때만 transform 적용.
+  // (기존 후보자 데이터 호환: 시트가 비어있으면 기존 모바일 1.5x / 데스크탑 1x 동작 유지)
+  const hasCustom =
+    candidate.heroImageScale !== undefined ||
+    candidate.heroImageOffsetX !== undefined ||
+    candidate.heroImageOffsetY !== undefined;
+  const customScale = candidate.heroImageScale ?? 1.5;
+  const customOffsetX = candidate.heroImageOffsetX ?? 0;
+  const customOffsetY = candidate.heroImageOffsetY ?? 0;
+  const customStyle: React.CSSProperties | undefined = hasCustom
+    ? {
+        transform: `translate(${customOffsetX}%, ${customOffsetY}%) scale(${customScale})`,
+        transformOrigin: 'top center',
+      }
+    : undefined;
 
   return (
     <section
@@ -162,7 +182,12 @@ export function HeroV3({ candidate }: HeroV3Props) {
             <img
               src={candidate.heroImage}
               alt={candidate.name}
-              className="w-full h-full object-contain object-top drop-shadow-xl scale-[1.5] origin-top"
+              className={
+                hasCustom
+                  ? 'w-full h-full object-contain object-top drop-shadow-xl'
+                  : 'w-full h-full object-contain object-top drop-shadow-xl scale-[1.5] origin-top'
+              }
+              style={customStyle}
             />
             {/* 하단 페이드 그라데이션 (hero 배경 노랑색과 자연스럽게 이어짐) */}
             <div
@@ -214,6 +239,7 @@ export function HeroV3({ candidate }: HeroV3Props) {
             src={candidate.heroImage}
             alt={candidate.name}
             className="w-full h-auto block drop-shadow-xl"
+            style={customStyle}
             onError={(e) => {
               const img = e.target as HTMLImageElement;
               img.style.display = 'none';

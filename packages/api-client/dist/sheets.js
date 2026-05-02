@@ -224,7 +224,7 @@ class SheetsClient {
             try {
                 const response = yield this.sheets.spreadsheets.values.get({
                     spreadsheetId: this.sheetId,
-                    range: 'mayor_extra!A2:M',
+                    range: 'mayor_extra!A2:P',
                 });
                 const rows = response.data.values || [];
                 // Find latest entry for slug
@@ -247,6 +247,9 @@ class SheetsClient {
                     election: row[10] || '',
                     slogans: row[11] || '',
                     ctaLines: row[12] || '',
+                    heroImageScale: row[13] || '',
+                    heroImageOffsetX: row[14] || '',
+                    heroImageOffsetY: row[15] || '',
                 };
             }
             catch (error) {
@@ -272,10 +275,13 @@ class SheetsClient {
                     extra.election || '',
                     extra.slogans || '',
                     extra.ctaLines || '',
+                    extra.heroImageScale || '',
+                    extra.heroImageOffsetX || '',
+                    extra.heroImageOffsetY || '',
                 ];
                 yield this.sheets.spreadsheets.values.append({
                     spreadsheetId: this.sheetId,
-                    range: 'mayor_extra!A:M',
+                    range: 'mayor_extra!A:P',
                     valueInputOption: 'RAW',
                     requestBody: { values: [row] },
                 });

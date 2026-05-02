@@ -131,6 +131,12 @@ export default async function CandidatePage({ params }: PageProps) {
   const visionLines = mergeLines(mayorExtra?.visionTitle, mayorExtra?.visionSubtitle);
   const introLines = mergeLines(mayorExtra?.greetingTitle, mayorExtra?.greetingText, candidate.intro);
 
+  const parseOptionalNumber = (value: string | undefined): number | undefined => {
+    if (value === undefined || value === '') return undefined;
+    const n = Number(value);
+    return Number.isFinite(n) ? n : undefined;
+  };
+
   const heroCandidate = {
     name: candidate.name,
     position: mayorExtra?.position || '',
@@ -139,6 +145,9 @@ export default async function CandidatePage({ params }: PageProps) {
     introLines,
     careers: candidate.careers.map(parseCareer),
     heroImage: mayorExtra?.heroImageUrl || '/images/v3-hero-candidate.png',
+    heroImageScale: parseOptionalNumber(mayorExtra?.heroImageScale),
+    heroImageOffsetX: parseOptionalNumber(mayorExtra?.heroImageOffsetX),
+    heroImageOffsetY: parseOptionalNumber(mayorExtra?.heroImageOffsetY),
   };
 
   const allowedDates = new Set([
@@ -166,17 +175,20 @@ export default async function CandidatePage({ params }: PageProps) {
   }));
 
   const videoId = extractYoutubeId(mayorExtra?.declarationVideoUrl);
+  const hasDeclaration = !!videoId || !!(mayorExtra?.declarationText && mayorExtra.declarationText.trim());
 
   return (
     <main className="v3-page bg-white text-d-blueblack overflow-x-hidden">
       <HeroV3 candidate={heroCandidate} />
-      <DeclarationV3
-        candidateName={candidate.name}
-        position={heroCandidate.position}
-        videoId={videoId}
-        image="/images/v3-declaration.png"
-        declarationText={mayorExtra?.declarationText}
-      />
+      {hasDeclaration && (
+        <DeclarationV3
+          candidateName={candidate.name}
+          position={heroCandidate.position}
+          videoId={videoId}
+          image="/images/v3-declaration.png"
+          declarationText={mayorExtra?.declarationText}
+        />
+      )}
       {scheduleItems.length > 0 && <ScheduleV3 items={scheduleItems} />}
       <PoliciesV3 slogans={slogans} ctaLines={ctaLines} items={policyItems} />
       <GalleryV3
