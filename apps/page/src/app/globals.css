@@ -48,6 +48,11 @@
   }
 }
 
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
@@ -55,7 +60,8 @@ body {
 }
 
 @media (max-width: 768px) {
-  section {
+  /* v3 페이지(main.v3-page)는 자체 섹션 높이를 따르도록 — 100vh 강제 제외 */
+  main:not(.v3-page) section {
     min-height: 100vh;
   }
 }

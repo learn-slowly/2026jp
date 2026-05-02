@@ -11,6 +11,9 @@ export interface MayorExtra {
     declarationTitle?: string;
     declarationVideoUrl?: string;
     declarationText?: string;
+    election?: string;
+    slogans?: string;
+    ctaLines?: string;
 }
 export interface MayorStory {
     candidateSlug: string;
@@ -86,6 +89,14 @@ export interface Report {
     title: string;
     description: string;
     linkUrl?: string;
+    visible: boolean;
+    updatedAt?: Date;
+}
+export interface CandidatePolicy {
+    candidateSlug: string;
+    order: number;
+    title: string;
+    content: string;
     visible: boolean;
     updatedAt?: Date;
 }

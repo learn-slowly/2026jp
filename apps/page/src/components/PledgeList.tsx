@@ -8,13 +8,13 @@ interface Pledge {
 interface PledgeListProps {
     items: Pledge[];
     onChange: (items: Pledge[]) => void;
-    maxItems?: number;
+    maxItems?: number; // 옵셔널 — 미지정 시 무제한
     title: string;
 }
 
-export function PledgeList({ items = [], onChange, maxItems = 10, title }: PledgeListProps) {
+export function PledgeList({ items = [], onChange, maxItems, title }: PledgeListProps) {
     const handleAdd = () => {
-        if (items.length < maxItems) {
+        if (maxItems === undefined || items.length < maxItems) {
             onChange([...items, { title: '', content: '' }]);
         }
     };
@@ -37,7 +37,7 @@ export function PledgeList({ items = [], onChange, maxItems = 10, title }: Pledg
                     📢 {title}
                 </label>
                 <span className="text-xs text-gray-400">
-                    {items.length}/{maxItems}개 (최대 100자/항목)
+                    {maxItems !== undefined ? `${items.length}/${maxItems}개` : `${items.length}개`}
                 </span>
             </div>
 
@@ -72,14 +72,14 @@ export function PledgeList({ items = [], onChange, maxItems = 10, title }: Pledg
                 ))}
             </div>
 
-            {items.length < maxItems && (
+            {(maxItems === undefined || items.length < maxItems) && (
                 <button
                     type="button"
                     onClick={handleAdd}
                     className="w-full py-3 border-2 border-dashed border-gray-300 rounded-xl text-gray-500 hover:border-justice-green hover:text-justice-green hover:bg-green-50 transition flex items-center justify-center gap-2 text-sm font-medium"
                 >
                     <Plus className="w-4 h-4" />
-                    항목 추가하기 ({items.length}/{maxItems})
+                    항목 추가하기{maxItems !== undefined ? ` (${items.length}/${maxItems})` : ''}
                 </button>
             )}
         </div>

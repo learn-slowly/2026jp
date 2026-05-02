@@ -9,31 +9,49 @@ interface FooterV3Props {
     position: string;
     election: string;
   };
+  donation?: {
+    account?: string;
+    holder?: string;
+  };
+  social?: {
+    facebook?: string;
+    youtube?: string;
+    instagram?: string;
+    x?: string;
+    blog?: string;
+  };
+  pageName?: string;
+  pageUrl?: string;
+  copyright?: string;
 }
 
-const SNS_LINKS = [
-  { src: '/fb.png', href: '#', label: 'Facebook' },
-  { src: '/x.png', href: '#', label: 'Twitter / X' },
-  { src: '/ig.png', href: '#', label: 'Instagram' },
-  { src: '/yt.png', href: '#', label: 'YouTube' },
-  { src: '/blog.png', href: '#', label: 'Blog' },
-  { src: '/home.png', href: '#', label: 'Homepage' },
+const SNS_DEFS: { key: 'facebook' | 'x' | 'instagram' | 'youtube' | 'blog'; src: string; label: string }[] = [
+  { key: 'facebook', src: '/fb.png', label: 'Facebook' },
+  { key: 'x', src: '/x.png', label: 'Twitter / X' },
+  { key: 'instagram', src: '/ig.png', label: 'Instagram' },
+  { key: 'youtube', src: '/yt.png', label: 'YouTube' },
+  { key: 'blog', src: '/blog.png', label: 'Blog' },
 ];
 
-const ACCOUNT_NUMBER = '301-0217-9031-51';
-
-export function FooterV3({ candidate }: FooterV3Props) {
+export function FooterV3({ candidate, donation, social, pageName, pageUrl, copyright }: FooterV3Props) {
   const [copied, setCopied] = useState(false);
 
+  const accountNumber = donation?.account?.trim() || '';
+  const accountHolder = donation?.holder?.trim() || '';
+
+  const snsLinks = SNS_DEFS.map((def) => ({
+    ...def,
+    href: social?.[def.key]?.trim() || '',
+  })).filter((s) => s.href);
+
   const handleCopy = async () => {
-    if (typeof navigator === 'undefined') return;
+    if (typeof navigator === 'undefined' || !accountNumber) return;
     try {
       if (navigator.clipboard) {
-        await navigator.clipboard.writeText(ACCOUNT_NUMBER);
+        await navigator.clipboard.writeText(accountNumber);
       } else {
-        // Fallback for older / insecure contexts
         const ta = document.createElement('textarea');
-        ta.value = ACCOUNT_NUMBER;
+        ta.value = accountNumber;
         ta.style.position = 'fixed';
         ta.style.opacity = '0';
         document.body.appendChild(ta);
@@ -83,64 +101,73 @@ export function FooterV3({ candidate }: FooterV3Props) {
               </div>
             </div>
 
-            {/* SNS icons (6) — original PNG sizes */}
-            <div className="flex items-center gap-1.5" style={{ display: 'flex' }}>
-              {SNS_LINKS.map(({ src, href, label }) => (
-                <a
-                  key={label}
-                  href={href}
-                  aria-label={label}
-                  className="inline-block hover:opacity-80 transition"
-                >
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={src} alt={label} />
-                </a>
-              ))}
-            </div>
+            {/* SNS icons — 등록된 링크만 표시 */}
+            {snsLinks.length > 0 && (
+              <div className="flex items-center gap-1.5" style={{ display: 'flex' }}>
+                {snsLinks.map(({ src, href, label }) => (
+                  <a
+                    key={label}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={label}
+                    className="inline-block hover:opacity-80 transition"
+                  >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={src} alt={label} />
+                  </a>
+                ))}
+              </div>
+            )}
           </div>
 
           {/* Center: donation info box */}
-          <div className="space-y-3">
-            <p
-              className="text-white text-sm font-bold"
-              style={{ fontFamily: 'var(--font-paperlogy)' }}
-            >
-              후원정보
-            </p>
-            <div className="relative rounded-2xl border border-white/15 bg-black/20 px-7 py-6 md:px-8 md:py-7">
-              <p className="text-lg md:text-xl font-bold text-white mb-2">농협</p>
-              <div className="flex items-baseline gap-x-3 whitespace-nowrap" style={{ display: 'flex' }}>
-                <span
-                  className="text-[28px] md:text-[36px] tracking-tight text-white leading-none"
-                  style={{ fontFamily: 'var(--font-inter)', fontWeight: 800 }}
-                >
-                  {ACCOUNT_NUMBER}
-                </span>
-                <span className="text-sm text-white/70 shrink-0">정의당중앙당후원회</span>
-              </div>
-              <button
-                type="button"
-                onClick={handleCopy}
-                aria-label={copied ? '계좌번호가 복사되었습니다' : '계좌번호 복사'}
-                className="absolute top-5 right-5 w-9 h-9 rounded-md hover:bg-white/10 flex items-center justify-center transition"
+          {accountNumber && (
+            <div className="space-y-3">
+              <p
+                className="text-white text-sm font-bold"
+                style={{ fontFamily: 'var(--font-paperlogy)' }}
               >
-                {copied ? (
-                  <Check className="w-5 h-5 text-justice-yellow-bright" />
-                ) : (
-                  <Copy className="w-5 h-5 text-white/70" />
-                )}
-              </button>
-              {copied && (
-                <span
-                  role="status"
-                  aria-live="polite"
-                  className="absolute -bottom-7 right-2 text-xs text-justice-yellow-bright font-bold"
+                후원정보
+              </p>
+              <div className="relative rounded-2xl border border-white/15 bg-black/20 px-5 py-5 pr-14 md:px-7 md:py-6 md:pr-16">
+                <div className="flex flex-col gap-y-1" style={{ display: 'flex' }}>
+                  <span
+                    className="text-xl md:text-2xl tracking-tight text-white leading-tight break-all"
+                    style={{ fontFamily: 'var(--font-inter)', fontWeight: 800 }}
+                  >
+                    {accountNumber}
+                  </span>
+                  {accountHolder && (
+                    <span className="text-xs md:text-sm text-white/70 break-keep">
+                      {accountHolder}
+                    </span>
+                  )}
+                </div>
+                <button
+                  type="button"
+                  onClick={handleCopy}
+                  aria-label={copied ? '계좌번호가 복사되었습니다' : '계좌번호 복사'}
+                  className="absolute top-4 right-4 md:top-5 md:right-5 w-9 h-9 rounded-md hover:bg-white/10 flex items-center justify-center transition"
                 >
-                  복사됨
-                </span>
-              )}
+                  {copied ? (
+                    <Check className="w-5 h-5 text-justice-yellow-bright" />
+                  ) : (
+                    <Copy className="w-5 h-5 text-white/70" />
+                  )}
+                </button>
+                {copied && (
+                  <span
+                    role="status"
+                    aria-live="polite"
+                    className="absolute -bottom-7 right-2 text-xs text-justice-yellow-bright font-bold"
+                  >
+                    복사됨
+                  </span>
+                )}
+              </div>
             </div>
-          </div>
+          )}
 
           {/* Right: justice party logo + page name + copyright */}
           <div className="space-y-3 md:text-right">
@@ -150,19 +177,25 @@ export function FooterV3({ candidate }: FooterV3Props) {
               alt="정의당"
               className="h-12 w-auto md:ml-auto"
             />
-            <a
-              href="#"
-              className="inline-flex items-center gap-1 text-sm font-bold hover:opacity-80 transition"
-            >
-              2026 정의당 지방선거특별페이지
-              <ArrowUpRight className="w-3 h-3" />
-            </a>
-            <p
-              className="text-xs text-d-mutedgrey"
-              style={{ fontFamily: 'var(--font-inter)' }}
-            >
-              ⓒ2021. Justice Party. No rights reserved.
-            </p>
+            {pageName && (
+              <a
+                href={pageUrl?.trim() || '#'}
+                target={pageUrl?.startsWith('http') ? '_blank' : undefined}
+                rel={pageUrl?.startsWith('http') ? 'noopener noreferrer' : undefined}
+                className="inline-flex items-center gap-1 text-sm font-bold hover:opacity-80 transition"
+              >
+                {pageName}
+                <ArrowUpRight className="w-3 h-3" />
+              </a>
+            )}
+            {copyright && (
+              <p
+                className="text-xs text-d-mutedgrey"
+                style={{ fontFamily: 'var(--font-inter)' }}
+              >
+                {copyright}
+              </p>
+            )}
           </div>
         </div>
       </div>

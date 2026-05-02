@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono, Inter } from "next/font/google";
 // Vercel deployment trigger for icons
 import "./globals.css";
@@ -22,6 +22,12 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "정의당 2026 캠페인 페이지",
   description: "2026 지방선거 정의당 후보자 캠페인",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
 };
 
 export default function RootLayout({

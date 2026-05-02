@@ -20,6 +20,10 @@ export interface MayorExtra {
     declarationTitle?: string;
     declarationVideoUrl?: string;
     declarationText?: string;
+    // v3 디자인 전용 필드 — 후보자별로 register에서 입력
+    election?: string;       // 예: '제9회 전국동시지방선거'
+    slogans?: string;        // 줄바꿈 또는 |로 구분된 슬로건 묶음
+    ctaLines?: string;       // CTA 박스 문구. **굵게** 마크다운 지원
 }
 
 export interface MayorStory {
@@ -101,6 +105,15 @@ export interface Report {
     title: string;
     description: string;
     linkUrl?: string;
+    visible: boolean;
+    updatedAt?: Date;
+}
+
+export interface CandidatePolicy {
+    candidateSlug: string;
+    order: number;
+    title: string;
+    content: string;
     visible: boolean;
     updatedAt?: Date;
 }

@@ -13,7 +13,7 @@ export const formSchema = z.object({
     policies: z.array(z.object({
         title: z.string().min(1, "공약 제목을 입력해주세요"),
         content: z.string()
-    })).max(10, "공약은 최대 10개까지만 입력 가능합니다").default([]),
+    })).default([]),
     photoUrl: z.string().url("올바른 URL을 입력해주세요").optional().or(z.literal('')),
     donation: z.object({
         account: z.string().min(1, "후원계좌를 입력해주세요"),
@@ -55,6 +55,9 @@ export const formSchema = z.object({
         declarationTitle: z.string().optional(),
         declarationVideoUrl: z.string().url("올바른 URL을 입력해주세요").optional().or(z.literal('')),
         declarationText: z.string().optional(),
+        election: z.string().optional(),
+        slogans: z.string().optional(),
+        ctaLines: z.string().optional(),
     }).optional(),
     mayorStories: z.array(z.object({
         candidateSlug: z.string().optional(),

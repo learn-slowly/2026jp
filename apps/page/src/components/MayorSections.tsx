@@ -54,6 +54,36 @@ export function MayorSections({ form }: MayorSectionProps) {
                         </div>
                     </div>
 
+                    {/* v3 페이지 전용 입력 (선거명·메인슬로건·CTA 문구) */}
+                    <div className="bg-white p-6 rounded-xl shadow-sm border border-purple-100 space-y-4">
+                        <h4 className="font-bold text-gray-800 border-b pb-2">✨ v3 디자인 전용 (선거명 · 슬로건 · CTA)</h4>
+                        <FormInput
+                            label="선거명 (예: 제9회 전국동시지방선거)"
+                            register={form.register('mayorExtra.election')}
+                            placeholder="제9회 전국동시지방선거"
+                        />
+                        <div>
+                            <label className="block text-xs font-medium text-gray-500 mb-1">
+                                정책·공약 메인 슬로건 (한 줄에 하나씩, Enter로 줄바꿈)
+                            </label>
+                            <textarea
+                                {...form.register('mayorExtra.slogans')}
+                                className="block w-full rounded-lg border-gray-300 border p-3 text-black bg-white focus:ring-2 focus:ring-justice-purple focus:border-justice-purple h-24"
+                                placeholder={'노동소득만으로도 살 수 있는 서울!\n지역과 공생하는 서울!'}
+                            />
+                        </div>
+                        <div>
+                            <label className="block text-xs font-medium text-gray-500 mb-1">
+                                노란 CTA 박스 문구 (한 줄에 하나씩, **굵게** 표시할 부분은 별표 두 개로 감싸기)
+                            </label>
+                            <textarea
+                                {...form.register('mayorExtra.ctaLines')}
+                                className="block w-full rounded-lg border-gray-300 border p-3 text-black bg-white focus:ring-2 focus:ring-justice-purple focus:border-justice-purple h-32"
+                                placeholder={'서울의 **생활비는 절반**으로 낮추고,\n**일자리는 지킵니다.**\n서울의 **에너지-쓰레기 문제**에\n**책임있게** 나서겠습니다.'}
+                            />
+                        </div>
+                    </div>
+
                     {/* Declaration Section */}
                     <div className="bg-white p-6 rounded-xl shadow-sm border border-purple-100 space-y-4">
                         <h4 className="font-bold text-gray-800 border-b pb-2">🎬 출마선언 영상 및 선언문 (선택)</h4>

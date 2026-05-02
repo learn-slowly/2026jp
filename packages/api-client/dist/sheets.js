@@ -224,7 +224,7 @@ class SheetsClient {
             try {
                 const response = yield this.sheets.spreadsheets.values.get({
                     spreadsheetId: this.sheetId,
-                    range: 'mayor_extra!A2:J',
+                    range: 'mayor_extra!A2:M',
                 });
                 const rows = response.data.values || [];
                 // Find latest entry for slug
@@ -244,6 +244,9 @@ class SheetsClient {
                     declarationTitle: row[7] || '',
                     declarationVideoUrl: row[8] || '',
                     declarationText: row[9] || '',
+                    election: row[10] || '',
+                    slogans: row[11] || '',
+                    ctaLines: row[12] || '',
                 };
             }
             catch (error) {
@@ -266,10 +269,13 @@ class SheetsClient {
                     extra.declarationTitle || '',
                     extra.declarationVideoUrl || '',
                     extra.declarationText || '',
+                    extra.election || '',
+                    extra.slogans || '',
+                    extra.ctaLines || '',
                 ];
                 yield this.sheets.spreadsheets.values.append({
                     spreadsheetId: this.sheetId,
-                    range: 'mayor_extra!A:J',
+                    range: 'mayor_extra!A:M',
                     valueInputOption: 'RAW',
                     requestBody: { values: [row] },
                 });
@@ -478,6 +484,76 @@ class SheetsClient {
             }
             catch (error) {
                 console.error('Error saving mayor_gallery:', error);
+                return false;
+            }
+        });
+    }
+    // --- Candidate Policies (별도 시트, 무한대 정책 지원) ---
+    getCandidatePolicies(slug) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const response = yield this.sheets.spreadsheets.values.get({
+                    spreadsheetId: this.sheetId,
+                    range: 'candidate_policies!A2:F',
+                });
+                const rows = response.data.values || [];
+                const candidateRows = rows.filter(row => (row[0] || '').trim() === slug);
+                if (!candidateRows.length)
+                    return [];
+                // 가장 최근 batch만 유지 (DELETED_BATCH 처리는 mayor_schedules와 동일 패턴)
+                let maxTime = 0;
+                candidateRows.forEach(row => {
+                    const timeStr = row[5];
+                    if (timeStr) {
+                        const time = new Date(timeStr).getTime();
+                        if (time > maxTime)
+                            maxTime = time;
+                    }
+                });
+                return candidateRows
+                    .filter(row => row[5] && new Date(row[5]).getTime() === maxTime)
+                    .filter(row => row[4] !== 'DELETED_BATCH')
+                    .map(row => ({
+                    candidateSlug: row[0] || '',
+                    order: parseInt(row[1]) || 999,
+                    title: row[2] || '',
+                    content: row[3] || '',
+                    visible: (row[4] || '').toUpperCase() === 'TRUE',
+                    updatedAt: new Date(row[5]),
+                }))
+                    .filter(p => p.visible)
+                    .sort((a, b) => a.order - b.order);
+            }
+            catch (error) {
+                console.error('Error fetching candidate_policies:', error);
+                return [];
+            }
+        });
+    }
+    saveCandidatePolicies(slug, policies) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const now = new Date().toISOString();
+                const rows = policies.length
+                    ? policies.map((p, i) => [
+                        slug,
+                        String(i + 1),
+                        p.title,
+                        p.content,
+                        'TRUE',
+                        now,
+                    ])
+                    : [[slug, '', '', '', 'DELETED_BATCH', now]];
+                yield this.sheets.spreadsheets.values.append({
+                    spreadsheetId: this.sheetId,
+                    range: 'candidate_policies!A:F',
+                    valueInputOption: 'RAW',
+                    requestBody: { values: rows },
+                });
+                return true;
+            }
+            catch (error) {
+                console.error('Error saving candidate_policies:', error);
                 return false;
             }
         });

@@ -50,7 +50,7 @@ export function RegisterForm({ settings }: RegisterFormProps) {
             contact: { phone: '', email: '', kakao: '', telegram: '' },
             social: { x: '', facebook: '', youtube: '', instagram: '', blog: '' },
             reports: [] as { year: string; month: string; category: string; title: string; description: string; visible: boolean; candidateSlug?: string; linkUrl?: string; }[],
-            mayorExtra: { position: '', visionTitle: '', visionSubtitle: '', greetingTitle: '', greetingText: '', heroImageUrl: '', declarationTitle: '', declarationVideoUrl: '', declarationText: '' },
+            mayorExtra: { position: '', visionTitle: '', visionSubtitle: '', greetingTitle: '', greetingText: '', heroImageUrl: '', declarationTitle: '', declarationVideoUrl: '', declarationText: '', election: '', slogans: '', ctaLines: '' },
             mayorStories: [] as any[],
             mayorSchedules: [] as any[],
             mayorGallery: [] as any[],
@@ -377,7 +377,6 @@ export function RegisterForm({ settings }: RegisterFormProps) {
                                         title={settings.register_section_pledges || "🗳️ 핵심 공약 (우선순위순)"}
                                         items={form.watch('policies') || []}
                                         onChange={(items) => form.setValue('policies', items)}
-                                        maxItems={10}
                                     />
                                 </div>
 

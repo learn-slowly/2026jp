@@ -21,14 +21,16 @@ export function PoliciesV3({ slogans, ctaLines, items }: PoliciesV3Props) {
           정책·공약
         </h2>
 
-        {/* Slogans */}
-        <div className="text-center space-y-1 mb-8 md:mb-10">
-          {slogans.map((s, i) => (
-            <p key={i} className="text-lg md:text-xl font-semibold break-keep text-d-blueblack">
-              {s}
-            </p>
-          ))}
-        </div>
+        {/* Slogans (입력된 슬로건이 있을 때만 표시) */}
+        {slogans.length > 0 && (
+          <div className="text-center space-y-1 mb-8 md:mb-10">
+            {slogans.map((s, i) => (
+              <p key={i} className="text-lg md:text-xl font-semibold break-keep text-d-blueblack">
+                {s}
+              </p>
+            ))}
+          </div>
+        )}
 
         {/* Grid: CTA box + policy cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-5">
@@ -45,6 +47,20 @@ export function PoliciesV3({ slogans, ctaLines, items }: PoliciesV3Props) {
   );
 }
 
+// 시트 입력의 **강조** 마크다운 표기를 <strong>으로 치환 (XSS 방지를 위해 escape 후 처리)
+function escapeHtml(s: string) {
+  return s
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+function applyBoldMarkdown(line: string) {
+  return escapeHtml(line).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+}
+
 function CtaBox({ lines }: { lines: string[] }) {
   return (
     <div className="rounded-2xl bg-justice-yellow-bright p-6 md:p-7 flex flex-col justify-between gap-4">
@@ -56,19 +72,13 @@ function CtaBox({ lines }: { lines: string[] }) {
         className="w-10 h-10 md:w-12 md:h-12"
       />
       <div className="space-y-1.5">
-        {lines.map((line, i) => {
-          const bolded = line.replace(
-            /(생활비는 절반|일자리는 지킵니다|에너지-쓰레기 문제|책임있게)/g,
-            '<strong>$1</strong>'
-          );
-          return (
-            <p
-              key={i}
-              className="text-base md:text-lg font-medium leading-relaxed break-keep text-d-blueblack"
-              dangerouslySetInnerHTML={{ __html: bolded }}
-            />
-          );
-        })}
+        {lines.map((line, i) => (
+          <p
+            key={i}
+            className="text-base md:text-lg font-medium leading-relaxed break-keep text-d-blueblack"
+            dangerouslySetInnerHTML={{ __html: applyBoldMarkdown(line) }}
+          />
+        ))}
       </div>
     </div>
   );

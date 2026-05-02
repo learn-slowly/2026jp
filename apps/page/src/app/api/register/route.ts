@@ -72,6 +72,11 @@ export async function POST(request: NextRequest) {
             await sheetsClient.saveReports(candidate.slug, reports);
         }
 
+        // 정책은 별도 시트(candidate_policies)에도 저장 (개수 무제한)
+        if (success && body.policies !== undefined) {
+            await sheetsClient.saveCandidatePolicies(candidate.slug, body.policies);
+        }
+
         // Save Mayor Specific Data if present
         if (success) {
             if (body.mayorExtra) {
