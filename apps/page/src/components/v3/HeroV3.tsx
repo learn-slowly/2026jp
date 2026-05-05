@@ -55,8 +55,8 @@ export function HeroV3({ candidate }: HeroV3Props) {
           'linear-gradient(to bottom, #FFF000 0%, #FFF000 95%, #ffffff 100%)',
       }}
     >
-      {/* Top Navigation */}
-      <nav className="relative z-20">
+      {/* Top Navigation (데스크톱 전용 — 모바일은 MobileHeaderV3 사용) */}
+      <nav className="relative z-20 hidden md:block">
         <div className="mx-auto max-w-6xl px-6 py-6 flex items-end justify-between gap-4">
           <div className="flex items-end gap-3 sm:gap-6 min-w-0" style={{ display: 'flex' }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -152,7 +152,7 @@ export function HeroV3({ candidate }: HeroV3Props) {
       </nav>
 
       {/* Hero Content */}
-      <div className="relative mx-auto max-w-6xl w-full px-6 pt-8 md:pt-10 pb-12 md:pb-20 grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
+      <div className="relative mx-auto max-w-6xl w-full px-6 pt-20 md:pt-10 pb-12 md:pb-20 grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
         <div className="space-y-6 z-10 min-w-0">
           {/* Election badge */}
           <div

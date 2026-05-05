@@ -85,21 +85,21 @@ export function DeclarationV3({
           onClick={() => setIsOpen((v) => !v)}
           aria-expanded={isOpen}
           aria-controls="declaration-fulltext"
-          className="w-full flex items-center justify-between bg-d-darkgrey/15 hover:bg-d-darkgrey/25 transition rounded-2xl px-6 md:px-8 py-3 md:py-4 shadow-md group"
+          className="w-full flex items-center justify-between gap-2 bg-d-darkgrey/15 hover:bg-d-darkgrey/25 transition rounded-2xl px-4 md:px-8 py-3 md:py-4 shadow-md group"
         >
-          <div className="flex items-center gap-3 md:gap-4" style={{ display: 'flex' }}>
+          <div className="flex items-center gap-2 md:gap-4 min-w-0" style={{ display: 'flex' }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/Rectangle.png"
               alt=""
               aria-hidden="true"
-              className="w-7 h-7 md:w-8 md:h-8 object-contain"
+              className="w-6 h-6 md:w-8 md:h-8 object-contain flex-shrink-0"
             />
-            <span className="text-lg md:text-2xl font-bold text-d-softblack">
-              {candidateName} {cleanPosition} 출마선언문전문보기
+            <span className="text-base sm:text-lg md:text-2xl font-bold text-d-softblack whitespace-nowrap">
+              출마선언문 전문 보기
             </span>
           </div>
-          <span className="inline-flex items-center justify-center w-8 h-8 md:w-9 md:h-9 rounded-full bg-white group-hover:bg-d-lightgrey transition">
+          <span className="inline-flex flex-shrink-0 items-center justify-center w-8 h-8 md:w-9 md:h-9 rounded-full bg-white group-hover:bg-d-lightgrey transition">
             <ChevronDown
               className={`w-4 h-4 md:w-5 md:h-5 text-d-grey group-hover:text-d-blueblack transition-transform ${
                 isOpen ? 'rotate-180' : ''

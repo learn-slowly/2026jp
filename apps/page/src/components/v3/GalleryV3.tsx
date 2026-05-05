@@ -12,16 +12,10 @@ export function GalleryV3({ items }: GalleryV3Props) {
   if (!items || items.length === 0) return null;
 
   return (
-    <section id="activities" className="relative bg-white py-16 md:py-20 overflow-hidden">
-      {/* 대각선 노랑 배경 (스케줄 섹션과 동일) */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: 'url(/bg.png)' }}
-      />
+    <section id="activities" className="relative bg-d-blueblack py-16 md:py-20 overflow-hidden">
       <div className="relative mx-auto max-w-7xl px-6">
         <h2
-          className="text-3xl md:text-4xl text-center mb-10 md:mb-14 tracking-tight text-d-softblack"
+          className="text-3xl md:text-4xl text-center mb-10 md:mb-14 tracking-tight text-white"
           style={{ fontFamily: 'var(--font-paperlogy)', fontWeight: 700 }}
         >
           활동

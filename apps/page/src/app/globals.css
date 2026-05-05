@@ -64,6 +64,12 @@ body {
   main:not(.v3-page) section {
     min-height: 100vh;
   }
+
+  /* 모바일 fixed 헤더(56px) 보정 — 햄버거로 섹션 이동 시 상단이 가려지지 않도록 */
+  .v3-page section[id],
+  .v3-page footer[id] {
+    scroll-margin-top: 64px;
+  }
 }
 
 /*추가*/

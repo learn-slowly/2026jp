@@ -7,6 +7,7 @@ import { ScheduleV3 } from '@/components/v3/ScheduleV3';
 import { PoliciesV3 } from '@/components/v3/PoliciesV3';
 import { GalleryV3 } from '@/components/v3/GalleryV3';
 import { FooterV3 } from '@/components/v3/FooterV3';
+import { MobileHeaderV3 } from '@/components/v3/MobileHeaderV3';
 
 export const dynamic = 'force-dynamic';
 
@@ -179,6 +180,7 @@ export default async function CandidatePage({ params }: PageProps) {
 
   return (
     <main className="v3-page bg-white text-d-blueblack overflow-x-hidden">
+      <MobileHeaderV3 candidateName={candidate.name} candidatePosition={heroCandidate.position} />
       <HeroV3 candidate={heroCandidate} />
       {hasDeclaration && (
         <DeclarationV3
