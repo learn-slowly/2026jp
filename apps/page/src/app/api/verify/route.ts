@@ -32,16 +32,20 @@ export async function POST(req: NextRequest) {
             candidate.reports = reports;
 
             if (candidate.category.includes('단체장')) {
-                const [extra, stories, schedules, gallery] = await Promise.all([
+                const [extra, stories, schedules, gallery, candidatePolicies] = await Promise.all([
                     sheetsClient.getMayorExtra(slug),
                     sheetsClient.getMayorStories(slug),
                     sheetsClient.getMayorSchedules(slug),
-                    sheetsClient.getMayorGallery(slug)
+                    sheetsClient.getMayorGallery(slug),
+                    sheetsClient.getCandidatePolicies(slug).catch(() => []),
                 ]);
                 candidate.mayorExtra = extra;
                 candidate.mayorStories = stories;
                 candidate.mayorSchedules = schedules;
                 candidate.mayorGallery = gallery;
+                if (candidatePolicies.length > 0) {
+                    candidate.policies = candidatePolicies.map((p) => ({ title: p.title, content: p.content }));
+                }
             }
 
             const { password: _, ...safeCandidate } = candidate;
