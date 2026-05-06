@@ -47,27 +47,27 @@ export function HeroSection({ settings }: HeroSectionProps) {
 
                 <div className="hero_button flex flex-col items-center animate-fade-in-up delay-500">
                     {/* 1행: flex-none으로 압축 방지, 음수 마진으로 SVG 그림자 여백 제거 */}
-                    <div className="flex items-center -translate-x-[10px]">
+                    <div className="flex items-center -translate-x-[7px] md:-translate-x-[10px]">
                         <a
                             href="https://www.justice21.org/"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="flex-none hover:opacity-85 active:scale-95 transition-all duration-150"
                         >
-                            <img src="/buttons/button-homepage.svg" alt="정의당 홈페이지 바로가기" className="h-20 w-auto" />
+                            <img src="/buttons/button-homepage.svg" alt="정의당 홈페이지 바로가기" className="h-14 md:h-20 w-auto" />
                         </a>
                         <a
                             href="https://26you.justice21.org/"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex-none -ml-[35px] hover:opacity-85 active:scale-95 transition-all duration-150"
+                            className="flex-none -ml-[25px] md:-ml-[35px] hover:opacity-85 active:scale-95 transition-all duration-150"
                         >
-                            <img src="/buttons/button-youth.svg" alt="청년후보페이지 보러가기" className="h-20 w-auto" />
+                            <img src="/buttons/button-youth.svg" alt="청년후보페이지 보러가기" className="h-14 md:h-20 w-auto" />
                         </a>
                     </div>
-                    {/* 2행: 상하 그림자 여백 합계 73px 상쇄 → 알약 사이 약 6px 간격 */}
-                    <div className="relative inline-block -mt-[26px]">
-                        <img src="/buttons/button-pair.svg" alt="우리동네 후보 찾기 / 정의당 핵심 공약" className="h-20 w-auto" />
+                    {/* 2행: 상하 그림자 여백 상쇄, 모바일/데스크탑 각각 조정 */}
+                    <div className="relative inline-block -mt-[18px] md:-mt-[26px]">
+                        <img src="/buttons/button-pair.svg" alt="우리동네 후보 찾기 / 정의당 핵심 공약" className="h-14 md:h-20 w-auto" />
                         <Link
                             href="#map"
                             className="absolute inset-y-0 left-0 w-[48%]"
