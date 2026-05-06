@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_레이어_2" data-name="레이어 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 374.47 89">
+  <defs>
+    <style>
+      .cls-1 {
+        filter: url(#drop-shadow-1);
+      }
+
+      .cls-2 {
+        stroke-linecap: round;
+        stroke-width: 2px;
+      }
+
+      .cls-2, .cls-3 {
+        fill: none;
+        stroke: #000;
+        stroke-miterlimit: 10;
+      }
+
+      .cls-4 {
+        fill: #fff;
+        opacity: .75;
+      }
+
+      .cls-5, .cls-6 {
+        font-family: Pretendard-ExtraBold-KSCpc-EUC-H, Pretendard;
+        font-size: 16px;
+        font-weight: 700;
+      }
+
+      .cls-6 {
+        fill: #0d131c;
+      }
+
+      .cls-7 {
+        fill: #fff100;
+      }
+    </style>
+    <filter id="drop-shadow-1" x="157.47" y="0" width="217" height="89" filterUnits="userSpaceOnUse">
+      <feOffset dx="1.98" dy="1.98"/>
+      <feGaussianBlur result="blur" stdDeviation="8.5"/>
+      <feFlood flood-color="#fff100" flood-opacity=".25"/>
+      <feComposite in2="blur" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="_레이어_1-2" data-name="레이어 1">
+    <g>
+      <g>
+        <rect class="cls-7" x="0" y="23.07" width="169.79" height="36.97" rx="18.48" ry="18.48"/>
+        <path class="cls-3" d="M22.03,33.93c-3.34,0-6.05,2.71-6.05,6.05s6.05,10.25,6.05,10.25c0,0,6.05-6.91,6.05-10.25s-2.71-6.05-6.05-6.05ZM22.03,42.56c-1.51,0-2.73-1.22-2.73-2.73s1.22-2.73,2.73-2.73,2.73,1.22,2.73,2.73-1.22,2.73-2.73,2.73Z"/>
+        <text class="cls-5" transform="translate(35.55 47.49)"><tspan x="0" y="0">우리동네 후보 찾기</tspan></text>
+      </g>
+      <g class="cls-1">
+        <rect class="cls-4" x="181.54" y="24.46" width="165.43" height="36.97" rx="18.48" ry="18.48"/>
+      </g>
+      <text class="cls-6" transform="translate(224.55 48.87)"><tspan x="0" y="0">정의당 핵심 공약</tspan></text>
+      <g>
+        <line class="cls-2" x1="205.42" y1="37.87" x2="216.24" y2="37.87"/>
+        <line class="cls-2" x1="201.21" y1="37.87" x2="201.76" y2="37.87"/>
+        <line class="cls-2" x1="205.42" y1="43.1" x2="216.24" y2="43.1"/>
+        <line class="cls-2" x1="201.21" y1="43.1" x2="201.76" y2="43.1"/>
+        <line class="cls-2" x1="205.42" y1="48.33" x2="216.24" y2="48.33"/>
+        <line class="cls-2" x1="201.21" y1="48.33" x2="201.76" y2="48.33"/>
+      </g>
+    </g>
+  </g>
+</svg>
