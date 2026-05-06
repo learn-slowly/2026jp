@@ -66,7 +66,7 @@ export function HeroSection({ settings }: HeroSectionProps) {
                         </a>
                     </div>
                     {/* 2행: 상하 그림자 여백 합계 73px 상쇄 → 알약 사이 약 6px 간격 */}
-                    <div className="relative inline-block -mt-[49px]">
+                    <div className="relative inline-block -mt-[35px]">
                         <img src="/buttons/button-pair.svg" alt="우리동네 후보 찾기 / 정의당 핵심 공약" className="h-24 w-auto" />
                         <Link
                             href="#map"
