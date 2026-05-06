@@ -47,12 +47,12 @@ export function HeroSection({ settings }: HeroSectionProps) {
 
                 <div className="hero_button flex flex-col items-center justify-center gap-3 animate-fade-in-up delay-500">
                     {/* 1행: 외부 링크 버튼 */}
-                    <div className="flex flex-row items-center justify-center gap-3 flex-wrap">
+                    <div className="flex flex-row items-center justify-center flex-wrap">
                         <a
                             href="https://www.justice21.org/"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="hover:opacity-85 active:scale-95 transition-all duration-150"
+                            className="-mr-7 hover:opacity-85 active:scale-95 transition-all duration-150"
                         >
                             <img src="/buttons/button-homepage.svg" alt="정의당 홈페이지 바로가기" className="h-32 w-auto" />
                         </a>
@@ -60,7 +60,7 @@ export function HeroSection({ settings }: HeroSectionProps) {
                             href="https://26you.justice21.org/"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="hover:opacity-85 active:scale-95 transition-all duration-150"
+                            className="-ml-7 hover:opacity-85 active:scale-95 transition-all duration-150"
                         >
                             <img src="/buttons/button-youth.svg" alt="청년후보페이지 보러가기" className="h-32 w-auto" />
                         </a>
