@@ -47,7 +47,7 @@ export function HeroSection({ settings }: HeroSectionProps) {
 
                 <div className="hero_button flex flex-col items-center animate-fade-in-up delay-500">
                     {/* 1행: flex-none으로 압축 방지, 음수 마진으로 SVG 그림자 여백 제거 */}
-                    <div className="flex items-center">
+                    <div className="flex items-center -translate-x-[5px]">
                         <a
                             href="https://www.justice21.org/"
                             target="_blank"
