@@ -46,30 +46,26 @@ export function HeroSection({ settings }: HeroSectionProps) {
                 </p>
 
                 <div className="hero_button flex flex-col items-center gap-0 animate-fade-in-up delay-500">
-                    {/* 1행: 외부 링크 — 각 절반(269px)에 배치해 2행 경계선과 수직 정렬 */}
-                    <div className="flex flex-row">
-                        <div className="flex justify-end items-center w-[269px]">
-                            <a
-                                href="https://www.justice21.org/"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="translate-x-4 hover:opacity-85 active:scale-95 transition-all duration-150"
-                            >
-                                <img src="/buttons/button-homepage.svg" alt="정의당 홈페이지 바로가기" className="h-32 w-auto" />
-                            </a>
-                        </div>
-                        <div className="flex justify-start items-center w-[269px]">
-                            <a
-                                href="https://26you.justice21.org/"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="-translate-x-[42px] hover:opacity-85 active:scale-95 transition-all duration-150"
-                            >
-                                <img src="/buttons/button-youth.svg" alt="청년후보페이지 보러가기" className="h-32 w-auto" />
-                            </a>
-                        </div>
+                    {/* 1행: 절대 위치로 배치 — flex-shrink 압축 없이 원본 크기 유지, 2행 경계선(252px)에 정렬 */}
+                    <div className="relative h-32 w-[538px]">
+                        <a
+                            href="https://www.justice21.org/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="absolute top-0 left-[-89px] hover:opacity-85 active:scale-95 transition-all duration-150"
+                        >
+                            <img src="/buttons/button-homepage.svg" alt="정의당 홈페이지 바로가기" className="h-32 w-auto" />
+                        </a>
+                        <a
+                            href="https://26you.justice21.org/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="absolute top-0 left-[227px] hover:opacity-85 active:scale-95 transition-all duration-150"
+                        >
+                            <img src="/buttons/button-youth.svg" alt="청년후보페이지 보러가기" className="h-32 w-auto" />
+                        </a>
                     </div>
-                    {/* 2행: 내부 링크 버튼 쌍 — SVG 그림자 여백 상쇄해 행간 축소 */}
+                    {/* 2행: SVG 상하 그림자 여백(73px) 상쇄 → 알약 사이 약 6px 간격 */}
                     <div className="relative inline-block -mt-[67px]">
                         <img src="/buttons/button-pair.svg" alt="우리동네 후보 찾기 / 정의당 핵심 공약" className="h-32 w-auto" />
                         <Link
