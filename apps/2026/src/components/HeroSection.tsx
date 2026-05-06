@@ -54,7 +54,7 @@ export function HeroSection({ settings }: HeroSectionProps) {
                             rel="noopener noreferrer"
                             className="hover:opacity-85 active:scale-95 transition-all duration-150"
                         >
-                            <img src="/buttons/button-homepage.svg" alt="정의당 홈페이지 바로가기" className="h-16 w-auto" />
+                            <img src="/buttons/button-homepage.svg" alt="정의당 홈페이지 바로가기" className="h-32 w-auto" />
                         </a>
                         <a
                             href="https://26you.justice21.org/"
@@ -62,12 +62,12 @@ export function HeroSection({ settings }: HeroSectionProps) {
                             rel="noopener noreferrer"
                             className="hover:opacity-85 active:scale-95 transition-all duration-150"
                         >
-                            <img src="/buttons/button-youth.svg" alt="청년후보페이지 보러가기" className="h-16 w-auto" />
+                            <img src="/buttons/button-youth.svg" alt="청년후보페이지 보러가기" className="h-32 w-auto" />
                         </a>
                     </div>
                     {/* 2행: 내부 링크 버튼 쌍 (SVG 1개에 클릭 영역 2개) */}
                     <div className="relative inline-block">
-                        <img src="/buttons/button-pair.svg" alt="우리동네 후보 찾기 / 정의당 핵심 공약" className="h-16 w-auto" />
+                        <img src="/buttons/button-pair.svg" alt="우리동네 후보 찾기 / 정의당 핵심 공약" className="h-32 w-auto" />
                         <Link
                             href="#map"
                             className="absolute inset-y-0 left-0 w-[48%] hover:opacity-0 transition-opacity"
