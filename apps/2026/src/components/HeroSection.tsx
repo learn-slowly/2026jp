@@ -54,20 +54,20 @@ export function HeroSection({ settings }: HeroSectionProps) {
                             rel="noopener noreferrer"
                             className="flex-none hover:opacity-85 active:scale-95 transition-all duration-150"
                         >
-                            <img src="/buttons/button-homepage.svg" alt="정의당 홈페이지 바로가기" className="h-24 w-auto" />
+                            <img src="/buttons/button-homepage.svg" alt="정의당 홈페이지 바로가기" className="h-20 w-auto" />
                         </a>
                         <a
                             href="https://26you.justice21.org/"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex-none -ml-[42px] hover:opacity-85 active:scale-95 transition-all duration-150"
+                            className="flex-none -ml-[35px] hover:opacity-85 active:scale-95 transition-all duration-150"
                         >
-                            <img src="/buttons/button-youth.svg" alt="청년후보페이지 보러가기" className="h-24 w-auto" />
+                            <img src="/buttons/button-youth.svg" alt="청년후보페이지 보러가기" className="h-20 w-auto" />
                         </a>
                     </div>
                     {/* 2행: 상하 그림자 여백 합계 73px 상쇄 → 알약 사이 약 6px 간격 */}
-                    <div className="relative inline-block -mt-[35px]">
-                        <img src="/buttons/button-pair.svg" alt="우리동네 후보 찾기 / 정의당 핵심 공약" className="h-24 w-auto" />
+                    <div className="relative inline-block -mt-[26px]">
+                        <img src="/buttons/button-pair.svg" alt="우리동네 후보 찾기 / 정의당 핵심 공약" className="h-20 w-auto" />
                         <Link
                             href="#map"
                             className="absolute inset-y-0 left-0 w-[48%]"
