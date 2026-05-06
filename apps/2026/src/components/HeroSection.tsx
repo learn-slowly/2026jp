@@ -45,14 +45,14 @@ export function HeroSection({ settings }: HeroSectionProps) {
                     {settings.hero_description || '정치가 놓친 삶의 의제'}
                 </p>
 
-                <div className="hero_button flex flex-col items-center gap-0 animate-fade-in-up delay-500">
-                    {/* 1행: 절대 위치로 배치 — flex-shrink 압축 없이 원본 크기 유지, 2행 경계선(252px)에 정렬 */}
-                    <div className="relative h-32 w-[538px]">
+                <div className="hero_button flex flex-col items-center animate-fade-in-up delay-500">
+                    {/* 1행: flex-none으로 압축 방지, 음수 마진으로 SVG 그림자 여백 제거 */}
+                    <div className="flex items-center">
                         <a
                             href="https://www.justice21.org/"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="absolute top-0 left-[-89px] hover:opacity-85 active:scale-95 transition-all duration-150"
+                            className="flex-none hover:opacity-85 active:scale-95 transition-all duration-150"
                         >
                             <img src="/buttons/button-homepage.svg" alt="정의당 홈페이지 바로가기" className="h-32 w-auto" />
                         </a>
@@ -60,12 +60,12 @@ export function HeroSection({ settings }: HeroSectionProps) {
                             href="https://26you.justice21.org/"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="absolute top-0 left-[227px] hover:opacity-85 active:scale-95 transition-all duration-150"
+                            className="flex-none -ml-[58px] hover:opacity-85 active:scale-95 transition-all duration-150"
                         >
                             <img src="/buttons/button-youth.svg" alt="청년후보페이지 보러가기" className="h-32 w-auto" />
                         </a>
                     </div>
-                    {/* 2행: SVG 상하 그림자 여백(73px) 상쇄 → 알약 사이 약 6px 간격 */}
+                    {/* 2행: 상하 그림자 여백 합계 73px 상쇄 → 알약 사이 약 6px 간격 */}
                     <div className="relative inline-block -mt-[67px]">
                         <img src="/buttons/button-pair.svg" alt="우리동네 후보 찾기 / 정의당 핵심 공약" className="h-32 w-auto" />
                         <Link
