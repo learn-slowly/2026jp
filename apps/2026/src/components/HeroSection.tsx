@@ -3,7 +3,6 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { ArrowRight, MapPin } from 'lucide-react';
 
 interface HeroSectionProps {
     settings: Record<string, string>;
@@ -46,21 +45,40 @@ export function HeroSection({ settings }: HeroSectionProps) {
                     {settings.hero_description || '정치가 놓친 삶의 의제'}
                 </p>
 
-                <div className="hero_button flex flex-col md:flex-row items-center justify-center gap-4 animate-fade-in-up delay-500">
-                    <Link
-                        href="#policies"
-                        className="w-full md:w-auto px-8 py-4 bg-justice-yellow hover:bg-justice-yellow-dark text-black rounded-full font-bold text-lg transition-all flex items-center justify-center gap-2 group"
-                    >
-                        {settings.cta_button_1 || '핵심 공약 보기'}
-                        <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                    </Link>
-                    <Link
-                        href="#map"
-                        className="w-full md:w-auto px-8 py-4 bg-white/10 hover:bg-white/20 text-white backdrop-blur-sm rounded-full font-bold text-lg transition-all flex items-center justify-center gap-2"
-                    >
-                        <MapPin className="w-5 h-5" />
-                        {settings.cta_button_2 || '우리 동네 후보 찾기'}
-                    </Link>
+                <div className="hero_button flex flex-col items-center justify-center gap-3 animate-fade-in-up delay-500">
+                    {/* 1행: 외부 링크 버튼 */}
+                    <div className="flex flex-row items-center justify-center gap-3 flex-wrap">
+                        <a
+                            href="https://www.justice21.org/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="hover:opacity-85 active:scale-95 transition-all duration-150"
+                        >
+                            <img src="/buttons/button-homepage.svg" alt="정의당 홈페이지 바로가기" className="h-16 w-auto" />
+                        </a>
+                        <a
+                            href="https://26you.justice21.org/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="hover:opacity-85 active:scale-95 transition-all duration-150"
+                        >
+                            <img src="/buttons/button-youth.svg" alt="청년후보페이지 보러가기" className="h-16 w-auto" />
+                        </a>
+                    </div>
+                    {/* 2행: 내부 링크 버튼 쌍 (SVG 1개에 클릭 영역 2개) */}
+                    <div className="relative inline-block">
+                        <img src="/buttons/button-pair.svg" alt="우리동네 후보 찾기 / 정의당 핵심 공약" className="h-16 w-auto" />
+                        <Link
+                            href="#map"
+                            className="absolute inset-y-0 left-0 w-[48%] hover:opacity-0 transition-opacity"
+                            aria-label="우리동네 후보 찾기"
+                        />
+                        <Link
+                            href="#policies"
+                            className="absolute inset-y-0 right-0 w-[50%] hover:opacity-0 transition-opacity"
+                            aria-label="정의당 핵심 공약"
+                        />
+                    </div>
                 </div>
             </div>
         </section>
