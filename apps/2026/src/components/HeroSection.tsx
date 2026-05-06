@@ -60,7 +60,7 @@ export function HeroSection({ settings }: HeroSectionProps) {
                             href="https://26you.justice21.org/"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex-none -ml-[39px] hover:opacity-85 active:scale-95 transition-all duration-150"
+                            className="flex-none -ml-[42px] hover:opacity-85 active:scale-95 transition-all duration-150"
                         >
                             <img src="/buttons/button-youth.svg" alt="청년후보페이지 보러가기" className="h-24 w-auto" />
                         </a>
