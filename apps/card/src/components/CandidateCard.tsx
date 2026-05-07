@@ -43,11 +43,19 @@ export function CandidateCard({ candidate, settings }: CandidateCardProps) {
                 <div className="max-w-xl mx-auto w-full">
                     {/* 정의당 로고 */}
                     <div className="flex justify-end items-center gap-3 mb-4">
-                        <img
-                            src="/logo-4.gif"
-                            alt="정의당"
-                            className="h-12 w-auto drop-shadow-lg filter brightness-0 invert"
-                        />
+                        <a
+                            href="https://www.justice21.org/newhome/main/default.html"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="정의당 홈페이지"
+                            className="hover:opacity-80 transition"
+                        >
+                            <img
+                                src="/logo-4.gif"
+                                alt="정의당"
+                                className="h-12 w-auto drop-shadow-lg filter brightness-0 invert"
+                            />
+                        </a>
                     </div>
 
                     {/* 후보자 정보 Card */}
@@ -357,7 +365,7 @@ export function CandidateCard({ candidate, settings }: CandidateCardProps) {
 
                     <footer className="py-8 pb-12 text-center text-white/80 text-sm flex flex-col items-center">
                         <div className="flex flex-wrap items-center justify-center gap-5 mb-6 px-2">
-                            <a href="https://www.justice21.org/" target="_blank" rel="noreferrer" className="hover:scale-105 transition-transform flex items-center justify-center h-8">
+                            <a href="https://www.justice21.org/newhome/main/default.html" target="_blank" rel="noreferrer" className="hover:scale-105 transition-transform flex items-center justify-center h-8">
                                 <img src="/logo-03.png" alt="정의당" className="h-full w-auto object-contain" />
                             </a>
                             <div className="w-[1px] h-4 bg-white/30"></div>

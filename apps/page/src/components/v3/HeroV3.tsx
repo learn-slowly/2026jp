@@ -59,12 +59,20 @@ export function HeroV3({ candidate }: HeroV3Props) {
       <nav className="relative z-20 hidden md:block">
         <div className="mx-auto max-w-6xl px-6 py-6 flex items-end justify-between gap-4">
           <div className="flex items-end gap-3 sm:gap-6 min-w-0" style={{ display: 'flex' }}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/Group-8.svg"
-              alt="정의당"
-              className="h-10 sm:h-12 md:h-14 w-auto block flex-shrink-0"
-            />
+            <a
+              href="https://www.justice21.org/newhome/main/default.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="정의당 홈페이지"
+              className="block flex-shrink-0 hover:opacity-80 transition"
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/Group-8.svg"
+                alt="정의당"
+                className="h-10 sm:h-12 md:h-14 w-auto block"
+              />
+            </a>
             {(candidate.position || candidate.name) && (
               <div
                 className="flex flex-col sm:flex-row sm:items-baseline gap-0 sm:gap-2.5 text-d-blueblack leading-tight min-w-0"

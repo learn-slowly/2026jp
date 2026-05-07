@@ -21,7 +21,7 @@ export default async function Home() {
 
       <footer className="bg-gray-900 text-white/50 py-16 text-center">
         <div className="flex flex-wrap items-center justify-center gap-5 mb-8 px-4">
-            <a href="https://www.justice21.org/" target="_blank" rel="noreferrer" className="hover:opacity-80 transition flex items-center justify-center h-8">
+            <a href="https://www.justice21.org/newhome/main/default.html" target="_blank" rel="noreferrer" className="hover:opacity-80 transition flex items-center justify-center h-8">
                 <img src="/logo-03.png" alt="정의당" className="h-full w-auto object-contain" />
             </a>
             <div className="w-[1px] h-4 bg-white/20"></div>

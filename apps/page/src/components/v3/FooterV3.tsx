@@ -171,12 +171,20 @@ export function FooterV3({ candidate, donation, social, pageName, pageUrl, copyr
 
           {/* Right: justice party logo + page name + copyright */}
           <div className="space-y-3 md:text-right">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/Group-1.svg"
-              alt="정의당"
-              className="h-12 w-auto md:ml-auto"
-            />
+            <a
+              href="https://www.justice21.org/newhome/main/default.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="정의당 홈페이지"
+              className="inline-block md:ml-auto hover:opacity-80 transition"
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/Group-1.svg"
+                alt="정의당"
+                className="h-12 w-auto"
+              />
+            </a>
             {pageName && (
               <a
                 href={pageUrl?.trim() || '#'}

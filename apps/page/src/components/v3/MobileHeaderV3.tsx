@@ -27,16 +27,24 @@ export function MobileHeaderV3({ candidateName, candidatePosition }: MobileHeade
         className="h-14 px-4 flex items-center justify-between gap-3"
         style={{ display: 'flex' }}
       >
-        <a
-          href="#about"
-          aria-label="페이지 상단으로"
+        <div
           className="inline-flex items-end gap-2.5 min-w-0"
           style={{ display: 'inline-flex' }}
         >
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/Group-8.svg" alt="정의당" className="h-7 w-auto block flex-shrink-0" />
+          <a
+            href="https://www.justice21.org/newhome/main/default.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="정의당 홈페이지"
+            className="block flex-shrink-0 hover:opacity-80 transition"
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/Group-8.svg" alt="정의당" className="h-7 w-auto block" />
+          </a>
           {(candidatePosition || candidateName) && (
-            <div
+            <a
+              href="#about"
+              aria-label="페이지 상단으로"
               className="flex flex-col leading-tight text-d-blueblack min-w-0"
               style={{ display: 'flex' }}
             >
@@ -53,9 +61,9 @@ export function MobileHeaderV3({ candidateName, candidatePosition }: MobileHeade
                   {candidateName}
                 </span>
               )}
-            </div>
+            </a>
           )}
-        </a>
+        </div>
         <button
           type="button"
           onClick={() => setOpen((v) => !v)}
