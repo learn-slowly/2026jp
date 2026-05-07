@@ -46,38 +46,41 @@ export function HeroSection({ settings }: HeroSectionProps) {
                 </p>
 
                 <div className="hero_button flex flex-col items-center animate-fade-in-up delay-500">
-                    {/* 1행: flex-none으로 압축 방지, 음수 마진으로 SVG 그림자 여백 제거 */}
-                    <div className="flex items-center -translate-x-[7px] md:-translate-x-[10px]">
+                    {/* 1행 (데스크탑) / 1·2행 (모바일): 홈페이지 + 청년후보 */}
+                    <div className="flex flex-col items-center md:flex-row md:-translate-x-[10px]">
                         <a
-                            href="https://www.justice21.org/"
+                            href="https://www.justice21.org/newhome/main/default.html"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="flex-none hover:opacity-85 active:scale-95 transition-all duration-150"
                         >
-                            <img src="/buttons/button-homepage.svg" alt="정의당 홈페이지 바로가기" className="h-14 md:h-20 w-auto" />
+                            <img src="/buttons/button-homepage.svg" alt="정의당 홈페이지 바로가기" className="h-[70px] md:h-[86px] w-auto" />
                         </a>
                         <a
                             href="https://26you.justice21.org/"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex-none -ml-[25px] md:-ml-[35px] hover:opacity-85 active:scale-95 transition-all duration-150"
+                            className="flex-none -mt-[20px] md:mt-0 md:-ml-[35px] hover:opacity-85 active:scale-95 transition-all duration-150"
                         >
-                            <img src="/buttons/button-youth.svg" alt="청년후보페이지 보러가기" className="h-14 md:h-20 w-auto" />
+                            <img src="/buttons/button-youth.svg" alt="청년후보페이지 보러가기" className="h-[70px] md:h-[86px] w-auto" />
                         </a>
                     </div>
-                    {/* 2행: 상하 그림자 여백 상쇄, 모바일/데스크탑 각각 조정 */}
-                    <div className="relative inline-block -mt-[18px] md:-mt-[26px]">
-                        <img src="/buttons/button-pair.svg" alt="우리동네 후보 찾기 / 정의당 핵심 공약" className="h-14 md:h-20 w-auto" />
+                    {/* 2행 (데스크탑) / 3·4행 (모바일): 후보 찾기 + 핵심 공약 */}
+                    <div className="flex flex-col items-center -mt-[20px] md:flex-row md:-mt-[26px]">
                         <Link
                             href="#map"
-                            className="absolute inset-y-0 left-0 w-[48%]"
+                            className="flex-none hover:opacity-85 active:scale-95 transition-all duration-150"
                             aria-label="우리동네 후보 찾기"
-                        />
+                        >
+                            <img src="/buttons/button-finder.svg" alt="우리동네 후보 찾기" className="h-[70px] md:h-[86px] w-auto" />
+                        </Link>
                         <Link
                             href="#policies"
-                            className="absolute inset-y-0 right-0 w-[50%]"
+                            className="flex-none -mt-[20px] md:mt-0 md:-ml-[1px] hover:opacity-85 active:scale-95 transition-all duration-150"
                             aria-label="정의당 핵심 공약"
-                        />
+                        >
+                            <img src="/buttons/button-policy.svg" alt="정의당 핵심 공약" className="h-[70px] md:h-[86px] w-auto" />
+                        </Link>
                     </div>
                 </div>
             </div>

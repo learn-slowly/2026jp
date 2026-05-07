@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_레이어_2" data-name="레이어 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 169.79 89">
+  <defs>
+    <style>
+      .cls-3 {
+        fill: none;
+        stroke: #000;
+        stroke-miterlimit: 10;
+      }
+
+      .cls-5 {
+        font-family: Pretendard-ExtraBold-KSCpc-EUC-H, Pretendard;
+        font-size: 16px;
+        font-weight: 700;
+      }
+
+      .cls-7 {
+        fill: #fff100;
+      }
+    </style>
+  </defs>
+  <g id="_레이어_1-2" data-name="레이어 1">
+    <g>
+      <rect class="cls-7" x="0" y="23.07" width="169.79" height="36.97" rx="18.48" ry="18.48"/>
+      <path class="cls-3" d="M22.03,33.93c-3.34,0-6.05,2.71-6.05,6.05s6.05,10.25,6.05,10.25c0,0,6.05-6.91,6.05-10.25s-2.71-6.05-6.05-6.05ZM22.03,42.56c-1.51,0-2.73-1.22-2.73-2.73s1.22-2.73,2.73-2.73,2.73,1.22,2.73,2.73-1.22,2.73-2.73,2.73Z"/>
+      <text class="cls-5" transform="translate(35.55 47.49)"><tspan x="0" y="0">우리동네 후보 찾기</tspan></text>
+    </g>
+  </g>
+</svg>
