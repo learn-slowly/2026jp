@@ -35,9 +35,9 @@ export function HeroSection({ settings }: HeroSectionProps) {
                 </div>
 
                 <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-8 leading-tight animate-fade-in-up delay-200">
-                    {settings.hero_heading || '이제 같이 삽시다'}<br />
+                    {settings.hero_heading || '이제, 같이 삽시다'}<br />
                     <span className="text-justice-yellow">
-                        {settings.hero_heading_highlight || '같이 잘 삽시다'}
+                        {settings.hero_heading_highlight || '같이 갑시다'}
                     </span>
                 </h1>
 
