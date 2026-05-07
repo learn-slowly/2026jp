@@ -51,6 +51,94 @@ export function CandidateFinder({ candidates, settings }: CandidateFinderProps) 
         };
     };
 
+    // 광역단체(특별시·광역시·세종) 리스트 — 기초자치 추출 시 제외용
+    const WIDE_REGIONS = new Set([
+        '서울특별시', '서울시', '서울',
+        '부산광역시', '부산시', '부산',
+        '대구광역시', '대구시', '대구',
+        '인천광역시', '인천시', '인천',
+        '광주광역시', '광주시', '광주',
+        '대전광역시', '대전시', '대전',
+        '울산광역시', '울산시', '울산',
+        '세종특별자치시', '세종시', '세종',
+    ]);
+
+    // 광역(시·도) 토큰 추출 — 광역 카테고리용
+    const findWideSuffix = (district: string): string => {
+        const cleaned = district.replace(/\([^)]*\)/g, ' ').trim();
+        const tokens = cleaned.split(/\s+/).filter(Boolean);
+        for (let i = tokens.length - 1; i >= 0; i--) {
+            if (/[시도]$/.test(tokens[i])) return tokens[i].slice(-1);
+        }
+        return '';
+    };
+
+    // 기초(시·군·구) 토큰 추출 — 기초 카테고리용. 광역 토큰은 스킵.
+    const findBasicSuffix = (district: string): string => {
+        const cleaned = district.replace(/\([^)]*\)/g, ' ').trim();
+        const tokens = cleaned.split(/\s+/).filter(Boolean);
+        for (let i = tokens.length - 1; i >= 0; i--) {
+            if (WIDE_REGIONS.has(tokens[i])) continue;
+            if (/[시군구]$/.test(tokens[i])) return tokens[i].slice(-1);
+        }
+        return '';
+    };
+
+    // category + district 로 직책 라벨 결정.
+    const resolvePositionLabel = (category: string, district: string): string => {
+        if (category.includes('광역단체장')) {
+            const s = findWideSuffix(district);
+            if (s === '도') return '도지사후보';
+            if (s === '시') return '시장후보';
+            return '광역단체장후보';
+        }
+        if (category.includes('기초단체장')) {
+            const s = findBasicSuffix(district);
+            if (s === '구') return '구청장후보';
+            if (s === '군') return '군수후보';
+            if (s === '시') return '시장후보';
+            return '기초단체장후보';
+        }
+        if (category.includes('광역비례')) {
+            const s = findWideSuffix(district);
+            if (s === '도') return '도의원후보(비례)';
+            if (s === '시') return '시의원후보(비례)';
+            return '광역의원후보(비례)';
+        }
+        if (category.includes('기초비례')) {
+            const s = findBasicSuffix(district);
+            if (s === '구') return '구의원후보(비례)';
+            if (s === '군') return '군의원후보(비례)';
+            if (s === '시') return '시의원후보(비례)';
+            return '기초의원후보(비례)';
+        }
+        if (category.includes('광역의원')) {
+            const s = findWideSuffix(district);
+            if (s === '도') return '도의원후보';
+            if (s === '시') return '시의원후보';
+            return '광역의원후보';
+        }
+        if (category.includes('기초의원')) {
+            const s = findBasicSuffix(district);
+            if (s === '구') return '구의원후보';
+            if (s === '군') return '군의원후보';
+            if (s === '시') return '시의원후보';
+            return '기초의원후보';
+        }
+        return category.includes('후보') ? category : `${category}후보`;
+    };
+
+    // mainTitle 끝글자(시/도/구/군)와 catLabel 첫글자가 같으면 한 글자로 합쳐 표기.
+    // 예: "파주시" + "시의원후보" → "파주시의원후보"
+    const composeTitle = (mainTitle: string, catLabel: string): string => {
+        const last = mainTitle.slice(-1);
+        const first = catLabel.charAt(0);
+        if (last === first && /[시도구군]/.test(last)) {
+            return `${mainTitle.slice(0, -1)}${catLabel}`;
+        }
+        return `${mainTitle} ${catLabel}`;
+    };
+
     return (
         <section id="map" className="py-24 bg-gray-50">
             <div className="max-w-7xl mx-auto px-4 md:px-8">
@@ -130,21 +218,10 @@ export function CandidateFinder({ candidates, settings }: CandidateFinderProps) 
                                     </h3>
 
                                     <div className="text-sm font-bold text-gray-800 mb-3">
-                                        {(() => {
-                                            const { mainTitle } = parseDistrict(candidate.district);
-                                            let catLabel: string = candidate.category;
-                                            if (catLabel.includes('광역단체장')) catLabel = '시장후보';
-                                            else if (catLabel.includes('기초단체장')) catLabel = '구청장후보';
-                                            else if (catLabel.includes('기초의원')) catLabel = '시의원후보';
-                                            else if (catLabel.includes('광역의원')) catLabel = '시의원후보';
-                                            else if (!catLabel.includes('후보')) catLabel += '후보';
-
-                                            // 서울시 -> 서울 시장후보 (특수 포맷 보정)
-                                            if (mainTitle.endsWith('시') && catLabel === '시장후보') {
-                                                return `${mainTitle.slice(0, -1)} ${catLabel}`;
-                                            }
-                                            return `${mainTitle} ${catLabel}`;
-                                        })()}
+                                        {composeTitle(
+                                            parseDistrict(candidate.district).mainTitle,
+                                            resolvePositionLabel(candidate.category, candidate.district)
+                                        )}
                                     </div>
 
                                     <div className="mb-4" style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
