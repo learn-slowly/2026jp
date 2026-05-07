@@ -54,7 +54,7 @@ export function HeroSection({ settings }: HeroSectionProps) {
                             rel="noopener noreferrer"
                             className="flex-none hover:opacity-85 active:scale-95 transition-all duration-150"
                         >
-                            <img src="/buttons/button-homepage.svg" alt="정의당 홈페이지 바로가기" className="h-[74px] md:h-[90px] w-auto" />
+                            <img src="/buttons/button-homepage.svg" alt="정의당 홈페이지 바로가기" className="h-[82px] md:h-[104px] w-auto" />
                         </a>
                         <a
                             href="https://26you.justice21.org/"
@@ -62,7 +62,7 @@ export function HeroSection({ settings }: HeroSectionProps) {
                             rel="noopener noreferrer"
                             className="flex-none -mt-[20px] md:mt-0 md:-ml-[35px] hover:opacity-85 active:scale-95 transition-all duration-150"
                         >
-                            <img src="/buttons/button-youth.svg" alt="청년후보페이지 보러가기" className="h-[74px] md:h-[90px] w-auto" />
+                            <img src="/buttons/button-youth.svg" alt="청년후보페이지 보러가기" className="h-[82px] md:h-[104px] w-auto" />
                         </a>
                     </div>
                     {/* 2행 (데스크탑) / 3·4행 (모바일): 후보 찾기 + 핵심 공약 */}
@@ -72,14 +72,14 @@ export function HeroSection({ settings }: HeroSectionProps) {
                             className="flex-none hover:opacity-85 active:scale-95 transition-all duration-150"
                             aria-label="우리동네 후보 찾기"
                         >
-                            <img src="/buttons/button-finder.svg" alt="우리동네 후보 찾기" className="h-[74px] md:h-[90px] w-auto" />
+                            <img src="/buttons/button-finder.svg" alt="우리동네 후보 찾기" className="h-[82px] md:h-[104px] w-auto" />
                         </Link>
                         <Link
                             href="#policies"
                             className="flex-none -mt-[20px] md:mt-0 md:-ml-[1px] hover:opacity-85 active:scale-95 transition-all duration-150"
                             aria-label="정의당 핵심 공약"
                         >
-                            <img src="/buttons/button-policy.svg" alt="정의당 핵심 공약" className="h-[74px] md:h-[90px] w-auto" />
+                            <img src="/buttons/button-policy.svg" alt="정의당 핵심 공약" className="h-[82px] md:h-[104px] w-auto" />
                         </Link>
                     </div>
                 </div>
