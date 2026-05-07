@@ -176,7 +176,7 @@ export function FooterV3({ candidate, donation, social, pageName, pageUrl, copyr
               target="_blank"
               rel="noopener noreferrer"
               aria-label="정의당 홈페이지"
-              className="inline-block md:ml-auto hover:opacity-80 transition"
+              className="block w-fit md:ml-auto hover:opacity-80 transition"
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
