@@ -8,6 +8,17 @@ interface FooterProps {
     settings: Record<string, string>;
 }
 
+function withWaGwa(name: string): string {
+    const last = name[name.length - 1];
+    if (!last) return `${name}와`;
+    const code = last.charCodeAt(0);
+    if (code >= 0xac00 && code <= 0xd7a3) {
+        const hasJongseong = (code - 0xac00) % 28 !== 0;
+        return `${name}${hasJongseong ? '과' : '와'}`;
+    }
+    return `${name}와`;
+}
+
 export function Footer({ candidate, settings }: FooterProps) {
     const handleCopy = (text: string, label: string) => {
         navigator.clipboard.writeText(text);
@@ -31,7 +42,7 @@ export function Footer({ candidate, settings }: FooterProps) {
                         </div>
                         <p className="text-white/70 leading-relaxed max-w-xs">
                             {settings.footer_message || '시민의 삶을 바꾸는 정의로운 선택.'}<br />
-                            {candidate.name}과 함께해주십시오.
+                            {withWaGwa(candidate.name)} 함께해주십시오.
                         </p>
                     </div>
 

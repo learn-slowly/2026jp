@@ -5,6 +5,17 @@ import { notFound } from 'next/navigation';
 // Disable caching for the demo to see updates immediately
 export const dynamic = 'force-dynamic';
 
+function withWaGwa(name: string): string {
+    const last = name[name.length - 1];
+    if (!last) return `${name}와`;
+    const code = last.charCodeAt(0);
+    if (code >= 0xac00 && code <= 0xd7a3) {
+        const hasJongseong = (code - 0xac00) % 28 !== 0;
+        return `${name}${hasJongseong ? '과' : '와'}`;
+    }
+    return `${name}와`;
+}
+
 interface PageProps {
     params: Promise<{ slug: string }>;
 }
@@ -19,7 +30,7 @@ export async function generateMetadata({ params }: PageProps) {
         title: `${candidate.name} - 2026 지방선거 ${candidate.category} 후보`,
         description: candidate.slogan,
         openGraph: {
-            title: `정의당 ${candidate.name}와 함께해주십시오`,
+            title: `정의당 ${withWaGwa(candidate.name)} 함께해주십시오`,
             description: candidate.intro?.slice(0, 100) + '...',
             images: candidate.photoUrl ? [candidate.photoUrl] : [],
         },
