@@ -35,14 +35,14 @@ export function HeroSection({ settings }: HeroSectionProps) {
                     제9회 전국동시지방선거 {dDay}
                 </div>
 
-                <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-8 leading-tight animate-fade-in-up delay-200">
+                <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-8 leading-tight animate-fade-in-up delay-200 whitespace-nowrap">
                     {settings.hero_heading || '이제, 같이 삽시다'}<br />
                     <span className="text-justice-yellow">
                         {settings.hero_heading_highlight || '같이 갑시다'}
                     </span>
                 </h1>
 
-                <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-2xl mx-auto leading-relaxed animate-fade-in-up delay-300">
+                <p className="text-xl md:text-2xl text-gray-300 mb-12 mx-auto leading-relaxed animate-fade-in-up delay-300 whitespace-nowrap">
                     {settings.hero_description || '정치가 놓친 삶의 의제'}
                 </p>
 
