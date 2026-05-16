@@ -3,6 +3,7 @@ import { sheetsClient } from '@justice/api-client';
 import { HeroSection } from '@/components/HeroSection';
 import { PolicyShowcase } from '@/components/PolicyShowcase';
 import { CandidateFinder } from '@/components/CandidateFinder';
+import { ContractSection } from '@/components/ContractSection';
 
 export const revalidate = 0;
 
@@ -18,6 +19,7 @@ export default async function Home() {
       <HeroSection settings={settings} />
       <CandidateFinder candidates={candidates} settings={settings} />
       <PolicyShowcase policies={policies} settings={settings} />
+      <ContractSection />
 
       <footer className="bg-gray-900 text-white/50 py-16 text-center">
         <div className="flex flex-wrap items-center justify-center gap-5 mb-8 px-4">
