@@ -48,7 +48,7 @@ export function ContractCard({ contract, onClick }: Props) {
           <div
             className={`w-14 h-14 md:w-16 md:h-16 rounded-full border-[2.5px] ${ACCENT_BORDER[color]} flex items-center justify-center ${ACCENT_TEXT[color]} group-hover:scale-105 transition-transform`}
           >
-            <span className="text-base md:text-lg font-black tracking-tighter">
+            <span className="text-base md:text-lg font-black tracking-tight">
               {numberStr}
             </span>
           </div>
@@ -62,19 +62,19 @@ export function ContractCard({ contract, onClick }: Props) {
             </span>
           </div>
 
-          <h3 className="text-2xl md:text-3xl font-black text-gray-900 mb-3 break-keep leading-tight">
+          <h3 className="font-display-serif text-2xl md:text-3xl font-black text-gray-900 mb-2 break-keep leading-tight">
             {title}
           </h3>
 
-          <p className="text-sm md:text-base text-gray-600 break-keep leading-relaxed mb-5">
+          <p className="font-display-serif text-[15px] md:text-base text-gray-700 break-keep leading-relaxed">
             {slogan}
-            {subSlogan && (
-              <>
-                <br />
-                <span className="text-gray-500">{subSlogan}</span>
-              </>
-            )}
           </p>
+          {subSlogan && (
+            <p className="text-sm md:text-base text-gray-500 break-keep mt-1 mb-5">
+              {subSlogan}
+            </p>
+          )}
+          {!subSlogan && <div className="mb-5" />}
 
           <div className="inline-flex items-center gap-1.5 text-sm font-bold text-gray-800 group-hover:gap-2.5 transition-all">
             자세히 보기

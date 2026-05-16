@@ -1,3 +1,5 @@
+/* @import는 모든 규칙보다 앞에 와야 함 */
+@import url("https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Serif+KR:wght@400;700;900&family=Gowun+Dodum&family=Jua&family=Gowun+Batang:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap");
 @import "tailwindcss";
 
 :root {
@@ -8,9 +10,16 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
 
+  /* 폰트 */
+  --font-sans: var(--font-geist-sans);
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-display-poster: "Black Han Sans", "Pretendard Variable", sans-serif;
+  --font-display-serif: "Noto Serif KR", "Gowun Batang", serif;
+  --font-display-batang: "Gowun Batang", "Noto Serif KR", serif;
+  --font-display-friendly: "Jua", "Gowun Dodum", "Pretendard Variable", sans-serif;
+
+  /* 정의당 컬러 */
   --color-justice-green: #00a366;
   --color-justice-pink: #e8306d;
   --color-justice-purple: #623e91;
@@ -18,6 +27,7 @@
   --color-d-black: #121212;
   --color-d-lightgrey: #fafafa;
   --color-d-darkgrey: #999999;
+  --color-cream: #f5f0e6;
 
   --color-justice-green-dark: #008759;
   --color-justice-pink-dark: #D02070;
