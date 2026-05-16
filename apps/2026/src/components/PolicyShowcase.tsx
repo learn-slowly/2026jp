@@ -21,11 +21,11 @@ export function PolicyShowcase({ settings }: PolicyShowcaseProps) {
         <section id="policies" className="py-24 bg-white">
             <div className="max-w-7xl mx-auto px-4 md:px-8">
                 <div className="mb-16 text-center">
-                    <h2 className="text-justice-green font-bold text-lg tracking-wider uppercase mb-3">Promises</h2>
-                    <h3 className="text-4xl md:text-5xl font-black text-gray-900">
+                    <h2 className="text-justice-green font-bold text-base tracking-[0.25em] uppercase mb-4">Promises</h2>
+                    <h3 className="font-display-serif text-4xl md:text-5xl font-black text-gray-900 tracking-tight">
                         {settings.policy_heading || '정의당의 약속'}
                     </h3>
-                    <p className="mt-4 text-xl text-gray-500 max-w-2xl mx-auto">
+                    <p className="mt-4 font-display-serif text-lg md:text-xl text-gray-600 max-w-2xl mx-auto break-keep">
                         {settings.policy_description || '당신의 삶을 바꾸는 가장 확실한 방법'}
                     </p>
                 </div>
