@@ -2,27 +2,20 @@
 'use client';
 
 import { CentralPolicy } from '@justice/types';
-import Link from 'next/link';
+import { FileText, Download } from 'lucide-react';
 
 interface PolicyShowcaseProps {
     policies: CentralPolicy[];
     settings: Record<string, string>;
 }
 
-export function PolicyShowcase({ policies, settings }: PolicyShowcaseProps) {
-    if (!policies || policies.length === 0) return null;
-
-    const getColors = (category: string) => {
-        if (category.includes('기후')) return 'from-justice-green to-justice-green-dark';
-        if (category.includes('노동')) return 'from-justice-pink to-justice-pink-dark';
-        if (category.includes('돌봄')) return 'from-justice-purple to-justice-purple-dark';
-        return 'from-justice-yellow to-justice-yellow-dark';
-    };
-
-    const getTextColor = (category: string) => {
-        if (category.includes('노동') || category.includes('기후') || category.includes('돌봄')) return 'text-white';
-        return 'text-gray-900'; // Yellow background needs dark text
-    };
+export function PolicyShowcase({ settings }: PolicyShowcaseProps) {
+    const pdfHref = settings.policy_pdf_url || '/justice-2026-policy.pdf';
+    const pdfFilename = settings.policy_pdf_filename || '정의당-제9회-지방선거-정책공약집.pdf';
+    const pdfTitle = settings.policy_pdf_title || '제9회 지방선거 정의당 정책공약집';
+    const pdfDescription = settings.policy_pdf_description
+        || '내란 너머, 회귀가 아닌 전환. 공존을 위한 5대 사회계약으로 누구나 마음 놓고 사는 지역을 만들겠습니다.';
+    const pdfMeta = settings.policy_pdf_meta || 'PDF · 220쪽 · 약 3.6MB';
 
     return (
         <section id="policies" className="py-24 bg-white">
@@ -37,12 +30,36 @@ export function PolicyShowcase({ policies, settings }: PolicyShowcaseProps) {
                     </p>
                 </div>
 
-                <div className="flex flex-col items-center justify-center py-24 bg-gray-50 rounded-3xl border border-gray-100/50 shadow-inner">
-                    <span className="text-5xl mb-6 drop-shadow-sm">🚧</span>
-                    <h4 className="text-2xl md:text-3xl font-black text-gray-800 mb-3 tracking-tight">{settings.policy_empty_heading || '공약 준비 중입니다'}</h4>
-                    <p className="text-lg text-gray-500 text-center break-keep">
-                        {settings.policy_empty_description || '정의당의 2026 지방선거 핵심 공약을 세밀하게 다듬고 있습니다. 곧 공개됩니다!'}
-                    </p>
+                <div className="rounded-3xl shadow-2xl p-8 md:p-12 bg-gradient-to-br from-justice-green via-justice-purple to-justice-pink">
+                    <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
+                        <div className="shrink-0 w-32 h-40 md:w-40 md:h-52 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20 flex items-center justify-center shadow-inner">
+                            <FileText className="w-16 h-16 md:w-20 md:h-20 text-white" strokeWidth={1.5} />
+                        </div>
+
+                        <div className="flex-1 text-center md:text-left">
+                            <p className="text-justice-yellow font-bold uppercase tracking-wider text-sm mb-3">Policy Booklet</p>
+                            <h4 className="text-2xl md:text-4xl font-black text-white mb-4 break-keep leading-tight">
+                                {pdfTitle}
+                            </h4>
+                            <p className="text-base md:text-lg text-white/85 leading-relaxed break-keep mb-6">
+                                {pdfDescription}
+                            </p>
+
+                            <div className="flex flex-col sm:flex-row items-center gap-4 justify-center md:justify-start">
+                                <a
+                                    href={pdfHref}
+                                    download={pdfFilename}
+                                    className="inline-flex items-center gap-2 bg-justice-yellow text-gray-900 px-6 md:px-8 py-4 rounded-2xl font-bold text-base md:text-lg hover:opacity-80 active:scale-[0.98] transition shadow-xl"
+                                >
+                                    <Download className="w-5 h-5" />
+                                    정책공약집 다운로드
+                                </a>
+                                <span className="text-sm text-white/70 font-medium">
+                                    {pdfMeta}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
