@@ -125,12 +125,12 @@ export function PolicyModal({
           )}
           <h2
             id="policy-modal-title"
-            className="font-display-serif text-3xl md:text-4xl font-black break-keep leading-tight"
+            className="text-3xl md:text-4xl font-black break-keep leading-tight"
           >
             {title}
           </h2>
           {subtitle && (
-            <p className="mt-3 font-display-serif text-lg md:text-xl opacity-95 break-keep leading-relaxed">
+            <p className="mt-3 text-lg md:text-xl opacity-95 break-keep leading-relaxed">
               {subtitle}
             </p>
           )}
@@ -145,7 +145,7 @@ export function PolicyModal({
           <div className="space-y-8">
             {sections.map((section, i) => (
               <div key={i}>
-                <h3 className="font-display-serif text-xl md:text-2xl font-black text-gray-900 mb-4 flex items-center gap-3 break-keep">
+                <h3 className="text-xl md:text-2xl font-black text-gray-900 mb-4 flex items-center gap-3 break-keep">
                   {showNumber && (
                     <span className={`${SECTION_NUMBER_COLOR[accentColor]} text-2xl md:text-3xl`}>
                       {NUMBER_CHARS[i] ?? '•'}

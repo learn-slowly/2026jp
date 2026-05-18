@@ -21,10 +21,10 @@ export function ContractSection() {
           <h2 className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-justice-green via-justice-purple to-justice-pink font-bold text-base tracking-[0.25em] uppercase mb-4">
             Social Contract
           </h2>
-          <h3 className="font-display-serif text-4xl md:text-5xl font-black text-gray-900 tracking-tight">
+          <h3 className="text-4xl md:text-5xl font-black text-gray-900 tracking-tight">
             5대 사회계약
           </h3>
-          <p className="mt-4 font-display-serif text-lg md:text-xl text-gray-600 max-w-2xl mx-auto break-keep">
+          <p className="mt-4 text-lg md:text-xl text-gray-600 max-w-2xl mx-auto break-keep">
             같이 살고, 같이 가는 공존의 약속
           </p>
         </div>

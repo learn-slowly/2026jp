@@ -62,11 +62,11 @@ export function ContractCard({ contract, onClick }: Props) {
             </span>
           </div>
 
-          <h3 className="font-display-serif text-2xl md:text-3xl font-black text-gray-900 mb-2 break-keep leading-tight">
+          <h3 className="text-2xl md:text-3xl font-black text-gray-900 mb-2 break-keep leading-tight">
             {title}
           </h3>
 
-          <p className="font-display-serif text-[15px] md:text-base text-gray-700 break-keep leading-relaxed">
+          <p className="text-[15px] md:text-base text-gray-700 break-keep leading-relaxed">
             {slogan}
           </p>
           {subSlogan && (
