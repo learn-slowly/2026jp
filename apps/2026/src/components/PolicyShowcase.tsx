@@ -2,7 +2,7 @@
 'use client';
 
 import { CentralPolicy } from '@justice/types';
-import { FileText, Download } from 'lucide-react';
+import { Download } from 'lucide-react';
 
 interface PolicyShowcaseProps {
     policies: CentralPolicy[];
@@ -32,8 +32,12 @@ export function PolicyShowcase({ settings }: PolicyShowcaseProps) {
 
                 <div className="rounded-3xl shadow-2xl p-8 md:p-12 bg-gradient-to-br from-justice-green via-justice-purple to-justice-pink">
                     <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
-                        <div className="shrink-0 w-32 h-40 md:w-40 md:h-52 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20 flex items-center justify-center shadow-inner">
-                            <FileText className="w-16 h-16 md:w-20 md:h-20 text-white" strokeWidth={1.5} />
+                        <div className="shrink-0 w-32 h-44 md:w-44 md:h-60 rounded-2xl overflow-hidden shadow-2xl ring-1 ring-white/20">
+                            <img
+                                src="/제9회_지방선거_정의당_공약집_표지.png"
+                                alt={pdfTitle}
+                                className="w-full h-full object-cover"
+                            />
                         </div>
 
                         <div className="flex-1 text-center md:text-left">
