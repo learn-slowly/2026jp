@@ -57,7 +57,7 @@ export function PolicyModal({
   description,
   accentColor,
   sections,
-  pdfHref = '/justice-2026-policy.pdf',
+  pdfHref = '/제9회_지방선거_정의당_공약집_웹용최종.pdf',
 }: PolicyModalProps) {
   const closeBtnRef = useRef<HTMLButtonElement>(null);
 

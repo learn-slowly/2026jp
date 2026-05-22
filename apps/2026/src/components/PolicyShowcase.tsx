@@ -10,12 +10,12 @@ interface PolicyShowcaseProps {
 }
 
 export function PolicyShowcase({ settings }: PolicyShowcaseProps) {
-    const pdfHref = settings.policy_pdf_url || '/justice-2026-policy.pdf';
+    const pdfHref = settings.policy_pdf_url || '/제9회_지방선거_정의당_공약집_웹용최종.pdf';
     const pdfFilename = settings.policy_pdf_filename || '정의당-제9회-지방선거-정책공약집.pdf';
     const pdfTitle = settings.policy_pdf_title || '제9회 지방선거 정의당 정책공약집';
     const pdfDescription = settings.policy_pdf_description
         || '내란 너머, 회귀가 아닌 전환. 공존을 위한 5대 사회계약으로 누구나 마음 놓고 사는 지역을 만들겠습니다.';
-    const pdfMeta = settings.policy_pdf_meta || 'PDF · 220쪽 · 약 3.6MB';
+    const pdfMeta = settings.policy_pdf_meta || 'PDF · 220쪽 · 약 4.3MB';
 
     return (
         <section id="policies" className="py-24 bg-white">
