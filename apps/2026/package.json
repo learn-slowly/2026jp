@@ -13,6 +13,7 @@
     "@justice/types": "*",
     "cloudinary": "^2.9.0",
     "clsx": "^2.1.1",
+    "framer-motion": "^12.40.0",
     "lucide-react": "^0.453.0",
     "next": "16.1.4",
     "react": "19.2.3",

@@ -29,6 +29,11 @@
   --color-d-darkgrey: #999999;
   --color-cream: #f5f0e6;
 
+  /* 2026jpgn 캠페인(/gn·/7979)용 — justice-red 별칭 + ink/paper */
+  --color-justice-red: #e8306d;
+  --color-ink: #1a1a1a;
+  --color-paper: #ffffff;
+
   --color-justice-green-dark: #008759;
   --color-justice-pink-dark: #D02070;
   --color-justice-purple-dark: #5A3D88;
@@ -65,4 +70,27 @@ body {
 
 c_card {
   text-align:left;
+}
+
+/* 2026jpgn 캠페인 페이지(/gn·/7979)용 — 리소 그레인 + 스냅 스크롤 + 모바일 탭 하이라이트 제거.
+   기존 앱 페이지엔 snap-start가 없어 전역 스냅은 영향 없음(스냅 포인트가 있어야 흡착). */
+.grain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.55 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  mix-blend-mode: multiply;
+  opacity: 0.18;
+}
+
+html {
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+button,
+[role="button"] {
+  -webkit-tap-highlight-color: transparent;
 }
