@@ -87,6 +87,29 @@ function ShortCard({ short, index }: { short: Short; index: number }) {
     return () => io.disconnect();
   }, []);
 
+  async function shareSingle() {
+    const origin = typeof window !== "undefined" ? window.location.origin : "https://2026.justice21.org";
+    const url = `${origin}/7979/${index + 1}`;
+    if (typeof navigator !== "undefined" && navigator.share) {
+      try {
+        await navigator.share({ title: `${short.emoji} ${short.title}`, url });
+        return;
+      } catch {
+        // 사용자가 공유 취소 — 무시
+      }
+    }
+    if (typeof navigator !== "undefined" && navigator.clipboard) {
+      try {
+        await navigator.clipboard.writeText(url);
+        alert("링크를 복사했어요.");
+        return;
+      } catch {
+        // 마지막 폴백
+      }
+    }
+    alert(url);
+  }
+
   return (
     <section
       ref={ref}
@@ -97,7 +120,15 @@ function ShortCard({ short, index }: { short: Short; index: number }) {
           <span style={mono} className={`text-[11px] tracking-[0.25em] ${accentText[short.color]}`}>
             {String(index + 1).padStart(2, "0")} / {String(shorts.length).padStart(2, "0")}
           </span>
-          <span className={`h-2 w-2 rounded-full ${accentBg[short.color]}`} aria-hidden />
+          <button
+            type="button"
+            onClick={shareSingle}
+            aria-label={`${short.title} 공유 링크`}
+            style={mono}
+            className={`text-[11px] uppercase tracking-[0.2em] ${accentText[short.color]} -my-2 -mr-2 px-2 py-2 active:opacity-60`}
+          >
+            공유 ↗
+          </button>
         </div>
 
         <div className="relative mx-auto aspect-[9/16] h-[68dvh] max-h-[680px] max-w-[92vw] overflow-hidden rounded-3xl border border-paper/10 bg-black">
